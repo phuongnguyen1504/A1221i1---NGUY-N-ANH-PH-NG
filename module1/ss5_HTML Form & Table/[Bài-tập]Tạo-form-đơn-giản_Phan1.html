@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo form đơn giản</title>
+</head>
+<style>
+    h1 {
+        background-color: #ff4c00;
+        text-align: center;
+        color:white;
+    }
+    html {
+        background-color: #D5FEFF;
+    }
+    form {
+        background-color: white;
+    }
+    td {
+        color:blue;
+    }
+    label {
+        color: orange;
+    }
+</style>
+<body>
+<form>
+    <h1>SỞ THÍCH CỦA BẠN</h1>
+    <table>
+        <tr>
+            <td>Họ và tên</td>
+            <td><input type="text" placeholder="nhập họ tên" name="yourname" size="40"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" placeholder="Nhập Email" name="email"size="30"></td>
+        </tr>
+        <tr>
+            <td>Sở thích</td>
+            <td>
+                <input type="checkbox" name="hobby" value="Thể thao" id="thethao"><label for="thethao">Thể thao</label>
+                <input type="checkbox" name="hobby" value="Âm nhạc" id="amnhac"><label for="amnhac">Âm nhạc</label>
+                <input type="checkbox" name="hobby" value="Đọc sách" id="docsach"><label for="docsach">Đọc sách</label>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2"> </td>
+            <td>
+                <input type="checkbox" name="hobby" value="Lướt web" id="luotweb"><label for="luotweb">Lướt web</label>
+                <input type="checkbox" name="hobby" value="Chơi game" id="choigame"><label for="choigame">Chơi game</label>
+                <input type="checkbox" name="hobby" value="Điện ảnh" id="dienanh"><label for="dienanh">Điện ảnh</label>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="hobby" value="Du lịch" id="dulich"><label for="dulich">Du lịch</label></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td><input type="submit" value="Gửi thông tin" name="Submit Form"> <input type="reset" value="Nhập lại" name="Reset Form"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
