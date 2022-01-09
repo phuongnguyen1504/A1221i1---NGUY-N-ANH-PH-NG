@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Tạo form lấy survey khách hàng</title>
+</head>
+<style>
+    option, select {
+        width: 1000px;
+        height: 30px;
+    }
+    p {
+        text-align: left;
+    }
+</style>
+<body>
+<h3>Market Research Survey </h3>
+<p>Please take a few moments to complete this satisfaction survey.</p><hr>
+<p><label for="age">What is your age range?</label></p>
+<select name="age" id="age">
+    <option>18-24</option>
+    <option>25-34</option>
+    <option>35-50</option>
+    <option>50+</option>
+</select>
+<p><label for="income">What is your yearly income range?</label></p>
+<select name="income" id="income">
+    <option>$0 - $25,000</option>
+    <option>$25,001 - $50,000</option>
+    <option>$50,001 - $100,000</option>
+    <option>$100,000+</option>
+</select>
+<p>Gender Identity</p>
+<input type="radio" name="gender" value="Male">Male<br>
+<input type="radio" name="gender" value="Female">Female<br>
+<p>Which of the following products have your purchased in the last 2 months. Please check all that apply.</p>
+<input type="checkbox" name="product purchased">Product 1<br>
+<input type="checkbox" name="product purchased">Product 2<br>
+<input type="checkbox" name="product purchased">Product 3<br>
+<p>How often would you use our new product?</p>
+<input type="radio" name="frequency" value="Daily">Daily<br>
+<input type="radio" name="frequency" value="Weekly">Weekly<br>
+<input type="radio" name="frequency" value="Monthly">Monthly
+<p>What would you pay for the new product?</p>
+<table>
+    <tr style="background-color: white">
+        <td style="border: none;text-align: left" >$</td>
+        <td style="border: none;text-align: left"><input type="number" name="dollars"></td>
+        <td style="border: none;text-align: left">-</td>
+        <td style="border: none;text-align: left"><input type="number" name="cents"></td>
+    </tr>
+    <tr>
+        <td style="border: none;text-align: left"></td>
+        <td style="border: none;text-align: left">Dollars</td>
+        <td style="border: none;text-align: left"></td>
+        <td style="border: none;text-align: left">Cents</td>
+    </tr>
+</table>
+<p>What features would you like to see in the new product.</p>
+<textarea rows="5" cols="343" name="product like"></textarea>
+<p>Please rate your level of agreement with the following statements.</p>
+<style>
+    td,th {
+        border: 1px solid;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    tr:nth-child(odd) {
+        background-color: #e6e6e6;
+    }
+</style>
+<table style="border-collapse: collapse; width: 100%">
+    <tr>
+        <th></th>
+        <th>Strongly Disagree</th>
+        <th>Disagree</th>
+        <th>Agree</th>
+        <th>Strongly Agree</th>
+    </tr>
+    <tr>
+        <td><p >Our products are priced fairly.</p></td>
+        <td><input type="radio" name="rate"><br>1</td>
+        <td><input type="radio" name="rate"><br>2</td>
+        <td><input type="radio" name="rate"><br>3</td>
+        <td><input type="radio" name="rate"><br>4</td>
+    </tr>
+    <tr>
+        <td><p>Our products are high quality.</p></td>
+        <td><input type="radio" name="rate"><br>1</td>
+        <td><input type="radio" name="rate"><br>2</td>
+        <td><input type="radio" name="rate"><br>3</td>
+        <td><input type="radio" name="rate"><br>4</td>
+    </tr>
+    <tr>
+        <td><p>You would recommend our product to a friend or coworker.</p></td>
+        <td><input type="radio" name="rate"><br>1</td>
+        <td><input type="radio" name="rate"><br>2</td>
+        <td><input type="radio" name="rate"><br>3</td>
+        <td><input type="radio" name="rate"><br>4</td>
+    </tr>
+</table>
+<input type="submit" name="submit" value="submit">
+</body>
+</html>
