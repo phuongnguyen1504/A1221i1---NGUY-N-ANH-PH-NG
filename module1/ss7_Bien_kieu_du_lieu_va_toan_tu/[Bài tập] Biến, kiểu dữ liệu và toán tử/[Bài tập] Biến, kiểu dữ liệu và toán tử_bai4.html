@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Biến, kiểu dữ liệu và toán tử_bai4</title>
+</head>
+<body>
+<h2>Chương trình tính chu vi hình tròn</h2>
+Nhập bán kính:<input type="number" id="r"><br>
+=> Chu vi hình tròn: <p id="result" style="display: inline"></p><br><br>
+<button onclick="chuvi()">Tính chu vi hình tròn</button>
+</body>
+<script>
+    function chuvi() {
+        let r;
+        const PI=3.14;
+        r=Number(document.getElementById('r').value);
+        result=2*PI*r
+        document.getElementById('result').innerHTML=result;
+
+    }
+</script>
+</html>

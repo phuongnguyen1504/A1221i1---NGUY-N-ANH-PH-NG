@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="my-script.js"></script>
+</head>
+<!--<body>-->
+<button onclick="myfunction()">thoat</button>
+<button onclick="hello()">hello</button>
+<button onclick="displayInfo()">Out ra</button>
+<button onclick="helloWithName()">helloWithName</button>
+<button onclick="showMessage()">show message</button>
+<button onclick="documentwrite()">Document write</button><br>
+x: <input type="text" id="var x"><br>
+y:<input type="text" id="var y"><br>
+Sum: <p id="result"></p><br>
+<button onclick="add()">call sum</button>
+<script>
+    function add() {
+        let x=Number(document.getElementById('var x').value);
+        let y=Number(document.getElementById('var y').value);
+        let Sun=x+y;
+        document.getElementById("result").innerHTML=Sun;
+    }
+    function displayInfo() {
+        let isQuit= confirm("Bạn muốn thoát không");
+        if (isQuit) {
+            alert('Bạn đã thoát khỏi chương trình');
+        } else {
+            alert('chào mừng bạn quay lại chương trình')
+        }
+    }
+    name="khanh"
+    //Khai bao bien toan cuc
+    var name='linh';
+    //khai bao hằng
+    const PI=3.14;
+    //Khai báo biến cục bộ hoặc có thể bị thay đổi
+    function hello() {
+        let  firstname='linh';
+        let lastname='tran'
+        let name=firstname+" "+lastname
+        alert('Hello'+name)
+    }
+    function helloWithName() {
+        const name=prompt('mời bạn nhập vào tên: ');
+        const r=Number(prompt('mời bạn nhập vào bán kính: '));
+        const c=r*r*PI;
+        alert('Hello '+ name + '. Chu vi hình tron la: ' + c);
+
+    }
+    function showMessage() {
+        console.log("Hiển thị trong console log");
+    }
+    function documentwrite() {
+        document.write("Hello to my website")//khi dùng nó xóa dũ liệu cũ để chạy
+    }
+</script>
+
+</body>
+</html>

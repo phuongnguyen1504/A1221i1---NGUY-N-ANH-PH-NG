@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Biến, kiểu dữ liệu và toán tử</title>
+</head>
+<body>
+Điểm Vật lý: <input type="number" id="ly"><br>
+Điểm Hóa học: <input type="number" id="hoa"><br>
+Điểm Sinh học: <input type="number" id="sinh"><br>
+Điểm trung bình: <p id="result" style="display: inline"></p><br><br>
+<button onclick="avg()">Tính điểm trung bình</button>
+</body>
+<script>
+    function avg() {
+        let ly;
+        let hoa;
+        let sinh;
+        ly=Number(document.getElementById('ly').value);
+        hoa=Number(document.getElementById('hoa').value);
+        sinh=Number(document.getElementById('sinh').value);
+        result=(ly+hoa+sinh)/3
+        document.getElementById('result').innerHTML=result;
+    }
+</script>
+</html>

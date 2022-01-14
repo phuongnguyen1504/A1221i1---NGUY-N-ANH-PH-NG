@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Biến, kiểu dữ liệu và toán tử_bai3</title>
+</head>
+<body>
+<h1>Viết chương trình tính diện tích hình tròn</h1>
+Nhập bán kính: <input type="number" id="c"><br>
+
+=> Diện tích hình tròn: <p id="result" style="display: inline"></p><br><br>
+<button onclick="dientich()">Tính diện tích hình tròn</button>
+</body>
+<script>
+    function dientich() {
+        let C;
+        const PI=3.14;
+        C=Number(document.getElementById('c').value);
+        result=C*C*PI;
+        document.getElementById('result').innerHTML=result;
+    }
+</script>
+</html>
