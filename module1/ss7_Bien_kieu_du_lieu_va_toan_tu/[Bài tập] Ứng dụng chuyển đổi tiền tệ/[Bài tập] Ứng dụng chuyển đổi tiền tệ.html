@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>[Bài tập] Ứng dụng chuyển đổi tiền tệ</title>
 </head>
+<style>
+    button {
+        background-color: #8f82cf;
+        color: white;
+        border: none;
+    }
+    td {
+        color: blue;
+    }
+</style>
 <body>
     <table>
         <tr>
@@ -13,20 +23,29 @@
             <th></th>
         </tr>
         <tr>
-            <td><input type="number"></td>
+            <td><input type="number" id="amount"></td>
             <td><select id="from">
-                <option value="VND">VietNam</option>
-                <option value="USD">USD</option>
+                <option value="VND">Việt Nam Đồng (VND)</option>
+                <option value="USD">Đô la Mỹ (USD)</option>
+                <option value="GBP">Bảng Anh (GBP)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="AUD">Dollar Úc (AUD)</option>
+                <option value="CNY">Nhân dân tệ Trung Quốc (CNY)</option>
             </select></td>
-            <td><select id="from">
-                <option value="VND">VietNam</option>
-                <option value="USD">USD</option>
+            <td><select id="to">
+                <option value="VND">Việt Nam Đồng (VND)</option>
+                <option value="USD">Đô la Mỹ (USD)</option>
+                <option value="GBP">Bảng Anh (GBP)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="AUD">Dollar Úc (AUD)</option>
+                <option value="CNY">Nhân dân tệ Trung Quốc (CNY)</option>
             </select></td>
-            <td><button onclick="function()">Convert</button></td>
+            <td><button onclick="convert()">Convert</button></td>
         </tr>
         <tr>
-            <td>Result:<p id="result"></p></td>
+            <td>Result:<p id="result" style="display: inline"></p></td>
         </tr>
     </table>
 </body>
+<script src="functionconvert.js"></script>
 </html>
