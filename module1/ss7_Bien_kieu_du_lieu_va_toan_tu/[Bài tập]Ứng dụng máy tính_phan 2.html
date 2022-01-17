@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng máy tính</title>
+</head>
+<style>
+    div {
+        line-height: 1.5;
+    }
+</style>
+<body>
+    <div>
+        <h2>Calculator</h2>
+        <input type="number" id="num1">
+        <input type="number" id="num2">
+    </div>
+    <div>
+        <button onclick="calculate('add')">Addition(+)</button>
+        <button onclick="calculate('sub')">Substraction(-)</button>
+        <button onclick="calculate('mul')">Multiflication(*)</button>
+        <button onclick="calculate('div')">Division(/)</button><br>
+        <h1 id="result">Result</h1>
+    </div>
+</body>
+<script>
+    //cách 2:
+    function  calculate(operator) {
+        let num1=document.getElementById("num1").value;
+        let num2=document.getElementById("num2").value;
+        let result=0;
+        if (operator==="add") {
+            result=parseInt(num1)+parseInt(num2);
+        } else if (operator==="sub") {
+            result = parseInt(num1) - parseInt(num2);
+        } else if (operator==="mul") {
+            result = parseInt(num1) * parseInt(num2);
+        } else if (operator==="div") {
+            result = parseInt(num1) / parseInt(num2);
+        }
+        document.getElementById('result').innerHTML=result;
+    }
+    /*let a;
+    let b;
+    a=Number(document.getElementById('sodau').value);
+    b=Number(document.getElementById('sosau').value);
+    var he_thong=document.getElementsByClassName('he_thong');
+    for (var i=0;i<he_thong.length;i++) {
+        he_thong[i].addEventListener('click', function () {
+            result = eval(a + this.value + b);
+            document.getElementById('result').innerText = result;
+        })
+    }
+    in_gia_tri_cu(result)
+    function in_gia_tri_cu(so) {
+        document.getElementById('result').innerText=so;*/
+</script>
+</html>

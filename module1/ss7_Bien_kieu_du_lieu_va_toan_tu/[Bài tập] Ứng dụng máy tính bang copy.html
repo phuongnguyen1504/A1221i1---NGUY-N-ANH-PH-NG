@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng máy tính</title>
+</head>
+<style>
+    div {
+        line-height: 1.5;
+    }
+</style>
+<body>
+<form>
+    <div>
+        <h2>Calculator</h2>
+        <input type="number" id="sodau">
+        <input type="number" id="sosau">
+        </div>
+    <div>
+        <button onclick="tinh()" id='click' value="+">Addition(+)</button>
+        <button onclick="tinh()" id='click'  value="-">Substraction(-)</button>
+        <button onclick="tinh()"  id='click' value="*">Multiflication(*)</button>
+        <button onclick="tinh()" id='click'  value="/">Division(/)</button><br>
+        Result:<p id="result"></p>
+    </div>
+</form>
+</body>
+<script>
+    debugger
+    function tinh() {
+        let a;
+        let b;
+        a=Number(document.getElementById('sodau').value);
+        b=Number(document.getElementById('sosau').value);
+        dau=document.getElementById('click').value;
+        console.log(dau)
+        if (dau=="+") {
+            result=a+b;
+        }
+        if (dau=="-") {
+            result=a-b;
+        }
+        if (dau=="*") {
+            result=a*b;
+        }
+        if (dau=="/") {
+            result=a/b;
+        }
+        document.getElementById('result').innerHTML=result;
+    }
+
+</script>
+</html>

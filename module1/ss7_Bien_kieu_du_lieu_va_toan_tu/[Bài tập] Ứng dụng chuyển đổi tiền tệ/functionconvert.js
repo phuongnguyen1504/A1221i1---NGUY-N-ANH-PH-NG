@@ -122,5 +122,5 @@ function convert(){
         }
     }
     let result = amount * exchangerate;
-    document.getElementById('result').innerHTML = result +" "+ tcur;
+    document.getElementById('result').innerHTML = result.toLocaleString('de-DE') +" "+ tcur;
 }

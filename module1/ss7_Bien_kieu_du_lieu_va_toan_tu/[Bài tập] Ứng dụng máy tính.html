@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng máy tính</title>
+</head>
+<style>
+    div {
+        line-height: 1.5;
+    }
+</style>
+<body>
+    <div>
+        <h2>Calculator</h2>
+        <input type="number" id="sodau">
+        <input type="number" id="sosau">
+        </div>
+    <div>
+        <button onclick="addition()">Addition(+)</button>
+        <button onclick="substraction()">Substraction(-)</button>
+        <button onclick="multiflication()">Multiflication(*)</button>
+        <button onclick="division()">Division(/)</button><br>
+        Result:<p id="result"></p>
+    </div>
+</body>
+<script>
+    function addition() {
+        let a;
+        let b;
+        a=Number(document.getElementById('sodau').value);
+        b=Number(document.getElementById('sosau').value);
+        result=a+b;
+        document.getElementById('result').innerHTML="Result "+ "addition"+result;
+    }
+    function substraction() {
+        let a;
+        let b;
+        a=Number(document.getElementById('sodau').value);
+        b=Number(document.getElementById('sosau').value);
+        result=a-b;
+        document.getElementById('result').innerHTML="Result "+ "substraction: "+result;
+    }
+    function multiflication() {
+        let a;
+        let b;
+        a=Number(document.getElementById('sodau').value);
+        b=Number(document.getElementById('sosau').value);
+        result=a*b;
+        document.getElementById('result').innerHTML="Result "+ "multiflication: "+result;
+    }
+    function division() {
+        let a;
+        let b;
+        a=Number(document.getElementById('sodau').value);
+        b=Number(document.getElementById('sosau').value);
+        result=a/b;
+        document.getElementById('result').innerHTML="Result "+ "division: "+result;
+    }
+
+</script>
+</html>
