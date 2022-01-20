@@ -1,0 +1,49 @@
+body {
+    font-family: Roboto;
+    background-color: #5f6062;
+}
+#may_tinh {
+    background-color: white;
+    width: 320px;
+    height: 320px;
+    top:20px;
+    margin: 0 auto;
+    position: relative;
+    border: solid;
+}
+#ket_qua_cu {
+    height: 20px;
+}
+#xuat_ket_qua {
+    text-align: right;
+    height:60px;
+    margin: 1px 1px;
+    font-size: 30px;
+    border: 1px solid;
+}
+#ban_phim {
+    height: 400px;
+    position:relative;
+    top:30px;
+}
+.con_so,.he_thong {
+    width: 50px;
+    height: 40px;
+    color: blue;
+    margin: 15px;
+    float: left;
+    border-width:1px ;
+    border-color: #5f6062;
+    font-weight: bold;
+    font-size:15px;
+}
+
+.he_thong,.con_so {
+    cursor: pointer;
+}
+.he_thong:focus,.con_so:focus {
+    outline:0
+}
+.he_thong:active, .con_so:active {
+    font-size: 10px;
+} /*//active dung de khi an thi no se chay theo dong lenh duoi font chu giam tu 15px xuong 10px;*/

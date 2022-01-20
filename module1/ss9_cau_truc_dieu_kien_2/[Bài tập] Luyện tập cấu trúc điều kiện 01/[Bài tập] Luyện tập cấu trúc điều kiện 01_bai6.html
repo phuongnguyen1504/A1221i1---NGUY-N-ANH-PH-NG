@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập cấu trúc điều kiện 01_bai6</title>
+</head>
+<!--
+Cửa hàng của bạn nhận gửi bán sản phẩm cho một công ty khác và sau mỗi tháng bạn cần tính toán số tiền hoa hồng bạn nhận được.
+ Với mức hoa hồng theo doanh số bán hàng như sau:
+ 5% nếu tổng doanh số nhỏ hơn hoặc bằng 100 triệu.
+10% nếu tổng doanh số nhỏ hơn hoặc bằng 300 triệu.
+20 % nếu tổng doanh số là lớn hơn 300 triệu.
+-->
+<body>
+    <script>
+        let doanhso=Number(prompt("nhập doanh số bán hàng theo triệu đồng: "));
+        if (doanhso<=100) {
+            alert('hoa hồng nhận được là: '+doanhso*0.05+" triệu");
+        } else if (doanhso<=300) {
+            alert('hoa hồng nhận được là: '+doanhso*0.1+" triệu");
+        } else {
+            alert('hoa hồng nhận được là: '+(doanhso*0.2)+" triệu");
+        }
+
+    </script>
+
+</body>
+</html>

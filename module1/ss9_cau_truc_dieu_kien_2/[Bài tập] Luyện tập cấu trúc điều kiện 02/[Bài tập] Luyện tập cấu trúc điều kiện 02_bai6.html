@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Luyện tập cấu trúc điều kiện 02_bai6</title>
+</head>
+<body>
+<h1>Nhập các tham số của phương trình ax + b = 0</h1>
+a:<input type="number" id="a">
+b:<input type="number" id="b">
+<button onclick="ptbac1()" >Solve</button>
+<script>
+    function ptbac1() {
+        a=Number(document.getElementById('a').value);
+        b=Number(document.getElementById('b').value);
+        if (a==0 && b==0) {
+            alert("phương trình có vô số nghiệm");
+        } else if (a==0 && b!=0) {
+            alert("Phương trình vô nghiệm");
+        } else {
+            alert("Phương trình có 1 nghiệm là:"+(-b/a));
+        }
+    }
+</script>
+</body>
+</html>

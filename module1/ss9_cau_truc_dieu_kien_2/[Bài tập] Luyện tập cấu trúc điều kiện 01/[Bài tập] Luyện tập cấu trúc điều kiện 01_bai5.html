@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Luyện tập cấu trúc điều kiện 01_bai5</title>
+</head>
+<!--
+Xuất sắc diem >8
+Loại giỏi: diem <8
+Loại khá: <7
+Loại trung bình <6
+Loại yếu<5-->
+<body>
+    <script>
+        let diemktra=Number(prompt("nhập điểm kiểm tra: "));
+        let diemgiuaki=Number(prompt("nhập điểm giữa kì: "));
+        let diemcuoiky=Number(prompt("nhập điểm cuối kỳ: "));
+        result=(diemktra+diemgiuaki+diemcuoiky)/3;
+        if (result<5) {
+            alert("Xếp loại yếu");
+        }
+        else if (result<6) {
+            alert("Xếp loại trung bình");
+        }
+        else if (result<7) {
+            alert("Xếp loại khá")
+        }
+        else if (result<8){
+            alert("Xếp loại giỏi")
+        } else {
+            alert("Xếp loại Xuất sắc")
+        }
+    </script>
+
+</body>
+</html>

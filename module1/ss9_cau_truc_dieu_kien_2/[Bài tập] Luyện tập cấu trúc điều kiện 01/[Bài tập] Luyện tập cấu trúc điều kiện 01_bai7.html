@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Luyện tập cấu trúc điều kiện 01_bai7</title>
+</head>
+<!--Viết chương trình để tính cước điện thoại bàn cho một hộ gia đình với các thông số như sau:
+Phí thuê bao bắt buộc là 25 nghìn.
+600 đồng cho mỗi gọi của 50 phút đầu tiên.
+400 đồng cho mỗi phút gọi của 150 phút tiếp theo.
+200 đồng cho bất kỳ mỗi phút nào sau 200 phút đầu tiên.-->
+<body>
+    <script>
+        sophutgoi=Number(prompt("Nhập số phút gọi:"));
+        if (sophutgoi<50) {
+            result=25000+(600*sophutgoi);
+        } else if (sophutgoi<200) {
+            sophuthon=sophutgoi-50;
+            result=25000+(50*600)+(sophuthon*400);
+        } else {
+            sophuthon=sophutgoi-200;
+            result=25000+(50*600)+(150*400)+(sophuthon*200);
+        }
+        alert("giá tiền cước điện thoại là: "+result+" đồng")
+
+    </script>
+
+</body>
+</html>
