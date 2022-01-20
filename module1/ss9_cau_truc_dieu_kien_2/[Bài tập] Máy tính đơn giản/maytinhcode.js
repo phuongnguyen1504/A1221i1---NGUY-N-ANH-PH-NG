@@ -5,7 +5,7 @@ function xuatketqua(so) {
     document.getElementById('xuat_ket_qua').innerText = so;
 }
 
-var he_thong=document.getElementsByClassName('he_thong');
+var he_thong=document.getElementsByClassName('he_thong');/*[+,-,*,/,=]*/
 for (var i=0;i<he_thong.length;i++) {
     he_thong[i].addEventListener("click",function (){
         if (this.id=="xoa_tat_ca") {
@@ -13,6 +13,7 @@ for (var i=0;i<he_thong.length;i++) {
         }
         else {
             if (this.id=="=") {
+                xuatketqua(laygiatricu().replace(/%/igm,"/100"))
                 ket_qua=eval(laygiatricu())
                 xuatketqua(ket_qua)
             }
