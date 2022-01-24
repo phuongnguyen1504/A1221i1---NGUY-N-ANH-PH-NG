@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01_bai3</title>
+</head>
+<body>
+<script>
+    number=Number(prompt("NHập vào số lượng dãy fibonacci cần tìm: "))
+    dem=[]
+    for (i=1;dem.length<number;i++) {
+        if (i<2) {
+            dem.push(Number(1))
+        } else {
+            daysotiep=Number(dem.slice(-2,-1))+Number(dem.slice(-1));
+            dem.push(daysotiep)
+        }
+    }
+    document.write(number+" dãy số fibonacci đầu tiên cần tìm là: "+dem)
+</script>
+</body>
+</html>

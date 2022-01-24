@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01_bai8</title>
+</head>
+<body>
+<h2 >Hãy thử đoán xem!
+<img src="https://i.vietgiaitri.com/2012/7/2/tin-vit-tro-lai-xa-co-500-can-bo-8f0637.jpg"></h2>
+<button onclick="play()">Chơi</button>
+<script>
+    function play() {
+        from = Number(prompt("Số bạn muốn đoán từ khoảng?: "));
+        to = Number(prompt("Đến khoảng?: "));
+        number = tao_so_ngau_nhien(from, to);
+        for (i = 0; i < 3; i++) {
+            doanso = Number(prompt("Bạn đoán số mấy?: "));
+            if (doanso == number) {
+                alert("Chúc mừng bạn đã đoán trúng!!!")
+                break;
+            } else if (doanso > number) {
+                alert("Số bạn đoán lớn hơn số đúng rồi")
+            } else {
+                alert("Số bạn đoán nhỏ hơn số đúng rồi")
+            }
+        }
+        input = prompt("Bạn muốn chơi tiếp?. Nhấn Y/N?")
+        if (input != null) {
+            play()
+        }
+    }
+    function tao_so_ngau_nhien(min,max) {
+        return Math.floor(Math.random()*(max-min+1))+min;
+    }
+</script>
+
+</body>
+</html>

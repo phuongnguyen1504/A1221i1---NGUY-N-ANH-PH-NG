@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01_bai2</title>
+</head>
+<body>
+<script>
+    value=Number(prompt("Mời bạn nhập nhiệt độ:"))
+    while (true) {
+        if (value <20) {
+            alert("Mời bạn tăng nhiệt độ");
+            value=Number(prompt("Mời bạn nhập nhiệt độ:"))
+        } else if (value>100) {
+            alert("Mời bạn giảm nhiệt độ")
+            value=Number(prompt("Mời bạn nhập nhiệt độ:"))
+        } else {
+            alert("Nhiệt độ bạn nhập vào là: "+value);
+            break;
+        }
+    }
+</script>
+</body>
+</html>

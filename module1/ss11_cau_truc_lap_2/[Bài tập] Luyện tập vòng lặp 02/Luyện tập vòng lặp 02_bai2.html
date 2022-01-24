@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 02_bai2</title>
+</head>
+<body>
+<script>
+    function giaithua(n) {
+        if (n==0) {
+            return 1;
+        }
+        return n*giaithua(n-1);
+    }
+    value=Number(prompt("NHập số cần tính giai thừa"))
+    document.write(value+" giai thừa = "+giaithua(value))
+</script>
+</body>
+</html>

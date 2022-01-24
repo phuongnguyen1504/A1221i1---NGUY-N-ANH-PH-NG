@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01_bai5</title>
+</head>
+<body>
+<script>
+    number=Number(prompt("Nhập số lượng số fibonacci đầu tiên cần tính tổng: "))
+    dem=[];
+    total=0;
+    for (i=1;dem.length<number;i++) {
+        if (i<2) {
+            dem.push(Number(1))
+            total=total+1;
+        } else {
+            daysotiep=Number(dem.slice(-2,-1))+Number(dem.slice(-1));
+            dem.push(daysotiep)
+            total=total+daysotiep;
+        }
+    }
+    document.write("Tổng của "+number+" số đầu tiên trong dãy số fibonacci đầu tiên cần tìm là: "+total)
+</script>
+</body>
+</html>

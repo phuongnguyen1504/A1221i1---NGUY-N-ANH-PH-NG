@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Hiển thị các số nguyên tố đầu tiên</title>
+</head>
+<body>
+<script>
+    var number=Number(prompt("Bạn muốn xuất ra bao nhiêu số nguyên tố:"));
+    var dem=[];
+    for (i=2;dem.length<number;i++) {
+        let tong=0;
+        console.log(tong)
+        for (j=2;j<=(parseInt(i+1/2)+1);j++) {
+            if (i%j==0) {
+                tong=tong+1;
+                }
+            }
+        if (tong==1) {
+                dem.push(i)
+        }
+        tong=0;
+    }
+    document.write(number+" số nguyên tố đầu tiên bạn muốn xem là: "+ dem)
+</script>
+
+</body>
+</html>
