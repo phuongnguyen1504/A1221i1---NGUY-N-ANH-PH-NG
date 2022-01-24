@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Luyện tập cấu trúc điều kiện 02_bai11</title>
+</head>
+<body>
+<h2>Chương trình tính thuế thu nhập cá nhân</h2>
+<table>
+    <tr>
+        <td>Tổng thu nhập:</td>
+        <td>Số người phụ thuộc:</td>
+        <td>Thuế TNCN phải nộp:</td>
+    </tr>
+    <tr>
+        <td><input type="number" id="amount"></td>
+        <td><input type="number" id="people"></td>
+        <td id="result">0</td>
+        <td><button onclick="calculate()">Tính thuế TNCN</button></td>
+    </tr>
+</table>
+<script>
+    function calculate() {
+        amount=Number(document.getElementById('amount').value);
+        people=Number(document.getElementById('people').value);
+        if (amount<11000000) {
+            document.getElementById('result').innerHTML=0
+        } else {
+            tinhthue=amount-11000000
+            nguoiphuthuoc=4400000*people;
+            tienconlai=tinhthue-nguoiphuthuoc;
+            if (tienconlai<0) {
+                document.getElementById('result').innerHTML=0;
+            }
+            else if (tienconlai<=5000000) {
+                result=tienconlai*0.05
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+            else if (tienconlai<=10000000) {
+                result=250000+((tienconlai-5000000)*0.1);
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+            else if (tienconlai<=18000000) {
+                result=750000+((tienconlai-10000000)*0.15);
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+            else if (tienconlai<=32000000) {
+                result=1950000+((tienconlai-18000000)*0.2);
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+            else if (tienconlai<=52000000) {
+                result=4750000+((tienconlai-32000000)*0.25);
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+            else if (tienconlai<=80000000) {
+                result=9750000+((tienconlai-52000000)*0.3);
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+            else {
+                result=18150000+((tienconlai-80000000)*0.35);
+                document.getElementById("result").innerHTML=result.toLocaleString("vi");
+            }
+        }
+    }
+</script>
+</body>
+</html>
