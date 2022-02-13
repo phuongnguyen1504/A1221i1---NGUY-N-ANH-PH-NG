@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo form đơn giản</title>
+</head>
+<style>
+    h1 {
+        background-color: orange;
+        text-align: center;
+    }
+    html {
+        background-color: aqua;
+    }
+    form {
+        background-color: white;
+    }
+</style>
+<body>
+<form>
+    <fieldset>
+    <h1 style="color:white;float:center">SỞ THÍCH CỦA BẠN</h1>
+        <p>Họ và tên
+        <input type="text" placeholder="nhập họ tên" name="yourname" size="40">
+        </p>
+        <p>Email
+        <input type="email" placeholder="Nhập Email" name="email"size="30">
+        </p>
+        <table>
+            <tr>
+                <td>Sở thích</td>
+                <td><input type="checkbox" name="hobby" value="Thể thao">Thể thao</td>
+                <td><input type="checkbox" name="hobby" value="Âm nhạc">Âm nhạc</td>
+                <td><input type="checkbox" name="hobby" value="Đọc sách">Đọc sách</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="hobby" value="Lướt web">Lướt web</td>
+                <td><input type="checkbox" name="hobby" value="Chơi game">Chơi game</td>
+                <td><input type="checkbox" name="hobby" value="Điện ảnh">Điện ảnh</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="hobby" value="Du lịch">Du lịch</td>
+            </tr>
+            </table>
+        <input type="submit" name="Submit Form" value="Gửi thông tin">
+        <input type="reset" name="Reset Form" value="Nhập lại">
+
+    </fieldset>
+</form>
+</body>
+</html>

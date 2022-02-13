@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  mang=[]
+  for (let i=0;i<10;i++) {
+      mang.push(Math.floor(Math.random()*20))
+  }
+  var reversemang=[]
+  for(let i=mang.length-1;i>=0;i-- ){
+      reversemang.push(mang[i])
+  }
+  average=(mang.reduce(function (a,b){return a+b})/10)
+  console.log("Mảng khởi tạo ban đầu là: "+mang)
+  console.log("Mảng sau khi đảo ngược là: "+ reversemang)
+</script>
+</body>
+</html>

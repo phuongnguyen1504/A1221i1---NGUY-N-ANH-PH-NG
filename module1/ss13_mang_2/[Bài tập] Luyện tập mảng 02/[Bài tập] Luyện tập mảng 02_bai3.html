@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết một chương trình khai báo một mảng ký tự và kích thước của mảng. Chương trình này đếm số ký tự số trong mảng-->
+<script>
+    var value=window.prompt("Nhập giá trị cần thực hiện");
+    var str=value.toString();
+    console.log("giá trị nhập vào là:"+str)
+    number='0123456789'
+    dem=0;
+    for (let i=0;i<str.length;i++) {
+        if (number.indexOf(str[i])!==-1) {
+            dem++
+        }
+    }
+    console.log("Có "+dem+" kí tự số trong mảng");
+
+</script>
+</body>
+</html>

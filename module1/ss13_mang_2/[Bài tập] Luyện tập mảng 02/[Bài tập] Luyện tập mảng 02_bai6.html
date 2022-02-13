@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết chương trình nhập vào một mảng ký tự, tìm tất cả các ký tự trong mảng là (-)
+và thay thế các ký tự này bởi ký tự ( _ )-->
+<script>
+    var value=window.prompt("Nhập chuỗi kí tự");
+    var str=value.toString();
+    var mang=[]
+    for (let i=0;i<str.length;i++) {
+        if (str[i]=="-") {
+            mang.push("_")
+        }
+        else {
+            mang.push(str[i])
+        }
+    }
+    console.log(mang.join(""))
+</script>
+</body>
+</html>

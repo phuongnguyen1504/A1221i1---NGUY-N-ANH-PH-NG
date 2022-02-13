@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  mang=[]
+  dem=0
+  for (let i=0;i<10;i++) {
+      var value=Math.floor(Math.random()*30)
+      mang.push(value)
+  }
+  giatri=Number(prompt("Mời bạn nhập số nguyên cần tìm V:"))
+  var index=mang.indexOf(giatri)
+  var message
+  if (index!=-1) {
+      message="V in the array"
+      alert("V in the array")
+  }
+  else {
+      message="V is not in the array"
+      alert("V is not in the array")
+  }
+  console.log("Mảng khởi tạo ban đầu là: "+mang)
+  console.log(message)
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var a=[];
+  var b=[];
+  var c=[];
+  var i=0;
+  while (i<10) {
+      a.push(Math.floor(Math.random()*10));
+      b.push(Math.floor(Math.random()*10));
+      i++;
+  }
+  console.log("Mảng a:"+a);
+  console.log("Mảng b:"+b);
+  c=a.concat(b);
+  console.log("Mảng c sau khi nối a và b là: "+c);
+</script>
+</body>
+</html>

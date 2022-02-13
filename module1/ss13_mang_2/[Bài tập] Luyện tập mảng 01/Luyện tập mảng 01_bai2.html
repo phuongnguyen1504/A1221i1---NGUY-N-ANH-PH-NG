@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  mang=[]
+  for (let i=0;i<10;i++) {
+      mang.push(Math.floor(Math.random()*15))
+  }
+  var max=0
+  for(let i=0;i< mang.length;i++ ){
+    if (mang[i] >max) {
+        max=mang[i]
+    }
+  }
+  index= mang.indexOf(max)
+  console.log(mang)
+  console.log("Giá trị lớn nhất trong mảng là: "+max+ " ở vị trí số: "+index)
+</script>
+</body>
+</html>

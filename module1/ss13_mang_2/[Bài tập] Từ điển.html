@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+  <h2>Từ điển đơn giản</h2>
+  <tr>
+    <td>Từ tiếng anh cần tra cứu:</td>
+    <td><input type="text" id="english"></td>
+    <td><button onclick="addvalue()">Thêm từ</button></td>
+  </tr>
+  <tr>
+    <td>Từ tiếng tiếng việt cần tra cứu:</td>
+    <td><input type="text" id="vietnam"></td>
+    <td><button onclick="search()">Tra từ</button></td>
+  </tr>
+  <tr>
+    <td>Result</td>
+    <td><p id="result"></p></td>
+  </tr>
+</table>
+</body>
+<script>
+  var eng=["hello","hi","name","think"]
+  var viet=["xin chào","xin chào","tên","suy nghỉ"]
+
+  function addvalue() {
+    if (document.getElementById("english").value!=null && document.getElementById('vietnam').value!=null) {
+      eng.push(document.getElementById('english').value)
+      viet.push(document.getElementById('vietnam').value)
+    }
+    else{
+      alert("Mời bạn nhập từ còn thiếu!!!")
+    }
+  }
+  function search() {
+    var searchvalue=document.getElementById("english").value;
+    let value=viet[eng.indexOf(searchvalue)]
+    if (value!=null) {
+      document.getElementById('result').innerHTML = value
+    }
+    else {
+      alert("Không tìm thấy giá trị")
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var mang=[];
+  var dem=0;
+  for (let i=0;i<10;i++) {
+      var value=Math.floor(Math.random()*10)
+      mang.push(value);
+  }
+  var giatri=Number(prompt("Mời bạn nhập số nguyên cần tìm V:"))
+  console.log(mang)
+  var arr=[];
+  var i=0;
+  while (i<mang.length) {
+      if (mang[i]!=giatri) {
+          arr.push(mang[i])
+      }
+      i++
+  }
+  for (let i=arr.length;i<mang.length;i++) {
+      arr.push(0)
+  }
+  console.log("Mảng sau khi đã loại bỏ giá trị "+giatri+" là: "+arr)
+  console.log(arr)
+</script>
+</body>
+</html>

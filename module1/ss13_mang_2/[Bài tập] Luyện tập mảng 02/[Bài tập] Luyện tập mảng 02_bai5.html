@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết một chương trình nhập vào 2 chuỗi, sau đó kiểm tra xem hai chuỗi có giống nhau hay không.-->
+<script>
+    var value1=window.prompt("Nhập chuỗi kí tự thứ 1");
+    var str1=value1.toString();
+    var value2=window.prompt("Nhập chuỗi kí tự thứ 2");
+    var str2=value2.toString();
+    var check =true;
+    var length;
+    if (str1.length< str2.length){
+        length=str2.length;
+    }
+    else {
+        length=str1.length;
+    }
+    for (let i=0;i<length;i++) {
+        if (str1[i]!==str2[i]) {
+            check =false
+            break;
+        }
+    }
+    if (check) {
+        console.log("Hai chuỗi này giống nhau")
+    }
+    else {
+        console.log("Hai chuỗi này khác nhau")
+    }
+</script>
+</body>
+</html>

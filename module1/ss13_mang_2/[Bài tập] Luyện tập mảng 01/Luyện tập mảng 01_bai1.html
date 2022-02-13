@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  mang=[]
+  for (let i=0;i<10;i++) {
+    mang.push(Math.floor(Math.random()*15))
+  }
+  var dem=0
+  for(let i=0;i< mang.length;i++ ){
+    if (mang[i] >=10) {
+      dem++
+    }
+  }
+  console.log(mang)
+  console.log("có "+dem+ " số lớn hơn hoặc bằng 10")
+</script>
+</body>
+</html>
