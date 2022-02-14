@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Tìm các số nguyên tố nhỏ hơn:<input type="number" oninput="demsont(this.value)"> </p>
+<p>Các số nguyên tố thỏa mãn là: <span id="output"></span></p>
+<script>
+    function checkPrime(value) {
+        check=true;
+        for (let i=2;i<=Math.ceil(value/2);i++) {
+            if (value%i==0) {
+                check=false;
+                break
+            }
+        }
+        return check;
+    }
+    function demsont(value) {
+        arr=[]
+        for (i=2;i<value;i++) {
+            if (checkPrime(i)) {
+                arr.push(i)
+            }
+        }
+        document.getElementById("output").innerHTML=arr
+    }
+</script>
+</body>
+</html>
