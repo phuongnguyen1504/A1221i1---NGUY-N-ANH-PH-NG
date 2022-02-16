@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 9: Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ,
+kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
+Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1.-->
+<script>
+    function countword(array,key) {
+        let dem = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] == key) {
+                dem++;
+            }
+        }
+        if (dem == 0) {
+            document.write("Không có kí tự "+key+ " ở trong mảng này")
+        } else {
+            document.write("Mảng kí tự: " + array.join("") + "<br>")
+            document.write("Có " + dem + " kí tự " + key + " trong mảng này");
+        }
+    }
+    let n=Number(window.prompt("Bạn muốn nhập bao nhiêu kí tự vào?"))
+    let array=[]
+    for (i=0;i<n;i++) {
+        array.push(window.prompt("Mời bạn nhập kí tự số thứ: "+(i+1)+" vào mảng:"))
+    }
+    let keyWord=window.prompt("Mời bạn nhập kí tự cần tìm:")
+    countword(array,keyWord);
+
+</script>
+</body>
+</html>

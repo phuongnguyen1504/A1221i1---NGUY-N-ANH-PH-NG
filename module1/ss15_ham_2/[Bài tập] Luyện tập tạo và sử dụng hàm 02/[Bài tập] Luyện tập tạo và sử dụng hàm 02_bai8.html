@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 8: Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.-->
+<script>
+    function reverse(array) {
+        let mang=[]
+        for (let i = array.length-1; i >=0; i--) {
+            mang.push(array[i]);
+        }
+        document.write("Mảng ban đầu là:"+array+"<br>");
+        document.write("Mảng sau khi đảo ngược là:" +mang);
+    }
+    let n=Number(window.prompt("Bạn muốn nhập bao nhiêu số vào?"))
+    let array=[]
+    for (i=0;i<n;i++) {
+        array.push(Number(window.prompt("Mời bạn nhập số thứ: "+(i+1)+" vào mảng:")))
+    }
+    reverse(array)
+
+</script>
+</body>
+</html>

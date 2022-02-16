@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được-->
+<script>
+    const PI=3.14
+    function area(number){
+        return Math.round(PI*number*number*100)/100;
+    }
+    function perimeter(number){
+        return Math.round(PI*2*number*100)/100;
+    }
+    function main() {
+        let number=window.prompt("Nhập số cần tính bình phương")
+        document.write("Diện tích hình tròn bán kính r= "+number+" là: "+area(number)+"<br>")
+        document.write("Chu vi hình tròn bán kính r= "+number+" là: "+perimeter(number))
+    }
+    main()
+</script>
+</body>
+</html>

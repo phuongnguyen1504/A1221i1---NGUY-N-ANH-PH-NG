@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.-->
+<script>
+    function giaithua(number){
+        if (number==1) {
+            return 1
+        }
+        else {
+            return number*giaithua(number-1)
+        }
+    }
+    let number=Number(window.prompt("Nhập số cần tính giai thừa"))
+    document.write(number+"!= "+giaithua(number))
+</script>
+</body>
+</html>

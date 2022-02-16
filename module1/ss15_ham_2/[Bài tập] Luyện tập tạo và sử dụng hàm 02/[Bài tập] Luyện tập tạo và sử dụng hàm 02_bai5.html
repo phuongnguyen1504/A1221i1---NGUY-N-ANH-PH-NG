@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.-->
+<script>
+    function main() {
+        mang=[];
+        for (i=0;i<3;i++) {
+            mang.push(Number(window.prompt("Mời nhập số thứ "+(i+1)+": ")));
+        }
+        for (let i=1;i<3;i++) {
+            min=mang[0];
+            if (mang[i]<min) {
+                min=mang[i];
+            }
+        }
+        document.write("Số nhỏ nhất trong 3 số:"+mang.join(",")+" là: "+min)
+    }
+    main()
+</script>
+</body>
+</html>

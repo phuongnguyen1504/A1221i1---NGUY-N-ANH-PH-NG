@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không.
+Nếu là ký tự số hàm trả về true, ngược lại trả về false.-->
+<script>
+    function checknumber(str){
+        var compair="0123456789"
+        for (let i=0;i<str.length;i++){
+            if (compair.indexOf(str[i])==-1) {
+                return false;
+                break;
+            }
+        }
+        return true;
+    }
+    function main() {
+        let str=window.prompt("Nhập chuỗi cần so sánh").toString();
+        if (checknumber(str)) {
+            alert("Chuỗi nhập vào là số")
+        }
+        else {
+            alert("Chuỗi nhập vào không phải là số")
+        }
+    }
+    main()
+</script>
+</body>
+</html>

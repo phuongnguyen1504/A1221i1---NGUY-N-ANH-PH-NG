@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không.
+Nếu là nguyên dương trả về true, ngược lại trả về false.-->
+<script>
+    function checkpos(number){
+        if (number<0) {
+            return document.write(number+" là số nguyên âm")
+        }
+        return document.write(number+" là số nguyên dương")
+    }
+    checkpos(Number(window.prompt("Mời bạn nhập số nguyên:")))
+</script>
+</body>
+</html>
