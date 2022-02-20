@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1360px" height="800px" style="border: 1px solid #d3d3d3;">D</canvas>
+</body>
+<script>
+    function Circle(x,y,radius){
+        this.x=x;
+        this.y=y;
+        this.radius=radius
+    }
+    function createRandomHex(){
+        return Math.floor(Math.random()*255)
+    }
+    function createRandomColor(){
+        var red=createRandomHex()
+        var green=createRandomHex()
+        var blue=createRandomHex()
+        return "rgb("+red+","+green+","+blue+")"
+    }
+    function createCircle(){
+        var ctx=document.getElementById('myCanvas').getContext('2d');
+        var radius=Math.floor(Math.random()*100)
+        var color=createRandomColor()
+        var x=Math.floor(Math.random()*window.innerWidth)
+        var y=Math.floor(Math.random()*window.innerHeight)
+        var circle=new Circle(x,y,radius)
+        ctx.beginPath()
+        ctx.arc(circle.x,circle.y,circle.radius,0,2*Math.PI)
+        ctx.fillStyle=color
+        ctx.fill()
+    }
+    function createMultiCircle(n){
+        for (let i=0;i<n;i++){
+            createCircle()
+        }
+    }
+    var number=Number(prompt("Nhập số vòng tròn cần hiển thị"))
+    createMultiCircle(number)
+
+</script>
+</html>
