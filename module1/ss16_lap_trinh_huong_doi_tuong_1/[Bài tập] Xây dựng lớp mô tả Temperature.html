@@ -7,7 +7,18 @@
 <body>
 <p id="result"></p>
 <script>
-    function Temperature(celsius){
+    class Temperature {
+        constructor(celsius) {
+            this.celsius=celsius;
+        }
+        convertF(){
+            return ((this.celsius*9)/5)+32;
+        }
+        convertK(){
+            return this.celsius+273.15;
+        }
+    }
+/*    function Temperature(celsius){
         this.celsius=celsius
         this.convertF=function (){
             return ((this.celsius*9)/5)+32
@@ -16,7 +27,7 @@
             return this.celsius+273.15
         }
 
-    }
+    }*/
     function main(){
         var celsius=Number(prompt("Mời bạn nhập độ C"))
         temperature=new Temperature(celsius)

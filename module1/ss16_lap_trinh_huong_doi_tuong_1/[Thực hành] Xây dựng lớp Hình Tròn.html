@@ -6,7 +6,18 @@
 </head>
 <body>
 <script>
-    let Circle= function (radius){
+    class Circle {
+        constructor(radius) {
+            this.radius=radius
+        }
+    getRadius(){
+        return this.radius;
+    }
+    getArea(){
+        return Math.round(Math.PI*this.radius*this.radius*100)/100
+    }
+    }
+   /* let Circle= function (radius){
         this.radius=radius
         this.getRadius=function(){
             return this.radius
@@ -14,8 +25,8 @@
         this.getArea=function (){
             return Math.round(Math.PI*this.radius*this.radius*100)/100
         }
-    }
-    let circle=new Circle(5);
+    }*/
+    let circle=new Circle(2);
     let radius=circle.getRadius()
     let area=circle.getArea()
     alert("radius:"+radius+"; area:"+area)

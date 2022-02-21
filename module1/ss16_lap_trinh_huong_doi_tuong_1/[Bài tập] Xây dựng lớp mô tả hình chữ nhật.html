@@ -9,7 +9,24 @@
 <p id="result"></p>
 <button onclick="continueGame()">Tiếp tục</button>
 <script>
-    function Rectangle(width,height){
+    class Rectangle {
+        constructor(width,height) {
+            this.width=width;
+            this.height=height;
+        }
+        perimeter(){
+            return (this.width+this.height)*2;
+        }
+        area(){
+            return this.width*this.height;
+        }
+        drawRect(){
+            let ctx=document.getElementById('myCanvas').getContext("2d");
+            ctx.fillStyle="#ff0000";
+            ctx.fillRect(450,100,this.width,this.height)
+        }
+    }
+/*    function Rectangle(width,height){
         this.width=width;
         this.height=height;
         this.perimeter=function (){
@@ -24,7 +41,7 @@
             ctx.fillRect(450,100,this.width,this.height)
 
         }
-    }
+    }*/
     function main(){
         var width=Number(prompt("Nhập chiều dài:"))
         var height=Number(prompt("Nhập chiều rộng:"))
