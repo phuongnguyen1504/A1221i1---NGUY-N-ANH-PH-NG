@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+	class Apple {
+    	constructor(){
+        	this.weight=10;
+        }
+    	decrease(){
+        	this.weight--
+        }
+        isEmpty(){
+        	if (this.weight>0){
+            	this.status=false;
+            }
+            else {
+            	this.status=true;
+            }
+	}
+         getWeight(){
+         	return this.weight;
+         }
+    }
+    class Human {
+    	constructor(name,gender,weight){
+        	this.name=name;
+            this.gender=gender;
+            this.weight=weight;
+        }
+        isMale() {
+        	if (this.gender=="male"){
+            	alert(this.name+" là nam")
+            }
+            else {
+            	alert(this.name+" là nữ")
+            }
+        }
+        setGender(gender){
+        	this.gender=gender;
+        }
+        getName() {
+        	return this.name;
+        }
+        setName(name){
+        	this.name=name
+        }
+        say(string) {
+        	console.log(string)
+        }
+        eat(apple){
+        	if (apple.getWeight()>0){
+        		apple.decrease()
+            	this.weight++;
+            }
+        }
+        getWeight(){
+        	return this.weight;
+        }
+        setWeight(weight){
+        	this.weight=weight
+        }
+        checkApple(apple){
+        	console.log(apple.getWeight())
+        }
+    }
+    let apple=new Apple();
+    document.write("Check Apple Weight: "+ apple.getWeight()+"<br>")
+    let adam=new Human("Adam","male",60);
+    adam.eat(apple);
+    document.write("Adam get Weight: "+ adam.getWeight()+"<br>")
+    document.write("Check Apple Weight: "+ apple.getWeight()+"<br>")
+    adam.setGender("female")
+    adam.isMale()
+    adam.say("Hello World")
+    let eva=new Human("Eva","female",45);
+    eva.eat(apple);
+    document.write("Eva get Weight: "+ eva.getWeight()+"<br>")
+    document.write("Check Apple Weight: "+ apple.getWeight()+"<br>")
+    eva.isMale()
+    eva.say("I love you 2 thousands")
+</script>
+</body>
+</html>
