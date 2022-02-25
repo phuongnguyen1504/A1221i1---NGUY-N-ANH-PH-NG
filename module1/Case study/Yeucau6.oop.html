@@ -7,12 +7,13 @@
   <body>
   <h3>Xổ số Vietlot</h3>
   <p>
-  	<input type="number" id="num1" onclick="checknumber()"></input>
-    <input type="number" id="num2" onclick="checknumber()"></input>
-    <input type="number" id="num3" onclick="checknumber()"></input>
-    <input type="number" id="num4" onclick="checknumber()"></input>
-    <input type="number" id="num5" onclick="checknumber()"></input>
-    <input type="number" id="num6" onclick="checknumber()"></input>
+  	<input type="number" id="num1"></input>
+    <input type="number" id="num2"></input>
+    <input type="number" id="num3"></input>
+    <input type="number" id="num4"></input>
+    <input type="number" id="num5"></input>
+    <input type="number" id="num6"></input>
+    <button id="select" onclick="selectValue()"></button>
   </p><br>
   <p id="result"></p>
   <p>
@@ -24,12 +25,15 @@
     <input type="number" id="value6"></input>
   </p><br>
   <p id="checkResult"></p>
+  <p id="checkPrize"></p>
   <button onclick="buyLot()">Mua vé</button>
   <button onclick="checkResult()">Lấy kết quả</button>
   
   <script>
   	let lotlist=[];
     let lotresult=[]
+    let showResult=[]
+    let showResult2=[]
   	class Vietlot {
     	constructor(){
          this.num1=0;
@@ -40,21 +44,13 @@
          this.num6=0;
          
         }
-        addNumber(){
-        	this.num1=document.getElementById("num1").value;
-            this.num2=document.getElementById("num2").value;
-            this.num3=document.getElementById("num3").value;
-            this.num4=document.getElementById("num4").value;
-            this.num5=document.getElementById("num5").value;
-            this.num6=document.getElementById("num6").value;
-        }
         getRandom(){
-        	this.num1=Math.floor(Math.random()*99)
-            this.num2=Math.floor(Math.random()*99)
-            this.num3=Math.floor(Math.random()*99)
-            this.num4=Math.floor(Math.random()*99)
-            this.num5=Math.floor(Math.random()*99)
-            this.num6=Math.floor(Math.random()*99)
+        	this.num1=Math.floor(Math.random()*1)
+            this.num2=Math.floor(Math.random()*1)
+            this.num3=Math.floor(Math.random()*1)
+            this.num4=Math.floor(Math.random()*1)
+            this.num5=Math.floor(Math.random()*1)
+            this.num6=Math.floor(Math.random()*1)
         }
         showinfo(){
         	document.getElementById("num1").value=this.num1;
@@ -102,11 +98,8 @@
         	alert("Chỉ được phép chọn tối đa 4 vé")
         }
         else if (select==1){
+        	document.getElementById("select").innerHTML="select"
         	reset()
-            if (checknumber()){
-            	vietlot.addNumber();
-            }
-            createLot()
         }
     }
     function reset(){
@@ -117,23 +110,30 @@
         document.getElementById("num5").value="";
         document.getElementById("num6").value="";
     }
-    function createLot(){
-    	if (checknumber){
-        	
-        }
-	}
-    function checknumber(){
+ 
+    function selectValue(){
+    	let arr=[]
+        let result=""
     	let num1=document.getElementById("num1").value;
         let num2=document.getElementById("num2").value;
         let num3=document.getElementById("num3").value;
         let num4=document.getElementById("num4").value;
         let num5=document.getElementById("num5").value;
         let num6=document.getElementById("num6").value;
-        if(num1<100&&num2<100&&num3<100&&num4<100&&num5<100&&num6<99
+        if(num1<100&&num2<100&&num3<100&&num4<100&&num5<100&&num6<100
         &&num1!=""&&num2!=""&&num3!=""&&num4!=""&&num5!=""&&num6!=""){
-        	return true;
+        	arr.push(num1,num2,num3,num4,num5,num6)
+            lotlist.push(arr)
+            for (i=0;i<lotlist.length;i++){
+            	result+="Dãy số "+(i+1)+" của bạn là: "+lotlist[i]+"<br>"
+            }
+            document.getElementById("result").innerHTML=result;
+            document.getElementById("select").innerHTML="";
+            
         }
-        return false;
+        else {
+        	alert("Mời bạn nhập lại số vé. Số vé chỉ được nằm trong khoản từ 0 đến 99")
+        }
     }
 
     function checkResult(){
@@ -145,6 +145,42 @@
         ketqua+="Dãy số trúng thưởng là:"+lotresult;
         console.log(ketqua)
         document.getElementById("checkResult").innerHTML=ketqua;
+        getResult()
+        
+    }
+    function getResult(){
+    	for (let i=0;i<lotlist.length;i++){
+        	let count=0;
+        	for (let j=0;j<6;j++){
+                if (lotlist[i].indexOf(lotresult[j])!=-1){
+                	count++
+                }
+            }
+            showResult.push(count)
+            count=0
+        }
+        console.log(showResult)
+        console.log(showResult2)
+        
+        for (let i=0;i<showResult.length;i++){
+        	if (showResult[i]==6){
+            	showResult2[i]="Bạn đã đạt giải nhất với số vé là:"+lotlist[i];
+            }
+            else if (showResult[i]==5){
+            	showResult2[i]="Bạn đã đạt giải nhỉ với số vé là:"+lotlist[i];
+            }
+            else if (showResult[i]==3){
+            	showResult2[i]="Bạn đã đạt giải khuyến khích với số vé là:"+lotlist[i];
+            }
+            else {
+            	showResult2[i]="Chúc bạn may mắn lần sau"
+            }
+        }
+        let result=""
+        for (let i=0;i<showResult2.length;i++){
+        	result+=showResult2[i]+"<br>";
+        }
+        document.getElementById('checkPrize').innerHTML=result
     }
   </script>
   </body>
