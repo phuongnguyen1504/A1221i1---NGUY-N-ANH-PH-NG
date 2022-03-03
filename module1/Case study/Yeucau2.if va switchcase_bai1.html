@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+	let salary=Number(prompt("Mời bạn nhập tiền lương:"));
+    let tax=0;
+    if (salary<7000000) {
+    	tax=salary*0.05;
+    }
+    else if (salary<15000000){
+    	tax=salary*0.1;
+    }
+    else {
+    	tax=salary*0.2;
+    }
+    result=salary-tax;
+    document.write("Lương thực nhận sau khi trừ thuế là: "+result)
+</script>
+</body>
+</html>
