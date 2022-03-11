@@ -29,6 +29,19 @@
         document.write("Từ dài nhất trong chuỗi là: "+string)
     }
     main()
+    //cách 2:
+    let words=prompt("mời nhập từ").toLowerCase().split(" ");
+document.writeln(words+"<br>")
+for (let i=0;i<words.length;i++){
+	if (words[i]==""){
+    	words.splice(i,1)
+        i--
+    }
+    else {
+    	words[i]=words[i].slice(0,1).toUpperCase()+words[i].slice(1)
+    }
+}
+document.writeln("sau thay đổi:"+words.join("&nbsp"))
   </script>
   </body>
 </html>
