@@ -24,6 +24,7 @@
             ' <tr> <th>Product Name</th> ' +
             '<th>Số lượng</th>'+ '<th>Đơn giá</th>'+'<th>Thành tiền</th>'+'</tr>';
   	let productList=[];
+      let sum=0;
 	function order(){
 		let select=document.getElementById('myselect')
         let array=[]
@@ -69,14 +70,15 @@
     	table += '<tr><td>' + product+' </td>' +
                 ' <td>'+quantity +' </td>' +' <td>'+price +' </td>' +' <td>'+(price*quantity) +' </td>' 
                 +
-                ' </tr>';    
+                ' </tr>';
+
     }
     else {
     	table+="</table>"
     }
     showProduct()
     }
-    class Product {
+/*    class Product {
     	constructor(name,quantity,price){
         	this.name=name;
             this.quantity=quantity;
@@ -98,7 +100,7 @@
         	return this.price;
         }
         
-    }
+    }*/
     function showProduct(){
     	document.getElementById("result").innerHTML = table;
     }

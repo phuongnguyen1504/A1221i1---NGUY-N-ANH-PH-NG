@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let row=Number(prompt("Nhập hàng"));
+    let col=Number(prompt("Nhập cột"));
+    let total=0
+    let value=0
+    for (let i=0;i<row;i++){
+        for (let j=0;j<col;j++){
+            value=Number(prompt("Mời bạn nhập số ở hàng "+i+" cột "+j));
+            if (value%2==0){
+                total+=value;
+            }
+        }
+    }
+    console.log(total)
+</script>
+</body>
+</html>

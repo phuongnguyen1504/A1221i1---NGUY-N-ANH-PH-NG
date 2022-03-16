@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let s1=prompt("Nhập chuỗi").split("")
+    let s2=prompt("Nhập chuỗi").split("")
+    console.log("S1 là: "+s1)
+    console.log("S2 là: "+s2)
+    let key=[s1[0]]
+    let value=[]
+    let count=1
+    let result=""
+    for (let i=0;i<s1.length;i++){
+
+        if (s2.indexOf(s1[i])!=-1){
+            s2.splice(s2.indexOf(s1[i]),1)
+        }
+        else {
+            s1.splice(i,1)
+        }
+    }
+    s1.sort()
+    console.log(s1)
+    for (let i=1;i<s1.length;i++){
+        if (s1[i]==s1[i-1]){
+            count++
+        }
+        else {
+            value.push(count)
+            count=1
+            key.push(s1[i])
+        }
+    }
+    value.push(count)
+    for (let i=0;i<value.length;i++){
+        result+="từ "+key[i]+" có "+value[i]+" kí tự. "
+    }
+    document.write(result)
+
+</script>
+</body>
+</html>

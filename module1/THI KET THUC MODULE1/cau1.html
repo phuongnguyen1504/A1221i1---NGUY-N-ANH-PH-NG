@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let inputarray=Number(prompt("Mời bạn nhập số lượng phần tử của mảng"));
+    //tạo vòng lặp while để kiểm tra nếu nhỏ hơn bằng 50 thì mới chạy tiếp, không thì nhập lại;
+    while (inputarray>50||inputarray<0||inputarray==""||isNaN(inputarray)){
+        inputarray=Number(prompt("Mời bạn nhập số lượng phần tử của mảng. Yêu cầu không quá 50"));
+    }
+    /*Tạo function check số nguyên tố*/
+    function checkPrime(value) {
+        check=true;
+        if (value<2){
+            check=false;
+        }
+        else if (value>2) {
+            for (let i = 2; i <= Math.ceil(value / 2); i++) {
+                if (value % i == 0) {
+                    check = false;
+                    break;
+                }
+            }
+        }
+        return check;
+    }
+    /*tạo mảng chứa các phần tử số nguyên tố */
+    let arrStart=[];//đây là mảng ban đầu chứa các số nguyên tố nhập vào
+    let arrPrime=[];//đây là mảng chứa số nguyên tố trong các số nhập vào
+    for (let i=0;i<inputarray;i++){
+        let value=Number(prompt("Mời bạn nhập số nguyên thứ "+(i+1)));
+        arrStart.push(value);
+        if (checkPrime(value)){
+            arrPrime.push(value);
+        }
+    }
+    document.write("Mảng ban đầu nhập vào là:"+"["+arrStart+"]"+"<br>");
+    document.write("Mảng chứa  các số nguyên tố trong mảng ban đầu là:"+"["+arrPrime+"]");
+
+</script>
+</body>
+</html>

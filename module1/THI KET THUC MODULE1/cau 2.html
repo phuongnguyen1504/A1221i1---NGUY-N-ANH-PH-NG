@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tuSo1=Number(prompt("Mời bạn nhập tử số thứ 1:"));
+    let mauSo1=Number(prompt("Mời bạn nhập mẫu số thứ 1:"));
+    let tuSo2=Number(prompt("Mời bạn nhập tử số thứ 2:"));
+    let mauSo2=Number(prompt("Mời bạn nhập mẫu số thứ 2:"));
+    checkPhanSo(tuSo1,mauSo1,tuSo2,mauSo2);
+    /*Xây dựng hàm chia phân số cho mẫu số chung*/
+    function compare(tu,mau){
+        let soChung=1;
+        if (mau%tu==0&&tu!=1){
+            soChung=mau/tu;
+        }
+        else if (tu%mau==0&&mau!=1){
+            soChung=tu/mau;
+        }
+        let arr=[].concat(tu/soChung,mau/soChung);
+        return arr
+
+
+    }
+    /*Xây dựng hàm nhận 4 tham số lần lượt là tử số và mẫu số của từng phân số*/
+    function checkPhanSo(tu1,mau1,tu2,mau2){
+        let phanSo1=compare(tu1,mau1);
+        let phanSo2=compare(tu2,mau2);
+        if ((phanSo1[0]==phanSo2[0])&&(phanSo1[1]==phanSo2[1])){
+            document.write(tu1+"/"+mau1+" và "+tu2+"/"+mau2+" là hai phân số bằng nhau")
+        }
+        else {
+            document.write(tu1+"/"+mau1+" và "+tu2+"/"+mau2+" là hai phân số không bằng nhau")
+        }
+    }
+</script>
+</body>
+</html>

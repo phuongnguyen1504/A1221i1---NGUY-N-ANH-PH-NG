@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Ứng dụng Sổ Tiết kiệm</h1>
+<p>
+<!--    Mã sổ:<input type="text" id="maso"></input>
+    Loại tiết kiệm: <input type="text"  id="loai"></input>
+    Họ tên khách hàng:<input type="text"  id="hoten"></input><br>
+    Chứng minh nhân dân:<input type="text"  id="cmnd"></input>
+    Ngày mở sổ:<input type="date" id="ngaymoso"></input>
+    Số tiền gửi:<input type="text" id="sotiengui"></input>-->
+    <button onclick="addValue()">Tạo sổ tiết kiệm</button>
+</p>
+<p id="result"></p>
+<script>
+    let listProduct = [["001","AB","Nguyễn Văn A","123456","04/12/2021","5000000"]];
+    display(listProduct)
+    function display(data) {
+        let tableString = '<table border="1" style="border-collapse: collapse">\n' +
+            '<tr>\n' +
+            '<th>STT</th>\n' +
+            '<th>Mã sổ</th>\n' +
+            '<th>Loại tiết kiệm</th>\n' +
+            '<th>Họ tên khách hàng</th>\n' +
+            '<th>Chứng minh nhân dân</th>\n' +
+            '<th>Ngày mở sổ</th>\n' +
+            '<th>Số tiền gửi</th>\n' +
+            '<th>Delete</th>\n' +
+            '</tr>';
+        for (let i = 0; i < data.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + data[i][0] + '</td>\n' +
+                '        <td>' + data[i][1] + '</td>\n' +
+                '        <td>' + data[i][2] + '</td>\n' +
+                '        <td>' + data[i][3] + '</td>\n' +
+                '        <td>' + data[i][4] + '</td>\n' +
+                '        <td>' + data[i][5] + '</td>\n' +
+                '        <td><input type="button" value="Delete" onclick="deleteProduct(' + i + ')"></td>\n' +
+                '    </tr>';
+        }
+        tableString += "</table>";
+        document.getElementById("result").innerHTML = tableString;
+    }
+    function deleteProduct(index) {
+        let flag = confirm("Bạn có muốn xóa sản phẩm :" + listProduct[index]);
+        // OK: true; => cancle => false;
+        if (flag) {
+            listProduct.splice(index, 1);// index, vị trí xóa,1: xóa 1 phần tử:
+        } else {
+            alert("bạn đã hủy, không muốn xóa sản phẩm: " + listProduct[index]);
+        }
+        display(listProduct);
+    }
+    function checkMaSo(value){
+        let check=false;
+        for (let i=0;i<listProduct.length;i++){
+            if (listProduct[i][0]==value){
+                check=true;
+            }
+        }
+        return check;
+    }
+    function addValue(){
+        let soTietKiem=new Sotietkiem();
+        soTietKiem.addMaSo();
+        soTietKiem.addLoaiTietKiem();
+        soTietKiem.addhoTen();
+        soTietKiem.addcmnd();
+        soTietKiem.addngayMoSo();
+        soTietKiem.addsoTienGui();
+        soTietKiem.addMang();
+        alert("Đã thêm sổ tiết kiệm thành công")
+    }
+    class Sotietkiem {
+        constructor(){
+            this.maSo="";
+            this.loaiTietKiem="";
+            this.hoTen="";
+            this.cmnd="";
+            this.ngayMoSo="";
+            this.soTienGui="";
+        }
+        addMaSo(){
+            let maso=prompt("Mời bạn nhập mã sổ:");
+            while(maso.length>5||checkMaSo(maso)||maso==""){
+                maso=prompt("Mời bạn nhập lại mã sổ:");
+            }
+            this.maSo=maso;
+        }
+        addLoaiTietKiem(){
+            let loai=prompt("Mời bạn nhập loại tiết kiệm:");
+            while(loai.length>10||loai==""){
+                loai=prompt("Mời bạn nhập lại loại tiết kiệm:");
+            }
+            this.loaiTietKiem=loai;
+        }
+        addhoTen(){
+            let hoTen=prompt("Mời bạn nhập họ tên:");
+            while(hoTen.length>30||hoTen==""){
+                hoTen=prompt("Mời bạn nhập lại họ tên:");
+            }
+            this.hoTen=hoTen;
+        }
+        addcmnd(){
+            let cmnd=Number(prompt("Mời bạn nhập số chứng minh nhân dân:"));
+            while(isNaN(cmnd)||cmnd==""){
+                cmnd=Number(prompt("Mời bạn nhập lại chứng minh nhân dân:"));
+            }
+            this.cmnd=cmnd;
+        }
+        addngayMoSo(){
+            let ngayMoSo=prompt("Mời bạn nhập ngày mở sổ định dạng:DD,MM,YYYY");
+            this.ngayMoSo=ngayMoSo;
+        }
+        addsoTienGui(){
+            let soTienGui=Number(prompt("Mời bạn nhập số tiền gửi:"));
+            while(isNaN(soTienGui)||soTienGui==""){
+                soTienGui=Number(prompt("Mời bạn nhập lại số tiền gửi:"));
+            }
+            this.soTienGui=soTienGui;
+        }
+        addMang(){
+            let arr=[].concat(this.maSo,this.loaiTietKiem,this.hoTen,this.cmnd,this.ngayMoSo,this.soTienGui)
+            listProduct[listProduct.length]=arr;
+            display(listProduct);
+        }
+    }
+
+</script>
+</body>
+</html>

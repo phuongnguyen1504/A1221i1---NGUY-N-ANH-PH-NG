@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <p>Sản phẩm smartphone</p>
+</div>
+<div>
+    <input type="text" id="product"/>
+    <button value="addValue" onclick="addProduct()"/>
+    ;
+</div>
+<div>
+    <p id="result"></p>
+</div>
+<script>
+    let productList = ["samsung", "nokia", "iphone"];
+    displayProduct()
+    function displayProduct() {
+        let table = '<table border="1" style="border-collapse: collapse">\n' +
+            "<tr>\n" +
+            "<th>STT</th>\n" +
+            "<th>Name</th>\n" +
+            "<th>Edit</th>\n" +
+            "<th>Delete</th>\n" +
+            "</tr>";
+        for (let i=0;i<productList.length;i++){
+            table+="<tr>\n"+
+                "<td>"+(i+1)+"</td>\n"+
+                "<td>"+productList[i]+"</td>\n"+
+                '        <td><input type="button" value="Edit" onclick="editName(' + i + ')"></td>\n' +
+                '        <td><input type="button" value="Delete" onclick="deleteProduct(' + i + ')"></td>\n' +
+                "</tr>";
+        }
+        table+="</table>"
+        document.getElementById("result").innerHTML=table;
+    }
+    function addProduct(){
+        let product=document.getElementById("product").value;
+        if (product!="" && product!=null){
+            productList.push(product)
+        }
+        else {
+            alert("Bạn chưa nhập tên hàng")
+        }
+        document.getElementById('product').value="";
+        displayProduct()
+    }
+    function editName(index){
+        let editName=prompt("nhập vào tên sản phẩ cần sửa");
+        if (editName!=""&&editName!=null){
+            productList[index]=editName;
+        }
+        displayProduct()
+    }
+    function deleteProduct(index){
+        productList.splice(index,1)
+        displayProduct()
+    }
+</script>
+</body>
+</html>
