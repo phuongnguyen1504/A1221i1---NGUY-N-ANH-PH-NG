@@ -22,8 +22,14 @@ public class thuchanh3_uoc_chung_lon_nhat {
         }
         else {
             while (a!=b){
-                
+                if (a>b){
+                    a=a-b;
+                }
+                else {
+                    b=b-a;
+                }
             }
+            System.out.println("UCLN là:"+b);
         }
     }
 }
