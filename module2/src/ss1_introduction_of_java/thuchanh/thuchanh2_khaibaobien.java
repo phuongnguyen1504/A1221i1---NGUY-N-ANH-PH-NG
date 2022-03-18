@@ -1,3 +1,5 @@
+package ss1_introduction_of_java.thuchanh;
+
 public class thuchanh2_khaibaobien {
     public static void main(String[] args) {
         int i=10;

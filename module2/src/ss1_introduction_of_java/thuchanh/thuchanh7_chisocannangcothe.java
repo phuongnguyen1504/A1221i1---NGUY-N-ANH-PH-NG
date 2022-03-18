@@ -1,3 +1,5 @@
+package ss1_introduction_of_java.thuchanh;
+
 import java.util.Scanner;
 public class thuchanh7_chisocannangcothe {
     public static void main(String[] args) {
