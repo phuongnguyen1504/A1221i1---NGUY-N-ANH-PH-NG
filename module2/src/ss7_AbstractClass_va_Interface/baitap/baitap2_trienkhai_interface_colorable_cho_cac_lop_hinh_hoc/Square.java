@@ -1,6 +1,6 @@
 package ss7_AbstractClass_va_Interface.baitap.baitap2_trienkhai_interface_colorable_cho_cac_lop_hinh_hoc;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Colorable {
 
     public Square() {
     }
@@ -31,5 +31,10 @@ public class Square extends Rectangle {
                 + getSide()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides");
     }
 }

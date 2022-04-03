@@ -1,6 +1,6 @@
 package ss7_AbstractClass_va_Interface.baitap.baitap2_trienkhai_interface_colorable_cho_cac_lop_hinh_hoc;
 
-public class Shape {
+public abstract class Shape {
     private String color="green";
     private boolean filled=true;
 
@@ -23,6 +23,7 @@ public class Shape {
     public boolean isFilled() {
         return filled;
     }
+    public abstract double getArea();
 
     public void setFilled(boolean filled) {
         this.filled = filled;
