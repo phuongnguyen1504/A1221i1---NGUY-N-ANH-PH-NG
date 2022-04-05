@@ -1,29 +1,25 @@
-package ss8_clean_code_va_refactoring.demo_mvc.model;
+package ss8_clean_code_va_refactoring.test_mvc.model;
 
 public class Student {
-    private String nameStudent;
+    private String nameOfStudent;
     private double point;
     private String dateOfBirth;
 
     public Student() {
     }
 
-    public Student(String nameStudent, double point, String dateOfBirth) {
-        this.nameStudent = nameStudent;
+    public Student(String nameOfStudent, double point, String dateOfBirth) {
+        this.nameOfStudent = nameOfStudent;
         this.point = point;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Student(String name) {
-        this.nameStudent=name;
+    public String getNameOfStudent() {
+        return nameOfStudent;
     }
 
-    public String getNameStudent() {
-        return nameStudent;
-    }
-
-    public void setNameStudent(String nameStudent) {
-        this.nameStudent = nameStudent;
+    public void setNameOfStudent(String nameOfStudent) {
+        this.nameOfStudent = nameOfStudent;
     }
 
     public double getPoint() {
