@@ -29,6 +29,8 @@ public class StudentView {
                     String studentDelete= getInputStudentDelete();
                     studentController.deleteStudent(studentDelete);
                     break;
+                case 4:
+                    System.exit(0);
             }
         }
     }

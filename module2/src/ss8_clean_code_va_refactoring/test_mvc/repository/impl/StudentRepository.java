@@ -14,9 +14,10 @@ public class StudentRepository implements IStudentRepository {
 
     @Override
     public void displayStudent() {
+        System.out.printf("%-12s%-12s%s", "Ten","Diem","Ngay sinh\n");
         for (int i=0;i<numberOfStudent;i++){
-            System.out.println("Sinh viên "+(i+1));
-            System.out.println("Tên: "+students[i].getNameOfStudent()+"\nĐiểm: "+students[i].getPoint()+"\nNgày sinh: "+students[i].getDateOfBirth());
+            System.out.printf("%-12s%-12s%s",students[i].getNameOfStudent(),students[i].getPoint(),students[i].getDateOfBirth());
+            System.out.println();
         }
     }
 
