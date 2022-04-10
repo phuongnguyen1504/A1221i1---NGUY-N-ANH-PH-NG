@@ -37,12 +37,15 @@ public class MyLinkedList{
         head.next=temp;
         numNodes++;
     }
-    public Node get(int index){
+    public Object get(int index){
         Node temp=head;
         for (int i=0;i<index;i++){
             temp=temp.next;
         }
-        return temp;
+        return temp.data;
+    }
+    public int size(){
+        return numNodes;
     }
     public void printList(){
         Node temp=head;
