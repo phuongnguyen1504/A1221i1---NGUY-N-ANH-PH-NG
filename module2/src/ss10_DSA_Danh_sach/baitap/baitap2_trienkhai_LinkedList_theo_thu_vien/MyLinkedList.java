@@ -47,21 +47,35 @@ public class MyLinkedList {
                 temp=temp.next;
             }
             temp.next=new Node(data);
+            numNode++;
         }
     }
     public void remove(int index){
         Node temp = head;
-
-        for (int i = 0; i < index - 1 && temp.next != null; i++) {
-            temp.next = temp.next.next;
+        Node holder;
+        if (index==0){
+            head=temp.next;
+            numNode--;
         }
-
-        numNode--;
-    }//not done
+        else if (index>0&&index<size()){
+            for (int i=0;i<index-1&&temp.next!=null;i++){
+                temp=temp.next;
+            }
+            holder=temp.next.next;
+            temp.next=holder;
+            numNode--;
+        }
+        else {
+            System.out.println("Index: "+index+" Size "+(size()-1));;
+        }
+    }
+    public void remove(Object o){
+        remove(indexOf(o));
+    }
 
     public void get(int index){
         Node temp=head;
-        for (int i=0;i<index-1;i++){
+        for (int i=0;i<index;i++){
             temp = temp.next;
         }
         System.out.println(temp.data);
