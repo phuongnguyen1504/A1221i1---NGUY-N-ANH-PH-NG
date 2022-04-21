@@ -13,7 +13,7 @@ public class FuramaView {
     };
     private static int choice;
 
-    private static void displayMainMenu() {
+    public static void displayMainMenu() {
         do {
             System.out.println("Furama Resort Management Application");
             for (String li : listMainMenu) {
@@ -22,6 +22,22 @@ public class FuramaView {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
+                    EmployeeView.displayMainMenu();
+                    break;
+                case 2:
+                    CustomerView.displayMainMenu();
+                    break;
+                case 3:
+                    FacilityView.displayMainMenu();
+                    break;
+                case 4:
+                    BookingView.displayMainMenu();
+                    break;
+                case 5:
+                    PromotionView.displayMainMenu();
+                    break;
+                case 6:
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("No choice");

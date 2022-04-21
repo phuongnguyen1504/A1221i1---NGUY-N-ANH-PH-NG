@@ -2,10 +2,11 @@ package ss12_DSA_Java_Collection_Framework.baitap.baitap1_luyentap_arraylist_lin
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ProductManager {
-    private static List<Product> listProduct=new ArrayList<>();
+    private static List<Product> listProduct=new LinkedList<>();
 
     public ProductManager(ArrayList listProduct) {
         this.listProduct = listProduct;

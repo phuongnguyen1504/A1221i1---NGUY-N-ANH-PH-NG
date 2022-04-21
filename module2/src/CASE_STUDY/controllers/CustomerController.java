@@ -1,5 +1,4 @@
 package CASE_STUDY.controllers;
 
-public class FuramaController {
-
+public class CustomerController {
 }
