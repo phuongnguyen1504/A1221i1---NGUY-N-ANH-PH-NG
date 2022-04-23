@@ -3,16 +3,16 @@ package CASE_STUDY.models.Person;
 public class Employee extends Person{
     private int id;
     private String name;
-    private int age;
+    private String dateOfBirth;
     private String gender;
 
     public Employee() {
     }
 
-    public Employee(int id, String name, int age, String gender) {
+    public Employee(int id, String name, String age, String gender) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.dateOfBirth = age;
         this.gender = gender;
     }
 
@@ -32,12 +32,12 @@ public class Employee extends Person{
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGender() {

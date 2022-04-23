@@ -1,13 +1,15 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class test {
-    public static void main(String[] args) {
-        LinkedList<String> phantu=new LinkedList<String>();
-        phantu.add("aBC");
-        phantu.add(0,"ABD");
-        phantu.clone();
-        phantu.remove("ABD");
-        System.out.println(phantu);
+    public static void main(String[] args){
+        Date date = new Date();
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        simpleDateFormat.applyPattern("yyyy");
+        String format = simpleDateFormat.format(date);
+        System.out.println(format);
     }
 }
