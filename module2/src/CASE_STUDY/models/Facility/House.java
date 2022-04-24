@@ -3,9 +3,13 @@ package CASE_STUDY.models.Facility;
 public class House extends Facility{
     private int id;
     private String name;
-    private int numberOfHouse=10;
+    private int numberOfHouse=0;
 
     public House() {
+    }
+
+    public House(int numberOfHouse) {
+        this.numberOfHouse = numberOfHouse;
     }
 
     public House(int id, String name, int numberOfHouse) {
