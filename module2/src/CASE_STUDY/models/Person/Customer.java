@@ -1,50 +1,32 @@
 package CASE_STUDY.models.Person;
 
 public class Customer extends Person{
-    private int id;
-    private String name;
-    private int age;
-    private String gender;
+    private String typeCustomer;
+    private String address;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, int age, String gender) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+    public Customer(String codeOfPerson, String name, String dateOfBirth, String gender,
+                    int id, int tel, String email, String typeCustomer, String address) {
+        super(codeOfPerson, name, dateOfBirth, gender, id, tel, email);
+        this.typeCustomer = typeCustomer;
+        this.address = address;
     }
 
-    public int getId() {
-        return id;
+    public String getTypeCustomer() {
+        return typeCustomer;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTypeCustomer(String typeCustomer) {
+        this.typeCustomer = typeCustomer;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

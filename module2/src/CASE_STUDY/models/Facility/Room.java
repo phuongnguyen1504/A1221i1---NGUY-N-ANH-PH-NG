@@ -1,44 +1,33 @@
 package CASE_STUDY.models.Facility;
 
-public class Room extends Facility{
-    private int id;
-    private String name;
-    private int numberOfRoom=0;
+public class Room extends Facility {
+    private String FreeService;
 
     public Room() {
     }
 
-    public Room(int numberOfRoom) {
-        this.numberOfRoom = numberOfRoom;
+    public Room(String nameOfService, int squareUsed, int costForRent, int maxPeople,
+                String rentType, String freeService) {
+        super(nameOfService, squareUsed, costForRent, maxPeople, rentType);
+        FreeService = freeService;
     }
 
-    public Room(int id, String name, int numberOfRoom) {
-        this.id = id;
-        this.name = name;
-        this.numberOfRoom = numberOfRoom;
+    public String getFreeService() {
+        return FreeService;
     }
 
-    public int getId() {
-        return id;
+    public void setFreeService(String freeService) {
+        FreeService = freeService;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNumberOfRoom() {
-        return numberOfRoom;
-    }
-
-    public void setNumberOfRoom(int numberOfRoom) {
-        this.numberOfRoom = numberOfRoom;
+    @Override
+    public String toString() {
+        return "Room{" +"nameOfService='"+getNameOfService()+'\'' +
+                ", squareUsed=" + getSquareUsed()+
+                ", costForRent=" + getCostForRent() +
+                ", maxPeople=" + getMaxPeople() +
+                ", RentType='" + getRentType() + '\'' +
+                "FreeService='" + FreeService + '\'' +
+                '}';
     }
 }

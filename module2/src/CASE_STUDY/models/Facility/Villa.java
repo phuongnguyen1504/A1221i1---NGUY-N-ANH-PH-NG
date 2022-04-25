@@ -1,44 +1,54 @@
 package CASE_STUDY.models.Facility;
 
 public class Villa extends Facility{
-    private int id;
-    private String name;
-    private int numberOfVilla=0;
+    private String roomStandard;
+    private String squareOfPool;
+    private int numberOfFloor;
 
+    public Villa(String nameOfService, int squareUsed, int costForRent, int maxPeople,
+                 String rentType, String roomStandard, String squareOfPool, int numberOfFloor) {
+        super(nameOfService, squareUsed, costForRent, maxPeople, rentType);
+        this.roomStandard = roomStandard;
+        this.squareOfPool = squareOfPool;
+        this.numberOfFloor = numberOfFloor;
+    }
     public Villa() {
     }
 
-    public Villa(int numberOfVilla) {
-        this.numberOfVilla = numberOfVilla;
+    public String getRoomStandard() {
+        return roomStandard;
     }
 
-    public Villa(int id, String name, int numberOfVilla) {
-        this.id = id;
-        this.name = name;
-        this.numberOfVilla = numberOfVilla;
+    public void setRoomStandard(String roomStandard) {
+        this.roomStandard = roomStandard;
     }
 
-    public int getId() {
-        return id;
+    public String getSquareOfPool() {
+        return squareOfPool;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSquareOfPool(String squareOfPool) {
+        this.squareOfPool = squareOfPool;
     }
 
-    public String getName() {
-        return name;
+    public int getNumberOfFloor() {
+        return numberOfFloor;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumberOfFloor(int numberOfFloor) {
+        this.numberOfFloor = numberOfFloor;
     }
 
-    public int getNumberOfVilla() {
-        return numberOfVilla;
-    }
-
-    public void setNumberOfVilla(int numberOfVilla) {
-        this.numberOfVilla = numberOfVilla;
+    @Override
+    public String toString() {
+        return "Villa{" +"nameOfService='"+getNameOfService()+'\'' +
+                ", squareUsed=" + getSquareUsed()+
+                ", costForRent=" + getCostForRent() +
+                ", maxPeople=" + getMaxPeople() +
+                ", RentType='" + getRentType() + '\'' +
+                "roomStandard='" + roomStandard + '\'' +
+                ", squareOfPool='" + squareOfPool + '\'' +
+                ", numberOfFloor=" + numberOfFloor +
+                '}';
     }
 }

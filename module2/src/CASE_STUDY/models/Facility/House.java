@@ -1,44 +1,44 @@
 package CASE_STUDY.models.Facility;
 
 public class House extends Facility{
-    private int id;
-    private String name;
-    private int numberOfHouse=0;
+    private String roomStandard;
+    private int numberOfFloor;
 
     public House() {
     }
 
-    public House(int numberOfHouse) {
-        this.numberOfHouse = numberOfHouse;
+    public House(String nameOfService, int squareUsed, int costForRent, int maxPeople,
+                 String rentType, String roomStandard, int numberOfFloor) {
+        super(nameOfService, squareUsed, costForRent, maxPeople, rentType);
+        this.roomStandard = roomStandard;
+        this.numberOfFloor = numberOfFloor;
     }
 
-    public House(int id, String name, int numberOfHouse) {
-        this.id = id;
-        this.name = name;
-        this.numberOfHouse = numberOfHouse;
+    public String getRoomStandard() {
+        return roomStandard;
     }
 
-    public int getId() {
-        return id;
+    public void setRoomStandard(String roomStandard) {
+        this.roomStandard = roomStandard;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getNumberOfFloor() {
+        return numberOfFloor;
     }
 
-    public String getName() {
-        return name;
+    public void setNumberOfFloor(int numberOfFloor) {
+        this.numberOfFloor = numberOfFloor;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNumberOfHouse() {
-        return numberOfHouse;
-    }
-
-    public void setNumberOfHouse(int numberOfHouse) {
-        this.numberOfHouse = numberOfHouse;
+    @Override
+    public String toString() {
+        return "House{" +"nameOfService='"+getNameOfService()+'\'' +
+                ", squareUsed=" + getSquareUsed()+
+                ", costForRent=" + getCostForRent() +
+                ", maxPeople=" + getMaxPeople() +
+                ", RentType='" + getRentType() + '\'' +
+                "roomStandard='" + roomStandard + '\'' +
+                ", numberOfFloor=" + numberOfFloor +
+                '}';
     }
 }

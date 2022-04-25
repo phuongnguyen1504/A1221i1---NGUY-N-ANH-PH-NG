@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 public class FacilityView {
     private static FacilityController facilityController=new FacilityController();
+    /*public  static  Scanner input(){
+        return new Scanner(System.in);
+    }*/
     static Scanner scanner=new Scanner(System.in);
     private static final String[] listFacilityFunction={"1. Display list facility","2. Add new facility","3. Display list facility maintenance","4. Return main menu"};
     private static final String[] listRoomFunction={"1. Add new Villa","2. Add new House","3. Add new Room","4. Back to menu"};
@@ -47,9 +50,25 @@ public class FacilityView {
             choice=scanner.nextInt();
             switch (choice){
                 case 1:
-                    System.out.println("Mời nhập số lượng căn villa cần thêm");
-                    int numberOfVilla= scanner.nextInt();
-                    facilityController.addVilla(numberOfVilla);
+                    System.out.println("Mời nhập thông tin dịch vụ Villa");
+                    System.out.println("Mời nhập loại Dịch vụ");
+                    String nameService=scanner.nextLine();
+                    System.out.println("Mời nhập diện tích");
+                    int square= Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời nhập tiền thuê nhà");
+                    int cost=Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời nhập số lượng người ở tối đa");
+                    int maxPeople=Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời nhập kiểu thuê theo năm,tháng,ngày, giờ");
+                    String type=scanner.nextLine();
+                    System.out.println("Mời nhập tiêu chuẩn của phòng");
+                    String standard= scanner.nextLine();
+                    System.out.println("Mời nhập diện tích hồ bơi");
+                    String squarePool=scanner.nextLine();
+                    System.out.println("Mời nhập số tầng");
+                    int numFloor= Integer.parseInt(scanner.nextLine());
+
+                    //facilityController.addVilla(numberOfVilla);
                     displayRoomMenu();
                     break;
                 case 2:

@@ -1,50 +1,49 @@
 package CASE_STUDY.models.Person;
 
 public class Employee extends Person{
-    private int id;
-    private String name;
-    private String dateOfBirth;
-    private String gender;
+    private String level;
+    private String position;
+    private int salary;
+
+
+    public Employee(String level, String position, int salary) {
+        this.level = level;
+        this.position = position;
+        this.salary = salary;
+    }
 
     public Employee() {
     }
 
-    public Employee(int id, String name, String age, String gender) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = age;
-        this.gender = gender;
+    public Employee(String codeOfPerson, String name, String dateOfBirth, String gender,
+                    int id, int tel, String email, String level, String position, int salary) {
+        super(codeOfPerson, name, dateOfBirth, gender, id, tel, email);
+        this.level = level;
+        this.position = position;
+        this.salary = salary;
     }
 
-    public int getId() {
-        return id;
+    public String getLevel() {
+        return level;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLevel(String level) {
+        this.level = level;
     }
 
-    public String getName() {
-        return name;
+    public String getPosition() {
+        return position;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 }

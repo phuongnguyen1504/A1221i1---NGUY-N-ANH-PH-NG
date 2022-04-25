@@ -4,7 +4,10 @@ import CASE_STUDY.controllers.EmployeeController;
 import CASE_STUDY.exception.DateOfBirthException.CompareDateOfBirth;
 import CASE_STUDY.exception.DateOfBirthException.DayMonthException;
 import CASE_STUDY.exception.DateOfBirthException.YearException;
+import CASE_STUDY.models.Person.Customer;
 import CASE_STUDY.models.Person.Employee;
+import CASE_STUDY.repository.impl.CustomerRepository;
+import CASE_STUDY.repository.impl.EmployeeRepository;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -34,12 +37,21 @@ public class EmployeeView {
                     displayMainMenu();
                     break;
                 case 3:
-                    System.out.println("Mời nhập id nhân viên cần sửa");
-                    int id= Integer.parseInt(scanner.nextLine());
-                    Employee employee1=inputEmployee();
-                    employeeController.editEmployee(id,employee1);
+                    int index=-1;
+                    do{
+                        System.out.println("Mời nhập mã nhân viên cần sửa:");
+                        String id = scanner.nextLine();
+                        index= EmployeeRepository.checkId(id);
+                        if(index!=-1){
+                            Employee editEmployee = inputEmployee();
+                            employeeController.editEmployee(index, editEmployee);
+                            break;
+                        }
+                        else {
+                            System.out.println("Không tìm thấy mã nhân viên.Nhập lại.");
+                        }
+                    }while (true);
                     displayMainMenu();
-                    break;
                 case 4:
                     FuramaView.displayMainMenu();
                     break;
@@ -52,10 +64,10 @@ public class EmployeeView {
     }
 
     private static Employee inputEmployee() {
-        System.out.println("Mời nhập CMND nhân viên");
-        int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Mời nhập tên nhân viên");
-        String name = scanner.nextLine();
+        System.out.println("Mời nhập mã nhân viên");
+        String code=scanner.nextLine();
+        System.out.println("Mời nhập họ tên");
+        String name=scanner.nextLine();
         String dateOfBirth = null;
         do {
             try{
@@ -80,9 +92,20 @@ public class EmployeeView {
         } while (true);
         System.out.println("Mời nhập giới tính");
         String gender = scanner.nextLine();
-        return new Employee(id, name, dateOfBirth, gender);
+        System.out.println("Mời nhập CMND");
+        int id= Integer.parseInt(scanner.nextLine());
+        System.out.println("Mời nhập SĐT");
+        int tel= Integer.parseInt(scanner.nextLine());
+        System.out.println("Mời nhập email");
+        String email=scanner.nextLine();
+        System.out.println("Nhập trình độ nhân viên");
+        String level=scanner.nextLine();
+        System.out.println("Nhập chức vụ nhân viên");
+        String position=scanner.nextLine();
+        System.out.println("Mời nhập tiền lương");
+        int salary= Integer.parseInt(scanner.nextLine());
+        return new Employee(code,name,dateOfBirth,gender,id,tel,email,level,position,salary);
     }
-
     private static int getCurrentYear() {
         LocalDate localDate = LocalDate.now();
         int currentYear = localDate.getYear();

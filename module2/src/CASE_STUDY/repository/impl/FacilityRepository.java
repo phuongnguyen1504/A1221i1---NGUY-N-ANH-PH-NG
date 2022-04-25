@@ -1,25 +1,33 @@
 package CASE_STUDY.repository.impl;
 
+import CASE_STUDY.models.Facility.Facility;
 import CASE_STUDY.repository.IFacilityRepository;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FacilityRepository implements IFacilityRepository {
     private static int tempOfVilla;
     private static int tempOfHouse;
     private static int tempOfRoom;
     private static LinkedHashMap<String, Integer> facilityvalueMap=new LinkedHashMap<String,Integer>();
+    private static List<Facility> listFacility=new ArrayList<>();
+
+    public static void displayBooking() {
+        System.out.println("Danh sách các phòng:");
+        for (String key : facilityvalueMap.keySet()) {
+            int value = facilityvalueMap.get(key);
+            System.out.println(key + " = " + value);
+        }
+    }
+
     @Override
     public void displayFacility() {
         /*for (Map.Entry<String, Integer> entry : facilityvalueMap.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }*/
         System.out.println("Danh sách hiển thị");
-        for (String key : facilityvalueMap.keySet()) {
-            int value = facilityvalueMap.get(key);
-            System.out.println(key + " = " + value);
+        for (Facility facility : listFacility) {
+            System.out.println(facility);
         }
     }
 
