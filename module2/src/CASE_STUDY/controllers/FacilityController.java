@@ -1,5 +1,6 @@
 package CASE_STUDY.controllers;
 
+import CASE_STUDY.models.Facility.Facility;
 import CASE_STUDY.services.facility.impl.FacilityService;
 
 public class FacilityController {
@@ -8,15 +9,17 @@ public class FacilityController {
         facilityService.displayFacility();
     }
 
-    public void addVilla(int numberOfVilla) {
-        facilityService.addVilla(numberOfVilla);
+
+
+    public void addVilla(Facility villa) {
+        facilityService.addVilla(villa);
     }
 
-    public void addHouse(int house) {
+    public void addHouse(Facility house) {
         facilityService.addHouse(house);
     }
 
-    public void addRoom(int room) {
+    public void addRoom(Facility room) {
         facilityService.addRoom(room);
     }
 }

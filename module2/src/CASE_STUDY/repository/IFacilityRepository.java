@@ -1,11 +1,13 @@
 package CASE_STUDY.repository;
 
+import CASE_STUDY.models.Facility.Facility;
+
 public interface IFacilityRepository {
     void displayFacility();
 
-    void addVilla(int numberOfVilla);
+    void addHouse(Facility house);
 
-    void addHouse(int house);
+    void addRoom(Facility room);
 
-    void addRoom(int room);
+    void addVilla(Facility villa);
 }

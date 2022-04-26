@@ -6,9 +6,7 @@ import CASE_STUDY.repository.IFacilityRepository;
 import java.util.*;
 
 public class FacilityRepository implements IFacilityRepository {
-    private static int tempOfVilla;
-    private static int tempOfHouse;
-    private static int tempOfRoom;
+
     private static LinkedHashMap<String, Integer> facilityvalueMap=new LinkedHashMap<String,Integer>();
     private static List<Facility> listFacility=new ArrayList<>();
 
@@ -25,6 +23,7 @@ public class FacilityRepository implements IFacilityRepository {
         /*for (Map.Entry<String, Integer> entry : facilityvalueMap.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }*/
+        displayBooking();
         System.out.println("Danh sách hiển thị");
         for (Facility facility : listFacility) {
             System.out.println(facility);
@@ -32,23 +31,30 @@ public class FacilityRepository implements IFacilityRepository {
     }
 
     @Override
-    public void addVilla(int numberOfVilla) {
+    public void addHouse(Facility house) {
+        listFacility.add(house);
         for (int i=0;i<=facilityvalueMap.size();i++){
-            String c= "Villa";
-            if (!facilityvalueMap.containsKey(c)){
-                facilityvalueMap.put(c,numberOfVilla);
-                tempOfVilla=numberOfVilla;
+            String c=house.getNameOfService();
+            if(!facilityvalueMap.containsKey(c)){
+                facilityvalueMap.put(c,0);
             }
-            else {
-                facilityvalueMap.replace(c,(tempOfVilla+numberOfVilla));
-                tempOfVilla+=numberOfVilla;
+        }
+        System.out.println("Đã thêm House vào database");
+    }
+
+    @Override
+    public void addVilla(Facility Villa) {
+        listFacility.add(Villa);
+        for (int i=0;i<=facilityvalueMap.size();i++){
+            String c= Villa.getNameOfService();
+            if(!facilityvalueMap.containsKey(c)){
+                facilityvalueMap.put(c,0);
             }
-            break;
         }
         System.out.println("Đã thêm Villa vào database");
     }
 
-    @Override
+    /*@Override
     public void addHouse(int house) {
         for (int i=0;i<=facilityvalueMap.size();i++){
             String c="House";
@@ -63,11 +69,19 @@ public class FacilityRepository implements IFacilityRepository {
             break;
         }
         System.out.println("Đã thêm House vào database");
-    }
+    }*/
 
     @Override
-    public void addRoom(int room) {
+    public void addRoom(Facility room) {
+        listFacility.add(room);
         for (int i=0;i<=facilityvalueMap.size();i++){
+            String c= room.getNameOfService();
+            if(!facilityvalueMap.containsKey(c)){
+                facilityvalueMap.put(c,0);
+            }
+        }
+        System.out.println("Đã thêm Room vào database");
+        /*for (int i=0;i<=facilityvalueMap.size();i++){
             String c="Room";
             if(!facilityvalueMap.containsKey(c)){
                 facilityvalueMap.put(c,room);
@@ -79,6 +93,6 @@ public class FacilityRepository implements IFacilityRepository {
             }
             break;
         }
-        System.out.println("Đã thêm Room vào database");
+        System.out.println("Đã thêm Room vào database");*/
     }
 }
