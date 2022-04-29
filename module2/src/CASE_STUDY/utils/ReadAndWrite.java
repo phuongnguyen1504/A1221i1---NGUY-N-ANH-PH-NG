@@ -1,14 +1,10 @@
 package CASE_STUDY.utils;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWrite<T> {
-    public static void readFile(String path){
-
-    }
     public void writeFile(List<T> tList,String path, boolean isAppend){
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, isAppend));
@@ -20,5 +16,19 @@ public class ReadAndWrite<T> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public List<String> readFile(String path){
+        List<String> res = new ArrayList<>();
+        try {
+            BufferedReader bufferedReader=new BufferedReader(new FileReader(path));
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null){
+                res.add(line);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }

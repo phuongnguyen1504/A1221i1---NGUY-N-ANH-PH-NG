@@ -5,6 +5,8 @@ import CASE_STUDY.repository.ICustomerRepository;
 import CASE_STUDY.repository.impl.CustomerRepository;
 import CASE_STUDY.services.customer.ICustomerService;
 
+import java.util.List;
+
 public class CustomerService implements ICustomerService {
     private static ICustomerRepository customerRepository= new CustomerRepository();
     public void displayCustomers() {
@@ -17,5 +19,10 @@ public class CustomerService implements ICustomerService {
 
     public void editCustomer(int id, Customer editCustomer) {
         customerRepository.editCustomer(id,editCustomer);
+    }
+
+    @Override
+    public List<Customer>getAll(){
+        return customerRepository.getAll();
     }
 }

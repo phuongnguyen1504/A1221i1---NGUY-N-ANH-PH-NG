@@ -1,5 +1,11 @@
 package CASE_STUDY.services.customer;
 
-public interface ICustomerService {
-    void displayCustomers();
+import CASE_STUDY.models.Person.Customer;
+
+import java.util.List;
+
+public interface ICustomerService extends BasicService<Customer> {
+
+    @Override
+    List<Customer> getAll();
 }

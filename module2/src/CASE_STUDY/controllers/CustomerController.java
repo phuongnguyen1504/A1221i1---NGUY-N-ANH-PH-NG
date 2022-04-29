@@ -6,7 +6,7 @@ import CASE_STUDY.services.customer.impl.CustomerService;
 public class CustomerController {
     private static CustomerService customerService=new CustomerService();
     public void displayCustomers() {
-        customerService.displayCustomers();
+        customerService.getAll();
     }
 
     public void addCustomer(Customer customer) {

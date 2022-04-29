@@ -5,11 +5,11 @@ import CASE_STUDY.repository.ICustomerRepository;
 import CASE_STUDY.utils.ConstanUtil;
 import CASE_STUDY.utils.ReadAndWrite;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository {
-    private static List<Customer> customerList = new LinkedList<>();
+    private static List<Customer> customerList = new ArrayList<>();
     private static ReadAndWrite readAndWrite = new ReadAndWrite();
     private static int numberOfCustomer;
 
@@ -48,6 +48,7 @@ public class CustomerRepository implements ICustomerRepository {
     public void addCustomer(Customer customer) {
         customerList.add(customer);
         readAndWrite.writeFile(customerList, ConstanUtil.PATH.CUSTOMER, true);
+        customerList.clear();
         numberOfCustomer++;
     }
 
@@ -56,5 +57,16 @@ public class CustomerRepository implements ICustomerRepository {
         customerList.remove(index);
         customerList.add(index, editCustomer);
         System.out.println("Đã chỉnh sửa thông tin khách hàng");
+    }
+
+    @Override
+    public List<Customer> getAll(){
+        List <String> stringList = readAndWrite.readFile(ConstanUtil.PATH.CUSTOMER);
+        String list = "";
+        System.out.println(customerList);
+//        for (int i = 0; i < customerList.size(); i++) {
+//
+//        }
+      return customerList;
     }
 }

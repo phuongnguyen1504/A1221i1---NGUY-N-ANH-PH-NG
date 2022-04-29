@@ -23,4 +23,5 @@ public class FacilityService implements IFacilityService {
     public void addRoom(Facility room) {
         facilityRepository.addRoom(room);
     }
+
 }
