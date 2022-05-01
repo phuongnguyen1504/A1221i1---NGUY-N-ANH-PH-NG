@@ -17,7 +17,7 @@ public class CustomerService implements ICustomerService {
         customerRepository.addCustomer(customer);
     }
 
-    public void editCustomer(int id, Customer editCustomer) {
+    public void editCustomer(String id, Customer editCustomer) {
         customerRepository.editCustomer(id,editCustomer);
     }
 

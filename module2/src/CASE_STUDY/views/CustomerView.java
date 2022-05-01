@@ -10,6 +10,8 @@ import CASE_STUDY.repository.impl.CustomerRepository;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import static CASE_STUDY.utils.Validate.isExistsCustomer;
+
 public class CustomerView {
     private static CustomerController customerController = new CustomerController();
     static Scanner scanner = new Scanner(System.in);
@@ -38,10 +40,9 @@ public class CustomerView {
                     do{
                         System.out.println("Mời nhập mã KH cần sửa:");
                         String id = scanner.nextLine();
-                        index= CustomerRepository.checkId(id);
-                        if(index!=-1){
+                        if (isExistsCustomer(id)){
                             Customer editCustomer = inputInformationOfCustomer();
-                            customerController.editCustomer(index, editCustomer);
+                            customerController.editCustomer(id,editCustomer);
                             break;
                         }
                         else {

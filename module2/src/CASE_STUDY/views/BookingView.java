@@ -20,7 +20,7 @@ public class BookingView {
             choice= Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:
-                    CustomerRepository.displayBooking();
+                    //CustomerRepository.displayBooking();
                     int index=inputIndexOfCustomer();
                     FacilityRepository.displayBooking();
                     int select=0;
