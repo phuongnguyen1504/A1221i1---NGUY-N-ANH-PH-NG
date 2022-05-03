@@ -19,4 +19,12 @@ public class VehicleController {
     public void addMotorbike(Motobike motobike) {
         vehicleService.addMotorbike(motobike);
     }
+
+    public void displayVehicle(String vehicle) {
+        vehicleService.displayVehicle(vehicle);
+    }
+
+    public void delete(String plate, String vehicle) {
+        vehicleService.delete(plate,vehicle);
+    }
 }

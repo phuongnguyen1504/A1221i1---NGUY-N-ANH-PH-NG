@@ -5,8 +5,8 @@ import bai_tap_lam_them.repository.VehicleRepository;
 import bai_tap_lam_them.repository.impl.VehicleRepositoryImpl;
 import bai_tap_lam_them.service.VehicleService;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class VehicleServiceImpl implements VehicleService {
     private static VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
@@ -26,19 +26,25 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.addMotorbike(motobike);
     }
 
-    public List<Brand> getBrand() {
+    public Set<Brand> getBrand() {
         return vehicleRepository.getBrand();
     }
 
+
+
     @Override
-    public List<String> getPlate() {
-        return null;
+    public Set<String> getPlate(String type) {
+        return vehicleRepository.getPlate(type);
     }
 
+    @Override
+    public void displayVehicle(String vehicle) {
+        vehicleRepository.displayVehicle(vehicle);
+    }
 
     @Override
-    public List<String> getPlate(String type) {
-        return vehicleRepository.getPlate(type);
+    public void delete(String plate, String vehicle) {
+        vehicleRepository.delete(plate,vehicle);
     }
 
 

@@ -5,8 +5,8 @@ import bai_tap_lam_them.model.Car;
 import bai_tap_lam_them.model.Motobike;
 import bai_tap_lam_them.model.Truck;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public interface VehicleService {
     void addTruck(Truck truck);
@@ -15,9 +15,11 @@ public interface VehicleService {
 
     void addMotorbike(Motobike motobike);
 
-    List<Brand> getBrand();
+    Set<Brand> getBrand();
 
-    List<String> getPlate();
+    Set<String> getPlate(String type);
 
-    List<String> getPlate(String type);
+    void displayVehicle(String vehicle);
+
+    void delete(String plate, String vehicle);
 }
