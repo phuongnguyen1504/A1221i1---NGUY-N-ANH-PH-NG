@@ -1,5 +1,6 @@
 package EXAM_MODULE2.service;
 
+import EXAM_MODULE2.exception.NotFoundException;
 import EXAM_MODULE2.model.Account;
 import EXAM_MODULE2.model.PaymentAccount;
 import EXAM_MODULE2.model.SavingAccount;
@@ -11,13 +12,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class BankingService {
-    private List<Account> accounts = new ArrayList<>();
+    private List<Account> accounts;
     private FileHelper fileHelper = new FileHelper();
     public BankingService(){
         accounts=mapToAccount();
     }
-
-
 
     public void create(Account account) {
         //region get lastId
@@ -63,19 +62,25 @@ public class BankingService {
         return accounts;
     }
 
-    public void delete(int id) {
-        for (int i = 0; i < accounts.size(); i++) {
+    public void delete(int id) throws NotFoundException {
+        /*for (int i = 0; i < accounts.size(); i++) {
             if(accounts.get(i).getId() == id){
                 accounts.remove(i);
                 fileHelper.write(ConstantUtil.path, accounts, false);
                 return;
             }
+        }*/
+        if(!accounts.removeIf(e-> e.getId() == id)){
+            throw new NotFoundException("ID " + id + " cound not found. ");
         }
+        fileHelper.write(ConstantUtil.path, accounts, false);
     }
 
-    public List<Account> searchByName(String name) {
+    public List <Account> searchByName(String name) throws NotFoundException{
         List <Account> result = new ArrayList();
-
+        if(!accounts.stream().anyMatch(e->e.getName().equals(name))){
+            throw new NotFoundException("Name: " + name + " cound not found. ");
+        }
         for (int i = 0; i < accounts.size(); i++) {
             if(accounts.get(i).getName().contains(name)){
                 result.add(accounts.get(i));
