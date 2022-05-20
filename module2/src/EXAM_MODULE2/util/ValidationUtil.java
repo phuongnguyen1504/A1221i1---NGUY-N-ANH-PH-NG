@@ -1,7 +1,7 @@
 package EXAM_MODULE2.util;
 
-import EXAM_MODULE2.model.Account;
-import EXAM_MODULE2.service.BankingService;
+import EXAM_MODULE2.model.Product;
+import EXAM_MODULE2.service.ProductService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ public class ValidationUtil {
     private static final String NUMBER_REG = "^\\d+$";
     private static final String DOUBLE_REG = "^\\d+(\\.\\d+)?$";
     private static final String DATE_REG="^\\d{1,2}\\/\\d{1,2}\\/\\d{1,4}$";
-    private static BankingService bankingService=new BankingService();
+    private static ProductService bankingService=new ProductService();
     private static Pattern pattern;
     private static Matcher matcher;
 
@@ -32,7 +32,7 @@ public class ValidationUtil {
         matcher = pattern.matcher(val);
         return matcher.matches();
     }
-    public static boolean isExistsId(int id,List<Account> list){
+    public static boolean isExistsId(int id,List<Product> list){
         return list.stream().anyMatch(e->e.getId() == id);
     }
     public static boolean checkValidDate(String dateString){
