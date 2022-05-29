@@ -218,3 +218,4 @@ UPDATE `furama`.`hop_dong_chi_tiet` SET `ma_hop_dong_chi_tiet` = '4' WHERE (`ma_
 UPDATE `furama`.`hop_dong_chi_tiet` SET `ma_hop_dong_chi_tiet` = '5' WHERE (`ma_hop_dong_chi_tiet` = '21');
 UPDATE `furama`.`hop_dong_chi_tiet` SET `ma_hop_dong_chi_tiet` = '6' WHERE (`ma_hop_dong_chi_tiet` = '22');
 UPDATE `furama`.`hop_dong_chi_tiet` SET `ma_hop_dong_chi_tiet` = '7' WHERE (`ma_hop_dong_chi_tiet` = '23');
+UPDATE `furama`.`hop_dong` SET `ngay_lam_hop_dong` = '2020-04-12 00:00:00' WHERE (`ma_hop_dong` = '9');
