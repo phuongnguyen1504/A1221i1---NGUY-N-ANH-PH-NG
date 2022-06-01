@@ -133,7 +133,8 @@ group by nv.ma_nhan_vien
 having count(nv.ma_nhan_vien)<=3;
 /* 16.Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019
 đến năm 2021.*/
-
+delete from nhan_vien
+where not exists (select ma_nhan_vien from hop_dong hd where hd.ngay_lam_hop_dong between '2019-01-01' and '2021-12-31' and hd.ma_nhan_vien=nhan_vien.ma_nhan_vien);
 /* 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum
 lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với
 Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.*/
@@ -149,14 +150,10 @@ update khach_hang
 set ma_loai_khach=1
 where  ma_khach_hang in (select ma_khach_hang from update_loai_kh) and ma_loai_khach=2;
 /*18. Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).*/
--- chưa xử lý
-create or replace view delete_kh as
-select ma_khach_hang from hop_dong where year(ngay_lam_hop_dong) <'2021'
-group by ma_khach_hang;
-delete from hop_dong
-where ma_khach_hang in (select ma_khach_hang from delete_kh);
-delete from khach_hang
-where ma_khach_hang in (select ma_khach_hang from delete_kh);
+
+delete khach_hang,hop_dong,hop_dong_chi_tiet from khach_hang inner join hop_dong on khach_hang.ma_khach_hang=hop_dong.ma_khach_hang
+inner join hop_dong_chi_tiet on hop_dong.ma_hop_dong=hop_dong_chi_tiet.ma_hop_dong
+where not exists (select hop_dong.ma_hop_dong where year(hop_dong.ngay_lam_hop_dong)>'2021' and khach_hang.ma_khach_hang=hop_dong.ma_khach_hang);
 /* 19.Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong
 năm 2020 lên gấp đôi. */
 create or replace view update_price as
