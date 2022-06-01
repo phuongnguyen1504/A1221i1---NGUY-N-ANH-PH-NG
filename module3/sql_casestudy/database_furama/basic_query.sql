@@ -171,3 +171,38 @@ ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.*/
 select ma_nhan_vien as id,ho_ten,email,so_dien_thoai,ngay_sinh,dia_chi from nhan_vien
 union All
 select ma_khach_hang,ho_ten,email,so_dien_thoai,ngay_sinh,dia_chi from khach_hang;
+
+/*21.Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả
+các nhân viên có địa chỉ là “Hải Châu” và đã từng lập hợp đồng cho một
+hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”.*/
+create or replace view v_nhan_vien as
+select nv.ma_nhan_vien,nv.ho_ten,nv.ngay_sinh,nv.so_cmnd,nv.luong,nv.so_dien_thoai,nv.email,nv.dia_chi from nhan_vien nv
+join hop_dong hd on nv.ma_nhan_vien=hd.ma_nhan_vien
+join khach_hang kh on hd.ma_khach_hang=kh.ma_khach_hang
+where (nv.dia_chi like '%Hải Châu%') and (hd.ngay_lam_hop_dong='2019-12-12')
+group by nv.ma_nhan_vien
+having count(hd.ma_hop_dong)>=1;
+
+/*22.Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Liên Chiểu” đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn
+này.*/
+-- P1.
+update nhan_vien
+set dia_chi="Lien Chieu"
+where ma_nhan_vien in (select ma_nhan_vien from v_nhan_vien);
+-- P2.
+update v_nhan_vien set dia_chi="Lien Chieu";
+
+/*23.Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó với ma_khach_hang được truyền vào như là 1
+tham số của sp_xoa_khach_hang.*/
+DELIMITER //
+DROP PROCEDURE IF EXISTS sp_xoa_khach_hang //
+CREATE PROCEDURE sp_xoa_khach_hang(id int)
+BEGIN
+	delete from hop_dong_chi_tiet where ma_hop_dong in (select distinct hd.ma_hop_dong from hop_dong hd
+    join hop_dong_chi_tiet hdct on hd.ma_hop_dong=hdct.ma_hop_dong
+    where hd.ma_khach_hang=id);
+    delete from hop_dong where ma_khach_hang=id;
+	delete from khach_hang where ma_khach_hang=id;
+END //
+DELIMITER 
+call sp_xoa_khach_hang(10);
