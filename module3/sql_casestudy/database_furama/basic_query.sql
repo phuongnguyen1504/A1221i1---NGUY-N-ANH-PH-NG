@@ -196,16 +196,14 @@ update v_nhan_vien set dia_chi="Lien Chieu";
 tham số của sp_xoa_khach_hang.*/
 DELIMITER //
 DROP PROCEDURE IF EXISTS sp_xoa_khach_hang //
-CREATE PROCEDURE sp_xoa_khach_hang(id int)
+CREATE PROCEDURE sp_xoa_khach_hang(id INT)
 BEGIN
-	delete from hop_dong_chi_tiet where ma_hop_dong in (select distinct hd.ma_hop_dong from hop_dong hd
-    join hop_dong_chi_tiet hdct on hd.ma_hop_dong=hdct.ma_hop_dong
-    where hd.ma_khach_hang=id);
-    delete from hop_dong where ma_khach_hang=id;
-	delete from khach_hang where ma_khach_hang=id;
+	DELETE FROM khach_hang
+    WHERE ma_khach_hang = id;
 END //
-DELIMITER 
-call sp_xoa_khach_hang(10);
+DELIMITER ;
+
+CALL sp_xoa_khach_hang(12);
 
 /*24. Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào
 bảng hop_dong với yêu cầu sp_them_moi_hop_dong phải thực hiện
