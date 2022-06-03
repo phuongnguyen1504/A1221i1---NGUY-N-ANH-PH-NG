@@ -206,3 +206,25 @@ BEGIN
 END //
 DELIMITER 
 call sp_xoa_khach_hang(10);
+
+/*24. Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào
+bảng hop_dong với yêu cầu sp_them_moi_hop_dong phải thực hiện
+kiểm tra tính hợp lệ của dữ liệu bổ sung, với nguyên tắc không được
+trùng khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên
+quan.*/
+DELIMITER //
+DROP PROCEDURE IF EXISTS sp_them_moi_hop_dong //
+CREATE PROCEDURE sp_them_moi_hop_dong(IN 
+BEGIN
+IN in_ngay_lam_hop_dong datetime, 
+IN in_ngay_ket_thuc datetime, 
+IN in_tien_dat_coc double, 
+IN in_ma_nhan_vien int, 
+IN in_ma_khach_hang int, 
+IN in_ma_dich_vu int)
+BEGIN
+  INSERT INTO hop_dong(ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu)
+values	(in_ngay_lam_hop_dong,in_ngay_ket_thuc,in_tien_dat_coc,in_ma_nhan_vien,in_ma_khach_hang,in_ma_dich_vu);
+END //
+DELIMITER ;
+CALL sp_them_moi_hop_dong('2021-12-01','2022-03-01',0,3,1,3);
