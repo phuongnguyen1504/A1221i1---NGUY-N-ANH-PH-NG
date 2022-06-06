@@ -194,10 +194,12 @@ update v_nhan_vien set dia_chi="Lien Chieu";
 
 /*23.Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó với ma_khach_hang được truyền vào như là 1
 tham số của sp_xoa_khach_hang.*/
+use furama;
 DELIMITER //
 DROP PROCEDURE IF EXISTS sp_xoa_khach_hang //
 CREATE PROCEDURE sp_xoa_khach_hang(id INT)
 BEGIN
+<<<<<<< Updated upstream
 	DELETE FROM khach_hang
     WHERE ma_khach_hang = id;
 END //
@@ -220,3 +222,27 @@ values	(in_ngay_lam_hop_dong,in_ngay_ket_thuc,in_tien_dat_coc,in_ma_nhan_vien,in
 END //
 DELIMITER ;
 CALL sp_them_moi_hop_dong('2021-12-01','2022-03-01',0,3,1,3);
+=======
+	delete from khach_hang where ma_khach_hang=id;
+END //
+DELIMITER ;
+ 
+DELIMITER //
+drop trigger if exists before_delete_khach_hang //
+CREATE trigger before_delete_khach_hang
+before delete on khach_hang for each row
+BEGIN
+    delete from hop_dong where ma_hop_dong = (select distinct ma_hop_dong from hop_dong where ma_khach_hang=old.ma_khach_hang);
+END //
+DELIMITER ;
+DELIMITER //
+drop trigger if exists before_delete_hop_dong //
+CREATE trigger before_delete_hop_dong
+before delete on hop_dong for each row
+BEGIN
+    delete from hop_dong_chi_tiet where ma_hop_dong=old.ma_hop_dong;
+END //
+DELIMITER ;  
+
+call sp_xoa_khach_hang(10);
+>>>>>>> Stashed changes
