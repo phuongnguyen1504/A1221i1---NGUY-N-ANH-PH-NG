@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0114a367-0da4-4d2a-9a92-fd8290a0c1aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e1.nhung_css_vao_html/external.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e1.nhung_css_vao_html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e2.dinh_dang_voi_css/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e3.tao_trang_doc_truyen_ngan/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/thuc_hanh/p1.use_css/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_casestudy/database_furama/basic_query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_casestudy/database_furama/basic_query.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ACf7qkEXzqVtcpggSoEAaGdzEr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "list.type.of.created.stylesheet": "CSS",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0114a367-0da4-4d2a-9a92-fd8290a0c1aa" name="Changes" comment="" />
+      <created>1654518323487</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654518323487</updated>
+      <workItem from="1654518324653" duration="5652000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
