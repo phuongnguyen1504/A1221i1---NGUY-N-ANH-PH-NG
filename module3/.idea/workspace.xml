@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0114a367-0da4-4d2a-9a92-fd8290a0c1aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e1.nhung_css_vao_html/external.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e1.nhung_css_vao_html/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e2.dinh_dang_voi_css/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap/e3.tao_trang_doc_truyen_ngan/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/thuc_hanh/p1.use_css/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_casestudy/database_furama/basic_query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_casestudy/database_furama/basic_query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss7_web_design_layout/bai_tap/e3.tao_layout_voi_rwd/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss7_web_design_layout/bai_tap/e3.tao_layout_voi_rwd/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -34,16 +31,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "list.type.of.created.stylesheet": "CSS",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ss6_CSS_Cascading_Style_Stylesheet/bai_tap" />
@@ -58,6 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654518323487</updated>
       <workItem from="1654518324653" duration="5652000" />
+      <workItem from="1654689024623" duration="5349000" />
     </task>
     <servers />
   </component>
