@@ -6,7 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "Display_discountServlet", urlPatterns="/Display_discount")
+@WebServlet(name = "Display_discountServlet", urlPatterns="/display-discount")
 public class Display_discountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

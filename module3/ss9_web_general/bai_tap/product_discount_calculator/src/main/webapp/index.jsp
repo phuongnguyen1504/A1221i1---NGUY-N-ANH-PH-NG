@@ -11,7 +11,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<form method="post" action="/Display_discount">
+<form method="post" action="/display-discount">
     <div>
         <label>Product Description</label>
         <input name="description"><br/>
