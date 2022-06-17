@@ -1,8 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
-    <title>List Products</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,35 +11,29 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h1>Products</h1>
+<h1>Create new Product</h1>
 <p>
-  <a href="/product?action=create">Create new Product</a>
+  <c:if test='${requestScope["message"]}'>
+      <span>${requestScope["message"]}</span>
+  </c:if>
 </p>
-<table class="table">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Manufacture</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <c:forEach var="product" items='${requestScope["products"]}'>
-    <tr>
-      <td>${product.id}</td>
-      <td>${product.name}</td>
-      <td>${product.price}</td>
-      <td>${product.description}</td>
-      <td>${product.manufacturer}</td>
-      <td><a class="btn btn-primary" href="/product?action=edit&id=${product.id}" role="button" name="Edit">Edit</a>
-      <a class="btn btn-danger" href="/product?action=delete&id=${product.id}" role="button">Delete</a></td>
-    </tr>
-  </c:forEach>
-  </tbody>
-</table>
+<p>
+    <a href="/product">Back to Product</a>
+</p>
+<form class="form-group" method="post">
+    <label>ID:</label>
+    <input type="text" name="id" class="form-control" placeholder="Enter your id:" aria-describedby="helpId">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" placeholder="Enter your name:" aria-describedby="helpId">
+    <label>Price</label>
+    <input type="text" name="price" class="form-control" placeholder="Enter your price:" aria-describedby="helpId">
+    <label>Description</label>
+    <input type="text" name="description" class="form-control" placeholder="Enter your description:" aria-describedby="helpId">
+    <label>Manufacture</label>
+    <input type="text" name="manufacture" class="form-control" placeholder="Enter your manufacture:" aria-describedby="helpId">
+    <button class="btn btn-primary" type="button">Edit</button>
+
+</form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

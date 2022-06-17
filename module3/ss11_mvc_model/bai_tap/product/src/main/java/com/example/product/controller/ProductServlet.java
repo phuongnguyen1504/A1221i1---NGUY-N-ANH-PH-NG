@@ -23,6 +23,7 @@ public class ProductServlet extends HttpServlet {
             case "display":
                 break;
             case "create":
+                showCreateFomr(request,response);
                 break;
             case "update":
                 break;
@@ -36,6 +37,17 @@ public class ProductServlet extends HttpServlet {
                 listProducts(request,response);
                 break;
 
+        }
+    }
+
+    private void showCreateFomr(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/product/create.jsp");
+        try{
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
