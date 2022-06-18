@@ -23,13 +23,16 @@ public class ProductServlet extends HttpServlet {
             case "display":
                 break;
             case "create":
-                showCreateFomr(request,response);
+                showCreateForm(request,response);
                 break;
-            case "update":
+            case "edit":
+                showEditForm(request,response);
                 break;
             case "delete":
+                deleteStudent(request,response);
                 break;
             case "view":
+                showviewProduct(request,response);
                 break;
             case "find":
                 break;
@@ -40,7 +43,45 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showCreateFomr(HttpServletRequest request, HttpServletResponse response) {
+    private void showviewProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/product/view.jsp");
+        try{
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id=Integer.parseInt(request.getParameter("id"));
+        productService.remove(id);
+        response.sendRedirect("/product");
+    }
+
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product product=this.productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product==null){
+            dispatcher=request.getRequestDispatcher("/product/error-404.jsp");
+        }
+        else {
+            request.setAttribute("product",product);
+            dispatcher=request.getRequestDispatcher("/product/edit.jsp");
+        }
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher=request.getRequestDispatcher("/product/create.jsp");
         try{
             dispatcher.forward(request,response);
@@ -74,12 +115,13 @@ public class ProductServlet extends HttpServlet {
             case "display":
                 break;
             case "create":
+                createProduct(request,response);
                 break;
-            case "update":
-                break;
-            case "delete":
+            case "edit":
+                updateProduct(request,response);
                 break;
             case "view":
+                viewProduct(request,response);
                 break;
             case "find":
                 break;
@@ -87,5 +129,75 @@ public class ProductServlet extends HttpServlet {
                 break;
 
         }
+    }
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product product= productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product==null){
+            dispatcher=request.getRequestDispatcher("product/error-404.jsp");
+        }
+        else {
+            request.setAttribute("product",product);
+            dispatcher=request.getRequestDispatcher("/product/view.jsp");
+        }
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        String name=request.getParameter("name");
+        double price=Double.parseDouble(request.getParameter("price"));
+        String description=request.getParameter("description");
+        String manufacture=request.getParameter("manufacture");
+        Product product= productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product==null){
+            dispatcher=request.getRequestDispatcher("product/error-404.jsp");
+        }
+        else {
+            product.setName(name);
+            product.setPrice(price);
+            product.setDescription(description);
+            product.setManufacturer(manufacture);
+            productService.update(id,product);
+            request.setAttribute("product",product);
+            request.setAttribute("message","Product information wa updated");
+            dispatcher=request.getRequestDispatcher("product/edit.jsp");
+        }
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        String name=request.getParameter("name");
+        double price=Double.parseDouble(request.getParameter("price"));
+        String description=request.getParameter("description");
+        String manufacture=request.getParameter("manufacture");
+        Product product=new Product(id,name,price,description,manufacture);
+        productService.save(product);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/product/create.jsp");
+        request.setAttribute("message","New product was created");
+        try{
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

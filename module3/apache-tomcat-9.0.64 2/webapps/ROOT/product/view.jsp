@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>List Products</title>
+    <title>View product</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,44 +12,44 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h1>Products</h1>
+<h1>Edit product</h1>
 <p>
-  <a href="/product?action=create">Create new Product</a>
+    <c:if test='${requestScope["message"]}'>
+        <span style="color: blue">${requestScope["message"]}</span>
+    </c:if>
 </p>
 <p>
-    <a href="/product?action=view">View Product</a>
+    <a href="/product" class="badge badge-primary">Back to product</a>
 </p>
-<c:if test="${empty products}">
-    <h1 style="color: red">Product List Empty</h1>
-</c:if>
-<c:if test="${not empty products}">
-    <table class="table">
-        <thead>
+<p>
+<form class="form-group" method="post">
+    <label>ID:</label>
+    <input type="text" name="id" class="form-control" placeholder="Enter your id:" aria-describedby="helpId">
+    <button class="btn btn-primary" type="submit">Find</button>
+
+</form>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Manufacture</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Manufacture</th>
-            <th>Actions</th>
+            <td>${requestScope["product"].id}</td>
+            <td>${requestScope["product"].name}</td>
+            <td>${requestScope["product"].price}</td>
+            <td>${requestScope["product"].description}</td>
+            <td>${requestScope["product"].manufacturer}</td>
         </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="product" items='${requestScope["products"]}'>
-            <tr>
-                <td>${product.id}</td>
-                <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.description}</td>
-                <td>${product.manufacturer}</td>
-                <td><a class="btn btn-primary" href="/product?action=edit&id=${product.id}" role="button" name="Edit">Edit</a>
-                    <a class="btn btn-danger"  href="/product?action=delete&id=${product.id}"  role="button" name="Delete">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</c:if>
+    </tbody>
+</table>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

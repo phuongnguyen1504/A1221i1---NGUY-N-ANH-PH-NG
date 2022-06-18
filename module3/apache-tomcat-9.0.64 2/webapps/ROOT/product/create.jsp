@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Simple Dictionary</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,10 +11,28 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h2>Vietnamese Dictionary</h2>
-<form action="dictionary.jsp" method="get">
-    <input type="text" name="search" placeholder="Enter your word:"/>
-    <button type="submit">Search</button>
+<h1>Create new Product</h1>
+<p>
+  <c:if test='${requestScope["message"]!=null}'>
+      <span style="color: blue">${requestScope["message"]}</span>
+  </c:if>
+</p>
+<p>
+    <a href="/product" class="badge badge-primary">Back to product</a>
+</p>
+<form class="form-group" method="post">
+    <label>ID:</label>
+    <input type="text" name="id" class="form-control" placeholder="Enter your id:" aria-describedby="helpId">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" placeholder="Enter your name:" aria-describedby="helpId">
+    <label>Price</label>
+    <input type="text" name="price" class="form-control" placeholder="Enter your price:" aria-describedby="helpId">
+    <label>Description</label>
+    <input type="text" name="description" class="form-control" placeholder="Enter your description:" aria-describedby="helpId">
+    <label>Manufacture</label>
+    <input type="text" name="manufacture" class="form-control" placeholder="Enter your manufacture:" aria-describedby="helpId">
+    <button class="btn btn-primary" type="submit">Edit</button>
+
 </form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
