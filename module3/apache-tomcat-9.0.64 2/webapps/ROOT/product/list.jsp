@@ -19,6 +19,12 @@
 <p>
     <a href="/product?action=view">View Product</a>
 </p>
+<p>
+<form class="form-group" method="get" action="/product?action=find">
+    <label>ID:</label>
+    <input type="text" name="id" class="form-control" placeholder="Enter your product id to find:" aria-describedby="helpId">
+    <a class="btn btn-primary" href="/product?action=find" role="button" type="submit">Find</a>
+
 <c:if test="${empty products}">
     <h1 style="color: red">Product List Empty</h1>
 </c:if>
@@ -43,7 +49,7 @@
                 <td>${product.description}</td>
                 <td>${product.manufacturer}</td>
                 <td><a class="btn btn-primary" href="/product?action=edit&id=${product.id}" role="button" name="Edit">Edit</a>
-                    <a class="btn btn-danger"  href="/product?action=delete&id=${product.id}"  role="button" name="Delete">Delete</a>
+                    <a class="btn btn-danger"  href="/product?action=delete&id=${product.id}" onclick="return confirm('Are you sure you want to delete?')" role="button" name="Delete">Delete</a>
                 </td>
             </tr>
         </c:forEach>

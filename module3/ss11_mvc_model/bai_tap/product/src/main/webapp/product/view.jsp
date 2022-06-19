@@ -37,7 +37,6 @@
         <th>Price</th>
         <th>Description</th>
         <th>Manufacture</th>
-        <th>Actions</th>
     </tr>
     </thead>
     <tbody>

@@ -35,11 +35,34 @@ public class ProductServlet extends HttpServlet {
                 showviewProduct(request,response);
                 break;
             case "find":
+                showFindProduct(request,response);
                 break;
             default:
                 listProducts(request,response);
                 break;
 
+        }
+    }
+
+    private void showFindProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product product=productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product==null){
+            dispatcher=request.getRequestDispatcher("/product/error-404.jsp");
+        }
+        else {
+            request.setAttribute("product",product);
+            request.setAttribute("message","This is product to find");
+            dispatcher=request.getRequestDispatcher("product/view.jsp");
+
+        }
+        try{
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -122,8 +145,6 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "view":
                 viewProduct(request,response);
-                break;
-            case "find":
                 break;
             default:
                 break;
