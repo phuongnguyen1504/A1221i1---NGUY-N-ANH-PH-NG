@@ -12,7 +12,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h1>Edit product</h1>
+<h1>View product</h1>
 <p>
     <c:if test='${requestScope["message"]}'>
         <span style="color: blue">${requestScope["message"]}</span>

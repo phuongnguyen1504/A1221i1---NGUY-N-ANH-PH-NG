@@ -146,6 +146,8 @@ public class ProductServlet extends HttpServlet {
             case "view":
                 viewProduct(request,response);
                 break;
+            case "find":
+                showFindProduct(request,response);
             default:
                 break;
 
@@ -202,7 +204,7 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void createProduct(HttpServletRequest request, HttpServletResponse response) {
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id=Integer.parseInt(request.getParameter("id"));
         String name=request.getParameter("name");
         double price=Double.parseDouble(request.getParameter("price"));
@@ -210,15 +212,7 @@ public class ProductServlet extends HttpServlet {
         String manufacture=request.getParameter("manufacture");
         Product product=new Product(id,name,price,description,manufacture);
         productService.save(product);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/product/create.jsp");
-        request.setAttribute("message","New product was created");
-        try{
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        response.sendRedirect("/product");
 
     }
 }
