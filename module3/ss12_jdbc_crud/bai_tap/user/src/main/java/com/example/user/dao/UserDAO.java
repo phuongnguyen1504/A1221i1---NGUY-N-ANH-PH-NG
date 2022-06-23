@@ -12,6 +12,8 @@ public class UserDAO implements IUserDAO{
     private static final String SELECT_ALL_USERS = "SELECT * FROM users;";
     private static final String DELETE_USERS_SQL="DELETE FROM users where id=?;";
     private static final String UPDATE_USERS_SQL="UPDATE users set name=?,email=?,country=? WHERE id=?;";
+    private static final String FIND_BY_COUNTRY = "SELECT * FROM users where country=?;";;
+    private static final String SORT_BY_NAME = "SELECT * FROM users order by name;";
     private String jdbcURL = "jdbc:mysql://localhost:3306/demoss12?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "12345678";
@@ -89,6 +91,48 @@ public class UserDAO implements IUserDAO{
         }
         return list;
     }
+    @Override
+    public List<User> findUser(String s) {
+        ResultSet rs=null;
+        List<User> list=new ArrayList<>();
+        try(Connection connection=getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(FIND_BY_COUNTRY)){
+            preparedStatement.setString(1,s);
+            System.out.println(FIND_BY_COUNTRY);
+            rs=preparedStatement.executeQuery();
+            while (rs.next()){
+                int id=rs.getInt("id");
+                String name=rs.getString("name");
+                String email=rs.getString("email");
+                String country=rs.getString("country");
+                list.add(new User(id,name,email,country));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<User> sortByName() {
+        ResultSet rs=null;
+        List<User> list=new ArrayList<>();
+        try(Connection connection=getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement(SORT_BY_NAME)){
+            System.out.println(SORT_BY_NAME);
+            rs=preparedStatement.executeQuery();
+            while (rs.next()){
+                int id=rs.getInt("id");
+                String name=rs.getString("name");
+                String email=rs.getString("email");
+                String country=rs.getString("country");
+                list.add(new User(id,name,email,country));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
 
     @Override
     public boolean deleteUser(int id) {
@@ -115,11 +159,6 @@ public class UserDAO implements IUserDAO{
             rowUpdate=statement.executeUpdate()>0;
         }
         return rowUpdate;
-    }
-
-    @Override
-    public List<User> findUser(String s) {
-        return null;
     }
 
     private void printSQLException(SQLException ex) {

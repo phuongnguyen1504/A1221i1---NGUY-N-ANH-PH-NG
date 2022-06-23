@@ -12,4 +12,6 @@ public interface IUserDAO {
     public boolean deleteUser(int id);
     public boolean updateUser(User user) throws SQLException;
     public List<User> findUser(String s);
+
+    List<User> sortByName();
 }
