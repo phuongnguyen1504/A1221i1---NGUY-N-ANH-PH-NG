@@ -48,14 +48,16 @@
   <table border="1" cellpadding="5">
     <h2>List of Users</h2>
     <tr>
+      <th>STT</th>
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
       <th>Country</th>
       <th>Actions</th>
     </tr>
-    <c:forEach var="user" items='${requestScope["listUser"]}'>
+    <c:forEach var="user" items='${requestScope["listUser"]}' varStatus="c">
       <tr>
+        <td><c:out value="${c.count}"/></td>
         <td><c:out value="${user.id}"/></td>
         <td><c:out value="${user.name}"/></td>
         <td><c:out value="${user.email}"/></td>
@@ -63,7 +65,7 @@
         <td>
 <%--          <a class="btn btn-primary" href="/users?action=edit&id=${user.id}">Edit</a>--%>
 <%--          <a href="/users?action=delete&id=${user.id}">Delete</a>--%>
-          <a class="btn btn-primary btn-edit" data-toggle="modal" data-id="${user.id}" data-target="#editUserModal" href="" type="button">Edit</a>
+          <a class="btn btn-primary btn-edit" data-toggle="modal" data-id="${user.id}" data-name="${user.name}" data-email="${user.email}" data-country="${user.country}" data-target="#editUserModal" href="" type="button">Edit</a>
           <a class="btn btn-danger btn-delete" data-toggle="modal" data-id="${user.id}" data-target="#deleteUserModal" href="" type="button">Delete</a>
         </td>
       </tr>
@@ -119,20 +121,20 @@
         <div class="modal-body">
           <div class="form-group">
             <label>ID</label>
-            <input type="text" class="form-control" id="user_id" name="id" disabled>
+            <input type="text" class="form-control" id="user_id" name="id" value="0">
           </div>
         <div class="modal-body">
           <div class="form-group">
             <label>Tên người dùng</label>
-            <input type="text" class="form-control" name="name" required>
+            <input type="text" class="form-control" name="name" id="user_name" required>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" name="email"  required>
+            <input type="text" class="form-control" name="email" id="user_email" required>
           </div>
           <div class="form-group">
             <label>Quốc tịch</label>
-            <input type="text" class="form-control" name="country"
+            <input type="text" class="form-control" name="country" id="user_country"
                    required>
           </div>
           <%--                        <div class="form-group">--%>
@@ -152,11 +154,17 @@
 <script>
   $('.btn-edit').click(function () {
     let id=$(this).data("id");
-    $('#user_id').val(id);
+    let name=$(this).data("name");
+    let email=$(this).data("email");
+    let country=$(this).data("country");
+    $("#user_id").val(id);
+    $("#user_name").val(name);
+    $("#user_email").val(email);
+    $("#user_country").val(country);
   })
-  // $('.confirm-edit').click(function () {
-  //   $('#form_edit').attr("action","/users?action=edit&id="+id);
-  // })
+  $('.confirm-edit').click(function () {
+    $('#form_edit').attr("action","/users?action=edit&id="+id);
+  })
 </script>
 
 <!-- Delete Modal -->
