@@ -30,27 +30,7 @@
     border-radius: 8px;
     position: relative;
 }
-.select-bar {
-    display: flex;
-}
-.input-icon {
-    display: flex;
-}
-.search-icon {
-    padding: 10px;
-    background: dodgerblue;
-    color: white;
-    min-width: 50px;
-    text-align: center;
-}
-#myInput {
-    width: 100%;
-    padding: 10px;
-    display: inline-block;
-}
-#myInput:focus {
-    border: 2px solid dodgerblue;
-}
+
 
 .modal-alert .content {
     display: flex;

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ====== Fontawesome CDN Link ====== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+
+<body>
+  <button onclick="sendMessage()">Hello</button>
+  <script>
+    $(document).ready(function() {
+      $("#myInput").on("keyup", function() {
+        if ($("#selectValue").val() == "All") {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        }
+        else {
+          myFunction();
+        }
+      });
+    });
+
+    function myFunction() {
+      var input, filter,selectValue, table, tr, td, i, txtValue, index;
+      selectValue = document.getElementById("selectValue").value;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      switch(selectValue){
+        case "firstname":
+          index=0;
+          break;
+          case "lastname":
+          index=1;
+          break;
+          case "email":
+          index=2;
+          break;
+      }
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[index];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    function sendMessage() {
+      toastr.info('message');
+      toastr.options.progressBar = true;
+      toastr.options.positionClass = 'toast-top-right';
+      toastr.options.preventDuplicates = false;
+      toastr.options.closeMethod = 'fadeOut';
+      toastr.options.showDuration = 300;
+      toastr.options.hideDuration = 1000;
+      toastr.options.timeOut = 5000; // How long the toast will display without user interaction
+      toastr.options.extendedTimeOut = 1000;// How long the toast will display after a user hovers over it
+      toastr.options.showEasing = 'swing';
+      toastr.options.hideEasing = 'linear';
+      toastr.options.closeMethod = 'fadeIn';
+      toastr.options.hideMethod = 'fadeOut';
+    }
+  </script>
+
+</body>
+
+</html>
