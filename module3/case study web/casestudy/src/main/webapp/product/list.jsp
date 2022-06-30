@@ -10,54 +10,97 @@
     <script src="webjars/jquery/3.6.0/dist/jquery.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
     <link href="/libs/toastr.min.css" type="text/css" rel="stylesheet"/>
-    <script src="/libs/toastr.min.js"></script>
+    <link href="/product/toast.css" type="text/css" rel="stylesheet"/>
+    <script src="/product/toast.js"></script>
     <link rel="stylesheet" type="text/css" href="/product/style.css"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- ====== Fontawesome CDN Link ====== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+    <link rel="stylesheet" href="/webjars/izitoast/1.4.0/dist/css/iziToast.min.css">
+    <script src="/webjars/izitoast/1.4.0/dist/js/iziToast.min.js" type="text/javascript"></script>
 </head>
 <body>
-<h2 style="text-align: center;color: red">Product Application</h2>
-<p>
-    <a class="btn btn-primary btn-create" data-toggle="modal" data-id="${product.id}" data-target="#createProductModal"
-       href="" type="button">Add new Product</a>
-</p>
-<h2>Filter</h2>
-<p>
-<div class="input-group mb-3">
-    <div class="input-group-prepend select-bar">
-        <select id="selectValue" class="btn btn-outline-secondary dropdown-toggle">
-            <option value="All" selected>All</option>
-            <option value="name">Product Name</option>
-            <option value="price">Price</option>
-            <option value="quantity">Quantity</option>
-            <option value="color">Color</option>
-            <option value="category">Category</option>
-        </select>
+<div class="container">
+    <h2 style="text-align: center;color: red">Product Application</h2>
+    <div class="row">
+        <div class="col-4 bg-success">
+            <p style="display: flex; align-content: center; align-items: center; vertical-align: center">
+                <a class="btn btn-primary btn-create" data-toggle="modal" data-id="${product.id}" data-target="#createProductModal"
+                   href="" type="button">Add new Product</a>
+            </p>
+        </div >
+
+        <div class="col-8 bg-warning">
+            <div >
+                <select id="selectValue" class="btn btn-outline-secondary dropdown-toggle">
+                    <option value="All" selected>All</option>
+                    <option value="name">Product Name</option>
+                    <option value="price">Price</option>
+                    <option value="quantity">Quantity</option>
+                    <option value="color">Color</option>
+                    <option value="category">Category</option>
+                </select>
+            </div>
+            <div>
+                <i style="flex: 30%" class="fas fa-solid fa-search search-icon"></i>
+                <input style="flex: 70%" type="search" id="myInput" class="form-control" placeholder="Search.."
+                       aria-label="Text input with dropdown button">
+            </div>
+            <div>
+                <button>Hello</button>
+            </div>
+<%--            <p>--%>
+<%--            <div class="input-group col-6">--%>
+<%--                <div class="input-group-prepend select-bar">--%>
+<%--                    <select id="selectValue" class="btn btn-outline-secondary dropdown-toggle">--%>
+<%--                        <option value="All" selected>All</option>--%>
+<%--                        <option value="name">Product Name</option>--%>
+<%--                        <option value="price">Price</option>--%>
+<%--                        <option value="quantity">Quantity</option>--%>
+<%--                        <option value="color">Color</option>--%>
+<%--                        <option value="category">Category</option>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
+<%--                <div class="input-icon">--%>
+<%--                    <i class="fas fa-solid fa-search search-icon"></i>--%>
+<%--                    <input type="search" id="myInput" class="form-control" placeholder="Search.."--%>
+<%--                           aria-label="Text input with dropdown button">--%>
+<%--                </div>--%>
+<%--            </div>--%>
+
+
+
+            <%--    <select id="selectValue">--%>
+            <%--        <option value="All" selected>All</option>--%>
+            <%--        <option value="name">name</option>--%>
+            <%--        <option value="price">price</option>--%>
+            <%--        <option value="quantity">quantity</option>--%>
+            <%--        <option value="color">color</option>--%>
+            <%--        <option value="category">category</option>--%>
+            <%--    </select>--%>
+            <%--    <input class="alert-container" id="myInput" type="text" placeholder="Search..">--%>
+<%--            </p>--%>
+        </div>
     </div>
-    <div class="input-icon">
-        <i class="fas fa-solid fa-search search-icon"></i>
-        <input type="text" id="myInput" class="form-control" placeholder="Search.."
-               aria-label="Text input with dropdown button">
-    </div>
-</div>
-<%--    <select id="selectValue">--%>
-<%--        <option value="All" selected>All</option>--%>
-<%--        <option value="name">name</option>--%>
-<%--        <option value="price">price</option>--%>
-<%--        <option value="quantity">quantity</option>--%>
-<%--        <option value="color">color</option>--%>
-<%--        <option value="category">category</option>--%>
-<%--    </select>--%>
-<%--    <input class="alert-container" id="myInput" type="text" placeholder="Search..">--%>
-</p>
+
+
+
+<c:if test='${not empty m}'>
+    <script>
+        const t = ${m};
+        iziToast.success({position: "topRight", message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" :"Created successfully"});
+    </script>
+
+<%--    ${messageinfo==""};--%>
+</c:if>
 <c:if test="${empty products}">
     <p>Empty List Products</p>
 </c:if>
 <c:if test="${not empty products}">
-    <table class="table" id="myTable">
+    <table class="table table-hover table-striped" id="myTable">
         <thead>
         <tr>
             <th>STT</th>
@@ -160,11 +203,11 @@
                         </div>
                         <div class="form-group">
                             <label>Product price</label>
-                            <input type="text" class="form-control" name="price" required>
+                            <input type="number" class="form-control" name="price" required>
                         </div>
                         <div class="form-group">
                             <label>Product Quantity</label>
-                            <input type="text" class="form-control" name="quantity"
+                            <input type="number" class="form-control" name="quantity"
                                    required>
                         </div>
                         <div class="form-group">
@@ -278,7 +321,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a type="button" id="ToastDelete" onclick="sendMessage()" class="btn btn-danger btn-confirm-delete" href="">Delete</a>
+                <a type="button" id="ToastDelete" class="btn btn-danger btn-confirm-delete" href="">Delete</a>
             </div>
         </div>
     </div>
@@ -291,23 +334,24 @@
             $('.btn-confirm-delete').attr("href", "/product?action=delete&id=" + id);
         })
     });
-    function sendMessage(){
-        toastr.error('message');
-        toastr.options.progressBar=true;
-        toastr.options.positionClass='toast-top-right';
-        toastr.options.preventDuplicates=false;
-        toastr.options.closeMethod = 'fadeOut';
-        toastr.options.showDuration = 300;
-        toastr.options.hideDuration = 1000;
-        toastr.options.timeOut = 5000; // How long the toast will display without user interaction
-        toastr.options.extendedTimeOut = 1000;// How long the toast will display after a user hovers over it
-        toastr.options.showEasing = 'swing';
-        toastr.options.hideEasing = 'linear';
-        toastr.options.closeMethod= 'fadeIn';
-        toastr.options.hideMethod= 'fadeOut';
-    }
 </script>
 <%--Tạo toast message thanh cong--%>
+<div class="toast">
+    <div class="toast-content">
+        <i class="fas fa-solid fa-check check"></i>
+
+        <div class="message">
+            <span class="text text-1">Success</span>
+            <span class="text text-2">Your changes has been saved</span>
+        </div>
+    </div>
+    <i class="fa-solid fa-xmark close"></i>
+
+    <div class="progress"></div>
+</div>
+
+<button id="myButton">Show Toast</button>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -320,5 +364,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script src="/libs/toastr.min.js"></script>
+<script src="/product/toast.js"></script>
+</div>
 </body>
 </html>

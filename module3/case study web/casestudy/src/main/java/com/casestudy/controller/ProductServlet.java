@@ -40,13 +40,23 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id= Integer.parseInt(request.getParameter("id"));
         productService.deleteProduct(id);
-        response.sendRedirect("/product");
+        List<Product> products=productService.selectAllProduct();
+        response.sendRedirect("/product?m=1");
+//        request.setAttribute("products",products);
+//        request.setAttribute("messageinfo","Delete sucessfully");
+//        RequestDispatcher dispatcher=request.getRequestDispatcher("product/list.jsp");
+//        dispatcher.forward(request,response);
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String m = request.getParameter("m");
+        if(m != null){
+            request.setAttribute("m", Integer.parseInt(m));
+        }
+
         List<Product> products=productService.selectAllProduct();
         request.setAttribute("products",products);
         RequestDispatcher dispatcher=request.getRequestDispatcher("product/list.jsp");
@@ -70,11 +80,6 @@ public class ProductServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "delete":
-                break;
-            case "find":
-                break;
-            case "sort":
             default:
                 listUser(request, response);
                 break;
@@ -89,7 +94,8 @@ public class ProductServlet extends HttpServlet {
         String category=request.getParameter("category");
         Product product=new Product(name,price,quantity,color,category);
         productService.insertProduct(product);
-        response.sendRedirect("/product");
+        response.sendRedirect("/product?m=3");
+
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -102,6 +108,7 @@ public class ProductServlet extends HttpServlet {
         String category=request.getParameter("category");
         Product product=new Product(id,name,price,quantity,color,category);
         productService.updateProduct(product);
-        response.sendRedirect("/product");
+        response.sendRedirect("/product?m=2");
+
     }
 }

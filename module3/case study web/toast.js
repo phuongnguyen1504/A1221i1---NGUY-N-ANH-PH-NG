@@ -4,8 +4,8 @@ closeIcon = document.querySelector(".close"),
     progress = document.querySelector(".progress");
 
 let timer1, timer2;
-function sendMessage() {
-    alert("Hello");
+
+button.addEventListener("click", () => {
     toast.classList.add("active");
     progress.classList.add("active");
 
@@ -16,7 +16,8 @@ function sendMessage() {
     timer2 = setTimeout(() => {
         progress.classList.remove("active");
     }, 5300);
-};
+});
+
 closeIcon.addEventListener("click", () => {
     toast.classList.remove("active");
 

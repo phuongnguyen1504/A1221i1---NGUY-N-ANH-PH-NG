@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0114a367-0da4-4d2a-9a92-fd8290a0c1aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ss8_Bootstrap_basic/bai_tap/e1_tao_gallery_don_gian/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/module3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/module3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case study web/casestudy/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case study web/casestudy/src/main/java/com/casestudy/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/case study web/casestudy/src/main/java/com/casestudy/controller/ProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/toast.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +60,7 @@
       <workItem from="1654689024623" duration="5711000" />
       <workItem from="1654863677868" duration="167000" />
       <workItem from="1654863862346" duration="5702000" />
+      <workItem from="1656503884783" duration="50000" />
     </task>
     <servers />
   </component>
