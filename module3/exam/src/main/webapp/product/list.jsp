@@ -29,7 +29,7 @@
             <%--      <a class="btn btn-danger btn-delete" style="margin-left: 15px" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>--%>
         </div>
         <div class="col-md-6">
-            <form action=""  id="form-search" class="d-flex" style="margin-bottom: 0">
+            <form action="" method="post" id="form-search" class="d-flex" style="margin-bottom: 0">
                 <div class="col-4">
                     <select class="form-select" id="select-sort" aria-label="Default select example">
                         <option value="All" selected>All</option>
@@ -45,8 +45,9 @@
                         <input type="search" class="form-control border-end-0 border rounded-pill" id="input-search"
                                placeholder="&#xF002; Search" aria-label="Username" aria-describedby="basic-addon1"
                                style="font-family:Arial, FontAwesome;margin-left:1%">
-                        <a type="submit" class="btn btn-outline-primary btn-search"
-                           style="font-family:Arial, FontAwesome;margin-left:1%" href="">&#xF002 Search</a>
+                        <button type="submit" class="btn btn-outline-primary btn-search"
+                                style="font-family:Arial, FontAwesome;margin-left:1%" href="">&#xF002 Search
+                        </button>
                     </div>
                 </div>
             </form>
@@ -55,8 +56,12 @@
     <div class="row">
         <c:if test='${not empty m}'>
             <script>
-            const t=${m};
-            iziToast.success({position: "topRight", message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" :"Created successfully",timeout:2000});
+                const t =${m};
+                iziToast.success({
+                    position: "topRight",
+                    message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" : "Created successfully",
+                    timeout: 2000
+                });
             </script>
         </c:if>
         <c:if test="${empty products}">
@@ -88,7 +93,7 @@
                             <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-id="${product.id}"
                                data-name="${product.name}" data-price="${product.price}"
                                data-quantity="${product.quantity}"
-                               data-color="${product.color}" data-category="${product.category}"
+                               data-color="${product.color}" data-description="${product.description}" data-category="${product.category}"
                                data-bs-target="#editUserModal"
                                href="" type="button">Edit</a>
                             <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${product.id}"
@@ -131,9 +136,19 @@
                                    required>
                         </div>
                         <div class="form-group">
-                            <label>Product Quantity</label>
-                            <input type="text" class="form-control" name="category"
-                                   required>
+                            <label>Description</label>
+                            <textarea class="form-control" name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-select" name="category" id="select-category"
+                                    aria-label="Default select example">
+                                <option value="1" selected>Phone</option>
+                                <option value="2">Television</option>
+                                <option value="3">Motorbike</option>
+                            </select>
+                            <%--                            <input type="text" class="form-control" name="category"--%>
+                            <%--                                   required>--%>
                         </div>
                         <%--                        <div class="form-group">--%>
                         <%--                            <label>Hình ảnh</label>--%>
@@ -142,7 +157,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
-                        <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
+                        <input type="submit" class="btn btn-primary confirm-create" value="Xác nhận">
                     </div>
                 </div>
             </form>
@@ -170,7 +185,7 @@
                         </div>
                         <div class="form-group">
                             <label>Product price</label>
-                            <input type="text" class="form-control" name="price" id="product_price" required>
+                            <input type="" class="form-control" name="price" id="product_price" required>
                         </div>
                         <div class="form-group">
                             <label>Product Quantity</label>
@@ -183,19 +198,25 @@
                                    required>
                         </div>
                         <div class="form-group">
-                            <label>Product category</label>
-                            <input type="text" class="form-control" name="category" id="product_category"
-                                   required>
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="product_description"></textarea>
                         </div>
-                        <%--                        <div class="form-group">--%>
-                        <%--                            <label>Hình ảnh</label>--%>
-                        <%--                            <input type="file" class="form-control imgProduct" name="imgProduct" value="a">--%>
-                        <%--                        </div>--%>
-                    </div>
+                        <div class="form-group set_select">
+                            <label>Category</label>
+                            <select class="form-select" name="category" id="product_category"
+                                    aria-label="Default select example">
+                                <option value="1" selected>Phone</option>
+                                <option value="2">Television</option>
+                                <option value="3">Motorbike</option>
+                            </select>
+                            <%--                            <input type="text" class="form-control" name="category"--%>
+                            <%--                                   required>--%>
+                        </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
                         <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
                     </div>
+                </div>
                 </div>
             </form>
         </div>

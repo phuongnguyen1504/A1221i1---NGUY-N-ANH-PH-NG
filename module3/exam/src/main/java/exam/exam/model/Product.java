@@ -8,6 +8,7 @@ public class Product {
     private String color;
     private String description;
     private String category;
+    private int code_category;
 
     public Product(int id, String name, double price, int quantity, String color, String description, String category) {
         this.id = id;
@@ -17,6 +18,44 @@ public class Product {
         this.color = color;
         this.description = description;
         this.category = category;
+    }
+
+    public Product(int id, String name, double price, int quantity, String color, String description, int code_category) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        this.code_category = code_category;
+    }
+
+    public Product(String name, double price, int quantity, String color, String description, int code_category) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        this.code_category = code_category;
+    }
+
+    public Product(String name, double price, int quantity, String color, int code_category) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        this.code_category = code_category;
+    }
+
+    public Product(int id, String name, double price, int quantity, String color, int code_category) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.code_category = code_category;
     }
 
     public Product(String name, double price, int quantity, String color, String description, String category) {
@@ -102,5 +141,13 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getCode_category() {
+        return code_category;
+    }
+
+    public void setCode_category(int code_category) {
+        this.code_category = code_category;
     }
 }

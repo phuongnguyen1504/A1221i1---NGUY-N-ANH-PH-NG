@@ -2,147 +2,110 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
+
 <head>
-    <title>Product Manager</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="webjars/jquery/3.6.0/dist/jquery.min.js"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
-    <link href="/libs/toastr.min.css" type="text/css" rel="stylesheet"/>
-    <script src="/libs/toastr.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/product/style.css"/>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- ====== Fontawesome CDN Link ====== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EXAM MODULE 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <script src="webjars/jquery/3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="/product/script.js"></script>
+    <link rel="stylesheet" href="webjars/izitoast/1.4.0/dist/css/iziToast.min.css"/>
+    <script src="webjars/izitoast/1.4.0/dist/js/iziToast.min.js"></script>
 </head>
+
 <body>
-<h2 style="text-align: center;color: red">Product Application</h2>
-<p>
-    <a class="btn btn-primary btn-create" data-toggle="modal" data-id="${product.id}" data-target="#createProductModal"
-       href="" type="button">Add new Product</a>
-</p>
-<h2>Filter</h2>
-<p>
-<div class="input-group mb-3">
-    <div class="input-group-prepend select-bar">
-        <select id="selectValue" class="btn btn-outline-secondary dropdown-toggle">
-            <option value="All" selected>All</option>
-            <option value="name">Product Name</option>
-            <option value="price">Price</option>
-            <option value="quantity">Quantity</option>
-            <option value="color">Color</option>
-            <option value="category">Category</option>
-        </select>
+
+<div class="container">
+    <div class="row">
+        <h2 style="text-align:center">Application</h2>
     </div>
-    <div class="input-icon">
-        <i class="fas fa-solid fa-search search-icon"></i>
-        <input type="text" id="myInput" class="form-control" placeholder="Search.."
-               aria-label="Text input with dropdown button">
+    <div class="row mb-2">
+        <div class="col-md-6 mb-2">
+            <a type="button" class="btn btn-success btn-create" data-bs-toggle="modal"
+               data-bs-target="#createProductModal" data-id="${product.id}" href="">Add</a>
+            <%--      <a class="btn btn-danger btn-delete" style="margin-left: 15px" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>--%>
+        </div>
+        <div class="col-md-6">
+            <form action="" method="post" id="form-search" class="d-flex" style="margin-bottom: 0">
+                <div class="col-4">
+                    <select class="form-select" id="select-sort" aria-label="Default select example">
+                        <option value="All" selected>All</option>
+                        <option value="name">Product Name</option>
+                        <option value="price">Price</option>
+                        <option value="quantity">Quantity</option>
+                        <option value="color">Color</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+                <div class="col-8">
+                    <div class="input-group">
+                        <input type="search" class="form-control border-end-0 border rounded-pill" id="input-search"
+                               placeholder="&#xF002; Search" aria-label="Username" aria-describedby="basic-addon1"
+                               style="font-family:Arial, FontAwesome;margin-left:1%">
+                        <button type="submit" class="btn btn-outline-primary btn-search"
+                                style="font-family:Arial, FontAwesome;margin-left:1%" href="">&#xF002 Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <c:if test='${not empty m}'>
+            <script>
+                const t =${m};
+                iziToast.success({
+                    position: "topRight",
+                    message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" : "Created successfully",
+                    timeout: 2000
+                });
+            </script>
+        </c:if>
+        <c:if test="${empty products}">
+            <p>Empty List Products/Not Found</p>
+        </c:if>
+        <c:if test="${not empty products}">
+            <table class="table table-dark table-striped table-hover" id="myTable">
+                <thead class="table table-info">
+                <tr>
+                    <th>STT</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Color</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider table-warning" style="border-top-color:red">
+                <c:forEach var="product" items='${requestScope["products"]}' varStatus="c">
+                    <tr>
+                        <td><c:out value="${c.count}"/></td>
+                        <td id="name"><c:out value="${product.name}"/></td>
+                        <td id="price"><c:out value="${product.price}"/></td>
+                        <td id="quantity"><c:out value="${product.quantity}"/></td>
+                        <td id="color"><c:out value="${product.color}"/></td>
+                        <td id="category"><c:out value="${product.category}"/></td>
+                        <td>
+                            <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-id="${product.id}"
+                               data-name="${product.name}" data-price="${product.price}"
+                               data-quantity="${product.quantity}"
+                               data-color="${product.color}" data-description="${product.description}" data-category="${product.category}"
+                               data-bs-target="#editUserModal"
+                               href="" type="button">Edit</a>
+                            <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${product.id}"
+                               data-bs-target="#deleteUserModal" href="" type="button">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
     </div>
 </div>
-<%--    <select id="selectValue">--%>
-<%--        <option value="All" selected>All</option>--%>
-<%--        <option value="name">name</option>--%>
-<%--        <option value="price">price</option>--%>
-<%--        <option value="quantity">quantity</option>--%>
-<%--        <option value="color">color</option>--%>
-<%--        <option value="category">category</option>--%>
-<%--    </select>--%>
-<%--    <input class="alert-container" id="myInput" type="text" placeholder="Search..">--%>
-</p>
-<c:if test="${empty products}">
-    <p>Empty List Products</p>
-</c:if>
-<c:if test="${not empty products}">
-    <table class="table" id="myTable">
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Color</th>
-            <th>Category</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="product" items='${requestScope["products"]}' varStatus="c">
-            <tr>
-                <td><c:out value="${c.count}"/></td>
-                <td id="name"><c:out value="${product.name}"/></td>
-                <td id="price"><c:out value="${product.price}"/></td>
-                <td id="quantity"><c:out value="${product.quantity}"/></td>
-                <td id="color"><c:out value="${product.color}"/></td>
-                <td id="category"><c:out value="${product.category}"/></td>
-                <td>
-                    <a class="btn btn-primary btn-edit" data-toggle="modal" data-id="${product.id}"
-                       data-name="${product.name}" data-price="${product.price}" data-quantity="${product.quantity}"
-                       data-color="${product.color}" data-category="${product.category}" data-target="#editUserModal"
-                       href="" type="button">Edit</a>
-                    <a class="btn btn-danger btn-delete" data-toggle="modal" data-id="${product.id}"
-                       data-target="#deleteUserModal" href="" type="button">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</c:if>
-<%--    Tạo filter--%>
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            if ($("#selectValue").val() == "All") {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            } else {
-                myFunction();
-            }
-        });
-    });
-
-    function myFunction() {
-        var input, filter, selectValue, table, tr, td, i, txtValue, index;
-        selectValue = document.getElementById("selectValue").value;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        switch (selectValue) {
-            case "name":
-                index = 1;
-                break;
-            case "price":
-                index = 2;
-                break;
-            case "quantity":
-                index = 3;
-                break;
-            case "color":
-                index = 4;
-                break;
-            case "category":
-                index = 5;
-                break;
-        }
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[index];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
 <!-- Create Modal -->
 <div id="createProductModal" class="modal fade">
     <div class="modal-dialog modal-lg">
@@ -150,7 +113,7 @@
             <form action="/product?action=create" method="post" id="">
                 <div class="modal-header">
                     <h4 class="modal-title">Create Product</h4>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-body">
@@ -160,11 +123,11 @@
                         </div>
                         <div class="form-group">
                             <label>Product price</label>
-                            <input type="text" class="form-control" name="price" required>
+                            <input type="number" class="form-control" name="price" required>
                         </div>
                         <div class="form-group">
                             <label>Product Quantity</label>
-                            <input type="text" class="form-control" name="quantity"
+                            <input type="number" class="form-control" name="quantity"
                                    required>
                         </div>
                         <div class="form-group">
@@ -173,9 +136,19 @@
                                    required>
                         </div>
                         <div class="form-group">
-                            <label>Product Quantity</label>
-                            <input type="text" class="form-control" name="category"
-                                   required>
+                            <label>Description</label>
+                            <textarea class="form-control" name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-select" name="category" id="select-category"
+                                    aria-label="Default select example">
+                                <option value="1" selected>Phone</option>
+                                <option value="2">Television</option>
+                                <option value="3">Motorbike</option>
+                            </select>
+                            <%--                            <input type="text" class="form-control" name="category"--%>
+                            <%--                                   required>--%>
                         </div>
                         <%--                        <div class="form-group">--%>
                         <%--                            <label>Hình ảnh</label>--%>
@@ -184,7 +157,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
-                        <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
+                        <input type="submit" class="btn btn-primary confirm-create" value="Xác nhận">
                     </div>
                 </div>
             </form>
@@ -198,7 +171,7 @@
             <form action="/product?action=edit" method="post" id="form_edit">
                 <div class="modal-header">
                     <h4 class="modal-title">Update Product</h4>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-body">
@@ -225,50 +198,37 @@
                                    required>
                         </div>
                         <div class="form-group">
-                            <label>Product category</label>
-                            <input type="text" class="form-control" name="category" id="product_category"
-                                   required>
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="product_description"></textarea>
                         </div>
-                        <%--                        <div class="form-group">--%>
-                        <%--                            <label>Hình ảnh</label>--%>
-                        <%--                            <input type="file" class="form-control imgProduct" name="imgProduct" value="a">--%>
-                        <%--                        </div>--%>
-                    </div>
+                        <div class="form-group set_select">
+                            <label>Category</label>
+                            <select class="form-select" name="category" id="product_category"
+                                    aria-label="Default select example">
+                                <option value="1" selected>Phone</option>
+                                <option value="2">Television</option>
+                                <option value="3">Motorbike</option>
+                            </select>
+                            <%--                            <input type="text" class="form-control" name="category"--%>
+                            <%--                                   required>--%>
+                        </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
                         <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
                     </div>
                 </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
-<script>
-    $('.btn-edit').click(function () {
-        let id = $(this).data("id");
-        let name = $(this).data("name");
-        let price = $(this).data("price");
-        let quantity = $(this).data("quantity");
-        let color = $(this).data("color");
-        let category = $(this).data("category");
-        $("#product_id").val(id);
-        $("#product_name").val(name);
-        $("#product_price").val(price);
-        $("#product_quantity").val(quantity);
-        $("#product_color").val(color);
-        $("#product_category").val(category);
-    })
-    $('.confirm-edit').click(function () {
-        $('#form_edit').attr("action", "/product?action=edit&id=" + id);
-    })
-</script>
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteUserModal">
     <div class="modal-dialog">
         <div class="modal-content" id="form-confirm-delete">
             <div class="modal-header">
                 <h5 class="modal-title">Delete Product</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div class="modal-body">
@@ -277,48 +237,23 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a type="button" id="ToastDelete" onclick="sendMessage()" class="btn btn-danger btn-confirm-delete" href="">Delete</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a type="button" id="ToastDelete" class="btn btn-danger btn-confirm-delete" href="">Delete</a>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    $(function () {
-        $('.btn-delete').click(function () {
-            let id = $(this).data("id");
-            $('.btn-confirm-delete').attr("href", "/product?action=delete&id=" + id);
-        })
-    });
-    function sendMessage(){
-        toastr.error('message');
-        toastr.options.progressBar=true;
-        toastr.options.positionClass='toast-top-right';
-        toastr.options.preventDuplicates=false;
-        toastr.options.closeMethod = 'fadeOut';
-        toastr.options.showDuration = 300;
-        toastr.options.hideDuration = 1000;
-        toastr.options.timeOut = 5000; // How long the toast will display without user interaction
-        toastr.options.extendedTimeOut = 1000;// How long the toast will display after a user hovers over it
-        toastr.options.showEasing = 'swing';
-        toastr.options.hideEasing = 'linear';
-        toastr.options.closeMethod= 'fadeIn';
-        toastr.options.hideMethod= 'fadeOut';
-    }
-</script>
-<%--Tạo toast message thanh cong--%>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -54,13 +54,25 @@ $(document).ready(function () {
         let price = $(this).data("price");
         let quantity = $(this).data("quantity");
         let color = $(this).data("color");
+        let description = $(this).data("description");
         let category = $(this).data("category");
         $("#product_id").val(id);
         $("#product_name").val(name);
         $("#product_price").val(price);
         $("#product_quantity").val(quantity);
+        $("#product_description").val(description);
         $("#product_color").val(color);
-        $("#product_category").val(category);
+        switch (category) {
+            case "Phone":
+                $("div.set_select select").val(1);
+                break;
+            case "Television":
+                $("div.set_select select").val(2);
+                break;
+            case "Motorbike":
+                $("div.set_select select").val(3);
+                break;
+        }
     });
     $('.confirm-edit').click(function () {
         $('#form_edit').attr("action", "/product?action=edit&id=" + id);
@@ -73,6 +85,22 @@ $(document).ready(function () {
     $('.btn-search').click(function () {
         let key = $('#select-sort').val();
         let value = $('#input-search').val();
-        $('.btn-search').attr('href', '/product?action=search&key=' + key + '&value=' + value);
+        $('.btn-search').attr('type', 'submit');
+        debugger;
+        if (value == null || value == "") {
+            $('#form-search').attr('action', '/product');
+
+        } else if (value != null && key == "All") {
+            var val = value.toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+            $('#form-search').attr('action', '/product?action=');
+            $('.btn-search').attr('type', 'button');
+
+        } else {
+            $('#form-search').attr('action', '/product?action=search&key=' + key + '&value=' + value);
+        }
     })
+
 });

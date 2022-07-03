@@ -90,6 +90,9 @@ public class ProductServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            case "search":
+                searchProduct(request,response);
+                break;
             default:
                 listUser(request, response);
                 break;
@@ -101,8 +104,9 @@ public class ProductServlet extends HttpServlet {
         double price= Double.parseDouble(request.getParameter("price"));
         int quantity= Integer.parseInt(request.getParameter("quantity"));
         String color=request.getParameter("color");
-        String category=request.getParameter("category");
-        Product product=new Product(name,price,quantity,color,category);
+        String description=request.getParameter("description");
+        int category= Integer.parseInt(request.getParameter("category"));
+        Product product=new Product(name,price,quantity,color,description,category);
         productService.insertProduct(product);
         response.sendRedirect("/product?m=3");
 
@@ -115,8 +119,9 @@ public class ProductServlet extends HttpServlet {
         double price= Double.parseDouble(request.getParameter("price"));
         int quantity= Integer.parseInt(request.getParameter("quantity"));
         String color=request.getParameter("color");
+        String description=request.getParameter("description");
         String category=request.getParameter("category");
-        Product product=new Product(id,name,price,quantity,color,category);
+        Product product=new Product(name,price,quantity,color,description,category);
         productService.updateProduct(product);
         response.sendRedirect("/product?m=2");
 
