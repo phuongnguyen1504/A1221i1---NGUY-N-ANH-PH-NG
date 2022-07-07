@@ -1,17 +1,19 @@
 package thi.thi.model;
 
+import java.util.Date;
+
 public class Object {
     private String id_object;
     private String id_patience;
     private String name_patience;//name of patience
-    private String date_in;
-    private String date_out;
+    private Date date_in;
+    private Date date_out;
     private String reason;
 
     public Object() {
     }
 
-    public Object(String id_object, String id_patience, String name_patience, String date_in, String date_out, String reason) {
+    public Object(String id_object, String id_patience, String name_patience, Date date_in, Date date_out, String reason) {
         this.id_object = id_object;
         this.id_patience = id_patience;
         this.name_patience = name_patience;
@@ -19,6 +21,8 @@ public class Object {
         this.date_out = date_out;
         this.reason = reason;
     }
+
+
 
     public String getId_object() {
         return id_object;
@@ -44,19 +48,19 @@ public class Object {
         this.name_patience = name_patience;
     }
 
-    public String getDate_in() {
+    public Date getDate_in() {
         return date_in;
     }
 
-    public void setDate_in(String date_in) {
+    public void setDate_in(Date date_in) {
         this.date_in = date_in;
     }
 
-    public String getDate_out() {
+    public Date getDate_out() {
         return date_out;
     }
 
-    public void setDate_out(String date_out) {
+    public void setDate_out(Date date_out) {
         this.date_out = date_out;
     }
 

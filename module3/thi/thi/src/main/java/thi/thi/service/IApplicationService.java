@@ -17,4 +17,6 @@ public interface IApplicationService {
     List<Object> search(String key, String value);
 
     List<People> findListCategory();
+
+
 }

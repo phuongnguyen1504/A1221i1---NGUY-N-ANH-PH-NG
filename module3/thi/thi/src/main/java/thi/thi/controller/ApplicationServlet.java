@@ -10,11 +10,15 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "ApplicationServlet", urlPatterns = {"applications",""})
+@WebServlet(name = "ApplicationServlet", value = {"/application",""})
 public class ApplicationServlet extends HttpServlet {
     private IApplicationService applicationService;
+    private final String[] listcolumn= {"STT","Ma benh an", "Ma benh nhan","Ten benh nhan","Ngay nhap vien","Ngay ra vien","Ly do nhap vien","Action"};
 
     public void init() {
         applicationService = new ApplicationService();
@@ -44,9 +48,9 @@ public class ApplicationServlet extends HttpServlet {
     }
 
     private void deleteObject(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String id=request.getParameter("id_object");
+        String id=request.getParameter("id");
         applicationService.deleteObject(id);
-        response.sendRedirect("/applications?m=1");
+        response.sendRedirect("/application?m=1");
     }
 
     private void listObject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,9 +62,10 @@ public class ApplicationServlet extends HttpServlet {
         }
         objectList = applicationService.selectAllObject();
         peopleList = applicationService.findListCategory();
+        request.setAttribute("listColumn",listcolumn);
         request.setAttribute("objectList", objectList);
         request.setAttribute("peopleList", peopleList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/applications/list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/application/list.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -72,11 +77,16 @@ public class ApplicationServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
+                try {
+                    createObject(request,response);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "edit":
                 try {
                     updateObject(request,response);
-                } catch (SQLException e) {
+                } catch (SQLException | ParseException e) {
                     throw new RuntimeException(e);
                 }
                 break;
@@ -88,16 +98,32 @@ public class ApplicationServlet extends HttpServlet {
         }
     }
 
-    private void updateObject(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+    private void createObject(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
         String id_object=request.getParameter("id_object");
         String id_patience=request.getParameter("id_patience");
         String name_patience=request.getParameter("name_patience");
-        String date_in=request.getParameter("date_in");
-        String date_out=request.getParameter("date_out");
+        String datein=request.getParameter("date_in");
+        Date date_in=new SimpleDateFormat("yyyy-mm-dd").parse(datein);
+        String dateout=request.getParameter("date_out");
+        Date date_out=new SimpleDateFormat("yyyy-mm-dd").parse(dateout);
+        String reason=request.getParameter("reason");
+        Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
+        applicationService.insertObject(object);
+        response.sendRedirect("/application?m=3");
+    }
+
+    private void updateObject(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ParseException {
+        String id_object=request.getParameter("id_object");
+        String id_patience=request.getParameter("id_patience");
+        String name_patience=request.getParameter("name_patience");
+        String datein=request.getParameter("date_in");
+        Date date_in=new SimpleDateFormat("yyyy-mm-dd").parse(datein);
+        String dateout=request.getParameter("date_out");
+        Date date_out=new SimpleDateFormat("yyyy-mm-dd").parse(dateout);
         String reason=request.getParameter("reason");
         Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
         applicationService.updateObject(object);
-        response.sendRedirect("/applications?m=2");
+        response.sendRedirect("/application?m=2");
 
     }
 }

@@ -3,10 +3,7 @@ package thi.thi.repository;
 import thi.thi.model.Object;
 import thi.thi.model.People;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +23,8 @@ public class ApplicationRepository implements IApplicationRepository{
         try (Connection connection=DBConnection.getConnection();
              PreparedStatement statement=connection.prepareStatement(INSERT_OBJECT)){
             statement.setString(1,object.getId_object());
-            statement.setString(2,object.getDate_in());
-            statement.setString(3,object.getDate_out());
+            statement.setDate(2, (Date) object.getDate_in());
+            statement.setDate(3, (Date) object.getDate_out());
             statement.setString(4,object.getReason());
             statement.setString(5,object.getId_patience());
             statement.executeUpdate();
@@ -50,8 +47,8 @@ public class ApplicationRepository implements IApplicationRepository{
             rs=statement.executeQuery();
             while (rs.next()){
                 String id_ba=rs.getString(1);
-                String date_in=rs.getString(2);
-                String date_out=rs.getString(3);
+                java.util.Date date_in=rs.getDate(2);
+                java.util.Date date_out=rs.getDate(3);
                 String reason=rs.getString(4);
                 String id_bn=rs.getString(5);
                 String name=rs.getString(7);
@@ -81,8 +78,8 @@ public class ApplicationRepository implements IApplicationRepository{
         boolean updateRow;
         try(Connection connection=DBConnection.getConnection();
             PreparedStatement statement=connection.prepareStatement(UPDATE_OBJECT)) {
-            statement.setString(1,object.getDate_in());
-            statement.setString(2,object.getDate_out());
+            statement.setDate(1, (Date) object.getDate_in());
+            statement.setDate(2, (Date) object.getDate_out());
             statement.setString(3,object.getReason());
             statement.setString(4,object.getName_patience());
             statement.setString(5,object.getId_object());

@@ -33,8 +33,8 @@
                 <div class="col-4">
                     <select class="form-select" id="select-sort" aria-label="Default select example">
                         <option value="All" selected>All</option>
-                        <option value="name">Product Name</option>
-                        <option value="price">Price</option>
+                        <option value="name">Ma benh an</option>
+                        <option value="price">Ma benh nhan</option>
                         <option value="quantity">Quantity</option>
                         <option value="color">Color</option>
                         <option value="category">Category</option>
@@ -59,7 +59,7 @@
                 const t =${m};
                 iziToast.success({
                     position: "topRight",
-                    message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" : "Created successfully",
+                    message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" : t == 3 ? "Created successfully" : "Not success",
                     timeout: 2000
                 });
             </script>
@@ -71,31 +71,36 @@
             <table class="table table-dark table-striped table-hover" id="myTable">
                 <thead class="table table-info">
                 <tr>
-                    <th>STT</th>
-                    <th>Ma benh an</th>
-                    <th>Ma benh nhan</th>
-                    <th>Ten benh nhan</th>
-                    <th>Ngay nhap vien</th>
-                    <th>Ngay ra vien</th>
-                    <th>Ly do nhap vien</th>
-                    <th>Action</th>
+                        <%--                    <th>STT</th>--%>
+                        <%--                    <th>Ma benh an</th>--%>
+                        <%--                    <th>Ma benh nhan</th>--%>
+                        <%--                    <th>Ten benh nhan</th>--%>
+                        <%--                    <th>Ngay nhap vien</th>--%>
+                        <%--                    <th>Ngay ra vien</th>--%>
+                        <%--                    <th>Ly do nhap vien</th>--%>
+                        <%--                    <th>Action</th>--%>
+                    <c:forEach var="th" items="${listColumn}">
+                        <th><c:out value="${th}"/></th>
+                    </c:forEach>
                 </tr>
                 </thead>
                 <tbody class="table-group-divider table-warning" style="border-top-color:red">
                 <c:forEach var="object" items='${requestScope["objectList"]}' varStatus="c">
+
                     <tr>
                         <td><c:out value="${c.count}"/></td>
                         <td id="id_object"><c:out value="${object.id_object}"/></td>
                         <td id="id_patience"><c:out value="${object.id_patience}"/></td>
                         <td id="name_patience"><c:out value="${object.name_patience}"/></td>
-                        <td id="date_in"><c:out value="${object.date_in}"/></td>
+                        <td id="date_in"><c:out value="${object.date_in}"/>
+                        </td>
                         <td id="date_out"><c:out value="${object.date_out}"/></td>
                         <td id="reason"><c:out value="${object.reason}"/></td>
                         <td>
-                            <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-id-object="${object.id_object}"
-                               data-id-patience="${object.id_patience}" data-name-patience="${object.name_patience}"
-                               data-date-in="${object.date_in}"
-                               data-date-out="${object.date_out}" data-reason="${object.reason}"
+                            <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-object="${object.id_object}"
+                               data-people="${object.id_patience}" data-name="${object.name_patience}"
+                               data-datein="${object.date_in}"
+                               data-dateout="${object.date_out}" data-reason="${object.reason}"
                                data-bs-target="#editObjectModal"
                                href="" type="button">Edit</a>
                             <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${object.id_object}"
@@ -112,54 +117,55 @@
 <div id="createObjectModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/product?action=create" method="post" id="">
+            <form action="/application?action=create" method="post" id="">
                 <div class="modal-header">
                     <h4 class="modal-title">Create Object</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label></label>
-                            <input type="text" class="form-control" name="name" required>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label>Ma benh an</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Ma benh nhan</label>
+                                <input type="text" class="form-control" name="id_patience">
+                            </div>
+                            <div class="form-group">
+                                <label>Ten benh nhan</label>
+                                <select class="form-select" name="name_patience"
+                                        aria-label="Default select example" required>
+                                    <c:forEach items="${peopleList}" var="p" varStatus="c">
+                                        <option value="${p.id}"><c:out value="${p.name}"/></option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Ngay nhap vien</label>
+                                <input type="date" class="form-control" name="date_in"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ngay ra vien</label>
+                                <input type="date" class="form-control" name="date_out"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ly do nhap vien</label>
+                                <input type="text" class="form-control" name="reason"
+                                       required>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
+                                <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
+                            </div>
+                            <%--                        <input type=datetime-local step=any /> Step any--%>
                         </div>
-                        <div class="form-group">
-                            <label>Product price</label>
-                            <input type="number" step="any" class="form-control" name="price" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Product Quantity</label>
-                            <input type="number" class="form-control" name="quantity"
-                                   required>
-                        </div>
-                        <div class="form-group">
-                            <label>Product color</label>
-                            <input type="text" class="form-control" name="color"
-                                   required>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" name="description"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select class="form-select" name="category" id="select-category"
-                                    aria-label="Default select example">
-                                <option value="1" selected>Phone</option>
-                                <option value="2">Television</option>
-                                <option value="3">Motorbike</option>
-                            </select>
-                            <%--                            <input type="text" class="form-control" name="category"--%>
-                            <%--                                   required>--%>
-                        </div>
-                        <%--                        <div class="form-group">--%>
-                        <%--                            <label>Hình ảnh</label>--%>
-                        <%--                            <input type="file" class="form-control imgProduct" name="imgProduct" value="a">--%>
-                        <%--                        </div>--%>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
-                        <input type="submit" class="btn btn-primary confirm-create" value="Xác nhận">
                     </div>
                 </div>
             </form>
@@ -188,7 +194,7 @@
     </div>
 </div>
 <!-- Edit Modal -->
-<div id="editUserModal" class="modal fade">
+<div id="editObjectModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form action="/product?action=edit" method="post" id="form_edit">
@@ -208,7 +214,8 @@
                         </div>
                         <div class="form-group">
                             <label>Ma benh nhan</label>
-                            <input type="text" class="form-control" name="id_patience" id="id-patience-disable" disabled>
+                            <input type="text" class="form-control" name="id_patience" id="id-patience-disable"
+                                   disabled>
                         </div>
                         <div class="form-group">
                             <label>Ten benh nhan</label>

@@ -49,4 +49,7 @@ public class ApplicationService implements IApplicationService{
     public List<People> findListCategory() {
         return applicationRepository.findListCategory();
     }
+
+
+
 }

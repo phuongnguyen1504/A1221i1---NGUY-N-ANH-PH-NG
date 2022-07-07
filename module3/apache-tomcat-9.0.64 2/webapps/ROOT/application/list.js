@@ -1,27 +1,27 @@
 $(document).ready(function () {
     $('.btn-delete').click(function () {
-        let id = $(this).data("id_object");
-        $('.btn-confirm-delete').attr("href", "/product?action=delete&id=" + id);
+        let id = $(this).data("id");
+        $('.btn-confirm-delete').attr("href", "/application?action=delete&id=" + id);
     });
     // tao button edit
     $('.btn-edit').click(function () {
-        let id_object = $(this).data("id-object");
-        let id_patience = $(this).data("id-patience");
-        let name_patience = $(this).data("name-patience");
-        let date_in = $(this).data("date-in");
-        let date_out = $(this).data("date-out");
+        let object = $(this).data("object");
+        let people = $(this).data("id_patience");
+        let name = $(this).data("name_patience");
+        let datein = $(this).data("date_in");
+        let dateout = $(this).data("date_out");
         let reason = $(this).data("reason");
         console.log(category);
-        $("#id-object").val(id_object);
-        $("#id-object-disable").val(id_object);
-        $("#id-patience").val(id_patience);
-        $("#id-patience-disable").val(id_patience);
-        $("#name-patience").val(name_patience);
-        $("#date-in").val(date_in);
-        $("#date-out").val(date_out);
+        $("#id-object").val(object);
+        $("#id-object-disable").val(object);
+        $("#id-patience").val(people);
+        $("#id-patience-disable").val(people);
+        $("#name-patience").val(name);
+        $("#date-in").val(datein);
+        $("#date-out").val(dateout);
         $("#reason-input").val(reason);
     })
     $('.confirm-edit').click(function () {
-        $('#form_edit').attr("action", "/product?action=edit&id=" + id_object);
+        $('#form_edit').attr("action", "/application?action=edit&id=" + object);
     })
 });
