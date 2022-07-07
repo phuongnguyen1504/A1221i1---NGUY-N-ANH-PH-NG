@@ -56,23 +56,28 @@ $(document).ready(function () {
         let color = $(this).data("color");
         let description = $(this).data("description");
         let category = $(this).data("category");
+        let code_category = $(this).data("code_category");
+        console.log(category);
         $("#product_id").val(id);
         $("#product_name").val(name);
         $("#product_price").val(price);
         $("#product_quantity").val(quantity);
         $("#product_description").val(description);
         $("#product_color").val(color);
-        switch (category) {
-            case "Phone":
-                $("div.set_select select").val(1);
-                break;
-            case "Television":
-                $("div.set_select select").val(2);
-                break;
-            case "Motorbike":
-                $("div.set_select select").val(3);
-                break;
-        }
+        $("div.set_select select").val(code_category);
+
+        // $('#span_id select option[value="' + some_value + '"]').prop('selected', true);
+        // switch (category) {
+        //     case "Phone":
+        //         $("div.set_select select").val(1);
+        //         break;
+        //     case "Television":
+        //         $("div.set_select select").val(2);
+        //         break;
+        //     case "Motorbike":
+        //         $("div.set_select select").val(3);
+        //         break;
+
     });
     $('.confirm-edit').click(function () {
         $('#form_edit').attr("action", "/product?action=edit&id=" + id);
@@ -82,6 +87,7 @@ $(document).ready(function () {
         let id = $(this).data("id");
         $('.btn-confirm-delete').attr("href", "/product?action=delete&id=" + id);
     })
+    //tao function search
     $('.btn-search').click(function () {
         let key = $('#select-sort').val();
         let value = $('#input-search').val();

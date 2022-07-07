@@ -14,4 +14,6 @@ public interface IProductRepository {
     public List<Product> findProduct(String s);
 
     List<Product> search(String key, String value);
+
+    List<String> findListCategory();
 }

@@ -93,7 +93,8 @@
                             <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-id="${product.id}"
                                data-name="${product.name}" data-price="${product.price}"
                                data-quantity="${product.quantity}"
-                               data-color="${product.color}" data-description="${product.description}" data-category="${product.category}"
+                               data-color="${product.color}" data-description="${product.description}"
+                               data-category="${product.category}" data-code-category="${product.code_category}"
                                data-bs-target="#editUserModal"
                                href="" type="button">Edit</a>
                             <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${product.id}"
@@ -123,7 +124,7 @@
                         </div>
                         <div class="form-group">
                             <label>Product price</label>
-                            <input type="number" class="form-control" name="price" required>
+                            <input type="number" step="any" class="form-control" name="price" required>
                         </div>
                         <div class="form-group">
                             <label>Product Quantity</label>
@@ -185,11 +186,12 @@
                         </div>
                         <div class="form-group">
                             <label>Product price</label>
-                            <input type="text" class="form-control" name="price" id="product_price" required>
+                            <input type="number" step="any" class="form-control" name="price" id="product_price"
+                                   required>
                         </div>
                         <div class="form-group">
                             <label>Product Quantity</label>
-                            <input type="text" class="form-control" name="quantity" id="product_quantity"
+                            <input type="number" class="form-control" name="quantity" id="product_quantity"
                                    required>
                         </div>
                         <div class="form-group">
@@ -203,20 +205,28 @@
                         </div>
                         <div class="form-group set_select">
                             <label>Category</label>
+
                             <select class="form-select" name="category" id="product_category"
-                                    aria-label="Default select example">
-                                <option value="1" selected>Phone</option>
-                                <option value="2">Television</option>
-                                <option value="3">Motorbike</option>
+                                    aria-label="Default select example" required>
+                                <%--                               <c:forEach items="${categorys}" var="c">--%>
+                                <%--                                   <option value="${c.id}"   ${c.id == } ? "selected":"">${c.name}</option>--%>
+                                <%--                               </c:forEach> --%>
+                                <c:forEach items="${listCategory}" var="category" varStatus="c">
+                                        <option value="${c.count}"><c:out value="${category}"/></option>
+                                </c:forEach>
+<%--                                <option value="Phone">Phone</option>--%>
+<%--                                <option value="Television">Television</option>--%>
+<%--                                <option value="Motorbike">Motorbike</option>--%>
                             </select>
                             <%--                            <input type="text" class="form-control" name="category"--%>
                             <%--                                   required>--%>
                         </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
-                        <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
+                            <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
+                        </div>
+                        <%--                        <input type=datetime-local step=any /> Step any--%>
                     </div>
-                </div>
                 </div>
             </form>
         </div>

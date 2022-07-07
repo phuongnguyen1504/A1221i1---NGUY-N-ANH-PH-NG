@@ -66,9 +66,10 @@ public class ProductServlet extends HttpServlet {
         if(m != null){
             request.setAttribute("m", Integer.parseInt(m));
         }
-
+        List<String> listCategory=productService.findListCategory();
         List<Product> products=productService.selectAllProduct();
         request.setAttribute("products",products);
+        request.setAttribute("listCategory",listCategory);
         RequestDispatcher dispatcher=request.getRequestDispatcher("product/list.jsp");
         dispatcher.forward(request,response);
     }
@@ -120,8 +121,21 @@ public class ProductServlet extends HttpServlet {
         int quantity= Integer.parseInt(request.getParameter("quantity"));
         String color=request.getParameter("color");
         String description=request.getParameter("description");
-        String category=request.getParameter("category");
-        Product product=new Product(name,price,quantity,color,description,category);
+        int code_category= Integer.parseInt(request.getParameter("category"));
+//        int code_category = 0;
+//        switch (category){
+//            case "Phone":
+//                code_category=1;
+//                break;
+//            case "Television":
+//                code_category=2;
+//                break;
+//            case "Motorbike":
+//                code_category=3;
+//                break;
+//
+//        }
+        Product product=new Product(id,name,price,quantity,color,description,code_category);
         productService.updateProduct(product);
         response.sendRedirect("/product?m=2");
 
