@@ -34,3 +34,22 @@ INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh
 INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-112', '2018-05-05', '2019-05-05', 'Suy than man', 'BN-123');
 INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-223', '2020-01-01', '2021-01-01', 'Covid 19', 'BN-984');
 INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-444', '2021-06-30', '2022-06-30', 'Ung thu phoi giai doan cuoi', 'BN-153');
+
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-012', '2019/05/01', '2020/05/01', 'Ung thu giai doan cuoi', 'BN-435');
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-113', '2018-05-05', '2019-05-05', 'Suy than man', 'BN-123');
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-224', '2020-01-01', '2021-01-01', 'Covid 19', 'BN-984');
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-445', '2021-06-30', '2022-06-30', 'Ung thu phoi giai doan cuoi', 'BN-153');
+
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-013', '2019/05/01', '2020/05/01', 'Ung thu giai doan cuoi', 'BN-435');
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-114', '2018-05-05', '2019-05-05', 'Suy than man', 'BN-123');
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-225', '2020-01-01', '2021-01-01', 'Covid 19', 'BN-984');
+INSERT INTO `benh_an`.`benh_an` (`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES ('BA-446', '2021-06-30', '2022-06-30', 'Ung thu phoi giai doan cuoi', 'BN-153');
+
+
+select * from `benh_an` ba join `benh_nhan` bn on ba.id_benh_nhan=bn.id where limit 0,2; 
+select SQL_CALC_FOUND_ROWS * from `benh_an` ba join `benh_nhan` bn on ba.id_benh_nhan=bn.id limit 0,2;
+select found_rows();
+select SQL_CALC_FOUND_ROWS * from `benh_an` ba join `benh_nhan` bn on ba.id_benh_nhan=bn.id where ba.reason  like concat('%','Ung','%') limit 0,5;
+
+select  ba.id, bn.id from `benh_an` ba join `benh_nhan` bn on ba.id_benh_nhan=bn.id;
+select count(id) from `benh_nhan` where id='BN-435';
