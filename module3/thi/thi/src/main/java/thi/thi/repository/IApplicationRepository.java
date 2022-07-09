@@ -6,11 +6,12 @@ import thi.thi.model.Category;
 import java.util.List;
 
 public interface IApplicationRepository {
-    void insertObject(Object object);
+    boolean insertObject(Object object);
 
     Object selectObject(String id);
 
-    List<Object> selectAllObject();
+    List<Object> selectAllObject(int offset,
+                                 int noOfRecords);
 
     boolean deleteObject(String id);
 
@@ -21,4 +22,5 @@ public interface IApplicationRepository {
     List<Object> search(String key, String value);
 
     List<Category> findListCategory();
+    int getNoOfRecords();
 }

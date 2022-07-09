@@ -11,8 +11,8 @@ import java.util.List;
 public class ApplicationService implements IApplicationService{
     private IApplicationRepository applicationRepository=new ApplicationRepository();
     @Override
-    public void insertObject(Object object) {
-        applicationRepository.insertObject(object);
+    public boolean insertObject(Object object) {
+        return applicationRepository.insertObject(object);
     }
 
     @Override
@@ -21,8 +21,9 @@ public class ApplicationService implements IApplicationService{
     }
 
     @Override
-    public List<Object> selectAllObject() {
-        return applicationRepository.selectAllObject();
+    public List<Object> selectAllObject(int offset,
+                                        int noOfRecords) {
+        return applicationRepository.selectAllObject(offset,noOfRecords);
     }
 
     @Override
@@ -50,6 +51,10 @@ public class ApplicationService implements IApplicationService{
         return applicationRepository.findListCategory();
     }
 
+    @Override
+    public int getNoOfRecords() {
+        return applicationRepository.getNoOfRecords();
+    }
 
 
 }

@@ -1,6 +1,27 @@
 $(document).ready(function () {
     const valid_id_object=/^[Bb][aA]-\d{3}$/;
     const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //set key,value when send redirect to jsp
+    let key=$('.search-class').data("key");
+    let value=$('.search-class').data("value");
+
+
+    console.log(key);
+
+
+
+    //change color when click pagnition
+    let options = document.querySelectorAll('.pagination-link');
+    let valuePage=$('#nav-page').data("id");
+    for (let i = 0; i < options.length; i++) {
+        console.log(options[i].value);
+        if (options[i].textContent==valuePage){
+            options[i].style.color="white";
+            options[i].style.backgroundColor="blue";
+        }
+    };
+
+
     $('.btn-delete').click(function () {
         let id = $(this).data("id");
         $('.btn-confirm-delete').attr("href", "/application?action=delete&id=" + id);
@@ -59,6 +80,19 @@ $(document).ready(function () {
            $(this).addClass('valid-input').removeClass('invalid-input');
 
        }
+    });
+    $('.btn-create').click(function () {
+       let date_in=$('#myForm .date-in').val();
+       let date_out=$('#myForm .date-out').val();
+        $('.btn-create').attr('type', 'submit');
+
+        if (date_in>date_out){
+            $('.dateout-msg').addClass('invalid-msg').text("Date in must be lower date out");
+            $('.btn-search').attr('type', 'button');
+        }
+        else {
+            $('.dateout-msg').empty();
+        }
     });
 
 

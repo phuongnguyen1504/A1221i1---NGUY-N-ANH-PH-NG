@@ -60,11 +60,20 @@ public class ApplicationServlet extends HttpServlet {
         if(m != null){
             request.setAttribute("m", Integer.parseInt(m));
         }
-        objectList = applicationService.selectAllObject();
+        int page=1;
+        int recordsPerPage=10;
+        if (request.getParameter("page")!=null){
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+        objectList = applicationService.selectAllObject((page-1)*recordsPerPage, recordsPerPage);
+        int noOfRecords=applicationService.getNoOfRecords();
+        int noOfPages= (int) Math.ceil(noOfRecords*1.0/recordsPerPage);
         categoryList = applicationService.findListCategory();
         request.setAttribute("listColumn",listcolumn);
         request.setAttribute("objectList", objectList);
         request.setAttribute("categoryList", categoryList);
+        request.setAttribute("noOfPages", noOfPages);
+        request.setAttribute("currentPage", page);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/application/list.jsp");
         dispatcher.forward(request, response);
     }
@@ -107,6 +116,8 @@ public class ApplicationServlet extends HttpServlet {
         request.setAttribute("listColumn",listcolumn);
         request.setAttribute("objectList", objectList);
         request.setAttribute("peopleList", categoryList);
+        request.setAttribute("key",key);
+        request.setAttribute("value",value);
         RequestDispatcher dispatcher=request.getRequestDispatcher("application/list.jsp");
         dispatcher.forward(request,response);
     }
@@ -119,8 +130,12 @@ public class ApplicationServlet extends HttpServlet {
         String date_out=request.getParameter("date_out");
         String reason=request.getParameter("reason");
         Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
-        applicationService.insertObject(object);
-        response.sendRedirect("/application?m=3");
+        if (applicationService.insertObject(object)){
+            response.sendRedirect("/application?m=3");
+        }
+        else {
+            response.sendRedirect("/application?m=4");
+        }
     }
 
     private void updateObject(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ParseException {

@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IApplicationService {
-    public void insertObject(Object object);
+    public boolean insertObject(Object object);
     public Object selectObject(String id);
-    public List<Object> selectAllObject();
+    public List<Object> selectAllObject(int offset,
+                                        int noOfRecords);
     public boolean deleteObject(String id);
     public boolean updateObject(Object object) throws SQLException;
     public List<Object> findObject(String s);
@@ -18,5 +19,6 @@ public interface IApplicationService {
 
     List<Category> findListCategory();
 
+    int getNoOfRecords();
 
 }

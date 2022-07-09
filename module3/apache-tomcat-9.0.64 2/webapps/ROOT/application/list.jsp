@@ -30,19 +30,37 @@
         </div>
         <div class="col-md-6">
             <form action="" method="post" id="form-search" class="d-flex" style="margin-bottom: 0">
-                <div class="col-4">
+                <div class="col-4 search-class" data-value="${value}">
                     <select class="form-select" id="select-sort" aria-label="Default select example">
-                        <option value="All" selected>All</option>
                         <c:forEach var="col" items='${requestScope["listColumn"]}' begin="1" end="6" varStatus="c">
-                            <option value="${c.count}"><c:out value="${col}"/></option>
+                            <c:if test="${c.count == key}">
+                                <option value="${c.count}" selected><c:out value="${col}"/></option>
+                            </c:if>
+                            <c:if test="${c.count != key}">
+                                <option value="${c.count}"><c:out value="${col}"/></option>
+                            </c:if>
+
                         </c:forEach>
                     </select>
                 </div>
                 <div class="col-8">
                     <div class="input-group">
-                        <input type="search" class="form-control border-end-0 border rounded-pill" id="input-search"
-                               placeholder="&#xF002; Search" aria-label="Username" aria-describedby="basic-addon1"
-                               style="font-family:Arial, FontAwesome;margin-left:1%">
+                        <c:choose>
+                            <c:when test="${not empty value}">
+                                <input type="search" class="form-control border-end-0 border rounded-pill"
+                                       id="input-search"
+                                       placeholder="&#xF002; Search" aria-label="Username"
+                                       aria-describedby="basic-addon1"
+                                       style="font-family:Arial, FontAwesome;margin-left:1%" value="${value}">
+                            </c:when>
+                            <c:otherwise>
+                                <input type="search" class="form-control border-end-0 border rounded-pill"
+                                       id="input-search"
+                                       placeholder="&#xF002; Search" aria-label="Username"
+                                       aria-describedby="basic-addon1"
+                                       style="font-family:Arial, FontAwesome;margin-left:1%">
+                            </c:otherwise>
+                        </c:choose>
                         <button type="submit" class="btn btn-outline-primary btn-search"
                                 style="font-family:Arial, FontAwesome;margin-left:1%" href="">&#xF002 Search
                         </button>
@@ -57,7 +75,7 @@
                 const t =${m};
                 iziToast.success({
                     position: "topRight",
-                    message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" : t == 3 ? "Created successfully" : "Not success",
+                    message: t == 1 ? "Deleted successfully" : t == 2 ? "Update successfully" : t == 3 ? "Created successfully" : t==4 ?"Insert Not success":"Not success",
                     timeout: 2000
                 });
             </script>
@@ -110,6 +128,36 @@
             </table>
         </c:if>
     </div>
+    <%--    https://ibytecode.com/blog/pagination-in-servlet-and-jsp/--%>
+    <div class="row" id="nav-page" data-id="${currentPage}">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+
+                    <c:if test="${currentPage != 1 and not empty currentPage}">
+                        <a class="page-link pagination-link" href="/application?page=${currentPage - 1}">Previous</a>
+                    </c:if>
+                </li>
+                <c:forEach begin="1" end="${noOfPages}" var="i">
+                    <c:choose>
+                        <c:when test="${currentPage eq i}">
+                            <li class="page-item"><a class="page-link pagination-link">${i}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a class="page-link pagination-link"
+                                                     href="/application?page=${i}">${i}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <li class="page-item">
+                    <c:if test="${currentPage lt noOfPages}">
+                        <a class="page-link pagination-link" href="/application?page=${currentPage + 1}">Next</a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
 </div>
 <!-- Create Modal -->
 <div id="createObjectModal" class="modal fade">
@@ -138,20 +186,20 @@
                             <div class="form-group">
                                 <label>Ten benh nhan</label>
                                 <input type="text" class="form-control" name="name_patience"
-                                         required>
+                                       required>
                                 <div class="name-msg"></div>
 
                             </div>
                             <div class="form-group">
                                 <label>Ngay nhap vien</label>
-                                <input type="date" class="form-control" name="date_in"
+                                <input type="date" class="form-control date-in" name="date_in"
                                        required>
                                 <div class="datein-msg"></div>
 
                             </div>
                             <div class="form-group">
                                 <label>Ngay ra vien</label>
-                                <input type="date" class="form-control" name="date_out" start
+                                <input type="date" class="form-control date-out" name="date_out" start
                                        required>
                                 <div class="dateout-msg"></div>
 
@@ -167,7 +215,8 @@
 
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
-                                <input type="submit" class="btn btn-primary confirm-create" id="submit-btn" value="Xác nhận" disabled="disabled">
+                                <input type="submit" class="btn btn-primary confirm-create" id="submit-btn"
+                                       value="Xác nhận" disabled="disabled">
                             </div>
                             <%--                        <input type=datetime-local step=any /> Step any--%>
                         </div>
