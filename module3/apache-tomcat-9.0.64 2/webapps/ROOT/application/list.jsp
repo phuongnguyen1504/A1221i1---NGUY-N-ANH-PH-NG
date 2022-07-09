@@ -87,14 +87,7 @@
             <table class="table table-dark table-striped table-hover" id="myTable">
                 <thead class="table table-info">
                 <tr>
-                        <%--                    <th>STT</th>--%>
-                        <%--                    <th>Ma benh an</th>--%>
-                        <%--                    <th>Ma benh nhan</th>--%>
-                        <%--                    <th>Ten benh nhan</th>--%>
-                        <%--                    <th>Ngay nhap vien</th>--%>
-                        <%--                    <th>Ngay ra vien</th>--%>
-                        <%--                    <th>Ly do nhap vien</th>--%>
-                        <%--                    <th>Action</th>--%>
+<%--                        nhap ben tag servlet--%>
                     <c:forEach var="th" items="${listColumn}">
                         <th><c:out value="${th}"/></th>
                     </c:forEach>

@@ -2,14 +2,8 @@ $(document).ready(function () {
     const valid_id_object=/^[Bb][aA]-\d{3}$/;
     const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     //set key,value when send redirect to jsp
-    let key=$('.search-class').data("key");
-    let value=$('.search-class').data("value");
-
-
-    console.log(key);
-
-
-
+    //show modal when need to appear
+    // $("#createObjectModal").modal('show');
     //change color when click pagnition
     let options = document.querySelectorAll('.pagination-link');
     let valuePage=$('#nav-page').data("id");
