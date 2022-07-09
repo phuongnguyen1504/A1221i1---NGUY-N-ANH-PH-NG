@@ -1,7 +1,7 @@
 package thi.thi.service;
 
 import thi.thi.model.Object;
-import thi.thi.model.People;
+import thi.thi.model.Category;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,7 +16,7 @@ public interface IApplicationService {
 
     List<Object> search(String key, String value);
 
-    List<People> findListCategory();
+    List<Category> findListCategory();
 
 
 }

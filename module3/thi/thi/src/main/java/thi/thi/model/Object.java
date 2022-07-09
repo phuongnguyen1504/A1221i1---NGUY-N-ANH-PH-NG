@@ -6,14 +6,14 @@ public class Object {
     private String id_object;
     private String id_patience;
     private String name_patience;//name of patience
-    private Date date_in;
-    private Date date_out;
+    private String date_in;
+    private String date_out;
     private String reason;
 
     public Object() {
     }
 
-    public Object(String id_object, String id_patience, String name_patience, Date date_in, Date date_out, String reason) {
+    public Object(String id_object, String id_patience, String name_patience, String date_in, String date_out, String reason) {
         this.id_object = id_object;
         this.id_patience = id_patience;
         this.name_patience = name_patience;
@@ -48,19 +48,19 @@ public class Object {
         this.name_patience = name_patience;
     }
 
-    public Date getDate_in() {
+    public String getDate_in() {
         return date_in;
     }
 
-    public void setDate_in(Date date_in) {
+    public void setDate_in(String date_in) {
         this.date_in = date_in;
     }
 
-    public Date getDate_out() {
+    public String getDate_out() {
         return date_out;
     }
 
-    public void setDate_out(Date date_out) {
+    public void setDate_out(String date_out) {
         this.date_out = date_out;
     }
 

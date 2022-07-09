@@ -1,7 +1,7 @@
 package thi.thi.service;
 
+import thi.thi.model.Category;
 import thi.thi.model.Object;
-import thi.thi.model.People;
 import thi.thi.repository.ApplicationRepository;
 import thi.thi.repository.IApplicationRepository;
 
@@ -46,7 +46,7 @@ public class ApplicationService implements IApplicationService{
     }
 
     @Override
-    public List<People> findListCategory() {
+    public List<Category> findListCategory() {
         return applicationRepository.findListCategory();
     }
 

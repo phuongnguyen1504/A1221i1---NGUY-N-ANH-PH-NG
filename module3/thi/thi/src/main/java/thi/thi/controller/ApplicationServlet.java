@@ -1,7 +1,7 @@
 package thi.thi.controller;
 
 import thi.thi.model.Object;
-import thi.thi.model.People;
+import thi.thi.model.Category;
 import thi.thi.service.ApplicationService;
 import thi.thi.service.IApplicationService;
 
@@ -55,16 +55,16 @@ public class ApplicationServlet extends HttpServlet {
 
     private void listObject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Object> objectList;
-        List<People> peopleList;
+        List<Category> categoryList;
         String m = request.getParameter("m");
         if(m != null){
             request.setAttribute("m", Integer.parseInt(m));
         }
         objectList = applicationService.selectAllObject();
-        peopleList = applicationService.findListCategory();
+        categoryList = applicationService.findListCategory();
         request.setAttribute("listColumn",listcolumn);
         request.setAttribute("objectList", objectList);
-        request.setAttribute("peopleList", peopleList);
+        request.setAttribute("categoryList", categoryList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/application/list.jsp");
         dispatcher.forward(request, response);
     }
@@ -91,6 +91,7 @@ public class ApplicationServlet extends HttpServlet {
                 }
                 break;
             case "search":
+                searchObject(request,response);
                 break;
             default:
                 listObject(request, response);
@@ -98,14 +99,24 @@ public class ApplicationServlet extends HttpServlet {
         }
     }
 
+    private void searchObject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String key=request.getParameter("key");
+        String value=request.getParameter("value");
+        List<Object> objectList=applicationService.search(key,value);
+        List<Category> categoryList = applicationService.findListCategory();
+        request.setAttribute("listColumn",listcolumn);
+        request.setAttribute("objectList", objectList);
+        request.setAttribute("peopleList", categoryList);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("application/list.jsp");
+        dispatcher.forward(request,response);
+    }
+
     private void createObject(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
         String id_object=request.getParameter("id_object");
         String id_patience=request.getParameter("id_patience");
         String name_patience=request.getParameter("name_patience");
-        String datein=request.getParameter("date_in");
-        Date date_in=new SimpleDateFormat("yyyy-mm-dd").parse(datein);
-        String dateout=request.getParameter("date_out");
-        Date date_out=new SimpleDateFormat("yyyy-mm-dd").parse(dateout);
+        String date_in=request.getParameter("date_in");
+        String date_out=request.getParameter("date_out");
         String reason=request.getParameter("reason");
         Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
         applicationService.insertObject(object);
@@ -116,10 +127,8 @@ public class ApplicationServlet extends HttpServlet {
         String id_object=request.getParameter("id_object");
         String id_patience=request.getParameter("id_patience");
         String name_patience=request.getParameter("name_patience");
-        String datein=request.getParameter("date_in");
-        Date date_in=new SimpleDateFormat("yyyy-mm-dd").parse(datein);
-        String dateout=request.getParameter("date_out");
-        Date date_out=new SimpleDateFormat("yyyy-mm-dd").parse(dateout);
+        String date_in=request.getParameter("date_in");
+        String date_out=request.getParameter("date_out");
         String reason=request.getParameter("reason");
         Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
         applicationService.updateObject(object);

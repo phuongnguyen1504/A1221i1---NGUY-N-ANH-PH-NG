@@ -33,11 +33,9 @@
                 <div class="col-4">
                     <select class="form-select" id="select-sort" aria-label="Default select example">
                         <option value="All" selected>All</option>
-                        <option value="name">Ma benh an</option>
-                        <option value="price">Ma benh nhan</option>
-                        <option value="quantity">Quantity</option>
-                        <option value="color">Color</option>
-                        <option value="category">Category</option>
+                        <c:forEach var="col" items='${requestScope["listColumn"]}' begin="1" end="6" varStatus="c">
+                            <option value="${c.count}"><c:out value="${col}"/></option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="col-8">
@@ -117,7 +115,7 @@
 <div id="createObjectModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/application?action=create" method="post" id="">
+            <form action="/application?action=create" method="post" id="myForm">
                 <div class="modal-header">
                     <h4 class="modal-title">Create Object</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -128,41 +126,48 @@
 
                             <div class="form-group">
                                 <label>Ma benh an</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control id-object" name="id_object">
+                                <div class="object-msg"></div>
                             </div>
                             <div class="form-group">
                                 <label>Ma benh nhan</label>
-                                <input type="text" class="form-control" name="id_patience">
+                                <input type="text" class="form-control" name="id_patience" required>
+                                <div class="patient-msg"></div>
+
                             </div>
                             <div class="form-group">
                                 <label>Ten benh nhan</label>
-                                <select class="form-select" name="name_patience"
-                                        aria-label="Default select example" required>
-                                    <c:forEach items="${peopleList}" var="p" varStatus="c">
-                                        <option value="${p.id}"><c:out value="${p.name}"/></option>
-                                    </c:forEach>
-                                </select>
+                                <input type="text" class="form-control" name="name_patience"
+                                         required>
+                                <div class="name-msg"></div>
+
                             </div>
                             <div class="form-group">
                                 <label>Ngay nhap vien</label>
                                 <input type="date" class="form-control" name="date_in"
                                        required>
+                                <div class="datein-msg"></div>
+
                             </div>
                             <div class="form-group">
                                 <label>Ngay ra vien</label>
-                                <input type="date" class="form-control" name="date_out"
+                                <input type="date" class="form-control" name="date_out" start
                                        required>
+                                <div class="dateout-msg"></div>
+
                             </div>
                             <div class="form-group">
                                 <label>Ly do nhap vien</label>
                                 <input type="text" class="form-control" name="reason"
                                        required>
+                                <div class="reason-msg"></div>
+
                             </div>
 
 
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
-                                <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">
+                                <input type="submit" class="btn btn-primary confirm-create" id="submit-btn" value="Xác nhận" disabled="disabled">
                             </div>
                             <%--                        <input type=datetime-local step=any /> Step any--%>
                         </div>
@@ -197,7 +202,7 @@
 <div id="editObjectModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/product?action=edit" method="post" id="form_edit">
+            <form action="/application?action=edit" method="post" id="form_edit">
                 <div class="modal-header">
                     <h4 class="modal-title">Update Product</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -217,23 +222,23 @@
                             <input type="text" class="form-control" name="id_patience" id="id-patience-disable"
                                    disabled>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group set-select">
                             <label>Ten benh nhan</label>
                             <select class="form-select" name="name_patience" id="name-patience"
                                     aria-label="Default select example" required>
-                                <c:forEach items="${peopleList}" var="p" varStatus="c">
+                                <c:forEach items="${categoryList}" var="p" varStatus="c">
                                     <option value="${p.id}"><c:out value="${p.name}"/></option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Ngay nhap vien</label>
-                            <input type="number" step="any" class="form-control" name="date_in" id="date-in"
+                            <input type="date" step="any" class="form-control" name="date_in" id="date-in"
                                    required>
                         </div>
                         <div class="form-group">
                             <label>Ngay ra vien</label>
-                            <input type="number" class="form-control" name="date_out" id="date-out"
+                            <input type="date" class="form-control" name="date_out" id="date-out"
                                    required>
                         </div>
                         <div class="form-group">
