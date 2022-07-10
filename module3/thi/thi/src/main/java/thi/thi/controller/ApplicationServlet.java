@@ -61,7 +61,7 @@ public class ApplicationServlet extends HttpServlet {
             request.setAttribute("m", Integer.parseInt(m));
         }
         int page=1;
-        int recordsPerPage=10;
+        int recordsPerPage=5;
         if (request.getParameter("page")!=null){
             page=Integer.parseInt(request.getParameter("page"));
         }
@@ -130,7 +130,8 @@ public class ApplicationServlet extends HttpServlet {
         String date_out=request.getParameter("date_out");
         String reason=request.getParameter("reason");
         Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
-        if (applicationService.insertObject(object)){
+        boolean isExists= applicationService.insertObject(object);
+        if (isExists){
             response.sendRedirect("/application?m=3");
         }
         else {

@@ -60,6 +60,9 @@ $(document).ready(function () {
             $('#form-search').attr('action', '/application?action=search&key=' + key + '&value=' + value);
         }
     });
+
+
+    // validate
     $('.id-object').on('input',function (){
        let id=$(this).val();
        if(id.length==0){
@@ -75,31 +78,43 @@ $(document).ready(function () {
 
        }
     });
-    $('.btn-create').click(function () {
-       let date_in=$('#myForm .date-in').val();
-       let date_out=$('#myForm .date-out').val();
-        $('.btn-create').attr('type', 'submit');
-
+    $('.date-in').on('change',function () {
+        let date_in=$('#myForm .date-in').val();
+        let date_out=$('#myForm .date-out').val();
         if (date_in>date_out){
             $('.dateout-msg').addClass('invalid-msg').text("Date in must be lower date out");
-            $('.btn-search').attr('type', 'button');
+            $('.date-out').addClass('invalid-input').removeClass('valid-input');
         }
         else {
             $('.dateout-msg').empty();
+            $('.date-out').addClass('valid-input').removeClass('invalid-input');
+        }
+    });
+    $('.date-out').on('change',function () {
+        let date_in=$('#myForm .date-in').val();
+        let date_out=$('#myForm .date-out').val();
+        if (date_in>date_out){
+            $('.dateout-msg').addClass('invalid-msg').text("Date in must be lower date out");
+            $(this).addClass('invalid-input').removeClass('valid-input');
+
+        }
+        else {
+            $('.dateout-msg').empty();
+            $(this).addClass('valid-input').removeClass('invalid-input');
         }
     });
 
 
     // validation to submit the form
-    $('input').on('input',function(e){
-        if($('#myForm').find('.valid-input').length==1){
+    $('input').on('change',function(e){
+        if($('#myForm').find('.valid-input').length==2){
             $('#submit-btn').removeClass('allowed-submit');
             $('#submit-btn').removeAttr('disabled');
         }
         else{
             e.preventDefault();
-            $('#submit-btn').attr('disabled','disabled')
-
+            $('#submit-btn').attr('disabled','disabled');
+            $('#submit-btn').addClass('allowed-submit');
         }
     });
 

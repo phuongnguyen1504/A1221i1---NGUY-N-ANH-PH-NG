@@ -10,7 +10,7 @@ import java.util.List;
 public class ApplicationRepository implements IApplicationRepository {
     private static final String SELECT_ALL_OBJECT = "select SQL_CALC_FOUND_ROWS * from `benh_an` ba join `benh_nhan` bn on ba.id_benh_nhan=bn.id limit ?,?;";
     private static final String INSERT_OBJECT = "insert into `benh_an`(`id`, `date_in`, `date_out`, `reason`, `id_benh_nhan`) VALUES (?,?,?,?,?);";
-    private static final String FIND_EXIST_OBJECT = "select count(id) from `benh_an` where id=?;";
+    private static final String FIND_EXIST_OBJECT = "select * from `benh_an` where id=?;";
     private static final String DELETE_OBJECT = "delete from `benh_an` where id=?;";
     private static final String UPDATE_OBJECT = "update `benh_an` set date_in=?,date_out=?,reason=?,id_benh_nhan=? where id=?;";
     private static final String FIND_LIST_PEOPLE = "SELECT * from `benh_nhan`";
@@ -26,7 +26,7 @@ public class ApplicationRepository implements IApplicationRepository {
     private static final String SEARCH_LY_DO = "select SQL_CALC_FOUND_ROWS * from `benh_an` ba join `benh_nhan` bn on ba.id_benh_nhan=bn.id where ba.reason like concat('%',?,'%');";
     ;
     private static final String INSERT_CATEGORY = "insert into `benh_nhan`(`id`,`name`) values (?,?);";
-    private static final String FIND_EXIST_CATEGORY = "select count(id) from `benh_nhan` where id=?;";
+    private static final String FIND_EXIST_CATEGORY = "select * from `benh_nhan` where id=?;";
 
     private DBConnection dbConnection = new DBConnection();
     private int noOfRecords;
@@ -36,39 +36,54 @@ public class ApplicationRepository implements IApplicationRepository {
 
     @Override
     public boolean insertObject(Object object) {
+        //Chen category truoc roi moi them bang chinh vao ms duoc
         ResultSet rs = null;
+
         // check có ton tại trong database trước khi add dữ liệu vào
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(FIND_EXIST_CATEGORY)) {
             statement.setString(1, object.getId_patience());
-            rs=statement.executeQuery();
-            if (rs.next()){
+            rs = statement.executeQuery();
+
+            if (rs.next()) {
                 return false;
             }
-            statement.setString(1,object.getId_object());
-            rs=statement.executeQuery(FIND_EXIST_OBJECT);
-            if (rs.next()){
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(FIND_EXIST_OBJECT)) {
+            statement.setString(1, object.getId_object());
+            rs = statement.executeQuery();
+            if (rs.next()) {
                 return false;
             }
-            //Neu k ton tai thi add du lieu vao
-            else {
-                //add vao bang category
-                statement.setString(1, object.getId_patience());
-                statement.setString(2, object.getName_patience());
-                statement.executeUpdate(INSERT_CATEGORY);
-                //add vao bảng object
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //Neu k ton tai thi add du lieu vao
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_CATEGORY)) {
+            //add vao bang category
+            statement.setString(1, object.getId_patience());
+            statement.setString(2, object.getName_patience());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //add vao bảng object
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_OBJECT)) {
                 statement.setString(1, object.getId_object());
                 statement.setString(2, object.getDate_in());
                 statement.setString(3, object.getDate_out());
                 statement.setString(4, object.getReason());
                 statement.setString(5, object.getId_patience());
-                statement.executeUpdate(INSERT_OBJECT);
+                statement.executeUpdate();
 
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
         return true;
     }
