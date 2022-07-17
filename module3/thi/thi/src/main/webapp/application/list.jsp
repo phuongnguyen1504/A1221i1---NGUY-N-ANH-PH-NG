@@ -93,30 +93,52 @@
                     </c:forEach>
                 </tr>
                 </thead>
+<%--                Sua o day--%>
                 <tbody class="table-group-divider table-warning" style="border-top-color:red">
                 <c:forEach var="object" items='${requestScope["objectList"]}' varStatus="c">
-
                     <tr>
                         <td><c:out value="${c.count}"/></td>
-                        <td id="id_object"><c:out value="${object.id_object}"/></td>
-                        <td id="id_patience"><c:out value="${object.id_patience}"/></td>
-                        <td id="name_patience"><c:out value="${object.name_patience}"/></td>
-                        <td id="date_in"><c:out value="${object.date_in}"/>
-                        </td>
-                        <td id="date_out"><c:out value="${object.date_out}"/></td>
-                        <td id="reason"><c:out value="${object.reason}"/></td>
+                        <td id="name"><c:out value="${object.name}"/></td>
+                        <td id="price"><c:out value="${object.price}"/></td>
+                        <td id="quantity"><c:out value="${object.quantity}"/></td>
+                        <td id="color"><c:out value="${object.color}"/></td>
+                        <td id="category"><c:out value="${object.category}"/></td>
                         <td>
-                            <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-object="${object.id_object}"
-                               data-people="${object.id_patience}" data-name="${object.name_patience}"
-                               data-datein="${object.date_in}"
-                               data-dateout="${object.date_out}" data-reason="${object.reason}"
+                            <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-id="${object.id}"
+                               data-name="${object.name}" data-price="${object.price}"
+                               data-quantity="${object.quantity}"
+                               data-color="${object.color}" data-description="${object.description}"
+                               data-category="${object.category}" data-code-category="${object.code_category}"
                                data-bs-target="#editObjectModal"
                                href="" type="button">Edit</a>
-                            <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${object.id_object}"
+                            <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${product.id}"
                                data-bs-target="#deleteObjectModal" href="" type="button">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
+<%--                <c:forEach var="object" items='${requestScope["objectList"]}' varStatus="c">--%>
+
+<%--                    <tr>--%>
+<%--                        <td><c:out value="${c.count}"/></td>--%>
+<%--                        <td id="id_object"><c:out value="${object.id_object}"/></td>--%>
+<%--                        <td id="id_patience"><c:out value="${object.id_patience}"/></td>--%>
+<%--                        <td id="name_patience"><c:out value="${object.name_patience}"/></td>--%>
+<%--                        <td id="date_in"><c:out value="${object.date_in}"/>--%>
+<%--                        </td>--%>
+<%--                        <td id="date_out"><c:out value="${object.date_out}"/></td>--%>
+<%--                        <td id="reason"><c:out value="${object.reason}"/></td>--%>
+<%--                        <td>--%>
+<%--                            <a class="btn btn-primary btn-edit" data-bs-toggle="modal" data-object="${object.id_object}"--%>
+<%--                               data-people="${object.id_patience}" data-name="${object.name_patience}"--%>
+<%--                               data-datein="${object.date_in}"--%>
+<%--                               data-dateout="${object.date_out}" data-reason="${object.reason}"--%>
+<%--                               data-bs-target="#editObjectModal"--%>
+<%--                               href="" type="button">Edit</a>--%>
+<%--                            <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${object.id_object}"--%>
+<%--                               data-bs-target="#deleteObjectModal" href="" type="button">Delete</a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </c:forEach>--%>
                 </tbody>
             </table>
         </c:if>
@@ -192,7 +214,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Ngay ra vien</label>
-                                <input type="date" class="form-control date-out" name="date_out" start
+                                <input type="date" class="form-control date-out" name="date_out"
                                        required>
                                 <div class="dateout-msg"></div>
 
@@ -252,44 +274,41 @@
                 <div class="modal-body">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="id_object" id="id-object" hidden>
-                            <input type="text" class="form-control" name="id_patience" id="id-patience" hidden>
+                            <label>ID Product</label>
+                            <input type="text" class="form-control" name="id" id="product_id" hidden>
                         </div>
                         <div class="form-group">
-                            <label>Ma benh an</label>
-                            <input type="text" class="form-control" id="id-object-disable" disabled>
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" name="name" id="product_name" required>
                         </div>
                         <div class="form-group">
-                            <label>Ma benh nhan</label>
-                            <input type="text" class="form-control" name="id_patience" id="id-patience-disable"
-                                   disabled>
+                            <label>Product price</label>
+                            <input type="number" step="any" class="form-control" name="price" id="product_price"
+                                   required>
                         </div>
-                        <div class="form-group set-select">
-                            <label>Ten benh nhan</label>
-                            <select class="form-select" name="name_patience" id="name-patience"
+                        <div class="form-group">
+                            <label>Product Quantity</label>
+                            <input type="number" class="form-control" name="quantity" id="product_quantity"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label>Product color</label>
+                            <input type="text" class="form-control" name="color" id="product_color"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="product_description"></textarea>
+                        </div>
+                        <div class="form-group set_select">
+                            <label>Category</label>
+                            <select class="form-select" name="category" id="product_category"
                                     aria-label="Default select example" required>
                                 <c:forEach items="${categoryList}" var="p" varStatus="c">
                                     <option value="${p.id}"><c:out value="${p.name}"/></option>
                                 </c:forEach>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Ngay nhap vien</label>
-                            <input type="date" step="any" class="form-control" name="date_in" id="date-in"
-                                   required>
-                        </div>
-                        <div class="form-group">
-                            <label>Ngay ra vien</label>
-                            <input type="date" class="form-control" name="date_out" id="date-out"
-                                   required>
-                        </div>
-                        <div class="form-group">
-                            <label>Ly do nhap vien</label>
-                            <input type="text" class="form-control" name="reason" id="reason-input"
-                                   required>
-                        </div>
-
-
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
                             <input type="submit" class="btn btn-primary confirm-edit" value="Xác nhận">

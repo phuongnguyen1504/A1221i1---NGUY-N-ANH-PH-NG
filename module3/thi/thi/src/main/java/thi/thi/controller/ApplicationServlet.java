@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet(name = "ApplicationServlet", value = {"/application",""})
 public class ApplicationServlet extends HttpServlet {
     private IApplicationService applicationService;
-    private final String[] listcolumn= {"STT","Ma benh an", "Ma benh nhan","Ten benh nhan","Ngay nhap vien","Ngay ra vien","Ly do nhap vien","Action"};
+    private final String[] listcolumn = {"STT", "Product Name", "Price", "Quantity", "Color", "Category", "Action"};
 
     public void init() {
         applicationService = new ApplicationService();
@@ -36,7 +36,7 @@ public class ApplicationServlet extends HttpServlet {
             case "edit":
                 break;
             case "delete":
-                deleteObject(request,response);
+                deleteObject(request, response);
                 break;
             case "search":
                 break;
@@ -48,7 +48,7 @@ public class ApplicationServlet extends HttpServlet {
     }
 
     private void deleteObject(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String id=request.getParameter("id");
+        String id = request.getParameter("id");
         applicationService.deleteObject(id);
         response.sendRedirect("/application?m=1");
     }
@@ -57,19 +57,19 @@ public class ApplicationServlet extends HttpServlet {
         List<Object> objectList;
         List<Category> categoryList;
         String m = request.getParameter("m");
-        if(m != null){
+        if (m != null) {
             request.setAttribute("m", Integer.parseInt(m));
         }
-        int page=1;
-        int recordsPerPage=5;
-        if (request.getParameter("page")!=null){
-            page=Integer.parseInt(request.getParameter("page"));
+        int page = 1;
+        int recordsPerPage = 5;
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
         }
-        objectList = applicationService.selectAllObject((page-1)*recordsPerPage, recordsPerPage);
-        int noOfRecords=applicationService.getNoOfRecords();
-        int noOfPages= (int) Math.ceil(noOfRecords*1.0/recordsPerPage);
+        objectList = applicationService.selectAllObject((page - 1) * recordsPerPage, recordsPerPage);
+        int noOfRecords = applicationService.getNoOfRecords();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
         categoryList = applicationService.findListCategory();
-        request.setAttribute("listColumn",listcolumn);
+        request.setAttribute("listColumn", listcolumn);
         request.setAttribute("objectList", objectList);
         request.setAttribute("categoryList", categoryList);
         request.setAttribute("noOfPages", noOfPages);
@@ -87,20 +87,20 @@ public class ApplicationServlet extends HttpServlet {
         switch (action) {
             case "create":
                 try {
-                    createObject(request,response);
+                    createObject(request, response);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 break;
             case "edit":
                 try {
-                    updateObject(request,response);
+                    updateObject(request, response);
                 } catch (SQLException | ParseException e) {
                     throw new RuntimeException(e);
                 }
                 break;
             case "search":
-                searchObject(request,response);
+                searchObject(request, response);
                 break;
             default:
                 listObject(request, response);
@@ -109,35 +109,36 @@ public class ApplicationServlet extends HttpServlet {
     }
 
     private void searchObject(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String key=request.getParameter("key");
-        String value=request.getParameter("value");
-        List<Object> objectList=applicationService.search(key,value);
+        String key = request.getParameter("key");
+        String value = request.getParameter("value");
+        List<Object> objectList = applicationService.search(key, value);
         List<Category> categoryList = applicationService.findListCategory();
-        request.setAttribute("listColumn",listcolumn);
+        request.setAttribute("listColumn", listcolumn);
         request.setAttribute("objectList", objectList);
         request.setAttribute("peopleList", categoryList);
-        request.setAttribute("key",key);
-        request.setAttribute("value",value);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("application/list.jsp");
-        dispatcher.forward(request,response);
+        request.setAttribute("key", key);
+        request.setAttribute("value", value);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("application/list.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void createObject(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
-        String id_object=request.getParameter("id_object");
-        String id_patience=request.getParameter("id_patience");
-        String name_patience=request.getParameter("name_patience");
-        String date_in=request.getParameter("date_in");
-        String date_out=request.getParameter("date_out");
-        String reason=request.getParameter("reason");
-        Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
-        boolean isExists= applicationService.insertObject(object);
-        if (isExists){
-            response.sendRedirect("/application?m=3");
-        }
-        else {
-            response.sendRedirect("/application?m=4");
-        }
-    }
+        String id_object = request.getParameter("id_object");
+        String id_patience = request.getParameter("id_patience");
+        String name_patience = request.getParameter("name_patience");
+        String date_in = request.getParameter("date_in");
+        String date_out = request.getParameter("date_out");
+        String reason = request.getParameter("reason");
+//        Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
+//        boolean isExists= applicationService.insertObject(object);
+//        if (isExists){
+//        response.sendRedirect("/application?m=3");
+//    }
+//        else {
+//            response.sendRedirect("/application?m=4");
+//        }
+}
+
 
     private void updateObject(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ParseException {
         String id_object=request.getParameter("id_object");
@@ -146,8 +147,8 @@ public class ApplicationServlet extends HttpServlet {
         String date_in=request.getParameter("date_in");
         String date_out=request.getParameter("date_out");
         String reason=request.getParameter("reason");
-        Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
-        applicationService.updateObject(object);
+//        Object object=new Object(id_object,id_patience,name_patience,date_in,date_out,reason);
+//        applicationService.updateObject(object);
         response.sendRedirect("/application?m=2");
 
     }

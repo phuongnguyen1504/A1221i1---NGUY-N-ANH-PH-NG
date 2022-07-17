@@ -1,5 +1,6 @@
 package exam.exam.repository;
 
+import exam.exam.model.Category;
 import exam.exam.model.Product;
 
 import java.sql.*;
@@ -7,8 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository implements IProductRepository{
+    private static final String FIND_PRODUCT = "select * from `product` p join `category` c on p.category=c.id where p.id=?;";
     private DBConnection dbConnection=new DBConnection();
-    private static final String FIND_ALL_PRODUCT = "select * from `product` p join `category` c on p.category=c.id;";
+//    private static final String FIND_ALL_PRODUCT = "select * from `product` p join `category` c on p.category=c.id ;";
+    private static final String FIND_ALL_PRODUCT = "select SQL_CALC_FOUND_ROWS * from `product` p join `category` c on p.category=c.id limit ?,?;";
     private static final String UPDATE_PRODUCT = "update `product` set name=?,price=?,quantity=?,color=?,description=?,category=? where id=?";
     private static final String DELETE_BY_ID = "delete from `product` where id=?";
     private static final String INSERT_PRODUCT = "insert into `product`(`name`, price, quantity,color,description,category) values(?,?,?,?,?,?)";
@@ -17,28 +20,36 @@ public class ProductRepository implements IProductRepository{
     private static final String SEARCH_BY_PRICE = "select * from `product` p join `category` c on p.category=c.id where p.price like concat('%',?,'%')";
     private static final String SEARCH_BY_QUANTITY = "select * from `product` p join `category` c on p.category=c.id where p.quantity like concat('%',?,'%')";
     private static final String SEARCH_BY_COLOR = "select * from `product` p join `category` c on p.category=c.id where p.color like concat('%',?,'%')";
-    private static final String SEARCH_BY_CATEGORY = "select * from `product` p join `category` c on p.category=c.id where p.category like concat('%',?,'%')";
-    private static final String FIND_LIST_CATEGORY ="select name from category";
-//    private final String DBURL="jdbc:mysql://localhost:3306/casestudy";
-//    private final String USERNAME="root";
-//    private final String PASSWORD="12345678";
+    private static final String SEARCH_BY_CATEGORY = "select * from `product` p join `category` c on p.category=c.id where c.name like concat('%',?,'%')";
+    private static final String FIND_LIST_CATEGORY ="select * from category";
+    private int noOfRecords;
 
-    public ProductRepository() {
+
+    public ProductRepository() throws SQLException {
 
     }
-    public List<String> findListCategory(){
-      List<String> list=new ArrayList<>();
+    public List<Category> findListCategory(){
+      List<Category> list=new ArrayList<>();
       try(Connection connection=DBConnection.getConnection();
       PreparedStatement statement=connection.prepareStatement(FIND_LIST_CATEGORY)) {
           ResultSet rs=statement.executeQuery();
           while (rs.next()){
-              list.add(rs.getString(1));
+              int id=rs.getInt(1);
+              String name=rs.getString(2);
+              list.add(new Category(id,name));
           }
       } catch (SQLException e) {
           throw new RuntimeException(e);
       }
         return list;
-    };
+    }
+
+    @Override
+    public int getNoOfRecords() {
+        return noOfRecords;
+    }
+
+    ;
 //    private Connection getConnection(){
 //        Connection connection=null;
 //        try{
@@ -71,15 +82,38 @@ public class ProductRepository implements IProductRepository{
 
     @Override
     public Product selectProduct(int id) {
-        return null;
+        List<Product> products=new ArrayList<>();
+        ResultSet rs = null;
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(FIND_PRODUCT)) {
+            statement.setInt(1, id);
+            rs=statement.executeQuery();
+            while (rs.next()){
+                int ids=rs.getInt(1);
+                String name=rs.getString(2);
+                double price=rs.getDouble(3);
+                int quantity=rs.getInt(4);
+                String color=rs.getString(5);
+                String description=rs.getString(6);
+                int code_category=rs.getInt(7);
+                String category=rs.getString(9);
+                products.add(new Product(ids,name,price,quantity,color,description,code_category,category));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return products.get(0);
     }
 
-    @Override
-    public List<Product> selectAllProduct() {
+        @Override
+    public List<Product> selectAllProduct(int offset,
+                                          int noOfRecords) {
         List<Product> products=new ArrayList<>();
         ResultSet rs=null;
         try(Connection connection=DBConnection.getConnection();
             PreparedStatement statement=connection.prepareStatement(FIND_ALL_PRODUCT)){
+            statement.setInt(1, offset);
+            statement.setInt(2, noOfRecords);
             rs=statement.executeQuery();
             while (rs.next()){
                 int id=rs.getInt(1);
@@ -91,6 +125,10 @@ public class ProductRepository implements IProductRepository{
                 int code_category=rs.getInt(7);
                 String category=rs.getString(9);
                 products.add(new Product(id,name,price,quantity,color,description,code_category,category));
+            }
+            rs = statement.executeQuery("SELECT FOUND_ROWS()");
+            if (rs.next()) {
+                this.noOfRecords = rs.getInt(1);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -139,22 +177,19 @@ public class ProductRepository implements IProductRepository{
         ResultSet rs=null;
         String query=null;
         switch (key){
-            case "All":
-                query= SEARCH_ALL_COLUMN;
-                break;
-            case "name":
+            case "1":
                 query=SEARCH_BY_NAME;
                 break;
-            case "price":
+            case "2":
                 query=SEARCH_BY_PRICE;
                 break;
-            case "quantity":
+            case "3":
                 query=SEARCH_BY_QUANTITY;
                 break;
-            case "color":
+            case "4":
                 query=SEARCH_BY_COLOR;
                 break;
-            case "category":
+            case "5":
                 query=SEARCH_BY_CATEGORY;
                 break;
             default:
@@ -162,17 +197,7 @@ public class ProductRepository implements IProductRepository{
         }
         try(Connection connection=DBConnection.getConnection();
         PreparedStatement statement=connection.prepareStatement(query)){
-            if(key=="All") {
-                statement.setString(1, value);
-                statement.setString(2, value);
-                statement.setString(3, value);
-                statement.setString(4, value);
-                statement.setString(5, value);
-            }
-            else {
-                statement.setString(1,value);
-            }
-
+            statement.setString(1,value);
             rs=statement.executeQuery();
             while (rs.next()){
                 int id=rs.getInt(1);

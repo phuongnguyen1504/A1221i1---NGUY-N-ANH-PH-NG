@@ -18,7 +18,7 @@
 
 <body>
 
-<div class="container">
+<div class="container" data-inforProduct="${inforProduct}">
     <div class="row">
         <h2 style="text-align:center">Application</h2>
     </div>
@@ -32,19 +32,45 @@
             <form action="" method="post" id="form-search" class="d-flex" style="margin-bottom: 0">
                 <div class="col-4">
                     <select class="form-select" id="select-sort" aria-label="Default select example">
-                        <option value="All" selected>All</option>
-                        <option value="name">Product Name</option>
-                        <option value="price">Price</option>
-                        <option value="quantity">Quantity</option>
-                        <option value="color">Color</option>
-                        <option value="category">Category</option>
+                        <c:forEach var="col" items='${requestScope["listColumn"]}' begin="1" end="5" varStatus="c">
+                            <c:if test="${c.count == key}">
+                                <option value="${c.count}" selected><c:out value="${col}"/></option>
+                            </c:if>
+                            <c:if test="${c.count != key}">
+                                <option value="${c.count}"><c:out value="${col}"/></option>
+                            </c:if>
+
+                        </c:forEach>
+                        <%--                        <option value="All" selected>All</option>--%>
+                        <%--                        <option value="name">Product Name</option>--%>
+                        <%--                        <option value="price">Price</option>--%>
+                        <%--                        <option value="quantity">Quantity</option>--%>
+                        <%--                        <option value="color">Color</option>--%>
+                        <%--                        <option value="category">Category</option>--%>
                     </select>
                 </div>
                 <div class="col-8">
                     <div class="input-group">
-                        <input type="search" class="form-control border-end-0 border rounded-pill" id="input-search"
-                               placeholder="&#xF002; Search" aria-label="Username" aria-describedby="basic-addon1"
-                               style="font-family:Arial, FontAwesome;margin-left:1%">
+                        <c:choose>
+                            <c:when test="${not empty value}">
+                                <input type="search" class="form-control border-end-0 border rounded-pill"
+                                       id="input-search"
+                                       placeholder="&#xF002; Search" aria-label="Username"
+                                       aria-describedby="basic-addon1"
+                                       style="font-family:Arial, FontAwesome;margin-left:1%" value="${value}">
+                            </c:when>
+                            <c:otherwise>
+                                <input type="search" class="form-control border-end-0 border rounded-pill"
+                                       id="input-search"
+                                       placeholder="&#xF002; Search" aria-label="Username"
+                                       aria-describedby="basic-addon1"
+                                       style="font-family:Arial, FontAwesome;margin-left:1%">
+                            </c:otherwise>
+                        </c:choose>
+
+                        <%--                        <input type="search" class="form-control border-end-0 border rounded-pill" id="input-search"--%>
+                        <%--                               placeholder="&#xF002; Search" aria-label="Username" aria-describedby="basic-addon1"--%>
+                        <%--                               style="font-family:Arial, FontAwesome;margin-left:1%">--%>
                         <button type="submit" class="btn btn-outline-primary btn-search"
                                 style="font-family:Arial, FontAwesome;margin-left:1%" href="">&#xF002 Search
                         </button>
@@ -94,9 +120,9 @@
                                data-name="${product.name}" data-price="${product.price}"
                                data-quantity="${product.quantity}"
                                data-color="${product.color}" data-description="${product.description}"
-                               data-category="${product.category}" data-code-category="${product.code_category}"
+                               data-category="${product.category}" data-code_category="${product.code_category}"
                                data-bs-target="#editUserModal"
-                               href="" type="button">Edit</a>
+                               href="/product?action=edit+/product?action=edit&id=+${product.id}" type="button">Edit</a>
                             <a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-id="${product.id}"
                                data-bs-target="#deleteUserModal" href="" type="button">Delete</a>
                         </td>
@@ -105,6 +131,35 @@
                 </tbody>
             </table>
         </c:if>
+    </div>
+    <div class="row" id="nav-page" data-id="${currentPage}">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+
+                    <c:if test="${currentPage != 1 and not empty currentPage}">
+                        <a class="page-link pagination-link" href="/product?page=${currentPage - 1}">Previous</a>
+                    </c:if>
+                </li>
+                <c:forEach begin="1" end="${noOfPages}" var="i">
+                    <c:choose>
+                        <c:when test="${currentPage eq i}">
+                            <li class="page-item"><a class="page-link pagination-link">${i}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a class="page-link pagination-link"
+                                                     href="/product?page=${i}">${i}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <li class="page-item">
+                    <c:if test="${currentPage lt noOfPages}">
+                        <a class="page-link pagination-link" href="/product?page=${currentPage + 1}">Next</a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+
     </div>
 </div>
 <!-- Create Modal -->
@@ -143,18 +198,13 @@
                         <div class="form-group">
                             <label>Category</label>
                             <select class="form-select" name="category" id="select-category"
-                                    aria-label="Default select example">
-                                <option value="1" selected>Phone</option>
-                                <option value="2">Television</option>
-                                <option value="3">Motorbike</option>
+                                    aria-label="Default select example" required>
+                                <c:forEach items="${listCategory}" var="p" varStatus="c">
+                                    <option value="${p.id}"><c:out value="${p.name}"/></option>
+                                </c:forEach>
                             </select>
-                            <%--                            <input type="text" class="form-control" name="category"--%>
-                            <%--                                   required>--%>
                         </div>
-                        <%--                        <div class="form-group">--%>
-                        <%--                            <label>Hình ảnh</label>--%>
-                        <%--                            <input type="file" class="form-control imgProduct" name="imgProduct" value="a">--%>
-                        <%--                        </div>--%>
+
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">
@@ -177,7 +227,7 @@
                 <div class="modal-body">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>ID Product</label>
+<%--                            <label>ID Product</label>--%>
                             <input type="text" class="form-control" name="id" id="product_id" hidden>
                         </div>
                         <div class="form-group">
@@ -212,14 +262,10 @@
                                 <%--                                   <option value="${c.id}"   ${c.id == } ? "selected":"">${c.name}</option>--%>
                                 <%--                               </c:forEach> --%>
                                 <c:forEach items="${listCategory}" var="category" varStatus="c">
-                                        <option value="${c.count}"><c:out value="${category}"/></option>
+                                    <option value="${category.id}"><c:out value="${category.name}"/></option>
                                 </c:forEach>
-<%--                                <option value="Phone">Phone</option>--%>
-<%--                                <option value="Television">Television</option>--%>
-<%--                                <option value="Motorbike">Motorbike</option>--%>
                             </select>
-                            <%--                            <input type="text" class="form-control" name="category"--%>
-                            <%--                                   required>--%>
+
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Hủy">

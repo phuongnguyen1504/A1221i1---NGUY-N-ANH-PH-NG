@@ -1,5 +1,6 @@
 package exam.exam.controller;
 
+import exam.exam.model.Category;
 import exam.exam.model.Product;
 import exam.exam.service.IProductService;
 import exam.exam.service.ProductService;
@@ -14,8 +15,14 @@ import java.util.List;
 @WebServlet(name = "ProductServlet", value = {"/product",""})
 public class ProductServlet extends HttpServlet {
     private IProductService productService;
+    private final String[] listcolumn = {"STT", "Product Name", "Price", "Quantity", "Color", "Category", "Action"};
+
     public void init(){
-        productService=new ProductService();
+        try {
+            productService=new ProductService();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +34,7 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 break;
             case "edit":
+                getInfor(request,response);
                 break;
             case "delete":
                 deleteProduct(request,response);
@@ -36,18 +44,36 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "sort":
             default:
-                listUser(request, response);
+                listProduct(request, response);
                 break;
         }
+    }
+
+    private void getInfor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id=Integer.parseInt(request.getParameter("id"));
+        Product product= productService.selectProduct(id);
+        List<Category> listCategory=productService.findListCategory();
+        request.setAttribute("inforProduct",product);
+        request.setAttribute("listCategory",listCategory);
+        request.setAttribute("listColumn", listcolumn);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("product/list.jsp");
+        dispatcher.forward(request,response);
+
     }
 
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String key=request.getParameter("key");
         String value=request.getParameter("value");
         List<Product> products=productService.search(key,value);
+        List<Category> listCategory=productService.findListCategory();
+        request.setAttribute("listColumn", listcolumn);
+        request.setAttribute("listCategory",listCategory);
         request.setAttribute("products",products);
+        request.setAttribute("key", key);
+        request.setAttribute("value", value);
         RequestDispatcher dispatcher=request.getRequestDispatcher("product/list.jsp");
         dispatcher.forward(request,response);
+
 
     }
 
@@ -61,15 +87,26 @@ public class ProductServlet extends HttpServlet {
 //        dispatcher.forward(request,response);
     }
 
-    private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String m = request.getParameter("m");
         if(m != null){
             request.setAttribute("m", Integer.parseInt(m));
         }
-        List<String> listCategory=productService.findListCategory();
-        List<Product> products=productService.selectAllProduct();
+        int page = 1;
+        int recordsPerPage = 5;
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+        List<Category> listCategory=productService.findListCategory();
+        List<Product> products=productService.selectAllProduct((page - 1) * recordsPerPage, recordsPerPage);
+        int noOfRecords = productService.getNoOfRecords();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+//        List<Product> products=productService.selectAllProduct();
         request.setAttribute("products",products);
         request.setAttribute("listCategory",listCategory);
+        request.setAttribute("listColumn", listcolumn);
+        request.setAttribute("noOfPages", noOfPages);
+        request.setAttribute("currentPage", page);
         RequestDispatcher dispatcher=request.getRequestDispatcher("product/list.jsp");
         dispatcher.forward(request,response);
     }
@@ -95,7 +132,7 @@ public class ProductServlet extends HttpServlet {
                 searchProduct(request,response);
                 break;
             default:
-                listUser(request, response);
+                listProduct(request, response);
                 break;
         }
     }

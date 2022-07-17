@@ -3,72 +3,108 @@ package thi.thi.model;
 import java.util.Date;
 
 public class Object {
-    private String id_object;
-    private String id_patience;
-    private String name_patience;//name of patience
-    private String date_in;
-    private String date_out;
-    private String reason;
+    private int id;
+    private String name;
+    private double price;
+    private int quantity;
+    private String color;
+    private String description;
+    private int code_category;
+    private String category;
 
     public Object() {
     }
 
-    public Object(String id_object, String id_patience, String name_patience, String date_in, String date_out, String reason) {
-        this.id_object = id_object;
-        this.id_patience = id_patience;
-        this.name_patience = name_patience;
-        this.date_in = date_in;
-        this.date_out = date_out;
-        this.reason = reason;
+    public Object(String name, double price, int quantity, String color, String description, int code_category) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        this.code_category = code_category;
     }
 
-
-
-    public String getId_object() {
-        return id_object;
+    public Object(int id, String name, double price, int quantity, String color, String description, int code_category, String category) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        this.code_category = code_category;
+        this.category = category;
     }
 
-    public void setId_object(String id_object) {
-        this.id_object = id_object;
+    public Object(String name, double price, int quantity, String color, String description, String category) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        this.category = category;
     }
 
-    public String getId_patience() {
-        return id_patience;
+    public int getId() {
+        return id;
     }
 
-    public void setId_patience(String id_patience) {
-        this.id_patience = id_patience;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getName_patience() {
-        return name_patience;
+    public String getName() {
+        return name;
     }
 
-    public void setName_patience(String name_patience) {
-        this.name_patience = name_patience;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDate_in() {
-        return date_in;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDate_in(String date_in) {
-        this.date_in = date_in;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getDate_out() {
-        return date_out;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDate_out(String date_out) {
-        this.date_out = date_out;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getReason() {
-        return reason;
+    public String getColor() {
+        return color;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getCode_category() {
+        return code_category;
+    }
+
+    public void setCode_category(int code_category) {
+        this.code_category = code_category;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

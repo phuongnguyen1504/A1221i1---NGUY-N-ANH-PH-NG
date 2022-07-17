@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const valid_id_object=/^[Bb][aA]-\d{3}$/;
     const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    // !validName.test(firstName))
     //set key,value when send redirect to jsp
     //show modal when need to appear
     // $("#createObjectModal").modal('show');
@@ -15,27 +17,50 @@ $(document).ready(function () {
         }
     };
 
-
+// Tao function delete
     $('.btn-delete').click(function () {
         let id = $(this).data("id");
-        $('.btn-confirm-delete').attr("href", "/application?action=delete&id=" + id);
-    });
-    // tao button edit
-    $('.btn-edit').click(function () {
-        let object = $(this).data("object");
-        let people = $(this).data("people");
-        let datein = $(this).data("datein");
-        let dateout = $(this).data("dateout");
-        let reason = $(this).data("reason");
-        $("#id-object").val(object);
-        $("#id-object-disable").val(object);
-        $("#id-patience").val(people);
-        $("#id-patience-disable").val(people);
-        $("div .set-select select").val(people);
-        $("#date-in").val(datein);
-        $("#date-out").val(dateout);
-        $("#reason-input").val(reason);
+        $('.btn-confirm-delete').attr("href", "/product?action=delete&id=" + id);
     })
+
+    // $('.btn-delete').click(function () {
+    //     let id = $(this).data("id");
+    //     $('.btn-confirm-delete').attr("href", "/application?action=delete&id=" + id);
+    // });
+    // tao button edit sua o day
+    $('.btn-edit').click(function () {
+        // let object = $(this).data("object");
+        // let people = $(this).data("people");
+        // let datein = $(this).data("datein");
+        // let dateout = $(this).data("dateout");
+        // let reason = $(this).data("reason");
+        // $("#id-object").val(object);
+        // $("#id-object-disable").val(object);
+        // $("#id-patience").val(people);
+        // $("#id-patience-disable").val(people);
+        // $("div .set-select select").val(people);
+        // $("#date-in").val(datein);
+        // $("#date-out").val(dateout);
+        // $("#reason-input").val(reason);
+
+        let id = $(this).data("id");
+        let name = $(this).data("name");
+        let price = $(this).data("price");
+        let quantity = $(this).data("quantity");
+        let color = $(this).data("color");
+        let description = $(this).data("description");
+        let category = $(this).data("category");
+        let code_category = $(this).data("code_category");
+        console.log(category);
+        $("#product_id").val(id);
+        $("#product_name").val(name);
+        $("#product_price").val(price);
+        $("#product_quantity").val(quantity);
+        $("#product_description").val(description);
+        $("#product_color").val(color);
+        $("div.set_select select").val(code_category);
+    })
+
     $('.confirm-edit').click(function () {
         $('#form_edit').attr("action", "/application?action=edit&id=" + object);
     });
@@ -106,7 +131,7 @@ $(document).ready(function () {
 
 
     // validation to submit the form
-    $('input').on('change',function(e){
+    $('#myForm').on('change',function(e){
         if($('#myForm').find('.valid-input').length==2){
             $('#submit-btn').removeClass('allowed-submit');
             $('#submit-btn').removeAttr('disabled');

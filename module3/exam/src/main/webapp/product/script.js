@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    let value=$('.container').data("inforProduct");
+    if (value!=null){
+        $("#createUserModal").modal('show');
+    }
+    let options = document.querySelectorAll('.pagination-link');
+    let valuePage=$('#nav-page').data("id");
+    for (let i = 0; i < options.length; i++) {
+        console.log(options[i].value);
+        if (options[i].textContent==valuePage){
+            options[i].style.color="white";
+            options[i].style.backgroundColor="blue";
+        }
+    };
     // Tao filter
     $("#myInput").on("keyup", function () {
         if ($("#selectValue").val() == "All") {
@@ -66,17 +79,6 @@ $(document).ready(function () {
         $("#product_color").val(color);
         $("div.set_select select").val(code_category);
 
-        // $('#span_id select option[value="' + some_value + '"]').prop('selected', true);
-        // switch (category) {
-        //     case "Phone":
-        //         $("div.set_select select").val(1);
-        //         break;
-        //     case "Television":
-        //         $("div.set_select select").val(2);
-        //         break;
-        //     case "Motorbike":
-        //         $("div.set_select select").val(3);
-        //         break;
 
     });
     $('.confirm-edit').click(function () {

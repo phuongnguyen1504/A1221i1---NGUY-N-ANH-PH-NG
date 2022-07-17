@@ -1,5 +1,6 @@
 package exam.exam.service;
 
+import exam.exam.model.Category;
 import exam.exam.model.Product;
 import exam.exam.repository.IProductRepository;
 import exam.exam.repository.ProductRepository;
@@ -9,6 +10,10 @@ import java.util.List;
 
 public class ProductService implements IProductService{
     private IProductRepository productRepository= (IProductRepository) new ProductRepository();
+
+    public ProductService() throws SQLException {
+    }
+
     @Override
     public void insertProduct(Product product) {
         productRepository.insertProduct(product);
@@ -20,8 +25,9 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public List<Product> selectAllProduct() {
-        return productRepository.selectAllProduct();
+    public List<Product> selectAllProduct(int offset,
+                                          int noOfRecords) {
+        return productRepository.selectAllProduct(offset,noOfRecords);
     }
 
     @Override
@@ -45,7 +51,12 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public List<String> findListCategory() {
+    public List<Category> findListCategory() {
         return productRepository.findListCategory();
+    }
+
+    @Override
+    public int getNoOfRecords() {
+        return productRepository.getNoOfRecords();
     }
 }
