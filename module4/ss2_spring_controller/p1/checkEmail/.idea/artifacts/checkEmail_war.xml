@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="checkEmail:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>checkEmail</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="checkEmail-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="checkEmail:war exploded" />
+    </root>
+  </artifact>
+</component>
