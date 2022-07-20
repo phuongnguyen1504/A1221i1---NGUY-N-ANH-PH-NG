@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2b1eecdf-5b1f-4710-a4d7-fd078f9b0293" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../ss2_spring_controller/p1/checkEmail/checkEmail.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/java/configuration/AppConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/java/configuration/AppInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/java/controller/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/java/model/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/webapp/WEB-INF/views/config.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e1_config_mail/config_mail/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/java/configuration/AppConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/java/configuration/AppInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/java/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/java/model/Song.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/java/service/SongService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../e2_upload_music/upload_music/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/health_declaration/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/java/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/java/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/webapp/WEB-INF/views/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/webapp/WEB-INF/views/info.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/p1_form_and_data_binding/formanddatabinding/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/app-conf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/HelloServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/configuration/AppInit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/configuration/ApplicationConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/controller/CustomerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/model/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/service/CustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/service/CustomerServiceFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/com/example/customer_management/service/Impl/SimpleCustomerServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/customers/info.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/customers/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-aop-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-beans-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-context-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-core-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-expression-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-jcl-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-web-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/lib/spring-webmvc-5.3.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss2_spring_controller/bai_tap/Calculator/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss2_spring_controller/bai_tap/Calculator/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss2_spring_controller/bai_tap/sandwich/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss2_spring_controller/bai_tap/sandwich/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/build/tmp/war/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss2_spring_controller/thuc_hanh/p2_validation_email_gradle/build/tmp/war/MANIFEST.MF" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CD9nmWpYilLAVmpYEOTFNaQMjf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.64" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.64" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="Gradle : com.example : health_declaration-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Gradle___com_example___health_declaration_1_0_SNAPSHOT_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : com.example : health_declaration-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b1eecdf-5b1f-4710-a4d7-fd078f9b0293" name="Changes" comment="" />
+      <created>1658326459701</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658326459701</updated>
+      <workItem from="1658326461345" duration="225000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
