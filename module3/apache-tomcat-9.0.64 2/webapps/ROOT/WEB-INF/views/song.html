@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{/layout::common}" class="divOut"></div>
+<!--<strong style="color: green" th:text="${message}"></strong> &lt;!&ndash;text &ndash;&gt;-->
+<p th:if="${songList.isEmpty()}" style="color:red">List Empty</p>
+
+<table class="table" border="1" th:unless="${songList.isEmpty()}">
+    <thead>
+    <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Tên bài hát</th>
+        <th scope="col">Nghệ sĩ thể hiện</th>
+        <th scope="col">Thể loại nhạc</th>
+        <th scope="col">Đường dẫn file bài hát</th>
+        <th scope="col">File bài hát</th>
+        <th scope="col">Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="song,c : ${songList}">
+        <td th:text="${c.count}"></td>
+        <td th:text="${song.name}"></td>
+        <td th:text="${song.artist}"></td>
+        <td th:text="${song.kind}"></td>
+        <td th:text="${song.link}"></td>
+        <td th:text="${song.path}"></td>
+
+        <td>
+            <a th:href="@{/student/edit/(id = ${song.id})}">Edit</a> <!--key-value-->
+            <a th:href="@{/student/delete/(id = ${song.id})}">Delete</a> <!--key-value-->
+<!--            <a th:href="@{/student/edit/__${student.id}__}">Edit2</a> &lt;!&ndash;value&ndash;&gt;-->
+<!--            <a th:href="@{/student/edit/{id}(id = ${student.id})}">Edit3</a> &lt;!&ndash;value&ndash;&gt;-->
+<!--            <a href="https://vnexpress.net/">Doc bao</a>-->
+<!--            <a href="home.html">Doc bao</a> &lt;!&ndash;HTML tĩnh &ndash;&gt;-->
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="~{/layout::abc}" class="divOut"></div>
+
+</body>
+</html>
