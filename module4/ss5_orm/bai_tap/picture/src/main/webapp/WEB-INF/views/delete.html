@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="~{/layout::common}" class="divOut"></div>
+<h1>Delete Student</h1>
+<form th:object="${song}" method="post">
+    <h2>Are you sure to delete?</h2>
+    <a type="button" th:href="@{/song/del/}">Yes</a>
+    <a type="button" th:href="@{/song/list}">No</a>
+</form>
+</body>
+</html>

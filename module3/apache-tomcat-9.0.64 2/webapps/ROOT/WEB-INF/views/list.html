@@ -1,81 +1,137 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
-    <script type="text/javascript" src="webjars/popper.js/2.9.3/umd/popper.js"></script>
-    <script type="text/javascript" src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <script src="WEB-INF/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-    <h1 style="margin: 40px 0; text-align: center">Danh sách bài hát</h1>
-    <div class="row" style="height: 40px">
-        <div class="col-6">
-            <a type="button" class="btn btn-success" data-bs-toggle="modal"
-               data-bs-target="#createModal">Thêm mới</a>
-            <a class="btn btn-danger btn-delete" style="margin-left: 15px" data-bs-toggle="modal"
-               data-bs-target="#deleteModal">Xóa</a>
-        </div>
-        <div class="col-6" style="line-height: 40px">
-            <form action="" method="post" class="d-flex" style="margin-bottom: 0">
-                <div class="col-4">
-                    <select class="form-select" aria-label="Default select example"
-                            style="width: 200px">
-                        <option value="name" selected>Tên bài hát</option>
-                        <option value="singer">Nghệ sĩ thể hiện</option>
-                        <option value="type">Thể loại nhạc</option>
-                    </select>
-                </div>
-                <div class="col-8 d-inline-flex">
-                    <input class="form-control me-3" type="search" placeholder="Search"
-                           aria-label="Search" autofocus>
-                    <button class="btn btn-primary" href="" type="submit" style="width: 120px">Tìm
-                        kiếm
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <table class="table table-hover table-striped">
-        <thead>
-        <tr>
-            <th scope="col">
-                <div class="form-check">
-                    <input style="margin-top: 5px" class="form-check-input" type="checkbox"
-                           id="checkAll">
-                </div>
-            </th>
-            <th scope="col">No.</th>
-            <th scope="col">Tên bài hát</th>
-            <th scope="col">Nghệ sĩ thể hiện</th>
-            <th scope="col">Thể loại nhạc</th>
-            <th scope="col">Đường dẫn file bài hát</th>
-            <th scope="col">Hành động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="row,rowStat : ${list}">
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" value="${item.id}" type="checkbox">
-                </div>
-            </td>
-            <td th:text="${rowStat.count}"></td>
-            <td th:text="${row.getName()}"></td>
-            <td th:text="${row.getSinger()}"></td>
-            <td th:text="${row.getType()}"></td>
-            <td th:text="${row.getPath()}"></td>
-            <td>
-                <a class="btn btn-danger" th:href="@{/song/{id}/edit(id=${row.getId()})}">Sửa</a>
-                <a class="btn btn-warning" th:href="@{/song/{id}/delete(id=${row.getId()})}">Xoá</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div th:replace="~{/layout::common}" class="divOut"></div>
+<strong style="color: green" th:text="${message}"></strong>
+<div class="row">
+    <img id="img-of-the-day" style="text-align: center;position: center">
 </div>
 
+<script>
+    let query = 'https://api.nasa.gov/planetary/apod?api_key=8NOkSAhg2Nkwpq6uCfQP0TfmcTtNrFHMnDnX1Zxu';
+    let request = new XMLHttpRequest();
+    request.open('GET', query);
+    request.onload = function () {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+        }
+    };
+    request.send();
+</script>
+<button class="btn btn-primary">edit</button>
+<form action="/picture/create" method="post" th:object="${feedback}">
+    <div class="form-group row" style="position: center">
+        <div class="mb-3-row">
+            <label class="col-2 col-form-label">Rate:</label>
+            <div class="col-6">
+                <input class="form-control" type="number" th:min="1" th:max="5" th:field="*{rate}">
+            </div>
+        </div>
+        <div class="mb-3-row">
+            <label class="col-2 col-form-label">Author:</label>
+            <div class="col-6">
+                <input class="form-control" type="text" th:field="*{author}">
+            </div>
+        </div>
+        <div class="mb-3-row">
+            <label class="col-2 col-form-label">Feedback:</label>
+            <div class="col-6">
+                <textarea class="form-control" th:rows="4" th:field="*{feedback}"/>
+            </div>
+        </div>
+        <div class="mb-3-row">
+            <label class="col-2 col-form-label">Feedback:</label>
+            <div class="col-6">
+                <button type="submit">comment</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!--<strong style="color: green" th:text="${message}"></strong> &lt;!&ndash;text &ndash;&gt;-->
+<p th:if="${FeedbackList.isEmpty()}" style="color:red">List Empty</p>
+
+<table class="table" border="1" th:unless="${FeedbackList.isEmpty()}">
+    <thead>
+    <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Date</th>
+        <th scope="col">Rate</th>
+        <th scope="col">FeedBack</th>
+        <th scope="col">Like</th>
+        <th scope="col">action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="f,c : ${FeedbackList}">
+        <td th:text="${c.count}">0</td>
+        <td th:text="${f.date}">0</td>
+        <td th:text="${f.rate}">0</td>
+        <td th:text="${f.feedback}">0</td>
+        <td th:text="${f.like}">0</td>
+        <td>
+            <a th:href="@{/picture/like/(id = ${f.id})}" type="button" class="btn btn-primary">Like</a> <!--key-value-->
+
+
+            <!--            <a th:href="@{/f/delete/(id = ${f.id})}">Delete</a> &lt;!&ndash;key-value&ndash;&gt;-->
+            <!--            <a th:href="@{/student/edit/__${student.id}__}">Edit2</a> &lt;!&ndash;value&ndash;&gt;-->
+            <!--            <a th:href="@{/student/edit/{id}(id = ${student.id})}">Edit3</a> &lt;!&ndash;value&ndash;&gt;-->
+            <!--            <a href="https://vnexpress.net/">Doc bao</a>-->
+            <!--            <a href="home.html">Doc bao</a> &lt;!&ndash;HTML tĩnh &ndash;&gt;-->
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="~{/layout::abc}" class="divOut"></div>
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteUserModal">
+    <div class="modal-dialog">
+        <div class="modal-content" id="form-confirm-delete">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    Are you sure to delete?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                <a type="button" id="ToastDelete" class="btn btn-danger btn-confirm-delete" href="">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".btn-delete").click(function () {
+        let id = $(this).data("id");
+        $('.btn-confirm-delete').attr("href", "/song/delete/id=" + id);
+
+    })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
 </body>
 </html>
