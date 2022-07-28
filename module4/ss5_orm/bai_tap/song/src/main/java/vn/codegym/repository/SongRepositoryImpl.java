@@ -29,4 +29,12 @@ public class SongRepositoryImpl implements ISongRepository {
 //        entityManager.remove(entityManager.merge(song));
 //        entityManager.find(Student.class, 5); // tìm kiếm
     }
+    public Song findById(int id){
+        TypedQuery<Song> query= (TypedQuery<Song>) entityManager.createNativeQuery("SELECT * FROM song where id="+id,Song.class);
+        return query.getSingleResult();
+    }
+    @Override
+    public void delete(int id) {
+        entityManager.remove(findById(id));
+    }
 }

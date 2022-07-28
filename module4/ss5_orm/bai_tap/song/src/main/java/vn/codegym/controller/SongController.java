@@ -42,6 +42,7 @@ public class SongController {
 
     @PostMapping("/list")
     public ModelAndView showStudentList1(){
+
         return new ModelAndView("song",
                 "songList", songService.findAll());
     }
@@ -52,6 +53,12 @@ public class SongController {
 
         model.addAttribute("song", new Song());
         return "create";
+    }
+    @GetMapping("/delete/id={id}")
+    public String deleteStudent(@PathVariable("id") int id,RedirectAttributes redirectAttributes){
+        songService.delete(id);
+        redirectAttributes.addFlashAttribute("message","Delete song: OK!");
+        return "redirect:song/list";
     }
 
     @PostMapping("/create")

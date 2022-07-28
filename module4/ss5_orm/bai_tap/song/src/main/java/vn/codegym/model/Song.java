@@ -16,7 +16,6 @@ public class Song {
     private String name;
     private String artist;
     private String kind;
-    private String link;
     private String path;
 
 
@@ -55,13 +54,7 @@ public class Song {
         this.kind = kind;
     }
 
-    public String getLink() {
-        return link;
-    }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
 
     public String getPath() {
         return path;

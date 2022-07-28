@@ -9,4 +9,6 @@ public interface ISongService {
 
 
     void save(Song song);
+
+    void delete(int id);
 }

@@ -22,4 +22,9 @@ public class SongServiceImpl implements ISongService {
     public void save(Song song) {
         repository.save(song);
     }
+
+    @Override
+    public void delete(int id) {
+        repository.delete(id);
+    }
 }
