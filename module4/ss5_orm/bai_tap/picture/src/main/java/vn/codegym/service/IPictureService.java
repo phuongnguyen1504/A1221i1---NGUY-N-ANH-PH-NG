@@ -11,4 +11,6 @@ public interface IPictureService {
     void save(Feedback song);
 
     void delete(int id);
+
+    void like(int id);
 }

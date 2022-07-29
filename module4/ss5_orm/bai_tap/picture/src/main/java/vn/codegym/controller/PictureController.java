@@ -61,4 +61,10 @@ public class PictureController {
 //        return "forward:/song/list";
         return "redirect:/picture/list";
     }
+    @GetMapping("/like")
+    public String likeFeedBack(@RequestParam("id") int id){
+        pictureService.like(id);
+        return "redirect:/picture/list";
+
+    }
 }

@@ -27,4 +27,9 @@ public class PictureServiceImpl implements IPictureService {
     public void delete(int id) {
         repository.delete(id);
     }
+
+    @Override
+    public void like(int id) {
+        repository.like(id);
+    }
 }

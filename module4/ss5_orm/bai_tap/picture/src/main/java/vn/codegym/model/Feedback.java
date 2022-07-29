@@ -3,7 +3,7 @@ package vn.codegym.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "feedback")
+//@Table(name = "feedback")
 public class Feedback {
 
     @Id
@@ -14,7 +14,7 @@ public class Feedback {
     private String rate;
     private String author;
     private String feedback;
-    private int like;
+    private int likebutton;
     private String date; //date feedback
 
 
@@ -53,12 +53,12 @@ public class Feedback {
         this.feedback = feedback;
     }
 
-    public int getLike() {
-        return like;
+    public int getLikebutton() {
+        return likebutton;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLikebutton(int like) {
+        this.likebutton = like;
     }
 
     public String getDate() {

@@ -9,4 +9,6 @@ public interface IPictureRepository {
     void save(Feedback student);
 
     void delete(int id);
+
+    void like(int id);
 }

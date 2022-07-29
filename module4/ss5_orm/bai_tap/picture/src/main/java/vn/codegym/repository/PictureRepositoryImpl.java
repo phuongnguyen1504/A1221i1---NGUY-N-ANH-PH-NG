@@ -1,6 +1,5 @@
 package vn.codegym.repository;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 import vn.codegym.model.Feedback;
 
@@ -8,9 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -25,7 +22,7 @@ public class PictureRepositoryImpl implements IPictureRepository {
         LocalDate date=LocalDate.now();
         String str= String.valueOf(date);
         TypedQuery<Feedback> query = (TypedQuery<Feedback>) entityManager
-                .createNativeQuery("SELECT * FROM feedback", Feedback.class);
+                .createNativeQuery("SELECT * FROM Feedback", Feedback.class);
         return query.getResultList();
     }
 
@@ -34,7 +31,7 @@ public class PictureRepositoryImpl implements IPictureRepository {
         LocalDate date=LocalDate.now();
 
         feedback.setDate(String.valueOf(date));
-        feedback.setLike(0);
+        feedback.setLikebutton(0);
         Feedback f=feedback;
         entityManager.persist(feedback);
 //        entityManager.remove(entityManager.merge(song));
@@ -47,5 +44,12 @@ public class PictureRepositoryImpl implements IPictureRepository {
     @Override
     public void delete(int id) {
         entityManager.remove(findById(id));
+    }
+
+    @Override
+    public void like(int id) {
+        Feedback feedback=findById(id);
+        feedback.setLikebutton(feedback.getLikebutton()+1);
+        entityManager.merge(feedback);
     }
 }
