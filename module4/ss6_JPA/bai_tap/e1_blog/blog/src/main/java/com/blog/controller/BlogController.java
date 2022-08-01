@@ -1,8 +1,10 @@
 package com.blog.controller;
 
 import com.blog.model.Blog;
+import com.blog.model.BlogForm;
 import com.blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,54 +12,38 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping({"/blog","/home"})
 public class BlogController {
-
+    @Value("${file-upload}")
+    private String uploadFolder;
 //    @Qualifier("studentServiceImpl")
     @Autowired
     private IBlogService blogService;
 
-
-//    @Autowired
-//    public void setStudentService(IBlogService studentService) {
-//        this.studentService = studentService;
-//    }
-
-
-//    public BlogController(IBlogService studentService) {
-//        this.studentService = studentService;
-//    }
 
     @RequestMapping(value = "/list",
                     method = RequestMethod.GET)
 //                    consumes = "text/html",
 //                    produces = "text/html")
     public ModelAndView showBlogList(Model model){
-        model.addAttribute("blog",new Blog());
+        model.addAttribute("blog",new BlogForm());
         return new ModelAndView("blog",
                 "BlogList", blogService.findAll());
     }
 
     @PostMapping("/list")
     public ModelAndView showStudentList1(Model model){
-        model.addAttribute("blog",new Blog());
+        model.addAttribute("blog",new BlogForm());
         return new ModelAndView("blog",
                 "BlogList", blogService.findAll());
     }
 
     @GetMapping("/create")
     public String showCreatePage(Model model){
-        List<String> languageList = new ArrayList<>();
-        languageList.add("C#");
-        languageList.add("Java");
-        languageList.add("Angular");
-
-        model.addAttribute("languageList",languageList);
-
+        
         model.addAttribute("blog", new Blog());
         return "create";
     }
@@ -70,7 +56,7 @@ public class BlogController {
 //        System.out.println(id + "---------" + name);
         System.out.println(blog);
         LocalDate date=LocalDate.now();
-        blog.setDatein(date);
+        blog.setCreateTime(String.valueOf(date));
         blogService.save(blog);
         redirectAttributes.addFlashAttribute("message",
                 "Create blog: " + " OK!");
@@ -89,5 +75,14 @@ public class BlogController {
                 "Delete blog: " + " OK!");
 //        return "forward:/blog/list";
         return "redirect:/blog/list";
+    }
+    @GetMapping("/edit/{id}")
+    public String showeditBlog(@PathVariable("id") int id,RedirectAttributes redirectAttributes,Model model){
+        Optional<Blog> blog= blogService.findById(id);
+        model.addAttribute("blog",blog.get());
+        model.addAttribute("BlogList", blogService.findAll());
+        redirectAttributes.addFlashAttribute("message","Edit blog. Please!");
+
+        return "blog";
     }
 }

@@ -19,6 +19,7 @@
 <!--</form>-->
 <div class="row">
     <form action="/blog/create" method="post" th:object="${blog}">
+        <input type="number" th:field="*{id}" hidden>
         <div class="form-group row" style="position: center">
             <div class="mb-3-row">
                 <label class="col-2 col-form-label">Author:</label>
@@ -54,7 +55,7 @@
         <th>ID</th>
         <th>Date</th>
         <th>Author</th>
-        <th>Body</th>
+<!--        <th>Body</th>-->
         <th>Action</th>
     </tr>
     </thead>
@@ -63,9 +64,11 @@
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.datein}"></td>
         <td th:text="${blog.author}"></td>
-        <td th:text="${blog.body}"></td>
+<!--        <td th:text="${blog.body}"></td>-->
         <td>
-            <a th:href="@{/blog/edit/(id = ${blog.id})}">Edit</a> <!--key-value-->
+            <a class="btn btn-success" data-bs-toggle="modal"
+               data-bs-target="#detailModal" th:href="@{/blog/list/detail/{id}(id=${row.id})}">Detail</a>
+            <a th:href="@{/blog/edit/__${blog.id}__}" class="btn btn-primary">Edit</a> <!--key-value-->
             <a class="btn btn-danger btn-delete" data-bs-toggle="modal"
                data-bs-target="#deleteModal" href="" type="button" th:data-id="${blog.id}">Delete</a>
 
@@ -78,6 +81,59 @@
     </tr>
     </tbody>
 </table>
+<!-- Detail Modal HTML -->
+<div id="detailModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form th:object="${blogForm}">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create new blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="this.form.reset()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>Title</label>
+                            <input type="text" class="form-control mt-2" name="title" th:field="*{title}"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mb-2">
+                                <label>Author</label>
+                                <input type="text" class="form-control mt-2" name="author" th:field="*{author}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mb-2">
+                                <label>Create Time</label>
+                                <input type="text" class="form-control mt-2" name="author" th:field="*{createTime}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>Content</label>
+                            <pre type="text" class="form-control mt-2" name="content" th:field="*{content}"
+                                 required style="height: 200px"></pre>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Close"
+                               onclick="this.form.reset()">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteModal">
     <div class="modal-dialog">
@@ -103,7 +159,7 @@
 <script>
     $(".btn-delete").click(function () {
         let id = $(this).data("id");
-        $('.btn-confirm-delete').attr("href", "/blog/delete/id=" + id);
+        $('.btn-confirm-delete').attr("href", "/blog/delete?id=" + id);
 
     })
 </script>

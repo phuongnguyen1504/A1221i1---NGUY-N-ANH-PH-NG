@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogServiceImpl implements IBlogService {
@@ -29,6 +30,10 @@ public class BlogServiceImpl implements IBlogService {
         repository.deleteById(id);
     }
 
+    @Override
+    public Optional<Blog> findById(int id) {
+        return repository.findById(id);
+    }
 
 
 //    @Override

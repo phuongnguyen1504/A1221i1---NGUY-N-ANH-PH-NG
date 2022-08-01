@@ -4,19 +4,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDate datein;
+    private String createTime;
     private String author;
+    private String image;
     private String body;
 
     public Blog() {
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getId() {
@@ -43,11 +50,11 @@ public class Blog {
         this.body = body;
     }
 
-    public LocalDate getDatein() {
-        return datein;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setDatein(LocalDate date) {
-        this.datein = date;
+    public void setCreateTime(String date) {
+        this.createTime = date;
     }
 }
