@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -43,21 +47,27 @@ public class BlogController {
 
     @GetMapping("/create")
     public String showCreatePage(Model model){
-        
-        model.addAttribute("blog", new Blog());
+
+        model.addAttribute("blog", new BlogForm());
         return "create";
     }
 
     @PostMapping("/create")
-    public String createStudent(@ModelAttribute Blog blog,
+    public String createStudent(@ModelAttribute BlogForm blog,
                                 RedirectAttributes redirectAttributes){
-//        int id = Integer.parseInt(request.getParameter("studentId"));
-//        String name = request.getParameter("studentName");
-//        System.out.println(id + "---------" + name);
-        System.out.println(blog);
-        LocalDate date=LocalDate.now();
-        blog.setCreateTime(String.valueOf(date));
-        blogService.save(blog);
+        MultipartFile file=blog.getImage();
+        String fileName=file.getOriginalFilename();
+        try{
+            FileCopyUtils.copy(file.getBytes(),new File(uploadFolder+fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Blog insertBlog=new Blog();
+        insertBlog.setAuthor(blog.getAuthor());
+        insertBlog.setBody(blog.getBody());
+        insertBlog.setCreateTime(LocalDate.now().toString());
+        insertBlog.setImage(fileName);
+        blogService.save(insertBlog);
         redirectAttributes.addFlashAttribute("message",
                 "Create blog: " + " OK!");
 //        return "forward:/blog/list";
@@ -84,5 +94,12 @@ public class BlogController {
         redirectAttributes.addFlashAttribute("message","Edit blog. Please!");
 
         return "blog";
+    }
+    @GetMapping("/list/detail/{id}")
+    public String viewDetail(@PathVariable("id") int id,Model model,RedirectAttributes redirectAttributes){
+        model.addAttribute("blog",blogService.findById(id));
+        model.addAttribute("popup",1);
+        redirectAttributes.addFlashAttribute("message","Detail blog!");
+        return "redirect:/blog/list";
     }
 }

@@ -9,44 +9,45 @@
     <script src="WEB-INF/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
             integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="/static/js/script.js"></script>
 </head>
 <body>
 <div th:replace="~{/layout::common}" class="divOut"></div>
 <strong style="color: green" th:text="${message}"></strong> <!--text -->
-
+<input type="text" id="popup" th:value="${popup}" hidden/>
 <!--<form action="/blog/search" >-->
 <!--    <input type="text" name="kq">-->
 <!--</form>-->
-<div class="row">
-    <form action="/blog/create" method="post" th:object="${blog}">
-        <input type="number" th:field="*{id}" hidden>
-        <div class="form-group row" style="position: center">
-            <div class="mb-3-row">
-                <label class="col-2 col-form-label">Author:</label>
-                <div class="col-6">
-                    <input class="form-control" type="text" th:field="*{author}">
-                </div>
-            </div>
-            <div class="form-group row" style="position: center">
-                <div class="mb-3-row">
-                    <label class="col-2 col-form-label">Body of Blog:</label>
-                    <div class="col-6">
-                        <textarea class="form-control" th:cols="5" th:field="*{body}"/>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row" style="position: center">
-                <div class="mb-3-row">
-                    <label class="col-2 col-form-label">Body of Blog:</label>
-                    <div class="col-6">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
+<!--<div class="row">-->
+<!--    <form action="/blog/create" method="post" th:object="${blog}">-->
+<!--        <input type="number" th:field="*{id}" hidden>-->
+<!--        <div class="form-group row" style="position: center">-->
+<!--            <div class="mb-3-row">-->
+<!--                <label class="col-2 col-form-label">Author:</label>-->
+<!--                <div class="col-6">-->
+<!--                    <input class="form-control" type="text" th:field="*{author}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row" style="position: center">-->
+<!--                <div class="mb-3-row">-->
+<!--                    <label class="col-2 col-form-label">Body of Blog:</label>-->
+<!--                    <div class="col-6">-->
+<!--                        <textarea class="form-control" th:cols="5" th:field="*{body}"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row" style="position: center">-->
+<!--                <div class="mb-3-row">-->
+<!--                    <label class="col-2 col-form-label">Body of Blog:</label>-->
+<!--                    <div class="col-6">-->
+<!--                        <button type="submit">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Create</a>
 <p th:if="${BlogList.isEmpty()}" style="color:red">List Empty</p>
 
 <table class="table" border="1" th:unless="${BlogList.isEmpty()}">
@@ -62,7 +63,7 @@
     <tbody>
     <tr th:each="blog : ${BlogList}">
         <td th:text="${blog.id}"></td>
-        <td th:text="${blog.datein}"></td>
+        <td th:text="${blog.createTime}"></td>
         <td th:text="${blog.author}"></td>
 <!--        <td th:text="${blog.body}"></td>-->
         <td>
@@ -81,11 +82,11 @@
     </tr>
     </tbody>
 </table>
-<!-- Detail Modal HTML -->
-<div id="detailModal" class="modal fade">
+<!-- Create Modal HTML -->
+<div id="createModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form th:object="${blogForm}">
+            <form method="post" action="/blog/create" th:object="${blog}" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4 class="modal-title">Create new blog</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -94,8 +95,61 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 form-group mb-2">
-                            <label>Title</label>
-                            <input type="text" class="form-control mt-2" name="title" th:field="*{title}"
+                            <label>Author</label>
+                            <input type="text" class="form-control mt-2" name="title" th:field="*{author}"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>image</label>
+                            <input type="file" class="form-control mt-2" name="image" th:field="*{image}"
+                                   accept="image/png, image/jpg"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>Body</label>
+                            <textarea type="text" class="form-control mt-2" name="content" th:field="*{body}"
+                                      required style="height: 200px"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Close"
+                               onclick="this.form.reset()">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Detail Modal HTML -->
+<div id="detailModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form th:object="${blog}">
+                <div class="modal-header">
+                    <h4 class="modal-title">Detail blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="this.form.reset()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>Author</label>
+                            <input type="text" class="form-control mt-2" name="title" th:field="*{author}"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>Date Create</label>
+                            <input type="text" class="form-control mt-2" name="title" th:field="*{createTime}"
                                    required>
                         </div>
                     </div>
@@ -103,27 +157,20 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group mb-2">
-                                <label>Author</label>
-                                <input type="text" class="form-control mt-2" name="author" th:field="*{author}"
+                                <label>Image</label>
+                                <input type="text" class="form-control mt-2" name="author" th:field="*{image}"
                                        required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-2">
-                                <label>Create Time</label>
-                                <input type="text" class="form-control mt-2" name="author" th:field="*{createTime}"
+                                <label>Body</label>
+                                <input type="text" class="form-control mt-2" name="author" th:field="*{body}"
                                        required>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-12 form-group mb-2">
-                            <label>Content</label>
-                            <pre type="text" class="form-control mt-2" name="content" th:field="*{content}"
-                                 required style="height: 200px"></pre>
-                        </div>
-                    </div>
 
                     <div class="modal-footer">
                         <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Close"
