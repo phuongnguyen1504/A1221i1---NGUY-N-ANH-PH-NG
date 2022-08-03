@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <script src="WEB-INF/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+<div th:replace="~{/layout::common}" class="divOut"></div>
+<strong style="color: green" th:text="${message}"></strong> <!--text -->
+<input type="text" id="popup" th:value="${popup}" hidden/>
+<!--<form action="/blog/search" >-->
+<!--    <input type="text" name="kq">-->
+<!--</form>-->
+<!--<div class="row">-->
+<!--    <form action="/blog/create" method="post" th:object="${blog}">-->
+<!--        <input type="number" th:field="*{id}" hidden>-->
+<!--        <div class="form-group row" style="position: center">-->
+<!--            <div class="mb-3-row">-->
+<!--                <label class="col-2 col-form-label">Author:</label>-->
+<!--                <div class="col-6">-->
+<!--                    <input class="form-control" type="text" th:field="*{author}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row" style="position: center">-->
+<!--                <div class="mb-3-row">-->
+<!--                    <label class="col-2 col-form-label">Body of Blog:</label>-->
+<!--                    <div class="col-6">-->
+<!--                        <textarea class="form-control" th:cols="5" th:field="*{body}"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row" style="position: center">-->
+<!--                <div class="mb-3-row">-->
+<!--                    <label class="col-2 col-form-label">Body of Blog:</label>-->
+<!--                    <div class="col-6">-->
+<!--                        <button type="submit">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Create</a>
+
+
+<table class="table" border="1" th:if="${BlogList}">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Author</th>
+<!--        <th>Body</th>-->
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blog : ${BlogList}">
+        <td th:text="${blog.id}"></td>
+        <td th:text="${blog.createTime}"></td>
+        <td th:text="${blog.author}"></td>
+<!--        <td th:text="${blog.body}"></td>-->
+        <td>
+
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- Create Modal HTML -->
+
+<script>
+    $(".btn-delete").click(function () {
+        let id = $(this).data("id");
+        $('.btn-confirm-delete').attr("href", "/blog/delete?id=" + id);
+
+    })
+</script>
+<div th:replace="~{/layout::abc}" class="divOut"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

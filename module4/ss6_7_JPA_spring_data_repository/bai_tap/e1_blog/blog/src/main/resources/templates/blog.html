@@ -65,7 +65,8 @@
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.createTime}"></td>
         <td th:text="${blog.author}"></td>
-        <td><img th:src="@{${blog.image}}" height="150px"
+
+        <td><img th:src="@{'/image/' + ${blog.image}}" height="150px"
                  width="250px"></td>
         <!--        <td th:text="${blog.body}"></td>-->
         <td>
