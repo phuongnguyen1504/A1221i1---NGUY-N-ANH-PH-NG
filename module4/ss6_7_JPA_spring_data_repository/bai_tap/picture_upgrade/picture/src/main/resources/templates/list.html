@@ -48,7 +48,7 @@
         <div class="mb-3-row">
             <label class="col-2 col-form-label">Feedback:</label>
             <div class="col-6">
-                <textarea class="form-control" th:rows="4" th:field="*{feedback}"></textarea>
+                <textarea class="form-control" th:type="text" th:rows="4" th:field="*{feedback}"></textarea>
             </div>
         </div>
         <div class="mb-3-row">
@@ -94,6 +94,12 @@
     </tr>
     </tbody>
 </table>
+
+<div>
+    <a th:href="@{'/picture/list'(page=${FeedbackList.number - 1})}" th:if="${FeedbackList.hasPrevious()}">Previous</a>
+    <span th:text="${FeedbackList.number + 1}"></span>/<span th:text="${FeedbackList.totalPages}"></span>
+    <a th:href="@{'/picture/list'(page=${FeedbackList.number + 1})}" th:if="${FeedbackList.hasNext()}">Next</a>
+</div>
 
 <div th:replace="~{/layout::abc}" class="divOut"></div>
 <!-- Delete Modal -->

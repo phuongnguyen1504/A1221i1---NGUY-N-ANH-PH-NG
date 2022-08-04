@@ -3,6 +3,9 @@ package com.picture.service;
 import com.picture.model.Feedback;
 import com.picture.repository.IPictureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +17,8 @@ public class PictureServiceImpl implements IPictureService {
     private IPictureRepository repository;
 
     @Override
-    public List<Feedback> findAll() {
-        return repository.findAll();
+    public Page<Feedback> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override

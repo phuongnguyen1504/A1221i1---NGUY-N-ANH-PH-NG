@@ -3,6 +3,8 @@ package com.picture.controller;
 import com.picture.model.Feedback;
 import com.picture.service.IPictureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,18 +26,18 @@ public class PictureController {
                     method = RequestMethod.GET)
 //                    consumes = "text/html",
 //                    produces = "text/html")
-    public ModelAndView showFeedbackList(){
+    public ModelAndView showFeedbackList(@PageableDefault(value = 5)Pageable pageable){
         ModelAndView modelAndView=new ModelAndView("list");
         modelAndView.addObject("feedback",new Feedback());
-        modelAndView.addObject("FeedbackList", pictureService.findAll());
+        modelAndView.addObject("FeedbackList", pictureService.findAll(pageable));
         return modelAndView;
     }
 
     @PostMapping("/list")
-    public ModelAndView showStudentList1(){
+    public ModelAndView showStudentList1(@PageableDefault(value = 5)Pageable pageable){
 
         return new ModelAndView("list",
-                "FeedbackList", pictureService.findAll());
+                "FeedbackList", pictureService.findAll(pageable));
     }
 
 
