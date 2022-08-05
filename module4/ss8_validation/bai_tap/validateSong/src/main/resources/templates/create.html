@@ -7,7 +7,7 @@
 <body>
 <div th:insert="~{/layout::common}" class="divOut"></div>
 <h1>Create Student</h1>
-<form th:object="${song}" th:href="@{/song/create}" method="post">
+<form th:object="${song}" th:action="@{/song/create}" method="post">
     <table class="table">
 <!--        <tr>-->
 <!--            <th>ID</th>-->
@@ -20,7 +20,7 @@
             <th>
 
                 <input type="text" th:field="*{name}"/>
-                <input type="text" th:field="*{id}" hidden/>
+                <input type="text" th:field="*{id}" hidden />
             </th>
             <th th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></th>
         </tr>

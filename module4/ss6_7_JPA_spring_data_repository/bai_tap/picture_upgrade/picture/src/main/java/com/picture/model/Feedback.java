@@ -15,7 +15,7 @@ public class Feedback {
 
     private String rate;
     private String author;
-    private String feedback;
+    private String body;
     private int likeButton;
     private String date; //date feedback
 
@@ -49,12 +49,12 @@ public class Feedback {
         this.author = author;
     }
 
-    public String getFeedback() {
-        return feedback;
+    public String getBody() {
+        return body;
     }
 
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
+    public void setBody(String feedback) {
+        this.body = feedback;
     }
 
     public int getLikeButton() {
