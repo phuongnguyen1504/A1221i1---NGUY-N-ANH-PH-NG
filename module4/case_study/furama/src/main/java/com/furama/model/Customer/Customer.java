@@ -16,8 +16,8 @@ public class Customer {
     private String mail;
     private String address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_type_id",referencedColumnName = "customer_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_type_id",referencedColumnName = "customer_type_id")
     private CustomerType customerType;
     public Customer() {
     }

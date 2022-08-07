@@ -8,7 +8,152 @@
 </head>
 <body>
 <div layout:fragment="content">
+    <div class="main-wrapper">
+        <div class="row mb-3">
+            <div class="col-lg-6 table-title">
+                <a href="#addEditModal" class="btn btn-success add" data-bs-toggle="modal"><i class="material-icons">&#xE147;</i><span>Add New Customer</span></a>
+            </div>
+            <div class="col-lg-6 table-search" th:with="tmp=${#strings.arraySplit(q,':')}">
+                <form class="row gy-2 gx-3 align-items-center">
+                    <div class="col-auto">
+                        <select class="form-select" id="searchBy">
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='all':false" value="all">Search By ...</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='name':false" value="name">Name</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='birthday':false" value="birthday">Birthday</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='gender':false" value="gender">Gender</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='id_card':false" value="id_card">Id_card</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='phone':false" value="phone">phone</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='mail':false" value="mail">Mail</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='address':false" value="address">Address</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="searchVal" th:value="${tmp.length}>0 ? ${tmp[1]}:''">
+                    </div>
+                    <div class="col-auto">
+                        <a id="sbmSearch" href="/" class="btn btn-secondary">Submit</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" th:if="${res.getTotalElements}>0">
+            <table class="table table-hover">
+                <thead th:with="tmpSort=${#strings.containsIgnoreCase(sort,'asc')?'desc':'asc'}">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">
+                            <a th:href="'?page='+${res.getNumber()+1}+'&sort=name,'+${tmpSort}">
+                                <div class="pt-1" style="float:left">Name</div>
+                                <div style="display: flex;flex-direction: column">
+                                    <i class="fas fa-chevron-up" th:classappend="${#strings.containsIgnoreCase(sort,'name: desc')} ? '': 'sort-disabled'"></i>
+                                    <i class="fas fa-chevron-down" th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                                </div>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+<!--    //Add Edit Modal-->
+    <div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="post" th:object="${customer}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input name="id" type="hidden" th:field="*{customer_id}">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input class="form-control" name="name" th:field="*{name}"/>
+                            <label id="lbName" style="color: #fc9494" th:if="${#fields.hasErrors('name')}"
+                                   th:errors="*{name}"></label>
+                        </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">EXP Date</label>
+                            <input type="text" class="date form-control" name="expDate" th:field="*{birthday}"/>
+                            <label id="lbBirthday" style="color: #fc9494" th:if="${#fields.hasErrors('birthday')}"
+                                   th:errors="*{birthday}"></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <select th:field="*{gender}">
+                                <option class="form-select" th:value="0" th:text="Male"></option>
+                                <option class="form-select" th:value="1" th:text="Female"></option>
+                                <option class="form-select" th:value="2" th:text="LGBT"></option>
+                            </select>
+                            <label id="lbGender" style="color: #fc9494" th:if="${#fields.hasErrors('gender')}"
+                                   th:errors="*{gender}"></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ID Card</label>
+                            <input class="form-control" name="id_card" th:field="*{id_card}"/>
+                            <label id="lbIdCard" style="color: #fc9494" th:if="${#fields.hasErrors('id_card')}"
+                                   th:errors="*{id_card}"></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input class="form-control" name="phone" th:field="*{phone}"/>
+                            <label id="lbPhone" style="color: #fc9494" th:if="${#fields.hasErrors('phone')}"
+                                   th:errors="*{phone}"></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mail</label>
+                            <input class="form-control" name="mail" th:field="*{mail}"/>
+                            <label id="lbmail" style="color: #fc9494" th:if="${#fields.hasErrors('mail')}"
+                                   th:errors="*{mail}"></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <input class="form-control" name="address" th:field="*{address}"/>
+                            <label id="lbaddress" style="color: #fc9494" th:if="${#fields.hasErrors('address')}"
+                                   th:errors="*{address}"></label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Type Customer</label>
+                            <select name="category" class="form-select">
+                                <option th:each="item:${cate}" th:value="${item.customer_type_id}"
+                                        th:text="${item.name}"></option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+<script>
+    $(".add").click(function () {
+        $(".modal-title").text("Add Product");
+        resetForm();
+        resetError();
+    });
+    $("#sbmSearch").click(function () {
+        if($("#searchVal").val() != ''){
+            const q = $("#searchBy").val() + ":" + $("#searchVal").val();
+            $("#sbmSearch").attr('href', '?q=' + q);
+        }
+    });
+    // function resetForm() {
+    //     $("input[name='id']").val("0");
+    //     $("input[name='name'],input[name='price'],input[name='manufacturer'],input[name='expDate']").val("");
+    //     $("#lbErrorName").hide();
+    //     $("#lbErrorStartPrice").hide();
+    // }
+    // function resetError() {
+    //     $("#lbName").hide();
+    //     $("#lbPrice").hide();
+    //     $("#lbExpDate").hide();
+    // }
+</script>
