@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+<p>
+  <a href="/shop">Shop</a>
+</p>
+<h1>Your Cart</h1>
+<form th:action="@{/payment}" th:object="${cart}" method="post">
+  <h3>Total Items: <span th:text="${cart.countItemQuantity()}"></span></h3>
+  <h3>Total Products: <span th:text="${cart.countProductQuantity()}"></span></h3>
+  <table border="1">
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+    <tr th:each="product: ${cart.products}">
+      <td th:text="${product.getKey().name}"></td>
+      <td>
+        <a id="decrease_button" th:text="${'-'}" style="text-decoration: none" th:href="@{/decrease/__${product.getKey().id}__(action='show')}"></a>
+        <span th:text="${product.getValue()}"></span>
+        <a id="increase_button"  style="text-decoration: none" th:href="@{/add/__${product.getKey().id}__(action='show')}"
+           th:text="${'+'}"></a>
+      </td>
+      <td th:text="${product.getKey().price}"></td>
+      <td ><img th:src="@{'/img/'+${product.getKey().path}}" height="150px"
+                width="100px"></td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td></td>
+      <td th:text="${cart.countTotalPayment()}"></td>
+    </tr>
+    <tr>
+      <td colspan="2" th:href="@{/shop}">Quay về trang chủ</td>
+      <td colspan="2"><input type="submit">Đặt hàng</td>
+    </tr>
+  </table>
+
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/libs/toastr.min.js"></script>
+<script src="/product/toast.js"></script>
+</body>
+</html>
