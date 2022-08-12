@@ -27,6 +27,6 @@ public class BadWordException extends Exception {
 //        String args= Arrays.toString(joinpoint.getArgs());
 
 //        System.out.println(String.format("[%s] co loi xay ra: %s.%s  %s: %s",LocalDate.now(),className,method,args,e.getMessage()));
-        System.out.println(String.format("[%s] co loi xay ra: %s",LocalDate.now(),e.getMessage()));
+        System.out.println(String.format("[%s] co loi xay ra kia: %s",LocalDate.now(),e.getMessage()));
     }
 }

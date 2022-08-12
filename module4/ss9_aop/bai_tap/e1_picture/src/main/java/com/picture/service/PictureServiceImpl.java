@@ -28,11 +28,20 @@ public class PictureServiceImpl implements IPictureService {
 
         List<String> badwords=badWordService.findListName();
         String body=song.getBody();
+        String[] bodies=body.trim().split(" ");
 //        https://stackoverflow.com/questions/8992100/test-if-a-string-contains-any-of-the-strings-from-an-array
-        if(!badwords.stream().anyMatch(body::contains)) {
+        for(int i=0;i<bodies.length;i++){
+            if(badwords.stream().anyMatch(bodies[i]::contains)){
+
+            }
+        }
+        if(badwords.stream().anyMatch(body::contains)) {
             throw new BadWordException("Co tu xau. Author:" + song.getAuthor() + ". Noi dung: " + song.getBody());
         }
-        repository.save(song);
+        else{
+            repository.save(song);
+
+        }
 
 
     }

@@ -17,28 +17,28 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
-@RequestMapping({"/picture","/home"})
+@RequestMapping({"/picture", "/home"})
 public class PictureController {
 
-//    @Qualifier("studentServiceImpl")
+    //    @Qualifier("studentServiceImpl")
     @Autowired
     private IPictureService pictureService;
-@Autowired
-private BadWordServiceImpl badWordService;
+    @Autowired
+    private BadWordServiceImpl badWordService;
 
     @RequestMapping(value = "/list",
-                    method = RequestMethod.GET)
+            method = RequestMethod.GET)
 //                    consumes = "text/html",
 //                    produces = "text/html")
-    public ModelAndView showFeedbackList(@PageableDefault(value = 5)Pageable pageable){
-        ModelAndView modelAndView=new ModelAndView("list");
-        modelAndView.addObject("feedback",new Feedback());
+    public ModelAndView showFeedbackList(@PageableDefault(value = 5) Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("feedback", new Feedback());
         modelAndView.addObject("FeedbackList", pictureService.findAll(pageable));
         return modelAndView;
     }
 
     @PostMapping("/list")
-    public ModelAndView showStudentList1(@PageableDefault(value = 5)Pageable pageable){
+    public ModelAndView showStudentList1(@PageableDefault(value = 5) Pageable pageable) {
 
         return new ModelAndView("list",
                 "FeedbackList", pictureService.findAll(pageable));
@@ -48,21 +48,21 @@ private BadWordServiceImpl badWordService;
     @PostMapping("/create")
     public String createFeedBack(@ModelAttribute Feedback feedback,
                                  RedirectAttributes redirectAttributes) throws Exception {
-
-        try{
+        try {
             pictureService.save(feedback);
             redirectAttributes.addFlashAttribute("message",
-                    "Create feedback: "  + " OK!");
+                    "Create feedback: " + " OK!");
 //        return "forward:/song/list";
             return "redirect:/picture/list";
-        }
-        catch (BadWordException e){
-            return "redirect:/picture/error";
+        } catch (Exception e) {
+            return "error";
         }
 
+
     }
+
     @GetMapping("/like")
-    public String likeFeedBack(@RequestParam("id") int id){
+    public String likeFeedBack(@RequestParam("id") int id) {
         pictureService.like(id);
         return "redirect:/picture/list";
 

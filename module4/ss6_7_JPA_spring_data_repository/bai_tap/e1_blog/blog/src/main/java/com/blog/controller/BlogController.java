@@ -5,6 +5,8 @@ import com.blog.model.BlogForm;
 import com.blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -34,27 +36,27 @@ public class BlogController {
                     method = RequestMethod.GET)
 //                    consumes = "text/html",
 //                    produces = "text/html")
-    public ModelAndView showBlogList(){
+    public ModelAndView showBlogList(@PageableDefault(value = 2)Pageable pageable){
 //        model.addAttribute("blog",new BlogForm());
         ModelAndView modelAndView=new ModelAndView("blog");
         modelAndView.addObject("blog",new BlogForm());
-        modelAndView.addObject("BlogList", blogService.findAll());
+        modelAndView.addObject("BlogList", blogService.findAll(pageable));
         return modelAndView;
     }
 
     @PostMapping("/list")
-    public ModelAndView showStudentList1(Model model){
+    public ModelAndView showStudentList1(Model model,@PageableDefault(value = 2) Pageable pageable){
         model.addAttribute("blog",new BlogForm());
         return new ModelAndView("blog",
-                "BlogList", blogService.findAll());
+                "BlogList", blogService.findAll(pageable));
     }
 
     @GetMapping("/create")
-    public ModelAndView showCreatePage(){
+    public ModelAndView showCreatePage(@PageableDefault(value = 2)Pageable pageable){
         ModelAndView model=new ModelAndView("blog");
         model.addObject("blog", new BlogForm());
         model.addObject("popup",3);
-        model.addObject("BlogList", blogService.findAll());
+        model.addObject("BlogList", blogService.findAll(pageable));
         return model;
     }
 
@@ -100,21 +102,21 @@ public class BlogController {
         return "redirect:/blog/list";
     }
     @GetMapping("/edit/{id}")
-    public ModelAndView showeditBlog(@PathVariable("id") int id,RedirectAttributes redirectAttributes){
+    public ModelAndView showeditBlog(@PathVariable("id") int id,RedirectAttributes redirectAttributes,@PageableDefault(value = 2)Pageable pageable){
         ModelAndView model=new ModelAndView("blog");
         model.addObject("blog",blogService.findById(id).get());
         model.addObject("popup",2);
-        model.addObject("BlogList", blogService.findAll());
+        model.addObject("BlogList", blogService.findAll(pageable));
         redirectAttributes.addFlashAttribute("message","Edit blog. Please!");
 
         return model;
     }
     @GetMapping("/list/detail/{id}")
-    public ModelAndView viewDetail(@PathVariable("id") int id){
+    public ModelAndView viewDetail(@PathVariable("id") int id,@PageableDefault(value = 2)Pageable p){
         ModelAndView modelAndView=new ModelAndView("blog");
         modelAndView.addObject("blog",blogService.findById(id).get());
         modelAndView.addObject("popup",1);
-        modelAndView.addObject("BlogList", blogService.findAll());
+        modelAndView.addObject("BlogList", blogService.findAll(p));
 //        redirectAttributes.addFlashAttribute("message","Detail blog!");
         return modelAndView;
     }
