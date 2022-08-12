@@ -3,8 +3,11 @@ package com.picture.exception;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import sun.util.logging.resources.logging;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -12,6 +15,7 @@ import java.util.Arrays;
 @Component
 @Aspect
 public class BadWordException extends Exception {
+
 
     public BadWordException() {
     }
