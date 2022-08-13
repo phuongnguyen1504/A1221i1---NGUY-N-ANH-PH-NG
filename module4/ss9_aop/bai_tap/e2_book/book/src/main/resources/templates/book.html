@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Shop</title>
@@ -9,24 +9,52 @@
 </head>
 <body>
 <p>
-    <a href="/shopping-cart">Your book</a>
+    <h1 style="text-align: center;color: red;"><b>CHƯƠNG TRÌNH CHO MƯỢN SÁCH</b></h1>
 </p>
 <table border="1">
     <tr>
+        <td>No.</td>
         <td>Name</td>
         <td>Quantity</td>
+        <td>Description</td>
         <td>Add To Cart</td>
-        <td>Detail</td>
+
     </tr>
-    <th:block th:each="book:${books}">
+    <th:block th:each="book,c:${books}">
         <tr>
+            <td th:text="${c.count}"></td>
             <td th:text="${book.name}"></td>
             <td th:text="${book.quantity}"></td>
-            <td><a class="btn btn-primary" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>
-            <td><a class="btn btn-primary" th:href="@{/detail/__${product.id}__(action='list')}">Detail</a></td>
+            <td th:text="${book.description}"></td>
+            <td><a class="btn btn-success" th:href="@{/add/__${book.id}__(action='list')}">Add To Cart</a></td>
+
         </tr>
     </th:block>
 </table>
+<p>---------------------------------------------------------------</p>
+<p>-----------DANH SÁCH SÁCH ĐÃ MƯỢN ------------------</p>
+<table border="1">
+    <tr>
+        <th>No.</th>
+        <th>Tên sách</th>
+        <th>Mã trả sách</th>
+    </tr>
+    <tr th:each="book,c:${cart.books}">
+        <td th:text="${c.count}"></td>
+        <td th:text="${book.getValue().name}"></td>
+        <td th:text="${book.getKey()}"></td>
+    </tr>
+    <tr>
+        <td colspan="2">Total:</td>
+        <td th:text="${cart.books.size()}"></td>
+    </tr>
+</table>
+<p>DANH MỤC TRẢ SÁCH THEO MÃ</p>
+<form method="post" th:action="@{/backbook}">
+
+    <span>Nhập mã trả sách:</span><input class="form-circle" type="number" value="0" name="id_back">
+    <input class="btn btn-primary" type="submit" value="Trả sách">
+</form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

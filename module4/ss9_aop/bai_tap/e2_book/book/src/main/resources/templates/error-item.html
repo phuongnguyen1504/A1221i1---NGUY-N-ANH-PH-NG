@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:if="${detailname}">Xin lỗi sách <span th:text="${detailname}"></span> đã hết rồi. Vui lòng thử lại sau hoặc tìm cuốn mới</p>
+
+    <p th:if="${detailcode}">Xin lỗi Mã trả sách <span th:text="${detailcode}"></span> đã không tồn tại. Vui lòng nhập đúng mã trả sách</p>
+<!--    <p th:if="${detailcode.equals(0)}">Xin lỗi Mã trả sách <span th:text="0"></span> đã không tồn tại. Vui lòng nhập đúng mã trả sách</p>-->
+
+    <a th:href="@{/book}">Quay lại menu chính</a>
+</body>
+</html>

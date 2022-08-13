@@ -22,35 +22,32 @@ public class Cart {
         this.books = books;
     }
 
-    private int checkDuplicateValue() {
-        int code = (int) Math.floor(((Math.random() * 89999) + 10000));
+    public Book getBookObject(int code) {
         for (Map.Entry<Integer, Book> entry : books.entrySet()) {
             if (entry.getKey().equals(code)) {
-                checkDuplicateValue();
+                return entry.getValue();
             }
-        }
-        return code;
-    }
-
-    private Book selectItemInCart(Book book) {
-        if (book.getQuantity() > 0) {
-            return book;
         }
         return null;
     }
 
+
     public void addBook(Book book) {
-        if (selectItemInCart(book) != null) {
-            books.put(checkDuplicateValue(),book);
-        }
+//        if (selectItemInCart(book) != null) {
+//            books.put(checkDuplicateValue(),book);
+//        }
+            int code=-1;
+            int nextSize=books.size()+1;
+            while (books.size()<nextSize){
+                code=(int) Math.floor(((Math.random() * 89999) + 10000));
+                books.put(code,book);
+            }
     }
-    public boolean backBook(int code){
+    public void backBook(int code){
         for (Map.Entry<Integer,Book> entry:books.entrySet()){
             if (entry.getKey().equals(code)){
                 books.remove(code);
-                return true;
             }
         }
-        return false;
     }
 }
