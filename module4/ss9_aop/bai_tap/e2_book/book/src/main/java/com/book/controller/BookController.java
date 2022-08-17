@@ -57,7 +57,6 @@ public class BookController {
     public String backbook(@RequestParam("id_back") int code,@ModelAttribute Cart cart,Model model) {
             if (cart.getBooks().containsKey(code)){
                 Book book=bookService.findById(cart.getBookObject(code).getId()).orElse(null);
-                cart.getBookObject(code);
                 book.setQuantity(book.getQuantity()+1);
                 bookService.save(book);
                 cart.backBook(code);

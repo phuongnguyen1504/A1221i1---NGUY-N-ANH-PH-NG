@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0114a367-0da4-4d2a-9a92-fd8290a0c1aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/case study web/casestudy/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case study web/casestudy/src/main/java/com/casestudy/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/case study web/casestudy/src/main/java/com/casestudy/controller/ProductServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/case study web/casestudy/src/main/webapp/product/toast.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/bai_tap/e1_blog/blog/src/main/java/com/blog/controller/RestfullWebService/RestBlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/bai_tap/e1_blog/blog/src/main/java/com/blog/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/bai_tap/e1_blog/blog/src/main/java/com/blog/repository/category/ICategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/bai_tap/e1_blog/blog/src/main/java/com/blog/service/category/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/thuc_hanh/p1_customer_management/customer/src/main/java/com/customer/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/thuc_hanh/p1_customer_management/customer/src/main/java/com/customer/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/thuc_hanh/p1_customer_management/customer/src/main/java/com/customer/repository/ICustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/thuc_hanh/p1_customer_management/customer/src/main/java/com/customer/service/CustomerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module4/ss11_restful web service/thuc_hanh/p1_customer_management/customer/src/main/java/com/customer/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module4/ss9_aop/bai_tap/e2_book/book/src/main/java/com/book/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module4/ss9_aop/bai_tap/e2_book/book/src/main/java/com/book/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module4/ss9_aop/bai_tap/e2_book/book/src/main/java/com/book/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module4/ss9_aop/bai_tap/e2_book/book/src/main/java/com/book/model/Cart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +68,7 @@
       <workItem from="1654863677868" duration="167000" />
       <workItem from="1654863862346" duration="5702000" />
       <workItem from="1656503884783" duration="50000" />
+      <workItem from="1660742034811" duration="18000" />
     </task>
     <servers />
   </component>

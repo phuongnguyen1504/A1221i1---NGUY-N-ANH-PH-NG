@@ -47,6 +47,7 @@ public class Cart {
         for (Map.Entry<Integer,Book> entry:books.entrySet()){
             if (entry.getKey().equals(code)){
                 books.remove(code);
+                break;
             }
         }
     }
