@@ -2,13 +2,11 @@ package com.blog.model;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
-
 public class BlogForm {
     private int id;
     private String createTime;
     private String author;
-    private String category;
+    private Integer category_id;
     private MultipartFile image;
     private String body;
 
@@ -63,11 +61,11 @@ public class BlogForm {
         this.body = body;
     }
 
-    public String getCategory() {
-        return category;
+    public Integer getCategory_id() {
+        return category_id;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory_id(Integer category_id) {
+        this.category_id = category_id;
     }
 }

@@ -3,6 +3,7 @@ package com.blog.controller;
 import com.blog.model.Blog;
 import com.blog.model.BlogForm;
 import com.blog.service.IBlogService;
+import com.blog.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
@@ -30,8 +31,8 @@ public class BlogController {
 //    @Qualifier("studentServiceImpl")
     @Autowired
     private IBlogService blogService;
-
-
+    @Autowired
+    private CategoryService categoryService;
     @RequestMapping(value = "/list",
                     method = RequestMethod.GET)
 //                    consumes = "text/html",
@@ -40,6 +41,7 @@ public class BlogController {
 //        model.addAttribute("blog",new BlogForm());
         ModelAndView modelAndView=new ModelAndView("blog");
         modelAndView.addObject("blog",new BlogForm());
+        modelAndView.addObject("category",categoryService.findAll());
         modelAndView.addObject("BlogList", blogService.findAll(pageable));
         return modelAndView;
     }
