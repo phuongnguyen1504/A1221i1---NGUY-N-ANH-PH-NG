@@ -2,12 +2,15 @@ package com.blog.controller;
 
 import com.blog.model.Blog;
 import com.blog.model.BlogForm;
+import com.blog.model.Category;
 import com.blog.service.IBlogService;
 import com.blog.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -21,9 +24,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping({"/blog","/home"})
 public class BlogController {
     @Value("${file-upload}")
@@ -45,7 +49,11 @@ public class BlogController {
         modelAndView.addObject("BlogList", blogService.findAll(pageable));
         return modelAndView;
     }
-
+    @GetMapping("/list")
+    public ResponseEntity<List<BlogForm>> showBlogs(@RequestParam("page") int page){
+        Pageable pageable=new
+        return new ResponseEntity<>(blogService.findAll(page), HttpStatus.OK);
+    }
     @PostMapping("/list")
     public ModelAndView showStudentList1(Model model,@PageableDefault(value = 2) Pageable pageable){
         model.addAttribute("blog",new BlogForm());
@@ -77,6 +85,8 @@ public class BlogController {
         insertBlog.setBody(blog.getBody());
         insertBlog.setCreateTime(LocalDate.now().toString());
         insertBlog.setImage(fileName);
+        Category category=categoryService.findById(blog.getCategory_id()).get();
+        insertBlog.setCategory(category);
         blogService.save(insertBlog);
         redirectAttributes.addFlashAttribute("message",
                 "Create blog: " + " OK!");

@@ -46,10 +46,11 @@
 <!--        </div>-->
 <!--    </form>-->
 <!--</div>-->
-<a class="btn btn-primary" th:href="@{/blog/create}">Create</a>
+<a type="button" class="btn btn-primary" data-bs-toggle="modal"
+   data-bs-target="#createModal" >Create</a>
 <p th:if="${BlogList.isEmpty()}" style="color:red">List Empty</p>
 
-<table class="table" border="1" th:unless="${BlogList.isEmpty()}">
+<table class="table" border="1" th:unless="${BlogList.isEmpty()}" id="BlogList">
     <thead>
     <tr>
         <th>ID</th>
@@ -85,28 +86,16 @@
     </tr>
     </tbody>
 </table>
+<!--<div>-->
+<!--    <a th:href="@{'/blog/list'(page=${BlogList.number - 1})}" th:if="${BlogList.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${BlogList.number + 1}"></span>/<span th:text="${BlogList.totalPages}"></span>-->
+<!--    <a th:href="@{'/blog/list'(page=${BlogList.number + 1})}" th:if="${BlogList.hasNext()}">Next</a>-->
+<!--</div>-->
 <div>
-    <a th:href="@{'/blog/list'(page=${BlogList.number - 1})}" th:if="${BlogList.hasPrevious()}">Previous</a>
+    <a class="prePage" th:data-id="${BlogList.number -1}"  th:if="${BlogList.hasPrevious()}">Previous</a>
     <span th:text="${BlogList.number + 1}"></span>/<span th:text="${BlogList.totalPages}"></span>
     <a th:href="@{'/blog/list'(page=${BlogList.number + 1})}" th:if="${BlogList.hasNext()}">Next</a>
 </div>
-<script>
-    $(function () {
-        let val = $('#popup').val();
-        switch (val) {
-            case "1":
-                $('#detailModal').modal("show");
-                break;
-            case "2":
-            case "3":
-                $('#createModal').modal("show");
-                break;
-
-        }
-
-    });
-
-</script>
 <!-- Create Modal HTML -->
 <div id="createModal" class="modal fade">
     <div class="modal-dialog modal-lg">
@@ -247,16 +236,65 @@
         </div>
     </div>
 </div>
-<script>
-    $(".btn-delete").click(function () {
-        let id = $(this).data("id");
-        $('.btn-confirm-delete').attr("href", "/blog/delete?id=" + id);
 
-    })
-</script>
+<!--<script type="text/javascript" th:inline="javascript">-->
+<!--    console.log([[${blog}]]);-->
+<!--    console.log([[${category}]]);-->
+<!--</script>-->
 <script type="text/javascript" th:inline="javascript">
-    console.log([[${blog}]]);
-    console.log([[${category}]]);
+
+    function getBlogList(blog) {
+        return `<tr><td>${blog.id}</td><td>${blog.createTime}</td><td>${blog.author}</td>` +
+            `<td>${blog.image}</td><td>${blog.body}</td>` +
+            `<td><a class="btn btn-success"
+               th:href="@{/blog/list/detail/{id}(id=${blog.id})}">Detail</a>
+            <a th:href="@{/blog/edit/__${blog.id}__}" class="btn btn-primary">Edit</a> <!--key-value-->
+            <a class="btn btn-danger btn-delete" data-bs-toggle="modal"
+               data-bs-target="#deleteModal" href="" type="button" th:data-id="${blog.id}">Delete</a></td></tr>`;
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(".btn-delete").click(function () {
+            let id = $(this).data("id");
+            $('.btn-confirm-delete').attr("href", "/blog/delete?id=" + id);
+
+        })
+        let val = $('#popup').val();
+        switch (val) {
+            case "1":
+                $('#detailModal').modal("show");
+                break;
+            case "2":
+            case "3":
+                $('#createModal').modal("show");
+                break;
+
+        }
+        $('.prePage').click(function () {
+            var id = $(this).data("id");
+            console.log(id);
+            $.ajax({
+                url: '/blog/list?page=' + id,
+                type: "GET",
+                success: function (data) {
+                    let content = '<tr>\n' +
+                        ` <td>ID</td>\n` +
+                        ` <td>Date</td>\n` +
+                        ` <td>Author</td>\n` +
+                        ` <td>Delete</td>\n` +
+                        ` <td>Image</td>\n` +
+                        ` <td>Action</td>\n` +
+                        "</tr>";
+
+                    for (let i = 0; i < data.length; i++) {
+                        content += getBlogList(data[i]);
+                    }
+                    document.getElementById('BlogList').innerHTML = content;
+                }
+            })
+        });
+    });
 </script>
 <div th:replace="~{/layout::abc}" class="divOut"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
