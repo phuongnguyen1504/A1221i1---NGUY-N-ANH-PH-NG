@@ -22,19 +22,19 @@
         </td>
       </tr>
       <tr>
-        <td>Email</td>
+        <td th:text="#{customer.mail}">Email</td>
         <td>
           <input type="text" name="email" th:value="${customer.email}">
         </td>
       </tr>
       <tr>
-        <td>Address</td>
+        <td th:text="#{customer.address}">Address</td>
         <td>
           <input type="text" name="address" th:value="${customer.address}">
         </td>
       </tr>
       <tr>
-        <td>Province</td>
+        <td th:text="#{customer.provinces}">Province</td>
         <td>
           <select name="province">
             <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
@@ -49,6 +49,6 @@
     </table>
   </fieldset>
 </form>
-<a href="/customers">Back to list</a>.
+<a href="/customers" th:text="#{back}">Back to list</a>.
 </body>
 </html>

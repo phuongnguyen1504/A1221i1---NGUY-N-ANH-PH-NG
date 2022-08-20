@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4c2ae6cd-9abe-41f1-8a23-236603f3af9f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/formatter/ProvinceFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/logger/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/model/Province.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/repository/ProvinceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/ProvinceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/impl/CustomerServiceImplWithSpringData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/impl/ProvinceServiceImplWithSpringData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/message_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/message_vi.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/templates/info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/templates/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/java/com/login/Config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/java/com/login/Username.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/java/com/login/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/resources/message_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/resources/message_haw.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/cg/wbd/grandemonstration/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/cg/wbd/grandemonstration/AppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/templates/customers/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/templates/customers/info.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="2DcZgjlocSGk4MRIgSRBNuOGtF0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Codegym\A1221i1---NGUY-N-ANH-PH-NG\module4\ss13_i18n\bai_tap\e1_customer\customer-management-spring-paging-and-sorting\src\main\java" />
+      <recent name="D:\Codegym\A1221i1---NGUY-N-ANH-PH-NG\module4\ss13_i18n\bai_tap\e1_customer\customer-management-spring-paging-and-sorting\src\main" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.64" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.64" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Gradle : cg.wbd : Gran Demonstration-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="24c8e561-b11e-4fa9-bfad-a12fea2be0e5" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62891" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : cg.wbd : Gran Demonstration-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4c2ae6cd-9abe-41f1-8a23-236603f3af9f" name="Changes" comment="" />
+      <created>1661000446570</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661000446570</updated>
+      <workItem from="1661000447862" duration="3059000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
