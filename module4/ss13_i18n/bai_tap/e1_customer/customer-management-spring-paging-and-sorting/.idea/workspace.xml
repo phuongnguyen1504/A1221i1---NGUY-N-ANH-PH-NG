@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c2ae6cd-9abe-41f1-8a23-236603f3af9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/formatter/ProvinceFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/logger/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/model/Province.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/repository/ProvinceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/ProvinceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/impl/CustomerServiceImplWithSpringData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/java/com/customer/service/impl/ProvinceServiceImplWithSpringData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/message_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/message_vi.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/templates/info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../customer/src/main/resources/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/java/com/login/Config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/java/com/login/Username.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/java/com/login/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/resources/message_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/resources/message_haw.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../thuc_hanh/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/cg/wbd/grandemonstration/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/classes/cg/wbd/grandemonstration/AppConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/templates/customers/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../module3/apache-tomcat-9.0.64 2/webapps/ROOT/WEB-INF/templates/customers/info.html" afterDir="false" />
-    </list>
+    <list default="true" id="4c2ae6cd-9abe-41f1-8a23-236603f3af9f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

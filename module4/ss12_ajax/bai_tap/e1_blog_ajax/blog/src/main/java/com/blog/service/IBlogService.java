@@ -22,5 +22,7 @@ public interface IBlogService {
 
     List<Blog> findAllByCategory(String category);
 
+    List<Blog> findAllByKey(String key);
+
 //    List<Blog> searchByName(String keyword);
 }

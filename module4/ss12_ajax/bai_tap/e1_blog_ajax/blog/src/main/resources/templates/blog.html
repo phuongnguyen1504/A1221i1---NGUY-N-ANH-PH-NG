@@ -6,17 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!--    <script src="/static/js/script.js"></script>-->
+
 </head>
 <body>
 <div th:replace="~{/layout::common}" class="divOut"></div>
 <strong style="color: green" th:text="${message}"></strong> <!--text -->
+
 <input type="text" id="popup" th:value="${popup}" hidden/>
-<!--<form action="/blog/search" >-->
-<!--    <input type="text" name="kq">-->
-<!--</form>-->
+<div>
+    <input type="text" name="kq" id="inputSearch" autocomplete="off">
+</div>
 <!--<div class="row">-->
 <!--    <form action="/blog/create" method="post" th:object="${blog}">-->
 <!--        <input type="number" th:field="*{id}" hidden>-->
@@ -47,7 +48,7 @@
 <!--    </form>-->
 <!--</div>-->
 <a type="button" class="btn btn-primary" data-bs-toggle="modal"
-   data-bs-target="#createModal" >Create</a>
+   data-bs-target="#createModal">Create</a>
 <p th:if="${BlogList.isEmpty()}" style="color:red">List Empty</p>
 
 <table class="table" border="1" th:unless="${BlogList.isEmpty()}" id="BlogList">
@@ -61,7 +62,7 @@
         <th>Action</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="content_table">
     <tr th:each="blog : ${BlogList}">
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.createTime}"></td>
@@ -69,19 +70,12 @@
 
         <td><img th:src="@{'/image/' + ${blog.image}}" height="150px"
                  width="250px"></td>
-        <!--        <td th:text="${blog.body}"></td>-->
         <td>
             <a class="btn btn-success"
                th:href="@{/blog/list/detail/{id}(id=${blog.id})}">Detail</a>
-            <a th:href="@{/blog/edit/__${blog.id}__}" class="btn btn-primary">Edit</a> <!--key-value-->
+            <a th:href="@{/blog/edit/__${blog.id}__}" class="btn btn-primary">Edit</a>
             <a class="btn btn-danger btn-delete" data-bs-toggle="modal"
                data-bs-target="#deleteModal" href="" type="button" th:data-id="${blog.id}">Delete</a>
-
-            <!--            <a th:href="@{/blog/delete/__${blog.id}__}">Delete</a> &lt;!&ndash;value&ndash;&gt;-->
-            <!--            <a th:href="@{/blog/edit/{id}(id = ${blog.id})}">Edit3</a> &lt;!&ndash;value&ndash;&gt;-->
-            <!--            <a href="https://vnexpress.net/">Doc bao</a>-->
-            <!--            <a href="home.html">Doc bao</a> &lt;!&ndash;HTML tĩnh &ndash;&gt;-->
-
         </td>
     </tr>
     </tbody>
@@ -91,10 +85,8 @@
 <!--    <span th:text="${BlogList.number + 1}"></span>/<span th:text="${BlogList.totalPages}"></span>-->
 <!--    <a th:href="@{'/blog/list'(page=${BlogList.number + 1})}" th:if="${BlogList.hasNext()}">Next</a>-->
 <!--</div>-->
-<div>
-    <a class="prePage" th:data-id="${BlogList.number -1}"  th:if="${BlogList.hasPrevious()}">Previous</a>
-    <span th:text="${BlogList.number + 1}"></span>/<span th:text="${BlogList.totalPages}"></span>
-    <a th:href="@{'/blog/list'(page=${BlogList.number + 1})}" th:if="${BlogList.hasNext()}">Next</a>
+<div class="row">
+    <button class="btn btn-success" onclick="loadPage()">Tải thêm</button>
 </div>
 <!-- Create Modal HTML -->
 <div id="createModal" class="modal fade">
@@ -117,7 +109,9 @@
                         <div class="col-6 form-group mb-2">
                             <label>Category</label><br>
                             <select th:field="*{category_id}">
-                                <option th:each="cate:${category}" th:text="${cate.name}" th:value="${cate.category_id}">1</option>
+                                <option th:each="cate:${category}" th:text="${cate.name}"
+                                        th:value="${cate.category_id}">1
+                                </option>
 
                             </select>
                         </div>
@@ -241,20 +235,67 @@
 <!--    console.log([[${blog}]]);-->
 <!--    console.log([[${category}]]);-->
 <!--</script>-->
-<script type="text/javascript" th:inline="javascript">
 
-    function getBlogList(blog) {
-        return `<tr><td>${blog.id}</td><td>${blog.createTime}</td><td>${blog.author}</td>` +
-            `<td>${blog.image}</td><td>${blog.body}</td>` +
-            `<td><a class="btn btn-success"
-               th:href="@{/blog/list/detail/{id}(id=${blog.id})}">Detail</a>
-            <a th:href="@{/blog/edit/__${blog.id}__}" class="btn btn-primary">Edit</a> <!--key-value-->
-            <a class="btn btn-danger btn-delete" data-bs-toggle="modal"
-               data-bs-target="#deleteModal" href="" type="button" th:data-id="${blog.id}">Delete</a></td></tr>`;
+<script>
+    var i = 0;
+
+    function getListBlog(data) {
+        return `<tr>`+
+                `<td>${data.id}</td>`+
+            `<td>${data.createTime}</td>`+
+            `<td>${data.author}</td>` +
+            `<td><img src="/image/${data.image}" height="150px"width="250px"></td>` +
+            `<td>`+
+            `<a class="btn btn-success" href="/blog/list/detail/{id}(id=${data.id})">Detail</a>` +
+            `<a href="/blog/edit/${data.id}" class="btn btn-primary">Edit</a>` +
+            `<a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" href="" type="button" data-id="${data.id}">Delete</a>`+
+            `</td>`+
+            `</tr>`;
     }
-</script>
-<script type="text/javascript">
-    $(function () {
+
+    function loadPage() {
+        $.ajax({
+
+            url: `/api/list?page=` + ++i,
+            type: `GET`,
+            success: function (data) {
+                console.log(data)
+
+                let content =$('.content_table').html()
+                for (let j = 0; j < data.content.length; j++) {
+                    content += getListBlog(data.content[j])
+                }
+                console.log(content)
+                $('.content_table').html(content);
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        $('#inputSearch').on("keyup",function (){
+            let valuesearch=$(this).val();
+            $('.content_table').empty();
+            $.ajax({
+                url:`/api/search?key=`+valuesearch,
+                type: `GET`,
+                dataType:"JSON",
+                success:function (data){
+                    console.log(data);
+                    let tr=[];
+                    for (let j=0;j<data.length;j++){
+                        tr.push("<tr>");
+                        tr.push("<td>"+data[j].id+"</td>")
+                        tr.push("<td>"+data[j].createTime+"</td>")
+                        tr.push("<td>"+data[j].author+"</td>")
+                        tr.push("<td>"+data[j].image+"</td>")
+                        tr.push("<td>"+data[j].body+"</td>")
+                        tr.push("</tr>");
+                    }
+                    console.log(tr)
+                    $('.content_table').append(tr.join(""))
+                }
+            })
+        })
         $(".btn-delete").click(function () {
             let id = $(this).data("id");
             $('.btn-confirm-delete').attr("href", "/blog/delete?id=" + id);
@@ -271,30 +312,11 @@
                 break;
 
         }
-        $('.prePage').click(function () {
-            var id = $(this).data("id");
-            console.log(id);
-            $.ajax({
-                url: '/blog/list?page=' + id,
-                type: "GET",
-                success: function (data) {
-                    let content = '<tr>\n' +
-                        ` <td>ID</td>\n` +
-                        ` <td>Date</td>\n` +
-                        ` <td>Author</td>\n` +
-                        ` <td>Delete</td>\n` +
-                        ` <td>Image</td>\n` +
-                        ` <td>Action</td>\n` +
-                        "</tr>";
 
-                    for (let i = 0; i < data.length; i++) {
-                        content += getBlogList(data[i]);
-                    }
-                    document.getElementById('BlogList').innerHTML = content;
-                }
-            })
-        });
+
     });
+
+
 </script>
 <div th:replace="~{/layout::abc}" class="divOut"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

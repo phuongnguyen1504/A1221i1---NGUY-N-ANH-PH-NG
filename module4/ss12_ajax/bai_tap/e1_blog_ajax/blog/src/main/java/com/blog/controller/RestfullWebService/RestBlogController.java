@@ -5,6 +5,8 @@ import com.blog.model.Category;
 import com.blog.service.IBlogService;
 import com.blog.service.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,5 +63,16 @@ public class RestBlogController {
         blogService.save(blog);
         return new ResponseEntity<>(blog,HttpStatus.CREATED);
     }
-
+    @GetMapping("/list")
+    public ResponseEntity<Iterable<Blog>> showBlogs(@PageableDefault(value = 2)Pageable pageable){
+        return new ResponseEntity<>(blogService.findAll(pageable),HttpStatus.OK);
+    }
+    @GetMapping("search")
+    public ResponseEntity<Iterable<Blog>> searchBlogs(@RequestParam("key")String key){
+        List<Blog> blogs=blogService.findAllByKey("%"+key+"%");
+        if (blogs.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(blogs,HttpStatus.OK);
+    }
 }

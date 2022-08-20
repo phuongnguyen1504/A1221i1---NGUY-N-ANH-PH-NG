@@ -49,11 +49,7 @@ public class BlogController {
         modelAndView.addObject("BlogList", blogService.findAll(pageable));
         return modelAndView;
     }
-    @GetMapping("/list")
-    public ResponseEntity<List<BlogForm>> showBlogs(@RequestParam("page") int page){
-        Pageable pageable=new
-        return new ResponseEntity<>(blogService.findAll(page), HttpStatus.OK);
-    }
+
     @PostMapping("/list")
     public ModelAndView showStudentList1(Model model,@PageableDefault(value = 2) Pageable pageable){
         model.addAttribute("blog",new BlogForm());

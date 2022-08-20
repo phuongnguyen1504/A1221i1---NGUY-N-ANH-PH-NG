@@ -47,6 +47,11 @@ public class BlogServiceImpl implements IBlogService {
         return repository.findAllByCategory(category);
     }
 
+    @Override
+    public List<Blog> findAllByKey(String key) {
+        return repository.findAllByKey(key);
+    }
+
 
 //    @Override
 //    public List<Blog> searchByName(String keyword) {
