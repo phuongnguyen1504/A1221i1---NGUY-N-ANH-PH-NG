@@ -281,18 +281,13 @@
                 dataType:"JSON",
                 success:function (data){
                     console.log(data);
-                    let tr=[];
+                    let tr="";
                     for (let j=0;j<data.length;j++){
-                        tr.push("<tr>");
-                        tr.push("<td>"+data[j].id+"</td>")
-                        tr.push("<td>"+data[j].createTime+"</td>")
-                        tr.push("<td>"+data[j].author+"</td>")
-                        tr.push("<td>"+data[j].image+"</td>")
-                        tr.push("<td>"+data[j].body+"</td>")
-                        tr.push("</tr>");
+                        tr+=getListBlog(data[j])
+
                     }
                     console.log(tr)
-                    $('.content_table').append(tr.join(""))
+                    $('.content_table').html(tr)
                 }
             })
         })

@@ -68,7 +68,11 @@ public class RestBlogController {
         return new ResponseEntity<>(blogService.findAll(pageable),HttpStatus.OK);
     }
     @GetMapping("search")
-    public ResponseEntity<Iterable<Blog>> searchBlogs(@RequestParam("key")String key){
+    public ResponseEntity<Iterable<Blog>> searchBlogs(@RequestParam("key")String key,@PageableDefault(value = 2)Pageable pageable){
+        if (key.isEmpty() || key==""){
+
+            return new ResponseEntity<>(blogService.findAll(pageable.withPage(0)).getContent(),HttpStatus.OK);
+        }
         List<Blog> blogs=blogService.findAllByKey("%"+key+"%");
         if (blogs.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
