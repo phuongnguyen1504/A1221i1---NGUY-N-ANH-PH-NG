@@ -5,6 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>CustomerList</title>
+    <script>
+        $( function() {
+            $( ".date.form-control" ).datepicker();
+        } );
+    </script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -115,7 +120,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Type Customer</label>
-                            <select name="category" class="form-select">
+                            <select name="category" class="form-select" th:field="*{customerTypeId}">
                                 <option th:each="item:${cate}" th:value="${item.customer_type_id}"
                                         th:text="${item.name}"></option>
                             </select>

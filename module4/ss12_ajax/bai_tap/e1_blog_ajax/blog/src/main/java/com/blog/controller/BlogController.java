@@ -27,7 +27,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping({"/blog","/home"})
 public class BlogController {
     @Value("${file-upload}")

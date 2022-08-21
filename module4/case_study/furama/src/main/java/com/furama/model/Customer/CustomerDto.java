@@ -2,38 +2,32 @@ package com.furama.model.Customer;
 
 import com.furama.model.Contract.Contract;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity
-@Table(name = "customer")
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerDto {
+    @Pattern(regexp = "^KH-\\d{4}$",message = "Phai nhap dung dinh dang KH-XXXX (X là số từ 0-9)")
     private int customer_id;
+    @NotBlank(message = "Khong duoc de trong")
     private String name;
-    private String birthday;
+    private LocalDate birthday;
     private String gender;
     private String id_card;
+//    @Pattern(regexp = "^0\\d{9}$",message = "Phai nhap dung 9 so bat dau tu 0")
     private String phone;
+    @Pattern(regexp = "^[A-Za-z0-9]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$", message = "Mail khong dung dinh dang nhap lai")
     private String mail;
     private String address;
+    private int customerTypeId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_type_id",referencedColumnName = "customer_type_id")
-    private CustomerType customerType;
-    @OneToMany(mappedBy = "customer")
-    private Set<Contract> contracts;
-    public Customer() {
-    }
-
-    public CustomerType getCustomerType() {
-        return customerType;
-    }
-
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
+    public CustomerDto() {
     }
 
     public int getCustomer_id() {
@@ -52,11 +46,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -100,12 +94,11 @@ public class Customer {
         this.address = address;
     }
 
-    public Set<Contract> getContracts() {
-        return contracts;
+    public int getCustomerTypeId() {
+        return customerTypeId;
     }
 
-
-    public void setContracts(Set<Contract> contracts) {
-        this.contracts = contracts;
+    public void setCustomerTypeId(int customerTypeId) {
+        this.customerTypeId = customerTypeId;
     }
 }
