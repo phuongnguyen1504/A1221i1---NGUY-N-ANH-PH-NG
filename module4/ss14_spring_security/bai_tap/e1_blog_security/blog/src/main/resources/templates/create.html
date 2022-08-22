@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:insert="~{/layout::common}" class="divOut"></div>
+<h1>Create Blog</h1>
+<form method="post" action="/blog/create" th:object="${blog}" enctype="multipart/form-data">
+    <div class="modal-header">
+        <h4 class="modal-title">Create new blog</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                onclick="this.form.reset()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6 form-group mb-2">
+                <label>Author</label>
+                <input type="number" name="id" th:field="*{id}" hidden/>
+                <input type="text" class="form-control mt-2" name="author" th:field="*{author}"
+                       required>
+            </div>
+            <div class="col-6 form-group mb-2">
+                <label>Category</label><br>
+                <select th:field="*{category_id}">
+                    <option th:each="cate:${category}" th:text="${cate.name}"
+                            th:value="${cate.category_id}">
+                    </option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 form-group mb-2">
+                <label>image</label>
+                <input type="file" class="form-control mt-2" name="image" th:field="*{image}"
+                       th:alt="*{image}"
+                       accept="image/png, image/jpg,image/jpeg"
+                       required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 form-group mb-2">
+                <label>Body</label>
+                <textarea type="text" class="form-control mt-2" name="body" th:field="*{body}"
+                          required style="height: 200px"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+    </div>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

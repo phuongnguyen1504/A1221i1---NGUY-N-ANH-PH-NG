@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--    <script src="/static/js/script.js"></script>-->
+
+</head>
+<body>
+<div th:replace="~{/layout::common}" class="divOut"></div>
+<strong style="color: green" th:text="${message}"></strong> <!--text -->
+
+<input type="text" id="popup" th:value="${popup}" hidden/>
+<div>
+    <input type="text" name="kq" id="inputSearch" autocomplete="off">
+</div>
+<!--<div class="row">-->
+<!--    <form action="/blog/create" method="post" th:object="${blog}">-->
+<!--        <input type="number" th:field="*{id}" hidden>-->
+<!--        <div class="form-group row" style="position: center">-->
+<!--            <div class="mb-3-row">-->
+<!--                <label class="col-2 col-form-label">Author:</label>-->
+<!--                <div class="col-6">-->
+<!--                    <input class="form-control" type="text" th:field="*{author}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row" style="position: center">-->
+<!--                <div class="mb-3-row">-->
+<!--                    <label class="col-2 col-form-label">Body of Blog:</label>-->
+<!--                    <div class="col-6">-->
+<!--                        <textarea class="form-control" th:cols="5" th:field="*{body}"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="form-group row" style="position: center">-->
+<!--                <div class="mb-3-row">-->
+<!--                    <label class="col-2 col-form-label">Body of Blog:</label>-->
+<!--                    <div class="col-6">-->
+<!--                        <button type="submit">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+<a type="button" class="btn btn-primary" data-bs-toggle="modal"
+   data-bs-target="#createModal"sec:authorize="isAuthenticated()">Create</a>
+<p th:if="${BlogList.isEmpty()}" style="color:red">List Empty</p>
+
+<table class="table" border="1" th:unless="${BlogList.isEmpty()}" id="BlogList">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Author</th>
+        <th>Image</th>
+        <!--        <th>Body</th>-->
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody class="content_table">
+    <tr th:each="blog : ${BlogList}">
+        <td th:text="${blog.id}"></td>
+        <td th:text="${blog.createTime}"></td>
+        <td th:text="${blog.author}"></td>
+
+        <td><img th:src="@{'/image/' + ${blog.image}}" height="150px"
+                 width="250px"></td>
+        <td sec:authorize="isAuthenticated()">
+            <a class="btn btn-success"
+               th:href="@{/blog/list/detail/{id}(id=${blog.id})}">Detail</a>
+            <a th:href="@{/blog/edit/__${blog.id}__}" class="btn btn-primary">Edit</a>
+            <a class="btn btn-danger btn-delete" data-bs-toggle="modal"
+               data-bs-target="#deleteModal" href="" type="button" th:data-id="${blog.id}">Delete</a>
+        </td>
+        <td sec:authorize="!isAuthenticated()"></td>
+    </tr>
+    </tbody>
+</table>
+<!--<div>-->
+<!--    <a th:href="@{'/blog/list'(page=${BlogList.number - 1})}" th:if="${BlogList.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${BlogList.number + 1}"></span>/<span th:text="${BlogList.totalPages}"></span>-->
+<!--    <a th:href="@{'/blog/list'(page=${BlogList.number + 1})}" th:if="${BlogList.hasNext()}">Next</a>-->
+<!--</div>-->
+<div class="row">
+    <button class="btn btn-success" onclick="loadPage()">Tải thêm</button>
+</div>
+<!-- Create Modal HTML -->
+<div id="createModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form method="post" action="/blog/create" th:object="${blog}" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create new blog</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="this.form.reset()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 form-group mb-2">
+                            <label>Author</label>
+                            <input type="number" name="id" th:field="*{id}" hidden/>
+                            <input type="text" class="form-control mt-2" name="author" th:field="*{author}"
+                                   required>
+                        </div>
+                        <div class="col-6 form-group mb-2">
+                            <label>Category</label><br>
+                            <select th:field="*{category_id}">
+                                <option th:each="cate:${category}" th:text="${cate.name}"
+                                        th:value="${cate.category_id}">1
+                                </option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>image</label>
+                            <input type="file" class="form-control mt-2" name="image" th:field="*{image}"
+                                   th:alt="*{image}"
+                                   accept="image/png, image/jpg,image/jpeg"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 form-group mb-2">
+                            <label>Body</label>
+                            <textarea type="text" class="form-control mt-2" name="body" th:field="*{body}"
+                                      required style="height: 200px"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Close"
+                               onclick="this.form.reset()">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Detail Modal HTML -->
+<div id="detailModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" th:object="${blog}">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail blog</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="this.form.reset()"></button>
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6 form-group mb-2">
+                        <label>Author</label>
+                        <input type="number" name="id" th:field="*{id}" hidden/>
+                        <input readonly type="text" class="form-control mt-2" name="author"
+                               th:field="*{author}"
+                               required>
+                    </div>
+                    <div class="col-6 form-group mb-2">
+                        <label>Category</label>
+                        <select th:field="*{category_id}">
+                            <option th:each="c:${category}" th:text="${c.name}" th:value="${c.category_id}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group mb-2">
+                        <label>Date Create</label>
+                        <input readonly type="text" class="form-control mt-2" name="createTime"
+                               th:field="*{createTime}"
+                               required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group mb-2">
+                            <label>Image</label>
+                            <!--                                <input type="text" class="form-control mt-2" name="author" th:field="*{image}" th:value="${bl.image}"-->
+                            <!--                                       >-->
+                            <img th:src="@{'/image/' + ${blog.image}}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group mb-2">
+                            <label>Body</label>
+                            <textarea readonly type="text" class="form-control mt-2" name="body"
+                                      th:field="*{body}"
+                                      required style="height: 200px"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Close"
+                           onclick="this.form.reset()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content" id="form-confirm-delete">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Blog</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    Are you sure to delete?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                <a type="button" id="ToastDelete" class="btn btn-danger btn-confirm-delete" href="">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<script type="text/javascript" th:inline="javascript">-->
+<!--    console.log([[${blog}]]);-->
+<!--    console.log([[${category}]]);-->
+<!--</script>-->
+
+<script>
+    var i = 0;
+
+    function getListBlog(data) {
+        return `<tr>`+
+                `<td>${data.id}</td>`+
+            `<td>${data.createTime}</td>`+
+            `<td>${data.author}</td>` +
+            `<td><img src="/image/${data.image}" height="150px"width="250px"></td>` +
+            `<td>`+
+            `<a class="btn btn-success" href="/blog/list/detail/{id}(id=${data.id})">Detail</a>` +
+            `<a href="/blog/edit/${data.id}" class="btn btn-primary">Edit</a>` +
+            `<a class="btn btn-danger btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" href="" type="button" data-id="${data.id}">Delete</a>`+
+            `</td>`+
+            `</tr>`;
+    }
+
+    function loadPage() {
+        $.ajax({
+
+            url: `/api/list?page=` + ++i,
+            type: `GET`,
+            success: function (data) {
+                console.log(data)
+
+                let content =$('.content_table').html()
+                for (let j = 0; j < data.content.length; j++) {
+                    content += getListBlog(data.content[j])
+                }
+                console.log(content)
+                $('.content_table').html(content);
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        $('#inputSearch').on("keyup",function (){
+            let valuesearch=$(this).val();
+            $('.content_table').empty();
+            $.ajax({
+                url:`/api/search?key=`+valuesearch,
+                type: `GET`,
+                dataType:"JSON",
+                success:function (data){
+                    console.log(data);
+                    let tr="";
+                    for (let j=0;j<data.length;j++){
+                        tr+=getListBlog(data[j])
+
+                    }
+                    console.log(tr)
+                    $('.content_table').html(tr)
+                }
+            })
+        })
+        $(".btn-delete").click(function () {
+            let id = $(this).data("id");
+            $('.btn-confirm-delete').attr("href", "/blog/delete?id=" + id);
+
+        })
+        let val = $('#popup').val();
+        switch (val) {
+            case "1":
+                $('#detailModal').modal("show");
+                break;
+            case "2":
+            case "3":
+                $('#createModal').modal("show");
+                break;
+
+        }
+
+
+    });
+
+
+</script>
+<div th:replace="~{/layout::abc}" class="divOut"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+</html>
