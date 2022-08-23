@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements IGeneralService<Customer> {
                     return customerRepository.findByBirthdayContaining(searchVal,pageable);
                 case "gender":
                     return customerRepository.findByGender(searchVal,pageable);
-                case "id_card":
+                case "card":
                     return customerRepository.findById_CardContaining("%".concat(searchVal).concat("%"),pageable);
                 case "phone":
                     return customerRepository.findByPhoneContaining(searchVal,pageable);

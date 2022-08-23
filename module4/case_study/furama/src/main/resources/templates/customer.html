@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <title>CustomerList</title>
     <script>
-        $( function() {
-            $( ".date.form-control" ).datepicker();
-        } );
+        $(function () {
+            $(".date.form-control").datepicker();
+        });
     </script>
 </head>
 <body>
@@ -22,18 +22,25 @@
                 <form class="row gy-2 gx-3 align-items-center">
                     <div class="col-auto">
                         <select class="form-select" id="searchBy">
-                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='all':false" value="all">Search By ...</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='all':false" value="all">Search By ...
+                            </option>
                             <option th:selected="${tmp.length}>0 ?${tmp[0]}=='name':false" value="name">Name</option>
-                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='birthday':false" value="birthday">Birthday</option>
-                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='gender':false" value="gender">Gender</option>
-                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='id_card':false" value="id_card">Id_card</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='birthday':false" value="birthday">
+                                Birthday
+                            </option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='gender':false" value="gender">Gender
+                            </option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='id_card':false" value="id_card">Id_card
+                            </option>
                             <option th:selected="${tmp.length}>0 ?${tmp[0]}=='phone':false" value="phone">phone</option>
                             <option th:selected="${tmp.length}>0 ?${tmp[0]}=='mail':false" value="mail">Mail</option>
-                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='address':false" value="address">Address</option>
+                            <option th:selected="${tmp.length}>0 ?${tmp[0]}=='address':false" value="address">Address
+                            </option>
                         </select>
                     </div>
                     <div class="col-auto">
-                        <input type="text" class="form-control" id="searchVal" th:value="${tmp.length}>0 ? ${tmp[1]}:''">
+                        <input type="text" class="form-control" id="searchVal"
+                               th:value="${tmp.length}>0 ? ${tmp[1]}:''">
                     </div>
                     <div class="col-auto">
                         <a id="sbmSearch" href="/" class="btn btn-secondary">Submit</a>
@@ -44,23 +51,127 @@
         <div class="row" th:if="${res.getTotalElements}>0">
             <table class="table table-hover">
                 <thead th:with="tmpSort=${#strings.containsIgnoreCase(sort,'asc')?'desc':'asc'}">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">
-                            <a th:href="'?page='+${res.getNumber()+1}+'&sort=name,'+${tmpSort}">
-                                <div class="pt-1" style="float:left">Name</div>
-                                <div style="display: flex;flex-direction: column">
-                                    <i class="fas fa-chevron-up" th:classappend="${#strings.containsIgnoreCase(sort,'name: desc')} ? '': 'sort-disabled'"></i>
-                                    <i class="fas fa-chevron-down" th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
-                                </div>
-                            </a>
-                        </th>
-                    </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=name,'+${tmpSort}">
+                            <div class="pt-1" style="float:left">Name</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: desc')} ? '': 'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=birthday,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">Birthday</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=gender,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">Gender</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=id_card,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">id_card</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=phone,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">Phone</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=mail,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">Email</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=address,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">Address</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a th:href="'?page='+${res.getNumber()}+'&sort=customerType,'+${tmpSort}">
+                            <div class="pt-1" style="float: left">category</div>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="fas fa-chevron-up"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name:desc')} ? '':'sort-disabled'"></i>
+                                <i class="fas fa-chevron-down"
+                                   th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
+                            </div>
+                        </a>
+                    </th>
+                    <th scope="col">Actions</th>
+                </tr>
                 </thead>
+                <tbody>
+                <tr th:each="c,i:${res}">
+                    <td th:text="${i.count+res.getNumber()*res.getSize()}"></td>
+                    <td th:text="${c.name}"></td>
+                    <td th:text="${c.birthday}"></td>
+                    <td th:text="${c.gender}"></td>
+                    <td th:text="${c.id_card}"></td>
+                    <td th:text="${c.phone}"></td>
+                    <td th:text="${c.mail}"></td>
+                    <td th:text="${c.address}"></td>
+                    <td th:text="${c.customerType.name}"></td>
+                    <td>
+                        <a href="#addEditModal" class="edit" data-bs-toggle="modal" th:data-id="${c.customer_id}" th:data-name="${c.name}"
+                        th:data-birthday="${c?.birthday}" th:data-gender="${c?.gender}" th:data-id_card="${c?.id_card}"
+                        th:data-phone="${c?.phone}" th:data-mail="${c?.mail}" th:data-address="${c?.address}">
+                            <i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i>
+                        </a>
+                        <a href="#deleteModal" class="delete" data-bs-toggle="modal" th:data-id="${c.customer_id}"
+                           th:data-name="${c.name}">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
             </table>
         </div>
     </div>
-<!--    //Add Edit Modal-->
+    <!--    //Add Edit Modal-->
     <div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <form method="post" th:object="${customer}">
@@ -145,7 +256,7 @@
         resetError();
     });
     $("#sbmSearch").click(function () {
-        if($("#searchVal").val() != ''){
+        if ($("#searchVal").val() != '') {
             const q = $("#searchBy").val() + ":" + $("#searchVal").val();
             $("#sbmSearch").attr('href', '?q=' + q);
         }
