@@ -156,9 +156,11 @@
                     <td th:text="${c.address}"></td>
                     <td th:text="${c.customerType.name}"></td>
                     <td>
-                        <a href="#addEditModal" class="edit" data-bs-toggle="modal" th:data-id="${c.customer_id}" th:data-name="${c.name}"
-                        th:data-birthday="${c?.birthday}" th:data-gender="${c?.gender}" th:data-id_card="${c?.id_card}"
-                        th:data-phone="${c?.phone}" th:data-mail="${c?.mail}" th:data-address="${c?.address}">
+                        <a href="#addEditModal" class="edit" data-bs-toggle="modal" th:data-id="${c.customer_id}"
+                           th:data-name="${c.name}"
+                           th:data-birthday="${c?.birthday}" th:data-gender="${c?.gender}"
+                           th:data-id_card="${c?.id_card}"
+                           th:data-phone="${c?.phone}" th:data-mail="${c?.mail}" th:data-address="${c?.address}">
                             <i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i>
                         </a>
                         <a href="#deleteModal" class="delete" data-bs-toggle="modal" th:data-id="${c.customer_id}"
@@ -169,7 +171,34 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="d-flex justify-content-between">
+                <div class="pt-2">Showing [[${res.getNumberOfElements()}]] out of [[${res.getNumberOfElements()}]]</div>
+                <nav th:with="r=${#strings.isEmpty(t)} ? '' : '&sort=' + ${#strings.toLowerCase(#strings.replace(t,': ',','))}">
+                    <ul class="pagination">
+                        <li class="page-item" th:classappend="${!res.hasPrevious()} ? 'disabled'">
+                            <a class="page-link"
+                               th:href="'?q='+ ${q} + '&page=' + ${res.getNumber()-1} + ${r}">Previous</a>
+                        </li>
+                        <li class="page-item" th:each="i : ${#numbers.sequence(1, res.getTotalPages())}"
+                            th:classappend="${i == res.getNumber() +1} ? 'active' : ''">
+                            <a class="page-link" th:href="'?q='+ ${q} + '&page=' + ${i} + ${r}">[[${i}]]</a>
+                        </li>
+                        <li class="page-item" th:classappend="${!res.hasNext()} ? 'disabled'">
+                            <a class="page-link"
+                               th:href="'?q='+ ${q} + '&page=' + ${res.getNumber() + 1} + ${r}">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
+    </div>
+    <div class="row mb-3" th:if="${res.getTotalElements} == 0">
+        <h5>Product list is empty...</h5>
+    </div>
+
+    <div class="page-footer">
+        <a href="#" class="page-footer-item page-footer-item-right">Category<i data-feather="arrow-right"
+                                                                               class="footer-right"></i></a>
     </div>
     <!--    //Add Edit Modal-->
     <div class="modal fade" id="addEditModal" tabindex="-1" aria-hidden="true">
@@ -181,7 +210,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input name="id" type="hidden" th:field="*{customer_id}">
+                        <div class="mb-3">
+                            <label class="form-label">Customer Code</label>
+                            <input  class="form-control" name="id" th:field="*{customer_id}">
+                            <label id="lbId" style="color: #fc9494" th:if="${#fields.hasErrors('customer_id')}"
+                                   th:errors="*{name}"></label>
+                        </div>
+
                         <div class="mb-3">
                             <label class="form-label">Name</label>
                             <input class="form-control" name="name" th:field="*{name}"/>
@@ -190,14 +225,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">EXP Date</label>
-                            <input type="text" class="date form-control" name="expDate" th:field="*{birthday}"/>
+                            <label class="form-label">Birthday</label>
+                            <input type="text" class="date form-control" name="birthday" th:field="*{birthday}"/>
                             <label id="lbBirthday" style="color: #fc9494" th:if="${#fields.hasErrors('birthday')}"
                                    th:errors="*{birthday}"></label>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Gender</label>
-                            <select th:field="*{gender}">
+                            <select name="gender" th:field="*{gender}">
                                 <option class="form-select" th:value="0" th:text="Male"></option>
                                 <option class="form-select" th:value="1" th:text="Female"></option>
                                 <option class="form-select" th:value="2" th:text="LGBT"></option>
@@ -220,8 +255,8 @@
                         <div class="mb-3">
                             <label class="form-label">Mail</label>
                             <input class="form-control" name="mail" th:field="*{mail}"/>
-                            <label id="lbmail" style="color: #fc9494" th:if="${#fields.hasErrors('mail')}"
-                                   th:errors="*{mail}"></label>
+                            <p id="lbmail" style="color: #fc9494" th:if="${#fields.hasErrors('mail')}"
+                                   th:errors="*{mail}">Invalid Age</p>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Address</label>
@@ -241,6 +276,26 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form th:method="delete">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to want to delete this record?
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </form>
@@ -273,3 +328,4 @@
     //     $("#lbExpDate").hide();
     // }
 </script>
+

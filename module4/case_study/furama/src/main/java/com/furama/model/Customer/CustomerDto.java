@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class CustomerDto {
     @Pattern(regexp = "^KH-\\d{4}$",message = "Phai nhap dung dinh dang KH-XXXX (X là số từ 0-9)")
-    private int customer_id;
+    private String customer_id;
     @NotBlank(message = "Khong duoc de trong")
     private String name;
     private LocalDate birthday;
@@ -30,11 +30,11 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
-    public int getCustomer_id() {
+    public String getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
     }
 

@@ -10,8 +10,8 @@ import java.util.Set;
 @Table(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customer_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String customer_id;
     private String name;
     private String birthday;
     private String gender;
@@ -36,11 +36,11 @@ public class Customer {
         this.customerType = customerType;
     }
 
-    public int getCustomer_id() {
+    public String getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
     }
 
