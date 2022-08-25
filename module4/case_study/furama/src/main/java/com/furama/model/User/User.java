@@ -3,6 +3,8 @@ package com.furama.model.User;
 import com.furama.model.employee.Employee;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,6 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String username;
     private String password;
+//    @ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany(mappedBy = "users")
     private Set<Role> roles;
     @OneToOne(mappedBy = "user")
@@ -43,6 +46,9 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+
+
 
     public Employee getEmployee() {
         return employee;

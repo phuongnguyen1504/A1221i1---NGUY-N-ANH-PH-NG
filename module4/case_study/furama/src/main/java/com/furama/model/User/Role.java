@@ -1,6 +1,8 @@
 package com.furama.model.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -10,10 +12,20 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int role_id;
     private String role_name;
-    @ManyToMany
-    @JoinTable(name="user_role",
-    joinColumns = @JoinColumn(name="role_id"),
-    inverseJoinColumns = @JoinColumn(name = "username"))
+    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name="user_role",
+//    joinColumns = @JoinColumn(name="role_id"),
+//    inverseJoinColumns = @JoinColumn(name = "username"))
+
+
+//    @ManyToMany(cascade = {
+//            CascadeType.PERSIST,
+//            CascadeType.MERGE
+//    })
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "username")
+    )
     private Set<User> users;
 
     public Role() {
@@ -42,5 +54,7 @@ public class Role {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+
+
 
 }

@@ -47,8 +47,8 @@ public class Cart {
     }
     public void decreaseProduct(Product product){
         Map.Entry<Product,Integer> itrementry=selectItemInCart(product);
-        if (itrementry.getValue()<1){
-            products.replace(product,0);
+        if (itrementry.getValue()<2){
+            products.remove(product);
         }
         else {
             products.replace(product,itrementry.getValue()-1);
