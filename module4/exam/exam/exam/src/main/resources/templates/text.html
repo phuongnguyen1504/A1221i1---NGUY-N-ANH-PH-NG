@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Tropiko</title>
+
+  <!-- slider stylesheet -->
+  <link href="/css/scri.css" rel="stylesheet">
+  <link href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css" rel="stylesheet"/>
+  <script src="plugin/jquery/jquery-3.4.1.min.js"></script>
+  <script src="plugin/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="plugin/perfectscroll/perfect-scrollbar.min.js"></script>
+  <script src="plugin/pace/pace.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+          integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="webjars/izitoast/1.4.0/dist/css/iziToast.min.css">
+  <script src="webjars/izitoast/1.4.0/dist/js/iziToast.min.js"></script>
+  <link href="plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="plugin/font-awesome/css/all.min.css" rel="stylesheet">
+  <link href="plugin/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
+  <link href="plugin/pace/pace.css" rel="stylesheet">
+
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="sidebar ">
+      <div class="logo-details">
+        <div class="logo">
+          <i class='bx bxs-store-alt'></i>
+          <span class="logo-name">Furama</span>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+      </div>
+      <ul class="bar-links">
+        <li>
+          <a href="#">
+            <i class='bx bx-grid-alt'></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link-name" href="#">Dashboard</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bx-collection'></i>
+              <span class="link-name">Product</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><label class="link-name" href="#" style="font-weight:bolder;font-size: 20px;color:#b6effb",>Product</label></li>
+            <li><a href="/customer">Customer</a></li>
+            <li><a href="/home">Category</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bx-collection'></i>
+              <span class="link-name">Posts</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link-name" href="#">Posts</a></li>
+            <li><a href="#">Design</a></li>
+            <li><a href="#">Form</a></li>
+            <li><a href="#">Card</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-pie-chart-alt-2'></i>
+            <span class="link_name">Analytics</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Analytics</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-line-chart'></i>
+            <span class="link_name">Chart</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Chart</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bx-plug'></i>
+              <span class="link_name">Plugins</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">Plugins</a></li>
+            <li><a href="#">UI Face</a></li>
+            <li><a href="#">Pigments</a></li>
+            <li><a href="#">Box Icons</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-compass'></i>
+            <span class="link_name">Explore</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Explore</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-history'></i>
+            <span class="link_name">History</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog'></i>
+            <span class="link_name">Setting</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Setting</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="header">
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-1">
+              <a class="navbar-brand" href="#"><i class='bx bxl-java'></i></a>
+            </div>
+            <div class="col-5 category">
+              <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#">
+                    Employee
+                  </a>
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Employee</a>
+                    <a href="#" class="dropdown-item">Position</a>
+                    <a href="#" class="dropdown-item">Education Degree</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#">
+                    Customer
+                  </a>
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">List Customer</a>
+                    <a href="#" class="dropdown-item">Customer Type</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Service</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contract</a>
+                </li>
+              </ul>
+            </div>
+            <div class="form-login col-6 d-flex flex-row-reverse">
+
+              <button class="btn btn-primary border border-warning rounded-pill border-3 me">Sign up<i class='bx bx-food-menu'></i></button><span> || </span><button class="btn btn-warning border border-primary rounded-pill border-3 ms-auto">Sign in<i class='bx bx-log-in'></i></button>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="content">
+      <section layout:fragment="content-page">
+        <p>This is filled by the content template.</p>
+      </section>
+    </div>
+    <div class="footer">
+      <p>Hi</p>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="/js/sc.js"></script>
+
+  <!-- google map js -->
+
+  <!-- end google map js -->
+</body>
+
+</html>
