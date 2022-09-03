@@ -1,5 +1,6 @@
 package com.furama.model.Customer;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class CustomerType {
     private int customer_type_id;
     private String name;
     @OneToMany(mappedBy = "customerType",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<Customer> customers;
 
     public CustomerType() {

@@ -1,6 +1,7 @@
 package com.furama.model.Customer;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cascade;
 
 
@@ -34,7 +35,8 @@ public class Customer {
 
     @ManyToOne
     @JoinColumn(name = "customer_type_id",referencedColumnName = "customer_type_id")
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonManagedReference
     private CustomerType customerType;
 
     public Customer() {

@@ -24,6 +24,7 @@
                     dataType:"JSON",
                     success:function (data){
                         console.log(data);
+                        console.log(data.customerType.customer_type_id);
                         $("#addEditModal").modal('show');
                         $(".modal-title").text("Edit Product");
                         $('.form_customer').attr("object",data);
@@ -35,7 +36,7 @@
                         $('.customer_phone').val(data.phone);
                         $('.customer_mail').val(data.mail);
                         $('.customer_address').val(data.address);
-                        $('.customer_category select').val(data.customerType.customer_type_id);
+                        $('.category-selection select').val(data.customerType.customer_type_id).change();
 
                     },
                     error:function (){
@@ -98,9 +99,9 @@
                         <a th:href="'?page='+${res.getNumber()}+'&sort=name,'+${tmpSort}">
                             <div class="pt-1" style="float: left">Name</div>
                             <div style="display: flex;float: left">
-                                <i th:if="${#strings.containsIgnoreCase(sort,'name: desc')}" class="fas fa-chevron-up"
+                                <i class="fas fa-chevron-up"
                                    th:classappend="${#strings.containsIgnoreCase(sort,'name: desc')} ? '': 'sort-disabled'"></i>
-                                <i th:unless="${#strings.containsIgnoreCase(sort,'name: desc')}" class="fas fa-chevron-down"
+                                <i  class="fas fa-chevron-down"
                                    th:classappend="${#strings.containsIgnoreCase(sort,'name: asc')} ? '': 'sort-disabled'"></i>
                             </div>
                         </a>
@@ -317,7 +318,7 @@
                                 <label id="lbaddress" style="color: #fc9494" th:if="${#fields.hasErrors('address')}"
                                        th:errors="*{address}"></label>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 category-selection">
                                 <label class="form-label">Type Customer</label>
                                 <select name="category" class="form-select customer_category" th:field="*{customerTypeId}">
                                     <option th:each="item:${cate}" th:value="${item.customer_type_id}"
