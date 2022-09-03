@@ -43,5 +43,9 @@ public interface CustomerRepository extends JpaRepository<Customer, String> {
                     " join customer_type ct on c.customer_type_id=ct.customer_type_id\n" +
                     " where c.name like ?1 or c.birthday like ?1 or c.gender like ?1 or c.idcard like ?1 or c.phone like ?1 or c.mail like ?1 or c.address like ?1 or ct.name like ?1", nativeQuery = true)
     Page<Customer> findAllByValue(String concat, Pageable pageable);
+    
+    //SET foreign_key_checks = 0;
+    //DELETE FROM table_name WHERE {conditions};
+    //SET foreign_key_checks = 1;
 
 }
