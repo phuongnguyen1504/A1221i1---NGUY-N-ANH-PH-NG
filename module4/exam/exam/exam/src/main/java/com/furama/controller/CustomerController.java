@@ -8,6 +8,7 @@ import com.furama.service.Customer.CustomerServiceImpl;
 import com.furama.service.Customer.CustomerTypeSerivceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,10 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sun.tools.jconsole.JConsole;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/customer")
+//@RequestMapping("/customer")
 //@SessionAttributes("customer")
 public class CustomerController {
     @Autowired
@@ -33,7 +35,7 @@ public class CustomerController {
     @Autowired
     private CustomerTypeSerivceImpl typeService;
 
-    @GetMapping
+    @GetMapping("/customer")
     public String view(Model model, CustomerDto customer, BindingResult bindingResult, @RequestParam(defaultValue = "") String q, @PageableDefault(value = 5)Pageable pageable) {
         model.addAttribute("res", customerService.find(q, pageable));
         model.addAttribute("cate", typeService.findAll());
@@ -43,7 +45,13 @@ public class CustomerController {
         model.addAttribute("isError", bindingResult.hasErrors());
         return "customer";
     }
-    @PostMapping
+    @GetMapping("/api/customer")
+    public ResponseEntity<Page<Customer>> view(@RequestParam(defaultValue = "") String q, @PageableDefault(value = 5)Pageable pageable) {
+        Page<Customer> customers= customerService.find(q, pageable);
+
+        return new  ResponseEntity<>(customers,HttpStatus.OK);
+    }
+    @PostMapping("/customer")
     public String save(@Validated @ModelAttribute CustomerDto customerDto, BindingResult bindingResult,@RequestParam(defaultValue = "") String q, @PageableDefault(value = 5)Pageable pageable, RedirectAttributes redirect,Model model){
 //        new CustomerDto().validate(customerDto,bindingResult);
 
@@ -59,6 +67,7 @@ public class CustomerController {
         }
         Customer customer1=new Customer();
         BeanUtils.copyProperties(customerDto,customer1);
+
         customer1.setBirthday(customerDto.getBirthday().toString());
         CustomerType customerType=new CustomerType();
         customerType=typeService.findById(customerDto.getCustomerTypeId()).get();
@@ -68,12 +77,23 @@ public class CustomerController {
 
         return "redirect:/customer";
     }
-    @DeleteMapping
-    public String delete(@RequestParam String id,RedirectAttributes redirect){
+//    @DeleteMapping
+//    public String delete(@RequestParam String id,RedirectAttributes redirect){
+//        System.out.println(id);
+//        customerService.delete(id);
+//        redirect.addFlashAttribute("msg","Delete Succesfully");
+//        return "redirect:/customer";
+//    }
+    @DeleteMapping("/customer/{id}")
+    public ResponseEntity<String> delete(@PathVariable String id,RedirectAttributes redirect){
         System.out.println(id);
+        Optional<Customer> customer=customerService.findById(id);
+        if (!customer.isPresent()){
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
         customerService.delete(id);
         redirect.addFlashAttribute("msg","Delete Succesfully");
-        return "redirect:/customer";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/edit/{id}")
     public ResponseEntity<Customer> findCustomer(@PathVariable String id){

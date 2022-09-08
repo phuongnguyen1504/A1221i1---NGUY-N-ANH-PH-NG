@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements IGeneralService<Customer> {
             String searchVal=tmp[1];
             switch (searchBy){
                 case "name":
-                    return customerRepository.findByNameContaining("%".concat(searchVal).concat("%"),pageable);
+                    return customerRepository.findByNameContaining(searchVal,pageable);
                 case "birthday":
                     return customerRepository.findByBirthdayContaining(searchVal,pageable);
                 case "gender":
