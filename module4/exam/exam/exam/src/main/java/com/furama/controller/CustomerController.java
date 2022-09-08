@@ -48,7 +48,7 @@ public class CustomerController {
     @GetMapping("/api/customer")
     public ResponseEntity<Page<Customer>> view(@RequestParam(defaultValue = "") String q, @PageableDefault(value = 5)Pageable pageable) {
         Page<Customer> customers= customerService.find(q, pageable);
-
+        System.out.println(customers);
         return new  ResponseEntity<>(customers,HttpStatus.OK);
     }
     @PostMapping("/customer")
@@ -95,7 +95,7 @@ public class CustomerController {
         redirect.addFlashAttribute("msg","Delete Succesfully");
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @GetMapping("/edit/{id}")
+    @GetMapping("/customer/edit/{id}")
     public ResponseEntity<Customer> findCustomer(@PathVariable String id){
         Optional<Customer> customer=customerService.findById(id);
         if (!customer.isPresent()){

@@ -2,50 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{text}">
+
 <head>
     <meta charset="UTF-8">
     <title>CustomerList</title>
-    <script>
-        $(function () {
-            $(".date.form-control").datepicker();
-            $(".date.form-control").on("change",function (){
-                let value=$(this).val().split("/");
-                console.log(value);
-                $(".date.form-control").val(value[1]+"/"+value[0]+"/"+value[2]);
-            });
 
-
-            $('.edit').click(function () {
-                let id=$(this).data("id");
-                console.log(id);
-                $.ajax({
-                    url:`/customer/edit/`+id,
-                    method:`GET`,
-                    dataType:"JSON",
-                    success:function (data){
-                        console.log(data);
-                        console.log(data.customerType.customer_type_id);
-                        $("#addEditModal").modal('show');
-                        $(".modal-title").text("Edit Product");
-                        $('.form_customer').attr("object",data);
-                        $('.customer_id').val(data.customer_id).hide();
-                        $('.customer_name').val(data.name);
-                        $('.customer_birthday').val(data.birthday);
-                        $('#gender').val(data.gender);
-                        $('.customer_card').val(data.idcard);
-                        $('.customer_phone').val(data.phone);
-                        $('.customer_mail').val(data.mail);
-                        $('.customer_address').val(data.address);
-                        $('.category-selection select').val(data.customerType.customer_type_id).change();
-
-                    },
-                    error:function (){
-                        alert("Khong ton tai");
-                }
-                })
-            })
-        });
-    </script>
 </head>
 <body>
 <div layout:fragment="content-page">
@@ -54,11 +15,7 @@
             <div class="col-lg-6 table-title">
                 <a href="#addEditModal" class="btn btn-success add" data-bs-toggle="modal"><i
                         class='bx bx-plus-circle'></i><span>Add New Customer</span></a>
-
-
             </div>
-
-
             <div class="col-lg-6 table-search" th:with="tmp=${#strings.arraySplit(q,':')}">
                 <form class="row gy-2 gx-3 align-items-center">
                     <div class="col-auto">
@@ -250,147 +207,110 @@
         <a href="#" class="page-footer-item page-footer-item-right">Category<i data-feather="arrow-right"
                                                                                class="footer-right"></i></a>
     </div>
-    <!--    //Add Edit Modal-->
-    <div class="modal fade" id="addEditModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <form method="post" class="form_customer" th:object="${customerDto}">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Add Item</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body ">
-
-                            <div class="mb-3">
-                                <label class="form-label customer_id">Customer Code</label>
-                                <input class="form-control customer_id" name="id" th:field="*{customer_id}">
-                                <label id="lbId" style="color: #fc9494" th:if="${#fields.hasErrors('customer_id')}"
-                                       th:errors="*{customer_id}"></label>
 
 
-                            </div>
+    <div th:replace="~{addEdit :: addEditModal()}"></div>
+    <div th:replace="~{delete :: deleteModal()}"></div>
+    <script th:inline="javascript">
+        $(function () {
+            if ([[${isError}]]) {
+                $("#addEditModal").modal('show');
+            }
 
-                            <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input class="form-control customer_name" name="name" th:field="*{name}"/>
-                                <label id="lbName" style="color: #fc9494" th:if="${#fields.hasErrors('name')}"
-                                       th:errors="*{name}"></label>
-                            </div>
+            if ([[${msg}]]) {
+                iziToast.success({position: "topRight", message: [[${msg}]]});
+            };
+            $(".date.form-control").datepicker();
+            $(".date.form-control").on("change",function (){
+                let value=$(this).val().split("/");
+                console.log(value);
+                $(".date.form-control").val(value[1]+"/"+value[0]+"/"+value[2]);
+            });
+            //Add modal
+            $(".add").click(function () {
+                $(".modal-title").text("Add Product");
+                $('.error').hide();
+                $('.customer_id').show();
+                resetForm();
 
-                            <div class="mb-3">
-                                <label class="form-label">Birthday</label>
-                                <input type="text" class="date form-control customer_birthday" name="birthday" th:field="*{birthday}"autocomplete="off"/>
-                                <label id="lbBirthday" style="color: #fc9494" th:if="${#fields.hasErrors('birthday')}"
-                                       th:errors="*{birthday}"></label>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Gender</label>
-                                <select id="gender" name="gender" th:field="*{gender}">
-                                    <option class="form-select" th:value="0" th:text="Male"></option>
-                                    <option class="form-select" th:value="1" th:text="Female"></option>
-                                    <option class="form-select" th:value="2" th:text="LGBT"></option>
-                                </select>
-                                <label id="lbGender" style="color: #fc9494" th:if="${#fields.hasErrors('gender')}"
-                                       th:errors="*{gender}"></label>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">ID Card</label>
-                                <input class="form-control customer_card" name="id_card" th:field="*{idcard}"/>
-                                <label id="lbIdCard" style="color: #fc9494" th:if="${#fields.hasErrors('idcard')}"
-                                       th:errors="*{idcard}"></label>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Phone</label>
-                                <input class="form-control customer_phone" name="phone" th:field="*{phone}"/>
-                                <label id="lbPhone" style="color: #fc9494" th:if="${#fields.hasErrors('phone')}"
-                                       th:errors="*{phone}"></label>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Mail</label>
-                                <input class="form-control customer_mail" name="mail" th:field="*{mail}"/>
-                                <p id="lbmail" style="color: #fc9494" th:if="${#fields.hasErrors('mail')}"
-                                   th:errors="*{mail}">Invalid Age</p>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Address</label>
-                                <input class="form-control customer_address" name="address" th:field="*{address}"/>
-                                <label id="lbaddress" style="color: #fc9494" th:if="${#fields.hasErrors('address')}"
-                                       th:errors="*{address}"></label>
-                            </div>
-                            <div class="mb-3 category-selection">
-                                <label class="form-label">Type Customer</label>
-                                <select name="category" class="form-select customer_category" th:field="*{customerTypeId}">
-                                    <option th:each="item:${cate}" th:value="${item.customer_type_id}"
-                                            th:text="${item.name}"></option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success">Save</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <form th:method="delete" th:action="@{/customer}">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Delete Item</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure to want to delete <span class="name-object"></span>?
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="id" id="deleteval">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger confirm-delete">Delete</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script>
-        // alert("host = "
-        //     + $(location).attr('host')
-        //     + "\nhostname = "
-        //     + $(location).attr('hostname')
-        //     + "\npathname = "
-        //     + $(location).attr('pathname')
-        //     + "\nhref = "
-        //     + $(location).attr('href')
-        //     + "\nport = " + $(location).attr('port')
-        //     + "\nprotocol = "
-        //     + $(location).attr('protocol'));
-
-        $(function (){
-            $('.delete').click(function (){
+            });
+            //resetForm
+            function resetForm() {
+                $(".customer_id").val("");
+                $("input[name='name'],input[name='birthday'],input[name='gender'],input[name='idcard'],input[name='phone'],input[name='mail'],input[name='address'],input[name='category']").val("");
+                $("#lbErrorName").hide();
+                $("#lbErrorStartPrice").hide();
+            };
+            //edit modal
+            $('.edit').click(function () {
+                let beforeid=$('input.customer_id').val();
                 let id=$(this).data("id");
+                if (beforeid!=id){
+                    $('.error').hide();
+                }
+                console.log(id);
+                $.ajax({
+                    url:`/customer/edit/`+id,
+                    method:`GET`,
+                    dataType:"JSON",
+                    success:function (data){
+                        console.log(data);
+                        console.log(data.customerType.customer_type_id);
+
+                        $("#addEditModal").modal('show');
+                        $(".modal-title").text("Edit Product");
+                        $('.form_customer').attr("object",data);
+                        $('.customer_id').val(data.customer_id).hide();
+                        $('.customer_name').val(data.name);
+                        $('.customer_birthday').val(data.birthday);
+                        $('#gender').val(data.gender);
+                        $('.customer_card').val(data.idcard);
+                        $('.customer_phone').val(data.phone);
+                        $('.customer_mail').val(data.mail);
+                        $('.customer_address').val(data.address);
+                        $('.category-selection select').val(data.customerType.customer_type_id).change();
+
+                    },
+                    error:function (){
+                        alert("Khong ton tai");
+                    }
+                })
+            });
+            //Delete modal
+            $('.delete').click(function (){
+                debugger
+                let id=$(this).data("id");
+                console.log("ID:"+id);
                 let name=$(this).data("name");
+                deleteObject(id,name);
+            })
+            function deleteObject(id,name){
+                // debugger
+
                 $(".name-object").text(name);
                 console.log(name);
                 $('#deleteval').val(id);
                 console.log(id);
+                $("#deleteModal").modal('show');
                 $(`.confirm-delete`).click(function (){
                     $.ajax({
                         url:'/customer/'+id,
                         method:'DELETE',
+                        async:false,
                         success: function () {
                             loadPage();
+                            event.preventDefault()
+
                         },
-                        error: function ()
-                            iziToast.success({position: "topRight", message: "Delete not success"})
+                        error: function () {
+                            iziToast.success({position: "topRight", message: "Delete not success"});
+                            event.preventDefault()
+                        }
                     })
                 })
-            })
-
+                event.preventDefault()
+            };
+            //loadTable
             function loadPage(){
                 $('#deleteModal').modal("hide");
                 let pattern=$(location).attr('href').split("/")[3];
@@ -400,21 +320,22 @@
                     url:`/api/`+pattern,
                     method: 'GET',
                     dataType: 'JSON',
+                    async:false,
                     success:function (data) {
                         console.log(data.content);
                         let content=``;
                         for(let i=0;i<data.content.length;i++){
                             content+=fillData(data.content[i],i+1);
-                            console.log(data.content[i]);
+                            console.log("content"+data.content[i].customer_id);
                         }
 
                         $('.body_table').html(content);
-                        console.log(content);
                         iziToast.success({position: "topRight", message: "Delete Succesfully"});
 
                     }
                 })
-            }
+            };
+            //Fill Data to table
             function fillData(data,i) {
                 return `<tr>` +
                     `<td>${i}</td>` +
@@ -427,64 +348,50 @@
                     `<td>${data.address}</td>` +
                     `<td>${data.customerType.name}</td>` +
                     `<td>` +
-                    `<a data-bs-target="#addEditModal" href="" className="edit" data-bs-toggle="modal"
+                    `<a data-bs-target="#addEditModal" href="" class="edit" data-bs-toggle="modal"
                        data-id="${data.customer_id}"
                        data-name="${data.name}"
                        data-birthday="${data?.birthday}" data-gender="${data?.gender}"
                        data-id_card="${data?.idcard}"
                        data-phone="${data?.phone}" data-mail="${data?.mail}" data-address="${data?.address}">
-                        <i className="bx bxs-edit-alt" data-bs-toggle="tooltip" title="Edit"></i>
+                        <i class="bx bxs-edit-alt" data-bs-toggle="tooltip" title="Edit"></i>
                     </a>` +
-                    `<a data-bs-target="#deleteModal" href="" className="delete" data-bs-toggle="modal"
+                    `<a data-bs-target="#deleteModal" href="" class="delete" data-bs-toggle="modal"
                        data-id="${data.customer_id}"
                        data-name="${data.name}">
-                        <i className="bx bxs-message-alt-x" data-bs-toggle="tooltip" title="Delete"></i>
+                        <i class="bx bxs-message-alt-x" data-bs-toggle="tooltip" title="Delete"></i>
                     </a>` +
                     `</td>` +
                     `</tr>`;
-            }
-        })
+
+            };
+           //search button
+            $("#sbmSearch").click(function () {
+                if ($("#searchVal").val() != '') {
+                    const q = $("#searchBy").val() + ":" + $("#searchVal").val();
+                    $("#sbmSearch").attr('href', '?q=' + q);
+                }
+                else {
+                    $("#sbmSearch").attr('href', '/customer');
+
+                }
+            });
+        });
     </script>
+<!--        // alert("host = "-->
+<!--        //     + $(location).attr('host')-->
+<!--        //     + "\nhostname = "-->
+<!--        //     + $(location).attr('hostname')-->
+<!--        //     + "\npathname = "-->
+<!--        //     + $(location).attr('pathname')-->
+<!--        //     + "\nhref = "-->
+<!--        //     + $(location).attr('href')-->
+<!--        //     + "\nport = " + $(location).attr('port')-->
+<!--        //     + "\nprotocol = "-->
+<!--        //     + $(location).attr('protocol'));-->
+
 </div>
 </body>
 </html>
-<script>
-    $(".add").click(function () {
-        $(".modal-title").text("Add Product");
-        $('.customer_id').show();
-        resetForm();
 
-    });
-    $("#sbmSearch").click(function () {
-        if ($("#searchVal").val() != '') {
-            const q = $("#searchBy").val() + ":" + $("#searchVal").val();
-            $("#sbmSearch").attr('href', '?q=' + q);
-        }
-        else {
-            $("#sbmSearch").attr('href', '/customer');
 
-        }
-    });
-    function resetForm() {
-        $(".customer_id").val("");
-        $("input[name='name'],input[name='birthday'],input[name='gender'],input[name='idcard'],input[name='phone'],input[name='mail'],input[name='address'],input[name='category']").val("");
-        $("#lbErrorName").hide();
-        $("#lbErrorStartPrice").hide();
-    }
-    // function resetError() {
-    //     $("#lbName").hide();
-    //     $("#lbPrice").hide();
-    //     $("#lbExpDate").hide();
-    // }
-</script>
-<script th:inline="javascript">
-    $(document).ready(function () {
-        if ([[${isError}]]) {
-            $("#addEditModal").modal('show');
-        }
-
-        if ([[${msg}]]) {
-            iziToast.success({position: "topRight", message: [[${msg}]]});
-        }
-    })
-</script>
