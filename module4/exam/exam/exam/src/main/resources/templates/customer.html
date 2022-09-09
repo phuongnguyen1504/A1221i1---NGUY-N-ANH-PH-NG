@@ -242,7 +242,7 @@
                 $("#lbErrorStartPrice").hide();
             };
             //edit modal
-            $('.edit').click(function () {
+            $('.edit').unbind('click').click(function () {
                 let beforeid=$('input.customer_id').val();
                 let id=$(this).data("id");
                 if (beforeid!=id){
@@ -269,20 +269,25 @@
                         $('.customer_mail').val(data.mail);
                         $('.customer_address').val(data.address);
                         $('.category-selection select').val(data.customerType.customer_type_id).change();
+                          $('.edit').off('click');//
 
                     },
                     error:function (){
                         alert("Khong ton tai");
+                          $('.edit').off('click');//
                     }
                 })
             });
             //Delete modal
+              //hoặc $('.addToCartButton').unbind('click').click(function()
+              //https://stackoverflow.com/questions/56537007/onclick-ajax-delete-confirmation-modal-causing-previous-request-ajax-also-proces
             $('.delete').click(function (){
                 debugger
                 let id=$(this).data("id");
                 console.log("ID:"+id);
                 let name=$(this).data("name");
                 deleteObject(id,name);
+                $('.delete').off('click');//
             })
             function deleteObject(id,name){
                 // debugger
@@ -299,16 +304,16 @@
                         async:false,
                         success: function () {
                             loadPage();
-                            event.preventDefault()
+                             $('.confirm-delete').off('click');//
 
                         },
                         error: function () {
                             iziToast.success({position: "topRight", message: "Delete not success"});
-                            event.preventDefault()
+                            $('.confirm-delete').off('click');//
                         }
                     })
                 })
-                event.preventDefault()
+                //event.preventDefault()
             };
             //loadTable
             function loadPage(){
