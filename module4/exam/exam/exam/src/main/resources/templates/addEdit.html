@@ -7,7 +7,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <form method="post" class="form_customer" th:object="${customerDto}">
+            <form method="post" class="form_customer" th:object="${contractDto}">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Add Item</h5>
@@ -16,13 +16,18 @@
                     <div class="modal-body ">
 
                         <div class="mb-3">
-                            <label class="form-label customer_id">Customer Code</label>
-                            <input class="form-control customer_id" name="id" th:field="*{customer_id}">
+                            <label class="form-label contractcode">Contract Code</label>
+                            <input class="form-control contractcode" name="id" th:field="*{contractcode}">
                             <label class="error" id="lbId" style="color: #fc9494"
-                                   th:if="${#fields.hasErrors('customer_id')}"
-                                   th:errors="*{customer_id}"></label>
-
-
+                                   th:if="${#fields.hasErrors('contractcode')}"
+                                   th:errors="*{contractcode}"></label>
+                        </div>
+                        <div class="mb-3 category-selection">
+                            <label class="form-label">Room Code</label>
+                            <select name="category" class="form-select customer_category" th:field="*{roomcode}">
+                                <option th:each="item:${cate}" th:value="${item.roomcode}"
+                                        th:text="${item.roomcode}"></option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -31,59 +36,31 @@
                             <label class="error" id="lbName" style="color: #fc9494" th:if="${#fields.hasErrors('name')}"
                                    th:errors="*{name}"></label>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Birthday</label>
-                            <input type="text" class="date form-control customer_birthday" name="birthday"
-                                   th:field="*{birthday}" autocomplete="off"/>
-                            <label class="error" id="lbBirthday" style="color: #fc9494"
-                                   th:if="${#fields.hasErrors('birthday')}"
-                                   th:errors="*{birthday}"></label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Gender</label>
-                            <select id="gender" name="gender" th:field="*{gender}">
-                                <option class="form-select" th:value="0" th:text="Male"></option>
-                                <option class="form-select" th:value="1" th:text="Female"></option>
-                                <option class="form-select" th:value="2" th:text="LGBT"></option>
-                            </select>
-                            <label class="error" id="lbGender" style="color: #fc9494"
-                                   th:if="${#fields.hasErrors('gender')}"
-                                   th:errors="*{gender}"></label>
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">ID Card</label>
-                            <input class="form-control customer_card" name="id_card" th:field="*{idcard}"/>
+                            <input class="form-control customer_card" type="number" name="id_card" th:field="*{cmnd}"/>
                             <label class="error" id="lbIdCard" style="color: #fc9494"
-                                   th:if="${#fields.hasErrors('idcard')}"
-                                   th:errors="*{idcard}"></label>
+                                   th:if="${#fields.hasErrors('cmnd')}"
+                                   th:errors="*{cmnd}"></label>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Phone</label>
-                            <input class="form-control customer_phone" name="phone" th:field="*{phone}"/>
-                            <label class="error" id="lbPhone" style="color: #fc9494"
-                                   th:if="${#fields.hasErrors('phone')}"
-                                   th:errors="*{phone}"></label>
+                            <label class="form-label">Date of Contract</label>
+                            <input type="text" class="date form-control customer_birthday" name="birthday"
+                                   th:field="*{dateContract}" autocomplete="off"/>
+                            <label class="error" id="lbBirthday" style="color: #fc9494"
+                                   th:if="${#fields.hasErrors('dateContract')}"
+                                   th:errors="*{dateContract}"></label>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Mail</label>
-                            <input class="form-control customer_mail" name="mail" th:field="*{mail}"/>
-                            <label class="error" id="lbmail" style="color: #fc9494" th:if="${#fields.hasErrors('mail')}"
-                                   th:errors="*{mail}">Invalid Age</label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Address</label>
-                            <input class="form-control customer_address" name="address" th:field="*{address}"/>
-                            <label class="error" id="lbaddress" style="color: #fc9494"
-                                   th:if="${#fields.hasErrors('address')}"
-                                   th:errors="*{address}"></label>
-                        </div>
-                        <div class="mb-3 category-selection">
-                            <label class="form-label">Type Customer</label>
-                            <select name="category" class="form-select customer_category" th:field="*{customerTypeId}">
-                                <option th:each="item:${cate}" th:value="${item.customer_type_id}"
-                                        th:text="${item.name}"></option>
+                            <label class="form-label">Time for rent</label>
+                            <select id="gender" name="gender" th:field="*{timeRent}">
+                                <option class="form-select" th:value="3" th:text="3thang"></option>
+                                <option class="form-select" th:value="6" th:text="6thang"></option>
+                                <option class="form-select" th:value="12" th:text="12thang"></option>
                             </select>
+                            <label class="error" id="lbGender" style="color: #fc9494"
+                                   th:if="${#fields.hasErrors('timeRent')}"
+                                   th:errors="*{timeRent}"></label>
                         </div>
 
                     </div>
