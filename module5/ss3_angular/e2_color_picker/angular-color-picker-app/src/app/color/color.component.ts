@@ -6,20 +6,25 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./color.component.css']
 })
 export class ColorComponent implements OnInit {
-  color: String = "#2889e9";
-  arrayColors: any = {
-    color1: '#2883e9',
-    color2: '#e920e9',
-    color3: 'rgb(255,245,0)',
-    color4: 'rgb(236,64,64)',
-    color5: 'rgba(45,208,45,1)'
-  }
-  selectedColor: string = 'color1';
+  colors = [
+    { id: 1, name: "#0000cc" },
+    { id: 2, name: "#cc0099" },
+    { id: 3, name: "#ffffcc" },
+    { id: 4, name: "#00cc66" },
+    { id: 5, name: "#663300" }
+  ];
 
-  constructor() {
-  }
+  code: string = this.colors[0].name;
+
+
+  constructor() { }
 
   ngOnInit(): void {
   }
+
+  changeColorValue(code) {
+    this.code = code;
+  }
+
 
 }
