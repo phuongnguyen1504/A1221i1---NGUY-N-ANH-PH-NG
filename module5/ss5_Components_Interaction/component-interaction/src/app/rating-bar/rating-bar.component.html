@@ -1,4 +1,11 @@
 <h2>rating-bar works!</h2>
-<div>
-  <button *ngFor="let rating of ratings" (click)="vote(rating)">{{rating.value}}</button>
+<div style="float: left;margin-right: 5px" *ngFor="let rating of ratings">
+  <button (click)="vote(rating)" *ngIf="rating.active;else inactive"style="background-color: red">
+  {{rating.value}}
+  </button>
+  <ng-template #inactive>
+    <button (click)="vote(rating)">
+      {{rating.value}}
+    </button>
+  </ng-template>
 </div>
