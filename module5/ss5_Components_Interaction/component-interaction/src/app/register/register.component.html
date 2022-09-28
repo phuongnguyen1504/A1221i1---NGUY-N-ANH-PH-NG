@@ -1,0 +1,21 @@
+<h2>Register Form</h2>
+<div>
+  <form [formGroup]="rfRegister" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label>Email:</label>
+      <input type="text" class="form-group" formControlName="email">
+      <span *ngIf="rfRegister.controls.email.email">Invalid</span>
+    </div>
+    <div class="form-control">
+      <label>Password:</label>
+      <input type="password" class="form-group" formControlName="password">
+      <span *ngIf="rfRegister.controls.password"></span>
+    </div>
+    <div class="form-control">
+      <label>Email:</label>
+      <input type="password" class="form-group" formControlName="confirm_password">
+      <span *ngIf="rfRegister.controls.password"></span>
+    </div>
+
+  </form>
+</div>
