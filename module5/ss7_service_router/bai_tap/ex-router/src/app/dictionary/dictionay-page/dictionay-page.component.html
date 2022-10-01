@@ -1,0 +1,13 @@
+<p>dictionay-page works!</p>
+<table>
+  <tr>
+    <td>STT</td>
+    <td>Word</td>
+    <td>Mean</td>
+  </tr>
+  <tr *ngFor="let word of wordList;index as i">
+    <td>{{i+1}}</td>
+    <td>{{word.word}}</td>
+    <td>{{word.mean}}</td>
+  </tr>
+</table>
