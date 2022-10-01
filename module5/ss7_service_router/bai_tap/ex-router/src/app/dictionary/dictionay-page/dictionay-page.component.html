@@ -7,7 +7,8 @@
   </tr>
   <tr *ngFor="let word of wordList;index as i">
     <td>{{i+1}}</td>
-    <td>{{word.word}}</td>
-    <td>{{word.mean}}</td>
+    <td><a routerLink="/dictionary/detail/{{word.word}}">{{word.word}}</a></td>
+
   </tr>
 </table>
+

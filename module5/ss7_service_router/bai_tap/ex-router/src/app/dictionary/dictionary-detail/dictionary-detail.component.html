@@ -1,1 +1,8 @@
-<p>dictionary-detail works!</p>
+
+<div *ngIf="mean!=null;else tmpl">
+  <p>Word: {{word}}</p>
+  <p>Mean: {{mean}}</p>
+</div>
+<ng-template #tmpl>
+  <h2>Don't have any word match!</h2>
+</ng-template>

@@ -25,10 +25,8 @@ export class DictionaryServiceService {
       if (i.word===word){
         return i.mean;
       }
-      else{
-        return "Khong co gia tri";
-      }
     }
+    return null;
   }
   getAll(){
     return this.wordList;
