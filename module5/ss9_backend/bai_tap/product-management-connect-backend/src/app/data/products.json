@@ -1,0 +1,35 @@
+{
+  "product":[{
+    "id": 1,
+    "name": "NVA",
+    "price": 199,
+    "description": "THIS IS NVA",
+    "category": {"id": 1,
+      "name": "TV"}
+  },{
+    "id": 2,
+    "name": "NVB",
+    "price": 399,
+    "description": "THIS IS NVB",
+    "category": {"id": 2,
+      "name": "Phone"}
+  },{
+    "id": 3,
+    "name": "NVC",
+    "price": 1212,
+    "description": "THIS IS NVC",
+    "category": {"id": 3,
+      "name": "Camera"}
+  }],
+
+  "categories":[{
+    "id": 1,
+    "name": "TV"
+  },{
+    "id": 2,
+    "name": "Phone"
+  },{
+    "id": 3,
+    "name": "Camera"
+  }]
+}

@@ -1,15 +1,19 @@
 {
-  "todo": [{
-    "id": 1,
-    "content": "hello",
-    "complete": true
-  },{
-    "id": 2,
-    "content": "Cat",
-    "complete": false
-  },{
-    "id": 3,
-    "content": "Dog",
-    "complete": false
-  }]
+  "todo": [
+    {
+      "id": 1,
+      "content": "hello",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "content": "Cat",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "content": "Dog",
+      "complete": false
+    }
+  ]
 }

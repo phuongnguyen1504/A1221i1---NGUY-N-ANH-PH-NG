@@ -18,6 +18,14 @@
       <td><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>Category</td>
+      <td><select class="form-select" aria-label="Select country" formControlName="category" placeholder="Select Category" required>
+        <option [ngValue]="null" disabled>Select Category</option>
+        <option *ngFor="let i of category" [ngValue]="i">{{i.name}}</option>
+      </select>
+      </td>
+    </tr>
+    <tr>
       <td></td>
       <td><button>Tạo mới</button></td>
     </tr>

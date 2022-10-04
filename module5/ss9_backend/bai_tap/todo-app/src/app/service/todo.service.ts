@@ -11,16 +11,18 @@ export class TodoService {
 
   constructor(private http:HttpClient) { }
   getAll():Observable<Todo[]>{
-    return this.http.get<Todo[]>(api);
+    return this.http.get<Todo[]>(`${api}`);
   }
   saveToDo(todo):Observable<Todo>{
+    console.log(api)
+    console.log(todo)
     return this.http.post(`${api}`,todo);
   }
   findById(id):Observable<Todo>{
     return this.http.get<Todo>(`${api}/${id}`);
   }
   updateToDo(id,todo):Observable<Todo>{
-    return this.http.put<Todo>(`${api}/categories/${id}`, todo);
+    return this.http.put<Todo>(`${api}/${id}`, todo);
 
   }
   deleteToDo(id):Observable<Todo>{
