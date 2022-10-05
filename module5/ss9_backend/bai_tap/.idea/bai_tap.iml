@@ -5,6 +5,10 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/product-management-connect-backend/src/app/model" />
+      <excludeFolder url="file://$MODULE_DIR$/product-management-connect-backend/src/app/product" />
+      <excludeFolder url="file://$MODULE_DIR$/product-management-connect-backend/src/app/service" />
+      <excludeFolder url="file://$MODULE_DIR$/product-management-connect-backend/src/app/shared" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

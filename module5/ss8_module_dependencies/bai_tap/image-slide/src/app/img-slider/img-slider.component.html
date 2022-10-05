@@ -1,0 +1,15 @@
+<div>
+  <div class="slider">
+    <app-img-slide [src]="value"></app-img-slide>
+  </div>
+  <button *ngIf="index>0 ;else pre" (click)="previous()">Previous</button>
+  <ng-template #pre>
+    <button (click)="previous()" disabled>Previous</button>
+  </ng-template>
+  <button *ngIf="index<listImage.length-1;else nex" (click)="next()">Next</button>
+
+  <ng-template #nex>
+    <button disabled>Next</button>
+
+  </ng-template>
+</div>

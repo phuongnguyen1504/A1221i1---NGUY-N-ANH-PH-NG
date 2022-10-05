@@ -13,6 +13,7 @@ export class ProductService {
   constructor(private http:HttpClient) {
   }
 
+
   getAll():Observable<Product[]> {
     return this.http.get<Product[]>(api_product);
   }
