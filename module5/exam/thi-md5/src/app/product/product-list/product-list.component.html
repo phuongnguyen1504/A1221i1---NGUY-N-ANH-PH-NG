@@ -28,6 +28,7 @@
       <td >{{item.price}}</td>
       <td >{{item.description}}</td>
       <td >{{item.category.name}}</td>
+<!--      <p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>-->
       <td>
         <a class="btn btn-primary" [routerLink]="['/product/edit',item.id]">Edit</a>
         <a class="btn btn-danger" [routerLink]="['/product/delete',item.id]">Delete</a>
@@ -35,3 +36,5 @@
     </tr>
     </tbody>
   </table>
+</div>
+

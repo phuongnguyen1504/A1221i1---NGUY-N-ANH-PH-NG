@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
-import {SharedModule} from "./shared/shared.module";
+import {HttpClientModule} from '@angular/common/http';
+import {SharedModule} from './shared/shared.module';
 import { CategoryComponent } from './category/category/category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
