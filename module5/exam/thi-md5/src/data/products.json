@@ -106,12 +106,22 @@
     },
     {
       "id": 19,
-      "name": "Nguyen G",
-      "price": 2,
-      "description": "2223",
+      "name": "Nguyen F",
+      "price": 23,
+      "description": "22234",
       "category": {
-        "id": 3,
-        "name": "Macbook"
+        "id": 2,
+        "name": "Iphone"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Nguyen G",
+      "price": 12121,
+      "description": "121122",
+      "category": {
+        "id": 1,
+        "name": "TV"
       }
     }
   ]
