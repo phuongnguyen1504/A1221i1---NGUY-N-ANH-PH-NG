@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product';
 
+// tslint:disable-next-line:variable-name
 const api_product = environment.url_product;
 
 @Injectable({

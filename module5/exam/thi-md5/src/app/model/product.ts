@@ -1,9 +1,13 @@
-import {Category} from "./category";
+import {DatePipe} from '@angular/common';
 
 export interface Product {
-  id:number,
-  name:string,
-  price:number,
-  description?:string,
-  category: Category
+  id: number;
+  type: string;
+  nameStation: string;
+  dateOut: string;
+  dateIn: string;
+  phone: string;
+  mail: string;
+  startDate: string;
+  endDate: string;
 }

@@ -2,127 +2,83 @@
   "categories": [
     {
       "id": 1,
-      "name": "TV"
+      "name": "DaNang"
     },
     {
       "id": 2,
-      "name": "Iphone"
+      "name": "HaNoi"
     },
     {
       "id": 3,
-      "name": "Macbook"
+      "name": "QuangNam"
     }
   ],
   "product": [
     {
       "id": 1,
-      "name": "Iphone X",
-      "price": 199,
-      "description": "This is iphone X",
-      "category": {
-        "id": 2,
-        "name": "Iphone"
-      }
+      "type": "giuong nam2",
+      "nameStation": "Ben A",
+      "out": "DaNang",
+      "in": "HaNoi",
+      "phone": "0935845632",
+      "mail": "a@gmail.com",
+      "startDate": "13:20",
+      "endDate": "15:00"
     },
     {
       "id": 2,
-      "name": "TV Panasonice",
-      "price": 599,
-      "description": "This is TV",
-      "category": {
-        "id": 1,
-        "name": "TV"
-      }
+      "type": "giuong nam",
+      "nameStation": "Ben A",
+      "out": "DaNang",
+      "in": "HaNoi",
+      "phone": "0935845632",
+      "mail": "a@gmail.com",
+      "startDate": "13:20",
+      "endDate": "15:00"
     },
     {
       "id": 3,
-      "name": "Iphone 11",
-      "price": 399,
-      "description": "This is iphone 11",
-      "category": {
-        "id": 2,
-        "name": "Iphone"
-      }
+      "type": "giuong nam",
+      "nameStation": "Ben A",
+      "out": "DaNang",
+      "in": "HaNoi",
+      "phone": "0935845632",
+      "mail": "a@gmail.com",
+      "startDate": "13:20",
+      "endDate": "15:00"
     },
     {
-      "id": 11,
-      "name": "IP14",
-      "price": 999.122,
-      "description": "ip",
-      "category": {
-        "id": 2,
-        "name": "Iphone"
-      }
+      "id": 5,
+      "type": "Test",
+      "nameStation": "Test",
+      "out": "QuangNam",
+      "in": "DaNang",
+      "phone": "0901234567",
+      "mail": "B@gmail.com",
+      "startDate": "15:25",
+      "endDate": "01:02"
     },
     {
-      "id": 12,
-      "name": "Nguyen G",
-      "price": 1111,
-      "description": "dv",
-      "category": {
-        "id": 3,
-        "name": "Macbook"
-      }
+      "id": 5,
+      "type": "Test",
+      "nameStation": "Test",
+      "out": "QuangNam",
+      "in": "DaNang",
+      "phone": "0901234567",
+      "mail": "B@gmail.com",
+      "startDate": "15:25",
+      "endDate": "01:02"
     },
     {
-      "id": 13,
-      "name": "o so 8",
-      "price": 8,
-      "description": "8",
-      "category": {
-        "id": 1,
-        "name": "TV"
-      }
-    },
-    {
-      "id": 15,
-      "name": "susy",
-      "price": 1,
-      "description": "2223",
-      "category": {
-        "id": 3,
-        "name": "Macbook"
-      }
-    },
-    {
-      "id": 17,
-      "name": "9",
-      "price": 109,
-      "description": "109",
-      "category": {
-        "id": 3,
-        "name": "Macbook"
-      }
-    },
-    {
-      "id": 18,
-      "name": "10",
-      "price": 10,
-      "description": "10",
-      "category": {
-        "id": 3,
-        "name": "Macbook"
-      }
-    },
-    {
-      "id": 19,
-      "name": "Nguyen F",
-      "price": 23,
-      "description": "22234",
-      "category": {
-        "id": 2,
-        "name": "Iphone"
-      }
-    },
-    {
-      "id": 20,
-      "name": "Nguyen G",
-      "price": 12121,
-      "description": "121122",
-      "category": {
-        "id": 1,
-        "name": "TV"
-      }
+      "id": 5,
+      "type": "Test",
+      "nameStation": "Test",
+      "out": "QuangNam",
+      "in": "DaNang",
+      "phone": "0901234567",
+      "mail": "B@gmail.com",
+      "startDate": "15:25",
+      "endDate": "01:02"
     }
   ]
 }

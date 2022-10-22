@@ -5,6 +5,8 @@ import {ProductService} from '../../service/product.service';
 import {CategoryService} from '../../service/category.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Product} from '../../model/product';
+import {checkInOutValidator} from '../../validator';
+import {checkTimeValidator} from '../../validator';
 
 @Component({
   selector: 'app-product-edit',
@@ -40,6 +42,7 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit(id) {
     const product: Product = this.productForm.value;
+    console.log('gia tri' + product);
     this.productService.updateProduct(id, product).subscribe(() => {
     }, error => {
       console.log(error);
@@ -49,12 +52,17 @@ export class ProductEditComponent implements OnInit {
 
   private getProduct(id: number) {
     this.productForm = this.fb.group({
-      id:[''],
-      name: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      description: ['',[Validators.required]],
-      category: ['', [Validators.required]],
+      id: [''],
+      type: ['', [Validators.required]],
+      nameStation: ['', [Validators.required]],
+      dateOut: ['', [Validators.required]],
+      dateIn: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern(/^(090|093|097)\d{7}$/)]],
+      mail: ['', [Validators.required, Validators.email]],
+      startDate: ['', [Validators.required, checkTimeValidator]],
+      endDate: ['', [Validators.required, checkTimeValidator]],
     });
+
     return this.productService.findById(id).subscribe(product => {
       console.log(product);
       this.productForm.patchValue(product);

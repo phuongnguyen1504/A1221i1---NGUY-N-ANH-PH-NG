@@ -5,36 +5,70 @@
   <form [formGroup]="productForm" (ngSubmit)="onSubmit(id)">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Create Item</h5>
+        <h5 class="modal-title">Sua thong tin xe khach co so xe la {{id}}</h5>
         <button type="button" class="btn-close" routerLink="/product/list" aria-label="Close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label class="form-label">Name</label>
-          <input type="text"  class="form-control" name="name" formControlName="name">
-          <label  style="color: #fc9494" *ngIf="productForm.controls['name'].getError('required')!=null && productForm.controls['name'].touched">Name cannot null</label>
+          <label class="form-label">So xe</label>
+          <input type="text" disabled  class="form-control" name="id" formControlName="id">
+          <label  style="color: #fc9494" *ngIf="productForm.controls['id'].getError('required')!=null && productForm.controls['id'].touched">Id khong duoc trong</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Loai xe</label>
+          <input type="text"  class="form-control" name="type" formControlName="type">
+          <label  style="color: #fc9494" *ngIf="productForm.controls['type'].getError('required')!=null && productForm.controls['type'].touched">Loai xe khong duoc trong</label>
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Price</label>
-          <input type="number" step="0.01" class="form-control" name="price" formControlName="price"/>
-          <label  style="color: #fc9494" *ngIf="productForm.controls['price'].getError('required')!=null && productForm.controls['price'].touched">Price cannot null</label>
+          <label class="form-label">Ten nha xe</label>
+<!--          <input type="number" step="0.01" class="form-control" name="price" formControlName="price"/>-->
+          <input type="text" class="form-control" name="nameStation" formControlName="nameStation"/>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['nameStation'].getError('required')!=null && productForm.controls['nameStation'].touched">Ten nha xe cannot null</label>
 
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Description</label>
-          <input type="text" class="form-control" name="description" formControlName="description"/>
-          <label  style="color: #fc9494" *ngIf="productForm.controls['description'].getError('required')!=null && productForm.controls['description'].touched">description cannot null</label>
-
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Category</label>
-          <select name="category" formControlName="category">
-            <option disabled  class="form-select"  [ngValue]="productForm.controls['category'].value">{{productForm.controls['category'].value.name}}</option>
-            <option class="form-select" *ngFor="let i of categories" [ngValue]="i">{{i.name}}</option>
+          <label class="form-label">Diem di</label>
+          <select name="out" formControlName="out">
+            <option disabled  class="form-select"  [ngValue]="productForm.controls['dateOut'].value">{{productForm.controls['dateOut'].value}}</option>
+            <option class="form-select" *ngFor="let i of categories" [ngValue]="i.name">{{i.name}}</option>
           </select>
-          <label  style="color: #fc9494" *ngIf="productForm.controls['category'].getError('required')!=null && productForm.controls['category'].touched">Need to select category</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['dateOut'].getError('required')!=null && productForm.controls['dateOut'].touched">Need to select category</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Diem den</label>
+          <select name="in" formControlName="in">
+            <option disabled  class="form-select"  [ngValue]="productForm.controls['dateIn'].value">{{productForm.controls['dateIn'].value}}</option>
+            <option class="form-select" *ngFor="let i of categories" [ngValue]="i.name">{{i.name}}</option>
+          </select>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['dateIn'].getError('required')!=null && productForm.controls['dateIn'].touched">Need to select category</label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">So dien thoai</label>
+          <input type="text" class="form-control" name="phone" formControlName="phone"/>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['phone'].getError('required')!=null && productForm.controls['phone'].touched">Phone cannot null</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['phone'].getError('pattern')!=null && productForm.controls['phone'].dirty">SDT khong dung dinh dang bat dau = 090,093,097 va 7 so sau</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Mail</label>
+          <input type="text" class="form-control" name="mail" formControlName="mail"/>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['mail'].getError('required')!=null && productForm.controls['mail'].touched">mail cannot null</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['mail'].getError('email')!=null && productForm.controls['mail'].dirty">mail khong dung dinh dang</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Gio di</label>
+          <input type="time" class="form-control" name="startDate" formControlName="startDate"/>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['startDate'].getError('required')!=null && productForm.controls['startDate'].touched">Gio di khong duoc trong</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['startDate'].getError('isError')!=null">Gio di luon lon hon 5:00 va nho hon 23:00</label>
+
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Gio den</label>
+          <input type="time" class="form-control" name="endDate" formControlName="endDate"/>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['endDate'].getError('required')!=null && productForm.controls['endDate'].touched">Gio den khong duoc trong</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['endDate'].getError('isError')!=null">Gio den luon lon hon 5:00 va nho hon 23:00</label>
         </div>
       </div>
       <div class="modal-footer">

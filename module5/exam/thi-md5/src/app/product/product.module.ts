@@ -9,16 +9,18 @@ import { ProductDeleteComponent } from './product-delete/product-delete.componen
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductSortComponent } from './product-sort/product-sort.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
 @NgModule({
   declarations: [ProductComponent, ProductCreateComponent, ProductListComponent, ProductDeleteComponent, ProductEditComponent, ProductSortComponent],
-  imports: [
-    CommonModule,
-    ProductRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-  ]
+    imports: [
+        CommonModule,
+        ProductRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule,
+    ]
 })
 export class ProductModule { }

@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   key: any|null = null;
   value: any|null = null;
+  p = 1;
 
   constructor(private fb: FormBuilder , private productService: ProductService, private categoryService: CategoryService,
               private route: Router,
@@ -44,3 +45,23 @@ export class ProductListComponent implements OnInit {
     this.value = event;
   }
 }
+// search() {
+//   const nameProduct = this.formSearch.get('nameProduct').value || '';
+//   let dateEnd = this.formSearch.get('dateEnd').value;
+//   let dateImportBegin = this.formSearch.get('dateImportBegin').value;
+//   let dateImportEnd = this.formSearch.get('dateImportEnd').value;
+//   if (dateEnd === null) {
+//     dateEnd = this.datepipe.transform(new Date(), 'yyyy/MM/dd');
+//   }
+//   if (dateImportBegin === null) {
+//     dateImportBegin = this.datepipe.transform(new Date('1000-01-01'), 'yyyy/MM/dd');
+//   }
+//   if (dateImportEnd === null) {
+//     dateImportEnd = this.datepipe.transform(new Date(), 'yyyy/MM/dd');
+//   }
+//   this.productService.search(nameProduct, dateEnd, dateImportBegin, dateImportEnd)
+//     .subscribe(
+//       data => {
+//         this.products = data;
+//       }
+//     );

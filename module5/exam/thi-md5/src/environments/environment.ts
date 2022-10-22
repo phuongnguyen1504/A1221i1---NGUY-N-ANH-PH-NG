@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  url_category:'http://localhost:3000/categories',
-  url_product:'http://localhost:3000/product'
+  url_category: 'http://localhost:8080/api/category',
+  url_product: 'http://localhost:8080/api/product'
 };
 
 /*

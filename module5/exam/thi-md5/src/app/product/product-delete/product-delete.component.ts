@@ -4,6 +4,7 @@ import {CategoryService} from '../../service/category.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category} from '../../model/category';
+import iziToast from '../../../assets/izitoast';
 
 @Component({
   selector: 'app-product-delete',
@@ -32,10 +33,13 @@ export class ProductDeleteComponent implements OnInit {
 
 
   onSubmit(id: number) {
-    this.productService.deleteProduct(id).subscribe(() => {
-    }, error => {
-      console.log(error);
-    });
+    const choice = confirm(`Ban dong y xoa thong tin xe khach co so xe ${id}`);
+    if (choice === true) {
+      this.productService.deleteProduct(id).subscribe(() => {
+      }, error => {
+        console.log(error);
+      });
+    }
     this.route.navigate(['/product/list']);
   }
 
@@ -43,10 +47,14 @@ export class ProductDeleteComponent implements OnInit {
     return this.productService.findById(id).subscribe(product => {
       this.productForm = new FormGroup({
         id: new FormControl(product.id, ),
-        name: new FormControl(product.name, [Validators.required]),
-        price: new FormControl(product.price, [Validators.required]),
-        description: new FormControl(product.description, [Validators.required]),
-        category: new FormControl(product.category, [Validators.required]),
+        type: new FormControl(product.type, ),
+        nameStation: new FormControl(product.nameStation, [Validators.required]),
+        out: new FormControl(product.dateOut, [Validators.required]),
+        in: new FormControl(product.dateIn, [Validators.required]),
+        phone: new FormControl(product.phone, [Validators.required]),
+        mail: new FormControl(product.mail, [Validators.required]),
+        startDate: new FormControl(product.startDate, [Validators.required]),
+        endDate: new FormControl(product.endDate, [Validators.required]),
       });
     });
   }
