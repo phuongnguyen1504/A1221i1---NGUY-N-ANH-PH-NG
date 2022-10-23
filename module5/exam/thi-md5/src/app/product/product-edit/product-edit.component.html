@@ -30,19 +30,19 @@
 
         <div class="mb-3">
           <label class="form-label">Diem di</label>
-          <select name="out" formControlName="out">
-            <option disabled  class="form-select"  [ngValue]="productForm.controls['dateOut'].value">{{productForm.controls['dateOut'].value}}</option>
+          <select name="destOut" formControlName="destOut">
+            <option disabled  class="form-select"  [ngValue]="productForm.controls['destOut'].value">{{productForm.controls['destOut'].value}}</option>
             <option class="form-select" *ngFor="let i of categories" [ngValue]="i.name">{{i.name}}</option>
           </select>
-          <label  style="color: #fc9494" *ngIf="productForm.controls['dateOut'].getError('required')!=null && productForm.controls['dateOut'].touched">Need to select category</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['destOut'].getError('required')!=null && productForm.controls['destOut'].touched">Need to select category</label>
         </div>
         <div class="mb-3">
           <label class="form-label">Diem den</label>
-          <select name="in" formControlName="in">
-            <option disabled  class="form-select"  [ngValue]="productForm.controls['dateIn'].value">{{productForm.controls['dateIn'].value}}</option>
+          <select name="destIn" formControlName="destIn">
+            <option disabled  class="form-select"  [ngValue]="productForm.controls['destIn'].value">{{productForm.controls['destIn'].value}}</option>
             <option class="form-select" *ngFor="let i of categories" [ngValue]="i.name">{{i.name}}</option>
           </select>
-          <label  style="color: #fc9494" *ngIf="productForm.controls['dateIn'].getError('required')!=null && productForm.controls['dateIn'].touched">Need to select category</label>
+          <label  style="color: #fc9494" *ngIf="productForm.controls['destIn'].getError('required')!=null && productForm.controls['destIn'].touched">Need to select category</label>
         </div>
 
         <div class="mb-3">

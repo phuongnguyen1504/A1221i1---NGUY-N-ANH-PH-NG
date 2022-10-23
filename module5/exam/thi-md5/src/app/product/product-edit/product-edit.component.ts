@@ -42,8 +42,10 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit(id) {
     const product: Product = this.productForm.value;
-    console.log('gia tri' + product);
+    console.log('gia tri out' + product.destOut);
+    console.log('gia tri in' + product.destIn);
     this.productService.updateProduct(id, product).subscribe(() => {
+      return  this.route.navigate(['/product/list']);
     }, error => {
       console.log(error);
     });
@@ -55,8 +57,8 @@ export class ProductEditComponent implements OnInit {
       id: [''],
       type: ['', [Validators.required]],
       nameStation: ['', [Validators.required]],
-      dateOut: ['', [Validators.required]],
-      dateIn: ['', [Validators.required]],
+      destOut: ['', [Validators.required]],
+      destIn: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.pattern(/^(090|093|097)\d{7}$/)]],
       mail: ['', [Validators.required, Validators.email]],
       startDate: ['', [Validators.required, checkTimeValidator]],

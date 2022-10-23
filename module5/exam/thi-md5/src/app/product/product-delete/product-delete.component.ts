@@ -36,11 +36,12 @@ export class ProductDeleteComponent implements OnInit {
     const choice = confirm(`Ban dong y xoa thong tin xe khach co so xe ${id}`);
     if (choice === true) {
       this.productService.deleteProduct(id).subscribe(() => {
+        return this.route.navigate(['/product/list']);
       }, error => {
         console.log(error);
       });
     }
-    this.route.navigate(['/product/list']);
+    // this.route.navigate(['/product/list']);
   }
 
   private getProduct(id: number) {
@@ -49,8 +50,8 @@ export class ProductDeleteComponent implements OnInit {
         id: new FormControl(product.id, ),
         type: new FormControl(product.type, ),
         nameStation: new FormControl(product.nameStation, [Validators.required]),
-        out: new FormControl(product.dateOut, [Validators.required]),
-        in: new FormControl(product.dateIn, [Validators.required]),
+        out: new FormControl(product.destOut, [Validators.required]),
+        in: new FormControl(product.destIn, [Validators.required]),
         phone: new FormControl(product.phone, [Validators.required]),
         mail: new FormControl(product.mail, [Validators.required]),
         startDate: new FormControl(product.startDate, [Validators.required]),

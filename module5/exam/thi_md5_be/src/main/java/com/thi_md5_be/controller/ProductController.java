@@ -34,28 +34,46 @@ public class ProductController {
         }
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
-//    @GetMapping("/product")
+    @GetMapping("/product/search")
+    public ResponseEntity<Iterable<Product>> findAllProduct(@RequestParam(name = "q",required = false,defaultValue = "")String q){
+            List<Product> products=productService.find(q);
+            if(products.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(products,HttpStatus.OK);
+        }
+
+//    @GetMapping("/product/search")
 //    public ResponseEntity<Iterable<Product>> findAllProduct(@RequestParam(name = "page",required = false,defaultValue = "0")Integer page,
 //                                                            @RequestParam(name = "q",required = false,defaultValue = "")String q,
 //                                                            @RequestParam(name = "size",required = false,defaultValue = "2")Integer size,
 //                                                            @RequestParam(name="sortby",required = false,defaultValue = "id")String sortBy,
 //                                                            @RequestParam(name = "sortdir",required = false,defaultValue = "ASC")String sortDir){
-//        Sort sortable=null;
-//        sortable=sortDir.equals("ASC")?Sort.by(sortBy).ascending():Sort.by(sortBy).descending();
-//        Pageable pageable= PageRequest.of(page,size,sortable);
-//        Page<Product> products=productService.find(q,pageable);
-//        System.out.println("Product"+products);
-//        System.out.println("pageable"+pageable);
-//        if (products.isEmpty()){
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        if (q!=null){
+//            List<Product> products=productService.findAll();
+//            if(products.isEmpty()){
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//            return new ResponseEntity<>(products,HttpStatus.OK);
 //        }
-//        return new ResponseEntity<>(products,HttpStatus.OK);
+//        else{
+//            Sort sortable=null;
+//            sortable=sortDir.equals("ASC")?Sort.by(sortBy).ascending():Sort.by(sortBy).descending();
+//            Pageable pageable= PageRequest.of(page,size,sortable);
+//            Page<Product> products=productService.find(q,pageable);
+//            System.out.println("Product"+products);
+//            System.out.println("pageable"+pageable);
+//            if (products.isEmpty()){
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//            return new ResponseEntity<>(products,HttpStatus.OK);
+//        }
+//
 //    }
 
     @GetMapping("/category")
     public ResponseEntity<Iterable<Category>> findAllCategory(){
         List<Category> categories=categoryService.findAll();
-        categories.forEach(category -> category.setProducts(null));
         if(categories.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

@@ -31,10 +31,17 @@ export class ProductListComponent implements OnInit {
   }
 
   search() {
-    return this.productService.getByKeyValue(this.key, this.value).subscribe(product => {
-      this.products = product;
-      console.log(this.key, this.value);
-    });
+    if (this.value == null) {
+      return  this.productService.getAll().subscribe(product => {
+        this.products = product;
+        console.log(this.key, this.value);
+      });
+    } else {
+      return this.productService.search(this.value).subscribe(product => {
+        this.products = product;
+        console.log(this.key, this.value);
+      });
+    }
   }
 
   onChange(event: any) {

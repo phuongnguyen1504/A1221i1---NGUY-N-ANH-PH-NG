@@ -46,4 +46,8 @@ export class ProductService {
     }
     return this.http.get<Product[]>(`${api_product}`);
   }
+
+  search(value: any) {
+    return this.http.get<Product[]>(`${api_product}/search?q=${value}`);
+  }
 }

@@ -13,10 +13,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer category_id;
     private String name;
-    @OneToMany(mappedBy = "category")
-    @JsonManagedReference
-
-    private Set<Product> products;
 
     public Category() {
     }
@@ -37,11 +33,4 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
 }

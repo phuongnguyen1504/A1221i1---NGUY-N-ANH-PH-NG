@@ -38,9 +38,15 @@ public class ProductService implements IGeneralService<Product> {
         return productRepository.findAll(pageable);
     }
 
-    public Page<Product> find(String q, Pageable pageable) {
-
-        return productRepository.findAllByValue("%".concat(q).concat("%"),pageable);
+//    public Page<Product> find(String q, Pageable pageable) {
+//
+//        return productRepository.findAllByValue("%".concat(q).concat("%"),pageable);
+//    }
+    public List<Product> find(String q){
+        if (q.isEmpty()||q==null){
+            return productRepository.findAll();
+        }
+        return productRepository.findAllByValue("%".concat(q).concat("%"));
     }
 
     public void update(int id, Product product) {

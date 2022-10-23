@@ -4,8 +4,8 @@ export interface Product {
   id: number;
   type: string;
   nameStation: string;
-  dateOut: string;
-  dateIn: string;
+  destOut: string;
+  destIn: string;
   phone: string;
   mail: string;
   startDate: string;
