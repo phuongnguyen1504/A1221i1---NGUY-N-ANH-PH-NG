@@ -17,12 +17,12 @@ public class EmailController {
         return "hello";
     }
     //Code API chạy test
-    //{
-    //    "recipent":"abc@gmail.com",
-    //    "msgBody":"Hello This is mail text simple \n Thanks \n <img src=\"https://howtovietnamese.com/static/c14e9af89a31156da4e0de35fe446d9e/db955/blog-hello-in-vietnamese.png\">",
-    //    "subject":"Day la mail don gian chi co text"
-    //
-    //}
+//    {
+//        "recipent":"abc@gmail.com",
+//        "msgBody":"Hello This is mail text simple \n Thanks \n <img src=\"https://howtovietnamese.com/static/c14e9af89a31156da4e0de35fe446d9e/db955/blog-hello-in-vietnamese.png\">",
+//        "subject":"Day la mail don gian chi co text"
+//
+//    }
 
     @PostMapping(value = "/sendMail")
     public String sendMail(@RequestBody EmailDetails emailDetails){

@@ -55,9 +55,9 @@ public class EmailServiceImpl implements EmailService{
             mimeMessageHelper.setSubject(details.getSubject());
 
 //            //Neu muon them body la the html thi lam nhu sau
-//            String htmlMsg = "<h3>Im testing send a HTML email</h3>"
-//                    +"<img src='http://www.apache.org/images/asf_logo_wide.gif'>";
-//            mimeMessage.setContent(htmlMsg, "text/html");
+            String htmlMsg = "<h3>Im testing send a HTML email</h3>"
+                    +"<img src='http://www.apache.org/images/asf_logo_wide.gif'>";
+            mimeMessage.setContent(htmlMsg, "text/html");
             //Thêm file đính kèm
             FileSystemResource file=new FileSystemResource(new File(details.getAttachment()));
             mimeMessageHelper.addAttachment(file.getFilename(),file);
