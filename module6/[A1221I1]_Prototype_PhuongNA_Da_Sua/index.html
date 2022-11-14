@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <title>A1221I1</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <!-- Bootstrap -->
+
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <script src="plugins/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <!-- venobox popup -->
+  <link rel="stylesheet" href="plugins/Venobox/venobox.css">
+  <!-- aos -->
+  <link rel="stylesheet" href="plugins/aos/aos.css">
+
+  <!-- Main Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <!-- Font awesome icon-->
+  <link rel="stylesheet" href="plugins/fontawesome-free-6.2.0-web/css/all.min.css">
+  <!--Favicon-->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+  <!-- navigation -->
+  <section class="fixed-top navigation">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+
+        <a class="navbar-brand" href="index.html"><img src="images/logo1.png" width="80" class="d-inline-block align-middle mr-2" alt="logo"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- navbar -->
+        <div class="collapse navbar-collapse text-center" id="navbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"><i class="fa-solid fa-house-chimney icon-header"></i> Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#feature"><i class="fa-solid fa-gear icon-header"></i> Hệ thống</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa-solid fa-list-check icon-header"></i> Quản lý</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item"><i class="fa-solid fa-list-check icon-header"></i><span class="link-name"> Quản lý vật nuôi</span></a></li>
+                <li><a href="#" class="dropdown-item"><i class="fa-solid fa-bowl-food icon-header"></i><span class="link-name"> Quản lý thức ăn</span></a></li>
+                <li><a href="#" class="dropdown-item"><i class="fa-solid fa-bug-slash icon-header"></i><span class="link-name"> Quản lý bệnh lý</span></a></li>
+                <li><a href="#" class="dropdown-item"><i class="fa-solid fa-warehouse icon-header"></i><span class="link-name"> Quản lý xuất chuồng</span></a></li>
+              </ul>
+
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#team"><i class="fa-solid fa-newspaper icon-header"></i> Tin tức</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-address-card icon-header"></i> Liên hệ</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary ml-lg-3 primary-shadow"><i class="fa-solid fa-right-to-bracket icon-header"></i> Đăng nhập</a>
+        </div>
+      </nav>
+    </div>
+  </section>
+  <!-- /navigation -->
+
+  <!-- hero area -->
+  <section class="hero-section hero" data-background="" style="background-image: url(images/hero-area/banner-bg.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-12 zindex-1">
+          <h1 class="mb-3">
+            Dự án lớp A1221I1</h1>
+          <p class="mb-4">Đây là chương trình dùng để quản lí vật nuôi, tình trạng sức khỏe <br>
+            và cũng như quản lí nhân viên</p>
+          <a href="#newsletter" class="btn btn-secondary btn-lg page-scroll">ĐĂNG KÝ NGAY</a>
+
+        </div>
+        <div class="col-lg-6 col-sm-12 zindex-1 banner">
+          <img class="img-fluid w-100 mt-4" style="border-radius:25%" src="images/banner.png" alt="banner-img">
+        </div>
+      </div>
+    </div>
+    <!-- background shapes -->
+    <div id="scene">
+      <img class="img-fluid hero-bg-1 up-down-animation" src="images/background-shape/feature-bg-2.png" alt="">
+      <img class="img-fluid hero-bg-2 left-right-animation" src="images/background-shape/seo-ball-1.png" alt="">
+      <img class="img-fluid hero-bg-3 left-right-animation" src="images/background-shape/seo-half-cycle.png" alt="">
+      <img class="img-fluid hero-bg-4 up-down-animation" src="images/background-shape/green-dot.png" alt="">
+      <img class="img-fluid hero-bg-5 left-right-animation" src="images/background-shape/blue-half-cycle.png" alt="">
+      <img class="img-fluid hero-bg-6 up-down-animation" src="images/background-shape/seo-ball-1.png" alt="">
+      <img class="img-fluid hero-bg-7 left-right-animation" src="images/background-shape/yellow-triangle.png" alt="">
+      <img class="img-fluid hero-bg-8 up-down-animation" src="images/background-shape/service-half-cycle.png" alt="">
+      <img class="img-fluid hero-bg-9 up-down-animation" src="images/background-shape/team-bg-triangle.png" alt="">
+    </div>
+  </section>
+  <!-- /hero-area -->
+
+  <!-- feature -->
+  <section class="section feature mb-0" id="feature">
+    <div class="container reveal">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-title">ƯU ĐIỂM CỦA ỨNG DỤNG</h2>
+          <p class="mb-100">Dưới đây là lý do vì sao bạn nên chọn sản phẩm của chúng tôi<br>Benefits of choosing my product</p>
+        </div>
+        <!-- feature item -->
+        <div class="col-md-6 mb-80">
+          <div class="d-flex feature-item team-member">
+            <div>
+              <i class="ti-ruler-pencil feature-icon mr-4"></i>
+            </div>
+            <div>
+              <h4>Giao diện thân thiện</h4>
+              <p>Giao diện được thiết kế đơn giản, dễ sử dụng</p>
+            </div>
+          </div>
+        </div>
+        <!-- feature item -->
+        <div class="col-md-6 mb-80">
+          <div class="d-flex feature-item team-member">
+            <div>
+              <i class="fa-solid fa-people-group feature-icon mr-4" style="padding-top: 20px"></i>
+            </div>
+            <div>
+              <h4>Đội ngũ hỗ trợ kịp thời</h4>
+              <p>Hỗ trợ khách hàng 24/24 một cách nhanh chóng</p>
+            </div>
+          </div>
+        </div>
+        <!-- feature item -->
+        <div class="col-md-6 mb-80">
+          <div class="d-flex feature-item team-member">
+            <div>
+              <i class="ti-split-v-alt feature-icon mr-4"></i>
+            </div>
+            <div>
+              <h4>Bảo mật cao</h4>
+              <p>Được xây dựng dựa trên tiêu chuẩn ISO 27001:2013</p>
+            </div>
+          </div>
+        </div>
+        <!-- feature item -->
+        <div class="col-md-6 mb-80">
+          <div class="d-flex feature-item team-member">
+            <div>
+              <i class="ti-layers-alt feature-icon mr-4"></i>
+            </div>
+            <div>
+              <h4>Đầy đủ chức năng hệ thống</h4>
+              <p>Bao gồm quản lý xuất nhập chuồng, tình trạng sức khỏe vật nuôi, cũng như quản lý nhân sự và nhiều tính năng khác</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img class="feature-bg-1 up-down-animation" src="images/background-shape/feature-bg-1.png" alt="bg-shape">
+    <img class="feature-bg-2 left-right-animation" src="images/background-shape/feature-bg-2.png" alt="bg-shape">
+  </section>
+  <!-- /feature -->
+
+  <!-- marketing -->
+  <section class="section-lg seo">
+    <div class="container reveal">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="seo-image">
+
+            <img class="img-fluid left-right-animation" src="images/banner_livestock.png" alt="form-img">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h2 class="section-title">Quản lý thực phẩm, chăm sóc vật nuôi</h2>
+          <p>Luôn đảm bảo vật nuôi khỏe mạnh, mau ăn chóng lớn<br>
+            Thức ăn luôn được bảo quản,quản lý nghiêm ngặt theo tiêu chuẩn ISO, quản lý được tình trạng sức khỏe cho từng đàn
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- background image -->
+    <img class="img-fluid seo-bg" src="images/backgrounds/seo-bg.png" alt="seo-bg">
+    <!-- background-shape -->
+    <img class="seo-bg-shape-1 left-right-animation" src="images/background-shape/seo-ball-1.png" alt="bg-shape">
+    <img class="seo-bg-shape-2 up-down-animation" src="images/background-shape/seo-half-cycle.png" alt="bg-shape">
+    <img class="seo-bg-shape-3 left-right-animation" src="images/background-shape/seo-ball-2.png" alt="bg-shape">
+  </section>
+  <!-- /marketing -->
+
+  <!-- service -->
+  <section class="section-lg service">
+    <div class="container reveal">
+      <div class="row justify-content-between">
+        <div class="col-md-5 order-2 order-md-1">
+          <h2 class="section-title">Quản lý chuồng trại, bảo trì hệ thống</h2>
+          <p class="mb-4">Đảm bảo vật nuôi luôn được sống trong môi trường tốt nhất, đảm bảo sức khỏe</p>
+          <ul class="pl-0 service-list">
+            <li><i class="fa-solid fa-photo-film text-purple"></i>Quản lý dễ dàng</li>
+            <li><i class="fa-solid fa-screwdriver-wrench text-purple"></i>Khả năng nâng cấp, bảo trì cao</li>
+            <li><i class="fa-solid fa-headset text-purple"></i>Hỗ trợ kịp thời</li>
+          </ul>
+        </div>
+        <div class="col-md-7 order-1 order-md-2">
+          <img class="img-fluid layer-3 up-down-animation" src="images/template2.png" alt="service">
+        </div>
+      </div>
+    </div>
+    <!-- background image -->
+    <img class="img-fluid service-bg" src="images/backgrounds/service-bg.png" alt="service-bg">
+    <!-- background shapes -->
+    <img class="service-bg-shape-1 up-down-animation" src="images/background-shape/service-half-cycle.png" alt="background-shape">
+    <img class="service-bg-shape-2 left-right-animation" src="images/background-shape/feature-bg-2.png" alt="background-shape">
+  </section>
+  <!-- /service -->
+
+  <!-- team -->
+  <section class="section-lg team" id="team">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-title">Tin tức</h2>
+          <p class="mb-100">Tổng hợp các tin tức mới nhất về nông nghiệp<br>
+            và các kỹ thuật tiên tiến nhất trên thế giới </p>
+        </div>
+      </div>
+      <div class="col-10 mx-auto">
+        <div class="team-slider">
+          <!-- team-member -->
+          <div class="team-member">
+            <div class="d-flex mb-4">
+              <div class="card mb-3"><a href="nuoi-tham-canh-bo-thit-kobe-dat-hieu-qua-cao-nd9742.html" target="__blank">
+                  <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/nha-nong-lam-giau/nuoi-bo-kobe(1).jpg" alt="team-member">
+              </div>
+            </div>
+            <h5 class="card-title">Nuôi thâm canh bò thịt Kobe đạt hiệu quả cao</h5>
+            <p class="card-text">Để thúc đẩy ngành chăn nuôi phát triển theo hướng bền vững, nhiều năm qua, Trung tâm Khuyến nông Bình Định đã triển khai nhiều mô hình chăn nuôi bò thịt chất lượng cao.</p>
+            <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+            </a>
+          </div>
+          <!-- team-member -->
+          <div class="team-member">
+            <div class="d-flex mb-4">
+              <div class="card mb-3"><a href="cham-soc-gia-suc-gia-cam-thoi-diem-giao-mua-nd9609.html" target="__blank">
+                  <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/cham-soc-gia-cam-giao-mua.jpg" alt="team-member">
+              </div>
+            </div>
+            <h5 class="card-title">Chăm sóc gia súc, gia cầm thời điểm giao mùa</h5>
+            <p class="card-text">Vào giai đoạn giao mùa, thời tiết thay đổi thất thường khiến vật nuôi không kịp thích nghi, sức đề kháng giảm. Vì vậy để đảm bảo sức khỏe và nâng cao sức đề kháng cho đàn vật nuôi, người chăn nuôi cần áp dụng tốt các biện pháp chăm sóc</p>
+            <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+            </a>
+          </div>
+          <!-- team-member -->
+          <div class="team-member">
+            <div class="d-flex mb-4">
+              <div class="card mb-3"><a href="phong-tru-benh-ky-sinh-trung-duong-mau-cho-trau-bo-ngua-nd9717.html" target="__blank">
+                  <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/nuoi-bo-bac-giang.jpg" alt="team-member">
+              </div>
+            </div>
+            <h5 class="card-title">Phòng trừ bệnh ký sinh trùng đường máu cho trâu, bò, ngựa</h5>
+            <p class="card-text">Do thời tiết chuyển mùa nên sáng và đêm trời lạnh, có nhiều sương làm cho đàn vật nuôi chưa thích nghi, dễ mắc các bệnh về đường hô hấp, tiêu hóa. Đặc biệt, đàn trâu, bò, ngựa dễ mắc bệnh ký sinh trùng đường máu.</p>
+            <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+            </a>
+          </div>
+
+          <!-- team-member -->
+          <div class="team-member">
+            <div class="d-flex mb-4">
+              <div class="card mb-3"><a href="che-do-dinh-duong-cho-heo-rung-nd9694.html" target="__blank">
+                  <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/heo-rung.jpg" alt="team-member">
+              </div>
+            </div>
+            <h5 class="card-title">Chế độ dinh dưỡng cho heo rừng</h5>
+            <p class="card-text">Nuôi heo rừng không còn là mô hình xa lạ, tuy nhiên để heo phát triển tốt, chắc thịt cần lưu ý đến chế độ dinh dưỡng hợp lý trong quá trình chăm sóc.</p>
+            <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- backgound image -->
+    <img src="images/backgrounds/team-bg.png" alt="team-bg" class="img-fluid team-bg">
+    <!-- background shapes -->
+    <img class="team-bg-shape-1 up-down-animation" src="images/background-shape/seo-ball-1.png" alt="background-shape">
+    <img class="team-bg-shape-2 left-right-animation" src="images/background-shape/seo-ball-1.png" alt="background-shape">
+    <img class="team-bg-shape-3 left-right-animation" src="images/background-shape/team-bg-triangle.png" alt="background-shape">
+    <img class="team-bg-shape-4 up-down-animation img-fluid" src="images/background-shape/team-bg-dots.png" alt="background-shape">
+  </section>
+  <!-- /team -->
+
+  <!-- client logo slider -->
+  <section class="section">
+    <div class="container" id="newsletter">
+      <div class="client-logo-slider align-self-center">
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-1.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-2.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-3.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-4.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-5.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-1.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-2.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-3.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-4.png" alt="client-logo"></a>
+        <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="images/clients-logo/client-logo-5.png" alt="client-logo"></a>
+      </div>
+    </div>
+  </section>
+  <!-- /client logo slider -->
+
+  <!-- newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>Đăng ký qua thư điện tử</h2>
+          <p class="mb-5">Nhận những cập nhật, tin tức và những ưu đãi hấp dẫn khác</p>
+        </div>
+        <div class="col-lg-8 col-sm-10 col-12 mx-auto">
+          <form action="#">
+            <div class="input-wrapper position-relative">
+              <input type="email" class="newsletter-form" id="newsletter" placeholder="Vui lòng nhập mail">
+              <button type="submit" value="send" class="btn newsletter-btn">Đăng kí</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- background shapes -->
+    <img class="newsletter-bg-shape left-right-animation" src="images/background-shape/seo-ball-2.png" alt="background-shape">
+  </section>
+  <!-- /newsletter -->
+
+  <!-- footer -->
+  <footer class="footer-section footer reveal" style="background-image: url(images/backgrounds/footer-bg.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 text-center text-lg-left mb-4 mb-lg-0">
+          <!-- logo -->
+          <a href="index.html">
+            <img class="img-fluid logo" src="images/logo1.png" alt="logo">
+          </a>
+        </div>
+        <!-- footer menu -->
+        <nav class="col-lg-8 align-self-center mb-5">
+          <ul class="list-inline text-lg-right text-center footer-menu">
+            <li class="list-inline-item active"><a href="index.html">Trang chủ</a></li>
+            <li class="list-inline-item"><a class="page-scroll" href="index.html">Hệ thống</a></li>
+            <li class="list-inline-item"><a href="index.html">Quản lý</a></li>
+            <li class="list-inline-item"><a class="page-scroll" href="#team">Tin tức</a></li>
+            <!--            <li class="list-inline-item"><a class="page-scroll" href="#pricing">Liên</a></li>-->
+            <li class="list-inline-item"><a href="">Liên hệ</a></li>
+          </ul>
+        </nav>
+        <!-- footer social icon -->
+        <nav class="col-12">
+          <ul class="list-inline text-lg-right text-center social-icon">
+            <li class="list-inline-item circle-icon">
+              <a class="facebook" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item circle-icon">
+              <a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item circle-icon">
+              <a class="linkedin" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </li>
+            <li class="list-inline-item circle-icon">
+              <a class="black" href="#"><i class="fa-brands fa-github"></i></a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </footer>
+  <!-- /footer -->
+  <i class="fa-brands fa-facebook"></i>
+  <!-- jQuery -->
+  <script src="plugins/jQuery/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <!-- slick slider -->
+  <script src="plugins/slick/slick.min.js"></script>
+  <!-- venobox -->
+  <script src="plugins/Venobox/venobox.min.js"></script>
+  <!-- aos -->
+  <script src="plugins/aos/aos.js"></script>
+  <!-- Main Script -->
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
