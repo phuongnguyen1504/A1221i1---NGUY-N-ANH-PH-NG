@@ -1,5 +1,6 @@
 package vn.sprint2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -16,6 +17,7 @@ public class Category {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "category")
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonBackReference
     private List<Book> books;
 }

@@ -8,187 +8,184 @@
       </h2>
     </div>
     <div class="row">
-      <div class="card col-xs-12 col-xl-3">
+      <div class="card col-xs-12 col-xl-3" *ngFor="let book of books.content,index as i">
         <div class="box">
           <a href="">
             <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
+              <img src="{{book.img_url}}" alt="">
             </div>
           </a>
           <div class="contentBx">
-            <h2>Nike Shoes</h2>
+            <p>{{book.name}}</p>
             <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
+              <h3>Quantity :</h3>
+              <span>{{book.amount}}</span>
+
             </div>
             <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
+              <h3>Price :</h3>
+              <span>{{book.price}}</span>
+
             </div>
             <a href="#">Buy Now</a>
           </div>
         </div>
       </div>
-      <div class="card col-xs-12 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
-            </div>
-          </a>
-          <div class="contentBx">
-            <h2>Nike Shoes</h2>
-            <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </div>
-            <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <a href="#">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card col-xs-12 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
-            </div>
-          </a>
-          <div class="contentBx">
-            <h2>Nike Shoes</h2>
-            <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </div>
-            <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <a href="#">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card  col-xs-12 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
-            </div>
-          </a>
-          <div class="contentBx">
-            <h2>Nike Shoes</h2>
-            <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </div>
-            <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <a href="#">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card  col-xs-12 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
-            </div>
-          </a>
-          <div class="contentBx">
-            <h2>Nike Shoes</h2>
-            <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </div>
-            <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <a href="#">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card  col-xs-12 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
-            </div>
-          </a>
-          <div class="contentBx">
-            <h2>Nike Shoes</h2>
-            <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </div>
-            <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <a href="#">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card  col-xs-12 col-xl-3">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">
-            </div>
-          </a>
-          <div class="contentBx">
-            <div class="size">
-              <h3>Size :</h3>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </div>
-            <div class="color">
-              <h3>Color :</h3>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <a href="#">Buy Now</a>
-          </div>
-        </div>
-      </div>
+<!--      <div class="card col-xs-12 col-xl-3">-->
+<!--        <div class="box">-->
+<!--          <a href="">-->
+<!--            <div class="imgBx">-->
+<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
+<!--            </div>-->
+<!--          </a>-->
+<!--          <div class="contentBx">-->
+<!--            <h2>Nike Shoes</h2>-->
+<!--            <div class="size">-->
+<!--              <h3>Size :</h3>-->
+<!--              <span>7</span>-->
+<!--              <span>8</span>-->
+<!--              <span>9</span>-->
+<!--              <span>10</span>-->
+<!--            </div>-->
+<!--            <div class="color">-->
+<!--              <h3>Color :</h3>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <a href="#">Buy Now</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card col-xs-12 col-xl-3">-->
+<!--        <div class="box">-->
+<!--          <a href="">-->
+<!--            <div class="imgBx">-->
+<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
+<!--            </div>-->
+<!--          </a>-->
+<!--          <div class="contentBx">-->
+<!--            <h2>Nike Shoes</h2>-->
+<!--            <div class="size">-->
+<!--              <h3>Size :</h3>-->
+<!--              <span>7</span>-->
+<!--              <span>8</span>-->
+<!--              <span>9</span>-->
+<!--              <span>10</span>-->
+<!--            </div>-->
+<!--            <div class="color">-->
+<!--              <h3>Color :</h3>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <a href="#">Buy Now</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card  col-xs-12 col-xl-3">-->
+<!--        <div class="box">-->
+<!--          <a href="">-->
+<!--            <div class="imgBx">-->
+<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
+<!--            </div>-->
+<!--          </a>-->
+<!--          <div class="contentBx">-->
+<!--            <h2>Nike Shoes</h2>-->
+<!--            <div class="size">-->
+<!--              <h3>Size :</h3>-->
+<!--              <span>7</span>-->
+<!--              <span>8</span>-->
+<!--              <span>9</span>-->
+<!--              <span>10</span>-->
+<!--            </div>-->
+<!--            <div class="color">-->
+<!--              <h3>Color :</h3>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <a href="#">Buy Now</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card  col-xs-12 col-xl-3">-->
+<!--        <div class="box">-->
+<!--          <a href="">-->
+<!--            <div class="imgBx">-->
+<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
+<!--            </div>-->
+<!--          </a>-->
+<!--          <div class="contentBx">-->
+<!--            <h2>Nike Shoes</h2>-->
+<!--            <div class="size">-->
+<!--              <h3>Size :</h3>-->
+<!--              <span>7</span>-->
+<!--              <span>8</span>-->
+<!--              <span>9</span>-->
+<!--              <span>10</span>-->
+<!--            </div>-->
+<!--            <div class="color">-->
+<!--              <h3>Color :</h3>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <a href="#">Buy Now</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card  col-xs-12 col-xl-3">-->
+<!--        <div class="box">-->
+<!--          <a href="">-->
+<!--            <div class="imgBx">-->
+<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
+<!--            </div>-->
+<!--          </a>-->
+<!--          <div class="contentBx">-->
+<!--            <h2>Nike Shoes</h2>-->
+<!--            <div class="size">-->
+<!--              <h3>Size :</h3>-->
+<!--              <span>7</span>-->
+<!--              <span>8</span>-->
+<!--              <span>9</span>-->
+<!--              <span>10</span>-->
+<!--            </div>-->
+<!--            <div class="color">-->
+<!--              <h3>Color :</h3>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <a href="#">Buy Now</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card  col-xs-12 col-xl-3">-->
+<!--        <div class="box">-->
+<!--          <a href="">-->
+<!--            <div class="imgBx">-->
+<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
+<!--            </div>-->
+<!--          </a>-->
+<!--          <div class="contentBx">-->
+<!--            <div class="size">-->
+<!--              <h3>Size :</h3>-->
+<!--              <span>7</span>-->
+<!--              <span>8</span>-->
+<!--              <span>9</span>-->
+<!--              <span>10</span>-->
+<!--            </div>-->
+<!--            <div class="color">-->
+<!--              <h3>Color :</h3>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--              <span></span>-->
+<!--            </div>-->
+<!--            <a href="#">Buy Now</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
 <!--      sua -->
 

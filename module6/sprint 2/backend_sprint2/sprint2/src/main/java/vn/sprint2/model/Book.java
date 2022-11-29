@@ -33,7 +33,7 @@ public class Book implements Serializable {
     private Double weight;
     @ManyToOne
     @JoinColumn(name = "category_id",referencedColumnName = "id")
-    @JsonBackReference
+//    @JsonBackReference
     private Category category;
     @Column(columnDefinition = "TEXT")
     private String description;

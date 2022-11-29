@@ -8,6 +8,7 @@ import {HomepageModule} from "./homepage/homepage.module";
 import {HttpClientModule} from "@angular/common/http";
 import {OrderModule} from "./order/order.module";
 import {NgxSlickJsModule} from "ngx-slickjs";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {NgxSlickJsModule} from "ngx-slickjs";
         }
       }),
       HttpClientModule,
+      // ToastrModule.forRoot(),
         BrowserModule,
         AppRoutingModule,
         ShareModule
