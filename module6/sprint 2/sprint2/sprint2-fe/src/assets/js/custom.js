@@ -1,58 +1,57 @@
-// to get current year
-// function getYear() {
-//     var currentDate = new Date();
-//     var currentYear = currentDate.getFullYear();
-//     document.querySelector("#displayYear").innerHTML = currentYear;
-// }
+$(document).ready(function () {
+  /*====== SidebarCart ======*/
+  $('.main-wrapper').prepend('<div class="body-overlay"></div>');
 
-// getYear();
-
-// // client section owl carousel
-// $(".client_owl-carousel").owlCarousel({
-//     loop: true,
-//     margin: 20,
-//     dots: false,
-//     nav: true,
-//     navText: [],
-//     autoplay: true,
-//     autoplayHoverPause: true,
-//     navText: [
-//         '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-//         '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-//     ],
-//     responsive: {
-//         0: {
-//             items: 1
-//         },
-//         768: {
-//             items: 2
-//         }
-//     }
-// });
-
-/** google_map js **/
-
-function myMap() {
-    var mapProp = {
-        center: new google.maps.LatLng(40.712775, -74.005973),
-        zoom: 18,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-}
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  const uluru = { lat: -25.344, lng: 131.031 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
+  $('.cart-active').on('click', function(e) {
+    e.preventDefault();
+    $('.sidebar-cart-active').addClass('inside');
+    $('.main-wrapper').addClass('overlay-active');
   });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
-}
 
-window.initMap = initMap;
+  $('.cart-close').on('click', function() {
+    $('.sidebar-cart-active').removeClass('inside');
+    $('.main-wrapper').removeClass('overlay-active');
+  });
+
+  $('.body-overlay').on('click', function() {
+    $('.sidebar-cart-active').removeClass('inside');
+    $('.main-wrapper').removeClass('overlay-active');
+  });
+  /*-------------------------------
+       Header Search Toggle
+      -----------------------------------*/
+  var searchToggle = $('.search-toggle');
+  searchToggle.on('click', function(e){
+    e.preventDefault();
+    if($(this).hasClass('open')){
+      $(this).removeClass('open');
+      $(this).siblings('.search-wrap-1').removeClass('open');
+    }else{
+      $(this).addClass('open');
+      $(this).siblings('.search-wrap-1').addClass('open');
+    }
+  })
+  /*====== Sidebar menu Active ======*/
+  var navbarTrigger = $('.mobile-header-button-active'),
+    endTrigger = $('.sidebar-close'),
+    container = $('.mobile-header-active'),
+    wrapper4 = $('.main-wrapper');
+
+  wrapper4.prepend('<div class="body-overlay-1"></div>');
+
+  navbarTrigger.on('click', function(e) {
+    e.preventDefault();
+    container.addClass('sidebar-visible');
+    wrapper4.addClass('overlay-active-1');
+  });
+
+  endTrigger.on('click', function() {
+    container.removeClass('sidebar-visible');
+    wrapper4.removeClass('overlay-active-1');
+  });
+
+  $('.body-overlay-1').on('click', function() {
+    container.removeClass('sidebar-visible');
+    wrapper4.removeClass('overlay-active-1');
+  });
+});

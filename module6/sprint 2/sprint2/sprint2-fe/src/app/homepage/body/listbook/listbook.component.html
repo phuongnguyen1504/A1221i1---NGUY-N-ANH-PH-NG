@@ -1,203 +1,129 @@
 <!-- shop section -->
-
-<section class="shop_section layout_padding">
+<section class="shop_section layout_padding mt-1 mb-60">
   <div class="container">
-    <div class="heading_container heading_center">
-      <h2>
-        Latest Books
-      </h2>
+    <div class="shop-topbar-wrapper">
+      <div class="shop-topbar-left">
+        <div class="view-mode nav">
+          <a class="active" href="#shop-1" data-toggle="tab"><i class="icon-grid"></i></a>
+          <a href="#shop-2" data-toggle="tab"><i class="icon-menu"></i></a>
+        </div>
+        <p>Showing 1 - 20 of 30 results </p>
+      </div>
+      <div class="product-sorting-wrapper">
+        <div class="product-shorting shorting-style">
+          <label>View :</label>
+          <select>
+            <option value=""> 20</option>
+            <option value=""> 23</option>
+            <option value=""> 30</option>
+          </select>
+        </div>
+        <div class="product-show shorting-style">
+          <label>Sort by :</label>
+          <select>
+            <option value="">Default</option>
+            <option value=""> Name</option>
+            <option value=""> price</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="card col-xs-12 col-xl-3" *ngFor="let book of books.content,index as i">
-        <div class="box">
-          <a href="">
-            <div class="imgBx">
-              <img src="{{book.img_url}}" alt="">
+    <div class="shop-bottom-area">
+      <div class="tab-content jump">
+        <div id="shop-1" class="tab-pane active">
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let book of books.content,index as i">
+              <div class="single-product-wrap mb-35">
+                <div class="product-img product-img-zoom mb-15">
+                  <a href="product-details.html" class="card">
+                    <img src="{{book.img_url}}" alt="" >
+                  </a>
+                  <div class="product-action-2 tooltip-style-2">
+                    <button title="Wishlist"><i class="icon-heart"></i></button>
+                    <button title="Quick View" data-toggle="modal" data-target="#exampleModal"><i
+                      class="icon-size-fullscreen icons"></i></button>
+                    <button title="Compare"><i class="icon-refresh"></i></button>
+                  </div>
+                </div>
+                <div class="product-content-wrap-2 text-center">
+                  <div class="product-rating-wrap">
+                    <div class="product-rating">
+                      <i class="icon_star"></i>
+                      <i class="icon_star"></i>
+                      <i class="icon_star"></i>
+                      <i class="icon_star"></i>
+                      <i class="icon_star gray"></i>
+                    </div>
+                    <span>(2)</span>
+                  </div>
+                  <h3><a href="product-details.html">Basic Joggin Shorts</a></h3>
+                  <div class="product-price-2">
+                    <span>$20.50</span>
+                  </div>
+                </div>
+                <div class="product-content-wrap-2 product-content-position text-center">
+                  <div class="product-rating-wrap">
+                    <div class="product-rating">
+                      <i class="icon_star"></i>
+                      <i class="icon_star"></i>
+                      <i class="icon_star"></i>
+                      <i class="icon_star"></i>
+                      <i class="icon_star gray"></i>
+                    </div>
+                    <span>(2)</span>
+                  </div>
+                  <h3><a href="product-details.html">{{book.name}}</a></h3>
+                  <div class="product-price-2">
+                    <span>${{book.price}}</span>
+                  </div>
+                  <div class="pro-add-to-cart">
+                    <button title="Add to Cart">Add To Cart</button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </a>
-          <div class="contentBx">
-            <p>{{book.name}}</p>
-            <div class="size">
-              <h3>Quantity :</h3>
-              <span>{{book.amount}}</span>
-
-            </div>
-            <div class="color">
-              <h3>Price :</h3>
-              <span>{{book.price}}</span>
-
-            </div>
-            <a href="#">Buy Now</a>
           </div>
         </div>
       </div>
-<!--      <div class="card col-xs-12 col-xl-3">-->
-<!--        <div class="box">-->
-<!--          <a href="">-->
-<!--            <div class="imgBx">-->
-<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="contentBx">-->
-<!--            <h2>Nike Shoes</h2>-->
-<!--            <div class="size">-->
-<!--              <h3>Size :</h3>-->
-<!--              <span>7</span>-->
-<!--              <span>8</span>-->
-<!--              <span>9</span>-->
-<!--              <span>10</span>-->
-<!--            </div>-->
-<!--            <div class="color">-->
-<!--              <h3>Color :</h3>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--            </div>-->
-<!--            <a href="#">Buy Now</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="card col-xs-12 col-xl-3">-->
-<!--        <div class="box">-->
-<!--          <a href="">-->
-<!--            <div class="imgBx">-->
-<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="contentBx">-->
-<!--            <h2>Nike Shoes</h2>-->
-<!--            <div class="size">-->
-<!--              <h3>Size :</h3>-->
-<!--              <span>7</span>-->
-<!--              <span>8</span>-->
-<!--              <span>9</span>-->
-<!--              <span>10</span>-->
-<!--            </div>-->
-<!--            <div class="color">-->
-<!--              <h3>Color :</h3>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--            </div>-->
-<!--            <a href="#">Buy Now</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="card  col-xs-12 col-xl-3">-->
-<!--        <div class="box">-->
-<!--          <a href="">-->
-<!--            <div class="imgBx">-->
-<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="contentBx">-->
-<!--            <h2>Nike Shoes</h2>-->
-<!--            <div class="size">-->
-<!--              <h3>Size :</h3>-->
-<!--              <span>7</span>-->
-<!--              <span>8</span>-->
-<!--              <span>9</span>-->
-<!--              <span>10</span>-->
-<!--            </div>-->
-<!--            <div class="color">-->
-<!--              <h3>Color :</h3>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--            </div>-->
-<!--            <a href="#">Buy Now</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="card  col-xs-12 col-xl-3">-->
-<!--        <div class="box">-->
-<!--          <a href="">-->
-<!--            <div class="imgBx">-->
-<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="contentBx">-->
-<!--            <h2>Nike Shoes</h2>-->
-<!--            <div class="size">-->
-<!--              <h3>Size :</h3>-->
-<!--              <span>7</span>-->
-<!--              <span>8</span>-->
-<!--              <span>9</span>-->
-<!--              <span>10</span>-->
-<!--            </div>-->
-<!--            <div class="color">-->
-<!--              <h3>Color :</h3>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--            </div>-->
-<!--            <a href="#">Buy Now</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="card  col-xs-12 col-xl-3">-->
-<!--        <div class="box">-->
-<!--          <a href="">-->
-<!--            <div class="imgBx">-->
-<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="contentBx">-->
-<!--            <h2>Nike Shoes</h2>-->
-<!--            <div class="size">-->
-<!--              <h3>Size :</h3>-->
-<!--              <span>7</span>-->
-<!--              <span>8</span>-->
-<!--              <span>9</span>-->
-<!--              <span>10</span>-->
-<!--            </div>-->
-<!--            <div class="color">-->
-<!--              <h3>Color :</h3>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--            </div>-->
-<!--            <a href="#">Buy Now</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="card  col-xs-12 col-xl-3">-->
-<!--        <div class="box">-->
-<!--          <a href="">-->
-<!--            <div class="imgBx">-->
-<!--              <img src="http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/11/15/VPU18WR9.jpg" alt="">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="contentBx">-->
-<!--            <div class="size">-->
-<!--              <h3>Size :</h3>-->
-<!--              <span>7</span>-->
-<!--              <span>8</span>-->
-<!--              <span>9</span>-->
-<!--              <span>10</span>-->
-<!--            </div>-->
-<!--            <div class="color">-->
-<!--              <h3>Color :</h3>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--              <span></span>-->
-<!--            </div>-->
-<!--            <a href="#">Buy Now</a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      sua -->
-
-      </div>
-
-
-    <div class="btn-box">
-      <a href="">
-        View All
-      </a>
     </div>
+
   </div>
+
+
+  <!--  <div class="container">-->
+  <!--    <div class="heading_container heading_center">-->
+  <!--      <h2>-->
+  <!--        Latest Books-->
+  <!--      </h2>-->
+  <!--    </div>-->
+  <!--    <div class="row">-->
+  <!--      <div class="card col-xs-12 col-xl-3" *ngFor="let book of books.content,index as i">-->
+  <!--        <div class="box">-->
+  <!--          <a href="">-->
+  <!--            <div class="imgBx">-->
+  <!--              <img src="{{book.img_url}}" alt="">-->
+  <!--            </div>-->
+  <!--          </a>-->
+  <!--          <div class="contentBx">-->
+  <!--            <p>{{book.name}}</p>-->
+  <!--            <div class="size">-->
+  <!--              <h3>Quantity :</h3>-->
+  <!--              <span>{{book.amount}}</span>-->
+
+  <!--            </div>-->
+  <!--            <div class="color">-->
+  <!--              <h3>Price :</h3>-->
+  <!--              <span>{{book.price}}</span>-->
+
+  <!--            </div>-->
+  <!--            <a href="#">Buy Now</a>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+
+  <!--      </div>-->
+
+
 </section>
 
 <!-- end shop section -->
