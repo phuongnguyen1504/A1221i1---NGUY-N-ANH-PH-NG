@@ -11,7 +11,9 @@ import {Book} from "../../../model/book";
 })
 export class ListbookComponent implements OnInit {
   indexPagination = 0;
-  books:any;ß
+  books:any;
+  bookfind:any;
+  quantity:number;
   constructor(private bookService:BookService) { }
 
   ngOnInit(): void {
@@ -25,4 +27,24 @@ export class ListbookComponent implements OnInit {
       });
   }
 
+  viewById(id: any) {
+    console.log(id);
+    this.bookService.findById(id).subscribe(
+      data=>{
+        this.bookfind=data;
+        console.log(this.bookfind);
+      }
+    )
+
+  }
+
+  addValue() {
+    this.quantity++;
+  }
+
+  MinusValue() {
+    if (this.quantity>1){
+      this.quantity--;
+    }
+  }
 }

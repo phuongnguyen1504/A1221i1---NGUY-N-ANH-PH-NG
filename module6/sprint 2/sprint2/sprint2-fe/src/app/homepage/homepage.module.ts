@@ -11,15 +11,17 @@ import { FeatureComponent } from './body/feature/feature.component';
 import { ContactComponent } from './body/contact/contact.component';
 import {ShareModule} from "../share/share.module";
 import {NgxSlickJsModule} from "ngx-slickjs";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [HomepageComponent, BodyComponent, DetailComponent, ListbookComponent, IntroduceComponent, FeatureComponent, ContactComponent],
-  imports: [
-    CommonModule,
-    HomepageRoutingModule,
-    ShareModule,
-    NgxSlickJsModule
-  ]
+    imports: [
+        CommonModule,
+        HomepageRoutingModule,
+        ShareModule,
+        NgxSlickJsModule,
+        FormsModule
+    ]
 })
 export class HomepageModule { }

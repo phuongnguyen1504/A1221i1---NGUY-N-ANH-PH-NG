@@ -24,17 +24,7 @@
         nextArrow: '<span class="slider-icon-1-next"><i class="icon-arrow-right"></i></span>',
     });
 
-    /*------ Hero slider active 2 ----*/
-    $('.hero-slider-active-2').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: true,
-        loop: true,
-        dots: false,
-        arrows: true,
-        prevArrow: '<span class="slider-icon-1-prev"><i class="icon-arrow-left"></i></span>',
-        nextArrow: '<span class="slider-icon-1-next"><i class="icon-arrow-right"></i></span>',
-    });
+
 
     /*------ Hero slider active 3 ----*/
     $('.hero-slider-active-3').slick({
@@ -315,82 +305,7 @@
         InstagramFeed active
     -----------------------------------*/
 
-    $(window).on('load', function(){
-        var instagramFeedSliderOne = function () {
-            $.instagramFeed({
-                username: "ecommerce.devitems",
-                container: "#instagramFeedOne",
-                display_profile: false,
-                'display_biography': false,
-                display_gallery: true,
-                callback: null,
-                styling: false,
-                items: 8,
-            });
-        };
-        instagramFeedSliderOne();
-        $("#instagramFeedOne").on("DOMNodeInserted", function (e) {
-            if (e.target.className === "instagram_gallery") {
-                $(".instagram-carousel .instagram_gallery").slick({
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    autoplay: false,
-                    dots: false,
-                    arrows: false,
-                    loop: true,
-                    responsive: [
-                        {
-                            breakpoint: 767,
-                            settings: {
-                                slidesToShow: 3,
-                            }
-                        },
-                        {
-                            breakpoint: 575,
-                            settings: {
-                                slidesToShow: 2,
-                            }
-                        }
-                    ]
-                });
-                $(".instagram-carousel-2 .instagram_gallery").slick({
-                    slidesToShow: 8,
-                    slidesToScroll: 1,
-                    autoplay: false,
-                    dots: false,
-                    arrows: false,
-                    loop: true,
-                    responsive: [
-                        {
-                            breakpoint: 1199,
-                            settings: {
-                                slidesToShow: 6,
-                            }
-                        },
-                        {
-                            breakpoint: 991,
-                            settings: {
-                                slidesToShow: 5,
-                            }
-                        },
-                        {
-                            breakpoint: 767,
-                            settings: {
-                                slidesToShow: 3,
-                            }
-                        },
-                        {
-                            breakpoint: 575,
-                            settings: {
-                                slidesToShow: 2,
-                            }
-                        }
-                    ]
-                });
-            }
-        });
 
-    });
 
 
 
@@ -761,6 +676,7 @@
     /*----------------------------
     	Cart Plus Minus Button
     ------------------------------ */
+
     var CartPlusMinus = $('.cart-plus-minus');
     CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
     CartPlusMinus.append('<div class="inc qtybutton">+</div>');

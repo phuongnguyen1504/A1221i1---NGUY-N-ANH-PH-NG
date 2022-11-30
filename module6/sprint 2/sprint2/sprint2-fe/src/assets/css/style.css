@@ -8979,6 +8979,9 @@ color: #000000;
   transform: translate(50px,50px);
   width: 150px;
   height:200px;
+  position:relative;
+  left:30px;
+  top:-10px;
 }
 
 .single-product-wrap .product-img.product-img-border a img {
@@ -9598,15 +9601,15 @@ color: #000000;
 }
 @keyframes dichchuyen {
 
-  from { -webkit-transform: rotate(0deg) translateX(5px) rotate(0deg); }
-    to   { -webkit-transform: rotate(360deg) translateX(5px) rotate(-360deg); }
+  from { -webkit-transform: rotate(0deg) translateX(30px) rotate(0deg); }
+    to   { -webkit-transform: rotate(360deg) translateX(30px) rotate(-360deg); }
 }
 
 .single-product-wrap:hover .product-img.product-img-zoom a img {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
-transform: translateY(-10%);
+/*transform: translateY(-10%);*/
 animation: dichchuyen 3s linear 0s infinite;
 }
 

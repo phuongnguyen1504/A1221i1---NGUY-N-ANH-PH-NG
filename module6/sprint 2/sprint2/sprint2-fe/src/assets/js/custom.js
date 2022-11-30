@@ -54,4 +54,27 @@ $(document).ready(function () {
     container.removeClass('sidebar-visible');
     wrapper4.removeClass('overlay-active-1');
   });
+
+
+
+  /*----------------------------
+    	Cart Plus Minus Button
+    ------------------------------ */
+  $('.dec.qtybutton').click(function () {
+    let value=$('.cart-plus-minus-box').val();
+    alert(value);
+
+    if (value>1){
+      value=value-1;
+      alert(value);
+    }
+  });
+  $('.inc.qtybutton').click(function () {
+    let values=$('.cart-plus-minus-box').val();
+    values=values+1;
+    alert(values);
+
+  });
+
+
 });
