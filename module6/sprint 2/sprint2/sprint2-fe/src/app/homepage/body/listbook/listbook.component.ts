@@ -18,6 +18,7 @@ export class ListbookComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll(this.indexPagination);
+    this.quantity=1;
   }
   getAll(indexPagination) {
     this.bookService.getAll(indexPagination).subscribe(
