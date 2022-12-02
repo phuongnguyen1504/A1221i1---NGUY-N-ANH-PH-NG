@@ -143,6 +143,23 @@
               </div>
             </div>
           </div>
+          <div class="pro-pagination-style text-center mt-10" *ngIf="books.content.length > 0">
+            <ul>
+              <li *ngIf="indexPagination > 0">
+                <a class="prev" (click)="goToNextOrPreviousPage('backward', size)">
+                  <i class="icon-arrow-left"></i>
+                </a>
+              </li>
+              <li *ngFor="let pageNumber of [].constructor(books.totalPages); let i =  index;">
+                <a [ngClass]="indexPagination === i ? 'active' : ''" (click)="goToPage(i, sizeNumber)">{{i + 1}}</a>
+              </li>
+              <li *ngIf="indexPagination + 1 < books.totalPages">
+                <a class="next" (click)="goToNextOrPreviousPage('forward', size)">
+                  <i class="icon-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -64,6 +64,7 @@ export class ListbookComponent implements OnInit {
   onSelected(value: number) {
     this.size=value;
     this.getBook(this.indexPagination,this.sort,this.size);
+    this.goToPage(0,this.size);
   }
 
   onSort(value: string) {
@@ -81,18 +82,18 @@ export class ListbookComponent implements OnInit {
 
   goToPage(pageNumber, sizeNumber) {
     this.sizeNumber=sizeNumber;
-    this.size=sizeNumber;
+    // this.size=sizeNumber;
     this.indexPagination = pageNumber;
     console.log("size"+this.size);
     console.log("page"+this.indexPagination);
-    this.getBook(this.indexPagination,this.sort,this.size);
+    this.getBook(this.indexPagination,this.sort,sizeNumber);
   }
 
   goToNextOrPreviousPage(direction, size) {
     this.sizeNumber=size;
-    this.size=size;
+    // this.size=size;
 
-    this.goToPage(direction === 'forward' ? this.indexPagination + 1 : this.indexPagination - 1, this.size);
+    this.goToPage(direction === 'forward' ? this.indexPagination + 1 : this.indexPagination - 1, size);
   }
 
 }

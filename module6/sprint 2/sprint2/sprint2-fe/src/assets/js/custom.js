@@ -76,5 +76,15 @@ $(document).ready(function () {
 
   });
 
+  /*--
+          Magnific Popup
+      ------------------------*/
+  $('.img-popup').magnificPopup({
+    type: 'image',
+    gallery: {
+      enabled: true
+    }
+  });
 
+  $('.easyzoom').easyZoom();
 });
