@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping
+    @GetMapping("/product")
     public String view(Model model, Product product, BindingResult bindingResult, @RequestParam(defaultValue = "") String q, Pageable pageable){
         model.addAttribute("res", productService.find(q, pageable));
         model.addAttribute("cate", categoryService.findAll());

@@ -12,18 +12,18 @@
       <div class="product-sorting-wrapper">
         <div class="product-shorting shorting-style">
           <label>View :</label>
-          <select>
-            <option value=""> 20</option>
-            <option value=""> 23</option>
-            <option value=""> 30</option>
+          <select #size (change)="onSelected(size.value)">
+            <option value="5" selected> 5</option>
+            <option value="10"> 10</option>
+            <option value="15"> 15</option>
           </select>
         </div>
         <div class="product-show shorting-style">
           <label>Sort by :</label>
-          <select>
-            <option value="">Default</option>
-            <option value=""> Name</option>
-            <option value=""> price</option>
+          <select #sort (change)="onSort(sort.value)">
+<!--            <option value="">Default</option>-->
+            <option value="name" selected> Name</option>
+            <option value="price"> price</option>
           </select>
         </div>
       </div>
@@ -83,7 +83,25 @@
               </div>
             </div>
           </div>
+          <div class="pro-pagination-style text-center mt-10" *ngIf="books.content.length > 0">
+            <ul>
+              <li *ngIf="indexPagination > 0">
+                <a class="prev" (click)="goToNextOrPreviousPage('backward', size)">
+                  <i class="icon-arrow-left"></i>
+                </a>
+              </li>
+              <li *ngFor="let pageNumber of [].constructor(books.totalPages); let i =  index;">
+                <a [ngClass]="indexPagination === i ? 'active' : ''" (click)="goToPage(i, sizeNumber)">{{i + 1}}</a>
+              </li>
+              <li *ngIf="indexPagination + 1 < books.totalPages">
+                <a class="next" (click)="goToNextOrPreviousPage('forward', size)">
+                  <i class="icon-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+
         <div id="shop-2" class="tab-pane">
           <div class="shop-list-wrap mb-30" *ngFor="let book of books.content,index as i">
             <div class="row">
@@ -145,15 +163,15 @@
                 <div id="pro-1" class="tab-pane fade show active">
                   <img src="{{bookfind.img_url}}" alt="">
                 </div>
-                <div id="pro-2" class="tab-pane fade">
-                  <img src="{{bookfind.img_url}}" alt="">
-                </div>
-                <div id="pro-3" class="tab-pane fade">
-                  <img src="{{bookfind.img_url}}" alt="">
-                </div>
-                <div id="pro-4" class="tab-pane fade">
-                  <img src="{{bookfind.img_url}}" alt="">
-                </div>
+<!--                <div id="pro-2" class="tab-pane fade">-->
+<!--                  <img src="{{bookfind.img_url}}" alt="">-->
+<!--                </div>-->
+<!--                <div id="pro-3" class="tab-pane fade">-->
+<!--                  <img src="{{bookfind.img_url}}" alt="">-->
+<!--                </div>-->
+<!--                <div id="pro-4" class="tab-pane fade">-->
+<!--                  <img src="{{bookfind.img_url}}" alt="">-->
+<!--                </div>-->
               </div>
 <!--              <div class="quickview-wrap mt-15">-->
 <!--                <div class="quickview-slide-active nav-style-6">-->

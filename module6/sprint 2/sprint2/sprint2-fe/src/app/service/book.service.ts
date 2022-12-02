@@ -27,4 +27,15 @@ export class BookService {
   update(id: number, book: Book): Observable<Book> {
     return this.http.put<Book>(`${apiUrl}/${id}`, book);
   }
+
+  getSize(page:any,size: any):Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+'?page='+page+'&size='+size);
+
+  }
+
+  getBook(page: number, sort: any,size:any) {
+    return this.http.get<any[]>(apiUrl+'?page='+page+'&sort='+sort+'&size='+size);
+    console.log(apiUrl+'?page='+page+'&sort='+sort+'&size='+size);
+
+  }
 }
