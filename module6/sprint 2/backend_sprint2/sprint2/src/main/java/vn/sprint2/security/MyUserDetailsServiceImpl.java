@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+
 import vn.sprint2.model.Account;
 import vn.sprint2.service.IAccountService;
 
@@ -16,13 +18,10 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
     private IAccountService accountService;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Account> account=this.accountService.findByUsername(username);
-        if (!account.isPresent()){
-            throw new UsernameNotFoundException("Username not found: "+ username);
+        Optional<Account> acounts = accountService.findByUsername(username);
+        if (!acounts.isPresent()) {
+            throw new UsernameNotFoundException("Username not found: " + username);
         }
-        else{
-            return new MyUserDetails(account.get());
-        }
-
+        return new MyUserDetails(acounts.get());
     }
 }

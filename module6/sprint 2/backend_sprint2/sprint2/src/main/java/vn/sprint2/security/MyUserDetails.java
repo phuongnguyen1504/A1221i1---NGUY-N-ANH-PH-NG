@@ -1,6 +1,5 @@
 package vn.sprint2.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class MyUserDetails implements UserDetails {
-
     private Account account;
 
     public MyUserDetails(Account account) {
@@ -21,21 +19,21 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorities=new ArrayList<>();
-        for (Role role:account.getRoles()){
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
+        for (Role role : account.getRoles()) {
+            authorityList.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return authorities;
+        return authorityList;
     }
 
     @Override
     public String getPassword() {
-        return this.account.getPassword();
+        return account.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.account.getUsername();
+        return account.getUsername();
     }
 
     @Override
@@ -55,6 +53,6 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

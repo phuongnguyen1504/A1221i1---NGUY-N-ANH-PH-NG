@@ -5,10 +5,11 @@ import { ShareRoutingModule } from './share-routing.module';
 import { ShareComponent } from './share.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './security/login/login.component';
 
 
 @NgModule({
-    declarations: [ShareComponent, HeaderComponent, FooterComponent],
+    declarations: [ShareComponent, HeaderComponent, FooterComponent, LoginComponent],
   exports: [
     HeaderComponent,
     FooterComponent

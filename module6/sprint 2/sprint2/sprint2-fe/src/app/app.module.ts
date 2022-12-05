@@ -5,10 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ShareModule} from "./share/share.module";
 import {HomepageModule} from "./homepage/homepage.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {OrderModule} from "./order/order.module";
 import {NgxSlickJsModule} from "ngx-slickjs";
-import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -31,7 +30,9 @@ import {ToastrModule} from "ngx-toastr";
         AppRoutingModule,
         ShareModule
     ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

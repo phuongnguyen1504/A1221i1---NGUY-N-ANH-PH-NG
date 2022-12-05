@@ -18,3 +18,23 @@ UPDATE `test_book_store`.`book` SET `id` = '3' WHERE (`id` = '10');
 UPDATE `test_book_store`.`book` SET `id` = '4' WHERE (`id` = '11');
 UPDATE `test_book_store`.`book` SET `id` = '5' WHERE (`id` = '12');
 UPDATE `test_book_store`.`book` SET `id` = '6' WHERE (`id` = '13');
+
+ALTER TABLE `test_book_store`.`customer` 
+DROP FOREIGN KEY `FKsn7i4emc8fm44n66ge5ulpfio`;
+ALTER TABLE `test_book_store`.`customer` 
+ADD CONSTRAINT `FKsn7i4emc8fm44n66ge5ulpfio`
+  FOREIGN KEY (`username`)
+  REFERENCES `test_book_store`.`account` (`username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+INSERT INTO `test_book_store`.`account` (`username`, `password`) VALUES ('phuong123', '
+$2a$12$vu47XQ/SrcUMWD1akGWwleyqfdy4SPVsN9eX8L1P.RCkNlYPJU.W6');
+
+INSERT INTO `test_book_store`.`customer` (`address`, `birthday`, `email`, `gender`, `img_url`, `name`, `phone`,`username`) VALUES ('K112 abc', '1992-10-10', 'phuong.misadng@gmail.com', 0, 'test', 'Nguyen Phuong', '09051241','phuong123');
+
+INSERT INTO `test_book_store`.`role` (`name`) VALUES ('ADMIN');
+INSERT INTO `test_book_store`.`role` (`name`) VALUES ('USER');
+INSERT INTO `test_book_store`.`account_role` (`username`, `role_id`) VALUES ('phuong123', '1');
+INSERT INTO `test_book_store`.`account_role` (`username`, `role_id`) VALUES ('phuong123', '2');
+

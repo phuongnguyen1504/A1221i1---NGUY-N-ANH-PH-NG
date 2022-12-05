@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  api_book: 'http://localhost:8080/api/book'
+  api_book: 'http://localhost:8080/api/book',
+  api_auth:'http://localhost:8080/api/auth',
+  user_api:'http://localhost:8080/api/user',
+
 };
 
 /*
