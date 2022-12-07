@@ -6,6 +6,7 @@ import { ShareComponent } from './share.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './security/login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LoginComponent } from './security/login/login.component';
   ],
     imports: [
         CommonModule,
-        ShareRoutingModule
+        ShareRoutingModule,
+        ReactiveFormsModule
     ]
 })
 export class ShareModule { }

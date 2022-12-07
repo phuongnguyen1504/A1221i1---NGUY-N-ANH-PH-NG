@@ -8,10 +8,12 @@ import {HomepageModule} from "./homepage/homepage.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {OrderModule} from "./order/order.module";
 import {NgxSlickJsModule} from "ngx-slickjs";
+import { FocusInvalidInputDirectiveDirective } from './helpers/focus-invalid-input-directive.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FocusInvalidInputDirectiveDirective
   ],
     imports: [
       HomepageModule,
