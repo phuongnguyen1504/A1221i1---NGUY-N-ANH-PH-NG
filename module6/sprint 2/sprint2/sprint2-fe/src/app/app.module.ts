@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ShareModule} from "./share/share.module";
-import {HomepageModule} from "./homepage/homepage.module";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {OrderModule} from "./order/order.module";
-import {NgxSlickJsModule} from "ngx-slickjs";
+import {ShareModule} from './share/share.module';
+import {HomepageModule} from './homepage/homepage.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {OrderModule} from './order/order.module';
+import {NgxSlickJsModule} from 'ngx-slickjs';
 import { FocusInvalidInputDirectiveDirective } from './helpers/focus-invalid-input-directive.directive';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {JwtInterceptor} from "./helpers/jwt-interceptor";
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { FocusInvalidInputDirectiveDirective } from './helpers/focus-invalid-inp
   ],
     imports: [
       HomepageModule,
+      ReactiveFormsModule,
+      FormsModule,
       OrderModule,
       NgxSlickJsModule.forRoot({
         links: {
@@ -33,7 +37,11 @@ import { FocusInvalidInputDirectiveDirective } from './helpers/focus-invalid-inp
         ShareModule
     ],
   providers: [
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

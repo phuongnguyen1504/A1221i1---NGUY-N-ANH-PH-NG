@@ -38,3 +38,12 @@ INSERT INTO `test_book_store`.`role` (`name`) VALUES ('USER');
 INSERT INTO `test_book_store`.`account_role` (`username`, `role_id`) VALUES ('phuong123', '1');
 INSERT INTO `test_book_store`.`account_role` (`username`, `role_id`) VALUES ('phuong123', '2');
 
+INSERT INTO `test_book_store`.`customer` (`id`, `address`, `birthday`, `email`, `gender`, `img_url`, `name`, `phone`, `username`) VALUES ('1', 'K112 abc', '1992-10-10 00:00:00.000000', 'phuong.misadng@gmail.com', b'0', b'test', b'Nguyen Phuong', b'09051241', b'phuong123');
+
+INSERT INTO `test_book_store`.`cart` (`id`, `customer_id`) VALUES ('1', '1');
+
+INSERT INTO `test_book_store`.`cart_item` (`amount`, `cart_id`, `book_id`) VALUES ('5', '1', '1');
+INSERT INTO `test_book_store`.`cart_item` (`amount`, `cart_id`, `book_id`) VALUES ('1', '1', '2');
+INSERT INTO `test_book_store`.`cart_item` (`amount`, `cart_id`, `book_id`) VALUES ('2', '1', '3');
+
+

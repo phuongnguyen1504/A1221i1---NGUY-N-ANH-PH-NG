@@ -6,11 +6,12 @@ import { ShareComponent } from './share.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './security/login/login.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
+import { CartlistComponent } from './cartlist/cartlist.component';
 
 
 @NgModule({
-    declarations: [ShareComponent, HeaderComponent, FooterComponent, LoginComponent],
+    declarations: [ShareComponent, HeaderComponent, FooterComponent, LoginComponent, CartlistComponent],
   exports: [
     HeaderComponent,
     FooterComponent

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {Router} from '@angular/router';
@@ -14,6 +14,8 @@ import {AuthService} from '../../../service/auth/auth.service';
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
+  @ViewChild('closebutton') closebutton;
+
   constructor(private formBuilder: FormBuilder, private  el: ElementRef,
               private tokenStorageService: TokenStorageService,
               private router: Router,
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
   login(): void {
     if (this.formLogin.valid) {
+      console.log(this.formLogin.value);
       this.authService.login(this.formLogin.value).subscribe(
         data => {
           this.tokenStorageService.saveTokenSession(data.accessToken);
@@ -37,6 +40,7 @@ export class LoginComponent implements OnInit {
               this.tokenStorageService.saveUserSession(value);
               this.authService.isLoggedIn = true;
               this.formLogin.reset();
+              this.closebutton.nativeElement.click();
               this.shareService.sendClickEvent();
               this.router.navigateByUrl('');
             }
