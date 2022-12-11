@@ -1,6 +1,7 @@
 package vn.sprint2.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,9 +14,11 @@ public class CartItem {
     private BookCartId bookCartId;
     @ManyToOne
     @MapsId("bookId")
+    @JsonBackReference
     private Book book;
     @ManyToOne
     @MapsId("cartId")
+    @JsonBackReference
     private Cart cart;
     private Integer amount;
 

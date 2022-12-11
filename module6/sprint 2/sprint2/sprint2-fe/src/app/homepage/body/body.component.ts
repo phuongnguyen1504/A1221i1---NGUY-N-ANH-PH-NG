@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Slick} from "ngx-slickjs";
+import {Slick} from 'ngx-slickjs';
 
 @Component({
   selector: 'app-body',
@@ -7,8 +7,8 @@ import {Slick} from "ngx-slickjs";
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  banner = ["http://static.nhanam.com.vn/thumb/0x0/crop/Features/Images/2019/4/25/6HHNAJ7E.jpg","http://static.nhanam.com.vn/thumb/0x0/crop/Features/Images/2018/9/13/3XSUDF44.jpg","http://static.nhanam.com.vn/thumb/0x0/crop/Features/Images/2018/9/13/OJ4M48Q3.jpg"];
-  config: Slick.Config={
+  banner = ['http://static.nhanam.com.vn/thumb/0x0/crop/Features/Images/2019/4/25/6HHNAJ7E.jpg', 'http://static.nhanam.com.vn/thumb/0x0/crop/Features/Images/2018/9/13/3XSUDF44.jpg', 'http://static.nhanam.com.vn/thumb/0x0/crop/Features/Images/2018/9/13/OJ4M48Q3.jpg'];
+  config: Slick.Config = {
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
