@@ -13,4 +13,6 @@ public interface ICustomerService {
     Optional<Customer> findById(Long id);
 
     void save(Customer customer);
+
+    Customer findByUsername(String username);
 }

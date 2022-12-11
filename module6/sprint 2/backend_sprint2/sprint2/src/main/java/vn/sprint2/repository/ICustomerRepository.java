@@ -13,4 +13,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
     @Query(value = "select * from customer where email=?1",nativeQuery = true)
     Optional<Customer> findByEmail(String mail);
     Page<Customer> findAll(Pageable pageable);
+    @Query(value = "select * from customer where username=?1",nativeQuery = true)
+    Customer findByUserName(String username);
 }

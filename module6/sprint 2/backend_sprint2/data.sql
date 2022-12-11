@@ -29,7 +29,7 @@ ADD CONSTRAINT `FKsn7i4emc8fm44n66ge5ulpfio`
   ON UPDATE CASCADE;
 
 INSERT INTO `test_book_store`.`account` (`username`, `password`) VALUES ('phuong123', '
-$2a$12$vu47XQ/SrcUMWD1akGWwleyqfdy4SPVsN9eX8L1P.RCkNlYPJU.W6');
+$12$PaExrVwwai2pkZWG8nyTdOm/XI.XZBhW.gbYRpuzxQDb/o2gGddiG');
 
 INSERT INTO `test_book_store`.`customer` (`address`, `birthday`, `email`, `gender`, `img_url`, `name`, `phone`,`username`) VALUES ('K112 abc', '1992-10-10', 'phuong.misadng@gmail.com', 0, 'test', 'Nguyen Phuong', '09051241','phuong123');
 
@@ -38,7 +38,7 @@ INSERT INTO `test_book_store`.`role` (`name`) VALUES ('USER');
 INSERT INTO `test_book_store`.`account_role` (`username`, `role_id`) VALUES ('phuong123', '1');
 INSERT INTO `test_book_store`.`account_role` (`username`, `role_id`) VALUES ('phuong123', '2');
 
-INSERT INTO `test_book_store`.`customer` (`id`, `address`, `birthday`, `email`, `gender`, `img_url`, `name`, `phone`, `username`) VALUES ('1', 'K112 abc', '1992-10-10 00:00:00.000000', 'phuong.misadng@gmail.com', b'0', b'test', b'Nguyen Phuong', b'09051241', b'phuong123');
+INSERT INTO `test_book_store`.`customer` (`id`, `address`, `birthday`, `email`, `gender`, `img_url`, `name`, `phone`, `username`) VALUES ('1', 'K112 abc', '1992-10-10 00:00:00.000000', 'phuong.misadng@gmail.com', 0, 'test', 'Nguyen Phuong', '09051241', 'phuong123');
 
 INSERT INTO `test_book_store`.`cart` (`id`, `customer_id`) VALUES ('1', '1');
 

@@ -57,7 +57,7 @@
             <div class="col-xl-2 col-lg-2">
               <div class="header-action header-action-flex">
                 <div class="same-style-2 same-style-2-white same-style-2-hover-black same-style-2-font-inc header-cart">
-                  <a class="cart-active" href="#">
+                  <a class="cart-active" (click)="listCart()"  href="#">
                     <i class="fa-solid fa-cart-shopping"></i><span class="pro-count black">02</span>
                     <span class="cart-amount white">$2,435.30</span>
                   </a>
@@ -183,7 +183,7 @@
   </div>
 
 </section>
-<app-cartlist></app-cartlist>
+<app-cartlist [item]="id_username"></app-cartlist>
 <app-login></app-login>
 
 

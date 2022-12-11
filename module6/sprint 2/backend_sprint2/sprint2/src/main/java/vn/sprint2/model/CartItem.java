@@ -20,6 +20,6 @@ public class CartItem {
     @MapsId("cartId")
     @JsonBackReference
     private Cart cart;
-    private Integer amount;
+    private Integer quantity;
 
 }

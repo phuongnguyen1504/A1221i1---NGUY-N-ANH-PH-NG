@@ -8,6 +8,7 @@ export const environment = {
   api_auth: 'http://localhost:8080/api/auth',
   user_api: 'http://localhost:8080/api/user',
   customer_api: 'http://localhost:8080/api/customer',
+  cart_api: 'http://localhost:8080/api/cart'
 
 };
 

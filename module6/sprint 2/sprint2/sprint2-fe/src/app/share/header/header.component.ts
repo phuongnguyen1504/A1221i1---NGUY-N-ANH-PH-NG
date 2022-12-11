@@ -12,6 +12,7 @@ import {AuthService} from "../../service/auth/auth.service";
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   username: string;
+  id_username: string;
   role: string;
   visible: boolean;
   constructor(private  tokenStorageService: TokenStorageService,
@@ -27,17 +28,18 @@ export class HeaderComponent implements OnInit {
 
   private loadHeader() {
     if (this.tokenStorageService.getToken()) {
-      console.log('true');
+      this.listCart();
       this.username = this.tokenStorageService.getUser().roles[0].name;
       this.isLoggedIn = true;
+
     } else {
-      console.log('false');
       this.isLoggedIn = false;
     }
   }
   logOut() {
     this.tokenStorageService.logOut();
     this.ngOnInit();
+    this.id_username=null;
     this.route.navigateByUrl('');
   }
   toggleCollapse() {
@@ -52,6 +54,9 @@ export class HeaderComponent implements OnInit {
 
   HideCollapse() {
     this.visible = true;
-    console.log('true');
+  }
+
+  listCart() {
+      this.id_username=this.tokenStorageService.getUser().username;
   }
 }
