@@ -1,11 +1,13 @@
 package vn.sprint2.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -27,5 +29,6 @@ public class Order {
     @Column(name = "total_price")
     private Double totalPrice;
     @OneToMany(mappedBy = "order")
-    private List<OrderDetail> books;
+    @JsonManagedReference
+    private Set<OrderDetail> orderDetails;
 }

@@ -3,12 +3,15 @@ package vn.sprint2.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -37,9 +40,11 @@ public class Book implements Serializable {
     private Category category;
     @Column(columnDefinition = "TEXT")
     private String description;
+    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<CartItem> cartItems;
     @OneToMany(mappedBy = "book")
-    private List<CartItem> carts;
-    @OneToMany(mappedBy = "book")
-    private List<OrderDetail> orders;
+    @JsonManagedReference
+    private List<OrderDetail> orderDetails;
 //    https://huongdanjava.com/many-many-relationship-extra-columns-jpa.html
 }

@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 @Data
@@ -18,4 +19,16 @@ public class BookOrderId implements Serializable {
     private Long orderId;
     @Column(name = "book_id")
     private Long bookId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookOrderId that = (BookOrderId) o;
+        return Objects.equals(orderId, that.orderId) && Objects.equals(bookId, that.bookId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderId, bookId);
+    }
 }

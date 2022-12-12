@@ -1,10 +1,11 @@
 package vn.sprint2.model;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cart_item")
@@ -14,12 +15,17 @@ public class CartItem {
     private BookCartId bookCartId;
     @ManyToOne
     @MapsId("bookId")
-    @JsonBackReference
+    @JoinColumn(name = "book_id")
     private Book book;
     @ManyToOne
     @MapsId("cartId")
-    @JsonBackReference
+    @JoinColumn(name = "cart_id")
+    @JsonManagedReference
     private Cart cart;
+    @Column(name = "quantity")
     private Integer quantity;
+    @Column(name= "date_add")
+    private LocalDateTime dateAdd;
+
 
 }

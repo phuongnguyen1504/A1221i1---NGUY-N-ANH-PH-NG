@@ -2,11 +2,13 @@ package vn.sprint2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -25,12 +27,11 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="username")
     private Account account;
+    @OneToOne(mappedBy = "customer")
+    private Cart cart;
     @OneToMany(mappedBy = "customer")
-    @JsonIgnore
-    private List<Cart> carts;
-    @OneToMany(mappedBy = "customer")
-    @JsonIgnore
-    private List<Order> orders;
+    @JsonManagedReference
+    private Set<Order> orders;
 
 
 
